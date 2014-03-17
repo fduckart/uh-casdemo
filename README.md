@@ -64,5 +64,5 @@ appropriate command line argument.
 ##### To run the System Tests:
 $ mvn -Denv=dev -Dtest=*SystemTest clean test
 
-##### Running the Application locally
+**Running the Application locally**
 http://localhost:8080/casdemo/
