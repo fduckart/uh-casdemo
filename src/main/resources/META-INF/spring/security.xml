@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:security="http://www.springframework.org/schema/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+                                                                        
+    <security:http entry-point-ref="casProcessingFilterEntryPoint" use-expressions="true">
+        <security:intercept-url pattern="/"              access="permitAll()" requires-channel="any"/>      
+        <security:intercept-url pattern="/gate"          access="permitAll()" requires-channel="any"/>      
+        <security:intercept-url pattern="/denied"        access="permitAll()" requires-channel="any"/>   
+        <security:intercept-url pattern="/resources/**"  access="permitAll()" requires-channel="any"/>
+        <security:intercept-url pattern="/admin/**"      access="hasRole('ROLE_ADMIN')"     requires-channel="https"/>
+        <security:intercept-url pattern="/**"            access="hasRole('ROLE_UH')"        requires-channel="https"/>
+        
+        <security:custom-filter ref="casAuthenticationFilter" after="CAS_FILTER"/>        
+        
+        <security:logout invalidate-session="true" logout-url="/logout" logout-success-url="/gate"/>
+        
+        <security:custom-filter ref="requestSingleLogoutFilter" before="LOGOUT_FILTER"/>
+        <security:custom-filter ref="singleLogoutFilter" before="CAS_FILTER"/>
+        
+        <security:access-denied-handler error-page="/denied"/>        
+    </security:http>     
+
+    <!-- This filter handles a Single Logout Request from the CAS Server -->
+    <bean id="singleLogoutFilter" class="org.jasig.cas.client.session.SingleSignOutFilter"/>
+    
+    <!-- This filter redirects to the CAS Server to signal Single Logout should be performed -->
+    <bean id="requestSingleLogoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter">
+        <constructor-arg value="${cas.logout.url}"/>
+        <constructor-arg>
+            <bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler"/>
+        </constructor-arg>
+        <property name="filterProcessesUrl" value="/j_spring_cas_security_logout"/>
+  </bean>
+
+    <security:authentication-manager alias="authenticationManager">        
+        <security:authentication-provider ref="casAuthenticationProvider"/>       
+    </security:authentication-manager>
+    
+    <bean id="casAuthenticationFilter" class="org.springframework.security.cas.web.CasAuthenticationFilter">
+        <property name="authenticationManager" ref="authenticationManager"/>
+        <property name="authenticationFailureHandler">
+            <bean class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+                <property name="defaultFailureUrl" value="/gate"/>
+            </bean>
+        </property>
+        <property name="authenticationSuccessHandler">
+            <bean class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+                <property name="alwaysUseDefaultTargetUrl" value="false"/>
+                <property name="defaultTargetUrl" value="/gate"/>
+            </bean>
+        </property>
+        <property name="proxyGrantingTicketStorage" ref="proxyGrantingTicketStorage" />
+        <property name="proxyReceptorUrl" value="/receptor" />
+    </bean>
+
+    <bean id="casProcessingFilterEntryPoint" class="org.springframework.security.cas.web.CasAuthenticationEntryPoint">
+        <property name="loginUrl" value="${env.cas.login.url}"/>
+        <property name="serviceProperties" ref="serviceProperties"/>
+    </bean>
+    
+    <bean id="casAuthenticationProvider" class="org.springframework.security.cas.authentication.CasAuthenticationProvider">
+        <property name="authenticationUserDetailsService" ref="casdemoUserDetailsService"/>          
+        <property name="serviceProperties" ref="serviceProperties"/>        
+        <property name="ticketValidator">   
+            <bean class="org.jasig.cas.client.validation.Saml11TicketValidator">
+                <constructor-arg index="0" value="${cas.main.url}"/>
+                <property name="tolerance" value="${cas.saml.tolerance}"/>
+            </bean>            
+        </property>
+        <property name="key" value="an_id_for_this_auth_provider_only"/>
+    </bean>
+
+    <bean id="serviceProperties" class="org.springframework.security.cas.ServiceProperties">
+        <property name="service" value="${url-base}/j_spring_cas_security_check"/>
+        <property name="sendRenew" value="true"/>
+    </bean>
+        
+    <bean id="casdemoUserDetailsService" class="edu.hawaii.its.casdemo.access.UserDetailsServiceImpl" />
+              
+    <bean id="proxyGrantingTicketStorage" class="org.jasig.cas.client.proxy.ProxyGrantingTicketStorageImpl" />
+
+    <bean class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/>        
+        
+    <bean class="edu.hawaii.its.casdemo.util.SslPropertiesInitializer">
+        <constructor-arg index="0" value="${keystore.use.alternate}"/>
+        <constructor-arg index="1" value="${keystore.pathname}"/>        
+        <constructor-arg index="2" value="${keystore.password}"/>        
+    </bean>
+    
+</beans>

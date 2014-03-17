@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"    
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd        
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+
+    <context:property-placeholder 
+        location="classpath:/META-INF/spring/messages.properties,
+                  classpath:/META-INF/spring/database.properties, 
+                  classpath:/META-INF/spring/general.properties" 
+        ignore-unresolvable="true"/>
+
+    <!-- Maps '/' requests to the 'gate' view -->
+    <mvc:view-controller path="/" view-name="gate"/>
+
+    <!-- Scans for annotated @Controllers in the classpath -->   
+    <context:component-scan base-package="edu.hawaii.its.casdemo.controller" />
+     
+</beans>

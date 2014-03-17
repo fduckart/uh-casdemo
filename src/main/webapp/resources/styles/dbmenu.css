@@ -1,0 +1,103 @@
+.menu-left ul
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.menu-left a.popout
+{
+    background-image:url(images/popoutgr.gif);
+    background-repeat:no-repeat;
+    background-position:right center;
+    padding-right:14px;
+}
+.menu-left .level2 a.popout
+{
+    background-image:url(images/popoutwht.gif);
+    background-repeat:no-repeat;
+    background-position:right center;
+    padding-right:3px;
+}
+.menu-left .level2 a.popout:hover
+{
+    background-image:url(images/popoutact.gif);
+    background-repeat:no-repeat;
+    background-position:right center;
+    padding-right:3px;
+}
+.level1 li
+{
+    width: 100%; /* IE to remove padding from li */
+    margin: 0;
+    padding: 0;
+}
+.level1 li a
+{
+    display: block;
+    margin: 0;
+    padding: 3px 3px 3px 1.75em;
+    width: 142px;
+    font-size: 90%;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid #e7edd5;
+}
+.level1 li.active a, .level1 li a:hover
+{
+    background: #e7edd5;
+    color: #5d8238;
+    font-weight: bold;
+}
+.level2
+{
+    background-color:#a7cc6c;
+}
+.level2 li
+{
+    width: 100%; /* IE to remove padding from li */
+    margin: 0;
+    padding: 0;
+}
+.level2 li a
+{
+    display: block;
+    margin: 0;
+    padding: 3px 3px 3px 1.25em;
+    width: 142px;
+    font-size: 90%;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid #e7edd5;
+    background-color:#a7cc6c;
+    position:relative;
+    z-index:1000;
+}
+
+.level2 li a:hover
+{
+    background: #e7edd5;
+    color: #5d8238;
+    font-weight: bold;
+}
+
+#menu-item-ps {
+    display: block;
+    margin: 0;
+    padding: 3px 3px 3px 1.25em;
+    width: 142px;
+    font-size: 90%;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid #e7edd5;
+}
+
+#show-lock {
+    background-color: transparent;
+    background-image: url(../images/icon_key.png);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position:3px center;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: auto auto;
+}

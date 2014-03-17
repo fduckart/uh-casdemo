@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+    "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+    "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+    
+<tiles-definitions>
+    
+    <definition name="standardLayout"     template="/WEB-INF/layouts/standard.jsp"/>
+    <definition name="simpleLayout"       template="/WEB-INF/layouts/simple.jsp"/>
+    
+    <definition name="home" extends="standardLayout">
+        <put-attribute name="body" value="/WEB-INF/views/home/home.jsp" />        
+    </definition>
+    
+    <definition name="about" extends="standardLayout">
+        <put-attribute name="body" value="/WEB-INF/views/about/about.jsp" />
+    </definition>
+    
+    <definition name="contact" extends="standardLayout">
+        <put-attribute name="body" value="/WEB-INF/views/contact/contact.jsp" />
+    </definition>
+        
+    <definition name="denied" extends="simpleLayout">
+        <put-attribute name="body" value="/WEB-INF/views/denied.jsp" />
+    </definition>
+        
+    <definition name="feedback" extends="standardLayout">
+        <put-attribute name="body" value="/WEB-INF/views/contact/feedback.jsp" />
+    </definition>
+    
+    <definition name="gate" extends="simpleLayout">
+        <put-attribute name="body" value="/WEB-INF/views/gate/gate.jsp" />
+    </definition>
+    
+    <definition name="message" extends="standardLayout">
+        <put-attribute name="body" value="/WEB-INF/views/message/message.jsp" />
+    </definition>
+
+    <definition name="actions/list" extends="standardLayout">
+        <put-attribute name="body" value="/WEB-INF/views/actions/listActions.jsp" />
+    </definition>
+    
+</tiles-definitions>

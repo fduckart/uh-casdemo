@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" 
+             version="1.0">
+    <persistence-unit name="casdemoDatabase">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>edu.hawaii.its.casdemo.type.Action</class>
+        <class>edu.hawaii.its.casdemo.type.ActionLog</class>        
+        <class>edu.hawaii.its.casdemo.type.Employee</class>
+        <class>edu.hawaii.its.casdemo.type.Message</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="hibernate.dialect" value="${env.db.hibernate.dialect}"/>
+            <property name="hibernate.show_sql" value="${env.db.hibernate.show_sql}"/>
+            <property name="hibernate.cache.provider_class" value="${env.db.hibernate.cache.provider_class}"/>
+            <property name="hibernate.connection.shutdown" value="${env.db.hibernate.connection.shutdown}"/>
+            <property name="hibernate.hbm2ddl.auto" value="${env.db.hibernate.hbm2ddl.auto}"/>                        
+        </properties>
+    </persistence-unit>
+</persistence>

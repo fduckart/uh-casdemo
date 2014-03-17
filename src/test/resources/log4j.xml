@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <!-- Appenders -->
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MMM-dd HH:mm:ss} %-5p %c - %m%n" />
+        </layout>
+    </appender>
+    
+    <!-- Application Loggers -->
+    <logger name="edu.hawaii.its.casdemo">
+        <level value="debug" />
+    </logger>
+    
+    <!-- 3rdparty Loggers -->
+    <logger name="org.springframework.core">
+        <level value="info" />
+    </logger>    
+    
+    <logger name="org.springframework.beans">
+        <level value="info" />
+    </logger>
+    <logger name="org.springframework.beans.factory.support.DefaultListableBeanFactory">
+        <level value="warn" />
+    </logger>
+    
+    <logger name="org.springframework.context">
+        <level value="info" />
+    </logger>
+
+    <logger name="org.springframework.web">
+        <level value="warn" />
+    </logger>
+    
+    <!--  Suppress some weird errors happening during testing. -->
+    <logger name="org.hibernate">
+        <level value="info" />    
+    </logger>
+    <logger name="org.hibernate.ejb">
+        <level value="debug" />    
+    </logger>
+    <logger name="org.hibernate.ejb.packaging.AbstractJarVisitor">
+        <level value="info" />    
+    </logger>    
+    <logger name="org.hibernate.ejb.internal.EntityManagerFactoryRegistry">
+        <level value="info" />    
+    </logger>
+    <logger name="org.springframework.jdbc.datasource.embedded.HsqlEmbeddedDatabaseConfigurer">
+        <level value="off" />    
+    </logger>
+    <logger name="org.springframework.beans.factory.support.DisposableBeanAdapter">
+        <level value="off"/>
+    </logger>
+    
+    <!-- Root Logger -->
+    <root>
+        <priority value="info" />
+        <appender-ref ref="console" />
+    </root>
+    
+</log4j:configuration>

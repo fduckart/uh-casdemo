@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+
+    <context:property-placeholder 
+        location="classpath:/META-INF/spring/messages.properties,        
+                  classpath:/META-INF/spring/database.properties,
+                  classpath:/META-INF/spring/general.properties"
+        order="1"                   
+        ignore-unresolvable="true" />
+        
+    <context:property-placeholder 
+        location="file://${env.override.properties.path}"
+        order="0"
+        ignore-unresolvable="true" 
+        ignore-resource-not-found="true" />
+        
+    <tx:annotation-driven />    
+    
+    <context:component-scan base-package="edu.hawaii.its.casdemo" />
+    
+    <!-- Configures shared data layer -->
+    <import resource="data.xml" />
+    
+    <!-- Configures shared security layer -->
+    <import resource="security.xml" />
+    
+</beans>
