@@ -14,7 +14,7 @@ This demonstration application was developed with version 6.0.20.
 The files for the project are kept in a code repository, 
 available from here:
 
-https://github.com/fduckart/uh
+https://github.com/fduckart/uh-casdemo
 
 ##### Building
 Install the necessary project dependencies:
@@ -70,7 +70,7 @@ appropriate command line argument.
 
 To run the System Tests:
 
-$ mvn -Denv=dev -Dtest=*SystemTest clean test
+    $ mvn -Denv=dev -Dtest=*SystemTest clean test
 
 **Running the Application locally**
 
