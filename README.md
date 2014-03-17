@@ -1,13 +1,13 @@
 A web application to demonstration how to use the UH CAS service. 
 
-Build Tool
+##### Build Tool
 First, you need to download and install maven (version 3.0.4). 
 Be sure to set up a M2_REPO environment variable.
 
-Java 
+##### Java 
 You'll need a Java JDK to build and run the project (version 1.7).
 
-Apache Tomcat
+##### Apache Tomcat
 Install Apache Tomcat. 
 This demonstration application was developed with version 6.0.20.
 
@@ -15,7 +15,7 @@ The files for the project are kept in a code repository,
 available from here:
 https://github.com/fduckart/uh
 
-Building
+##### Building
 Install the necessary project dependencies:
 $ mvn install
 
@@ -31,10 +31,10 @@ $ mvn -Dmaven.test.skip=true -Denv=test clean package
 You should have a deployable war file in the target directory. 
 Deploy as usual in a servlet container.
 
-Deploying to Production
+##### Deploying to Production
 Copy the casdemo.war file into the webapps directory of Tomcat. 
 
-Running Unit Tests
+##### Running Unit Tests
 The project includes Unit Tests for various parts of the system.  
 For this project, Unit Tests are defined as those tests that will 
 rely on only the local development computer.  
@@ -53,7 +53,7 @@ $ mvn clean test -Dtest=RoleTest
 To run a single method in a test class:
 $ mvn clean test -Dtest=RoleTest#longName
 
-Running System Tests
+##### Running System Tests
 The project files include a handful of System Tests.  
 For this project, System Tests are defined as those tests that may 
 call live remote systems, such as a search against the production 
@@ -61,5 +61,8 @@ LDAP server. A standard build of the application will exclude the
 System Tests, but you can explicitly run them by specifying the 
 appropriate command line argument.
 
-To run the System Tests:
+##### To run the System Tests:
 $ mvn -Denv=dev -Dtest=*SystemTest clean test
+
+##### Running the Application locally
+http://localhost:8080/casdemo/
