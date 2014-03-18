@@ -26,8 +26,15 @@
         <tr>
             <td colspan="3">&nbsp;</td>
             <td colspan="1" nowrap>
-                <a href="resources/download.tar" target="_blank">Download</a>            
-                the code for this application
+                <a href="resources/download.tar" target="_tar_dl">Download</a>
+                the code for this application.
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">&nbsp;</td>
+            <td colspan="1" nowrap>
+                <a href="https://github.com/fduckart/uh-casdemo" target="_code_vw">View</a>
+                the code for this application.
             </td>
         </tr>
   </table>
