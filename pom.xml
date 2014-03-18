@@ -34,7 +34,6 @@
         <cxf.version>2.7.3</cxf.version>  
         <commons-collections-version>3.2.1</commons-collections-version>     
         <commons-dbcp-version>1.4</commons-dbcp-version>   
-        <joda-time-version>2.1</joda-time-version>
         
         <javax.servlet.version>2.5</javax.servlet.version>
         <javax.servlet.jsp.version>2.1</javax.servlet.jsp.version>
@@ -222,11 +221,6 @@
             <artifactId>commons-dbcp</artifactId>
             <version>${commons-dbcp-version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc6</artifactId>
-            <version>11.2.0.3</version>
-        </dependency>
                         
         <!-- Servlet -->
         <dependency>
@@ -286,26 +280,6 @@
             <version>1.0.1.Final</version>
         </dependency>
 
-        <!--  Joda Time -->
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>${joda-time-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time-jsptags</artifactId>
-            <version>1.1.1</version>
-            <scope>runtime</scope>
-        </dependency>
-
-        <!-- Misc -->
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.4.5</version>
-        </dependency>
-
         <!--  Eclipse related. -->
         <dependency>
             <groupId>org.antlr</groupId>
@@ -343,47 +317,13 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Profile Service -->
-        <!--
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-ws-security</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>2.4</version>
-        </dependency>
-        -->
         <dependency>
             <groupId>org.apache.ws.xmlschema</groupId>
             <artifactId>xmlschema-core</artifactId>
             <version>2.0.3</version>
-        </dependency>
-                    
-        <!-- Jasper Reports Library -->
-        <dependency>
-            <groupId>net.sf.jasperreports</groupId>
-            <artifactId>jasperreports</artifactId>
-            <version>5.1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>jasperreports</groupId>
-            <artifactId>fonts</artifactId>
-            <version>1.5</version>
-            <type>jar</type>
-        </dependency>
+        </dependency>                    
     </dependencies>
     <repositories>
-        <!-- UH Maven Repository. -->
-        <repository>
-            <id>uh-maven</id>
-            <name>UH Maven Repo</name>
-            <layout>default</layout>
-            <url>http://repo.pvt.hawaii.edu/maven</url>
-            <snapshots><enabled>false</enabled></snapshots>
-        </repository>
         <!-- Spring -->  
         <repository>
             <id>springsource-repo</id>
