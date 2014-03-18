@@ -75,3 +75,7 @@ To run the System Tests:
 **Running the Application locally**
 
 http://localhost:8080/casdemo/
+
+**Important Note**
+
+The UH Number is restricted by University of Hawaii policy, so be sure not to expose it on any public page.
