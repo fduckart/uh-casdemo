@@ -12,10 +12,14 @@
         <put-attribute name="body" value="/WEB-INF/views/home/home.jsp" />        
     </definition>
     
+    <definition name="faq" extends="standardLayout">
+        <put-attribute name="body" value="/WEB-INF/views/about/faq.jsp" />
+    </definition>
+    
     <definition name="about" extends="standardLayout">
         <put-attribute name="body" value="/WEB-INF/views/about/about.jsp" />
     </definition>
-    
+        
     <definition name="contact" extends="standardLayout">
         <put-attribute name="body" value="/WEB-INF/views/contact/contact.jsp" />
     </definition>
@@ -24,18 +28,10 @@
         <put-attribute name="body" value="/WEB-INF/views/denied.jsp" />
     </definition>
         
-    <definition name="feedback" extends="standardLayout">
-        <put-attribute name="body" value="/WEB-INF/views/contact/feedback.jsp" />
-    </definition>
-    
     <definition name="gate" extends="simpleLayout">
         <put-attribute name="body" value="/WEB-INF/views/gate/gate.jsp" />
     </definition>
     
-    <definition name="message" extends="standardLayout">
-        <put-attribute name="body" value="/WEB-INF/views/message/message.jsp" />
-    </definition>
-
     <definition name="actions/list" extends="standardLayout">
         <put-attribute name="body" value="/WEB-INF/views/actions/listActions.jsp" />
     </definition>

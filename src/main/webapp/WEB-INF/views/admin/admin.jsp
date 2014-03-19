@@ -3,11 +3,9 @@
         <a href="/casdemo/admin/actions">View Action codes</a>
         <br>
         <hr/>            
-        <a href="/casdemo/admin/message">Gate message</a>
-        <br>                       
-        <hr/>
         <p>
-            This project include exception at the mapping level.<br/>
+            This project includes some exception handling that is <br/> 
+            able to be handled at the controller level.<br/>
             Here are some exceptions that the Administration section<br/>
             has been coded to throw just for demonstration of their<br/>
             handling within the application.

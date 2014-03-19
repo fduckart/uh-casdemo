@@ -270,13 +270,6 @@ img {
     border-bottom: 1px solid #9cac7c;
     font-size: 10pt;
 }
-.statement-link {
-    width: 80px;
-}
-
-.statement-message {
-    width: 80px;
-}
 
 table {
     *border-collapse: collapse; /* IE7 and lower */

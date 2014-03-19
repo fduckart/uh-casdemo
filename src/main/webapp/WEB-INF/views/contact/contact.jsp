@@ -19,11 +19,6 @@
 
     <br><br>
     <div>
-        We welcome feedback, comments, suggestions on the application.
-        <br>Please refer to the <a href="feedback">Feedback</a> guidelines.
-        <br><br><br>
-
-        Thank You,<br>
-        <a href="http://www.hawaii.edu/its/" target="_its_office">Information Technology Services</a><br/>
+        <a href="http://www.hawaii.edu/its/" target="_its_office">Information Technology Services</a>
     </div>
 </div>

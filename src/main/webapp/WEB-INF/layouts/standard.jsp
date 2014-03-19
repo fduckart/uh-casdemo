@@ -27,10 +27,9 @@
                 <div class="menu-left">
                     <ul class="level1">
                         <li><a href="<c:url value="/home" />">Home</a></li>
-                        <li><a href="<c:url value="/message" />">Message</a></li>
-                        <li><a href="<c:url value="/feedback" />">Feedback</a></li>
-                        <li><a href="<c:url value="/contact" />">Contact Us</a></li>
                         <li><a href="<c:url value="/about" />">About</a></li>
+                        <li><a href="<c:url value="/faq" />">FAQ</a></li>
+                        <li><a href="<c:url value="/contact" />">Contact Us</a></li>
                         <security:authorize ifAnyGranted="ROLE_ADMIN">
                             <li>
                                 <a href="<c:url value="/admin" />">Admin</a>                                

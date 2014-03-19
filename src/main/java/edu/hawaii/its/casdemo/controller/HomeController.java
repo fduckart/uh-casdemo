@@ -55,19 +55,11 @@ public class HomeController {
         return "contact";
     }
     
-    @RequestMapping(value = "/feedback", method = RequestMethod.GET)
-    public String feedback(Locale locale, Model model) {
-        return "feedback";
+    @RequestMapping(value = "/faq", method = RequestMethod.GET)
+    public String faq(Locale locale, Model model) {
+        return "faq";
     }
-
-    @RequestMapping(value = "/message", method = RequestMethod.GET)
-    public String message(Locale locale, Model model) {
-        String message = "Me and my Arrow / Straighter than Narrow";
-        model.addAttribute("message", message);
-
-        return "message";
-    }
-
+    
     public void setUserContextService(UserContextService userContextService) {
         this.userContextService = userContextService;
     }

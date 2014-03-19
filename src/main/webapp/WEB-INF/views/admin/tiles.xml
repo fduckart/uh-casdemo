@@ -7,8 +7,4 @@
     <definition name="admin" extends="standardLayout">
         <put-attribute name="body" value="/WEB-INF/views/admin/admin.jsp" />
     </definition>
-
-    <definition name="admin/message" extends="standardLayout">
-        <put-attribute name="body" value="/WEB-INF/views/admin/gate-message.jsp" />
-    </definition> 
 </tiles-definitions>

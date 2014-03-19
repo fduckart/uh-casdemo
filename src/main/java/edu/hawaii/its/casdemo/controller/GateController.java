@@ -24,7 +24,7 @@ public class GateController {
         logger.debug("User at gate. The client locale is {}.", locale);
 
         try {
-            Message message = messageService.findMessage(1);
+            Message message = messageService.findMessage(Message.GATE_MESSAGE);
             if (message != null) {
                 model.addAttribute("systemMessage", message.getText());
             }

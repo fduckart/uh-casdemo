@@ -21,16 +21,16 @@ public class MessageServiceSystemTest {
 
     @Test
     public void find() {
-        Message message = messageService.findMessage(1);
+        Message message = messageService.findMessage(Message.GATE_MESSAGE);
         assertEquals("Y", message.getEnabled());
-        assertEquals(Integer.valueOf(1), message.getTypeId());
+        assertEquals(Integer.valueOf(Message.GATE_MESSAGE), message.getTypeId());
         assertTrue(message.getText().startsWith("University of Hawaii Information"));
     }
 
     @Test
     @Transactional
     public void update() {
-        Message message = messageService.findMessage(1);
+        Message message = messageService.findMessage(Message.GATE_MESSAGE);
         assertEquals("Y", message.getEnabled());
         assertEquals(Integer.valueOf(1), message.getTypeId());
         assertTrue(message.getText().startsWith("University of Hawaii Information"));
@@ -41,7 +41,7 @@ public class MessageServiceSystemTest {
         message.setText("Stemming the bleeding.");
         messageService.update(message);
 
-        message = messageService.findMessage(1);
+        message = messageService.findMessage(Message.GATE_MESSAGE);
         assertEquals("Y", message.getEnabled());
         assertEquals(Integer.valueOf(1), message.getTypeId());
         assertTrue(message.getText().equals("Stemming the bleeding."));
