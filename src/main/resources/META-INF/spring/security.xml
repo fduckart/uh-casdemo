@@ -84,10 +84,4 @@
 
     <bean class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/>        
         
-    <bean class="edu.hawaii.its.casdemo.util.SslPropertiesInitializer">
-        <constructor-arg index="0" value="${keystore.use.alternate}"/>
-        <constructor-arg index="1" value="${keystore.pathname}"/>        
-        <constructor-arg index="2" value="${keystore.password}"/>        
-    </bean>
-    
 </beans>
