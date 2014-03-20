@@ -517,7 +517,6 @@
                                 <echo>$ mvn -Denv=dev -Dtest=*SystemTest clean test</echo>
                                 <echo>$ mvn -Denv=dev clean package</echo>
                                 <echo>$ mvn -Dmaven.test.skip=true -Denv=test clean package</echo>
-                                <echo>$ mvn -Dmaven.test.skip=true -Denv=prod clean package</echo>                                
                             </tasks>
                         </configuration>
                     </execution>
