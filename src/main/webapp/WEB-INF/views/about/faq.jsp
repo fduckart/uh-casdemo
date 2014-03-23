@@ -16,6 +16,15 @@
                 <td align="left" valign="top">A: Download a tar archive here: <a href="https://www.test.hawaii.edu/casdemo/resources/download.tar" target="_tar_download">download.tar</a></td>
             </tr>
             <tr>
+                <td align="left" valign="top">Q: There are a lot of files in the project. Are there some I should focus on in understanding the CAS integration?</td>
+                <td align="left" valign="top">A: Yes! Take a look at the 
+                    <a href="https://github.com/fduckart/uh-casdemo/blob/master/src/main/webapp/WEB-INF/web.xml" target="_git_repo_web">web.xml</a>
+                    and
+                    <a href="https://github.com/fduckart/uh-casdemo/blob/master/src/main/resources/META-INF/spring/security.xml" target="_git_repo_security">security.xml</a>
+                    files.
+                </td>
+            </tr>
+            <tr>
                 <td align="left" valign="top">Q: Is there documention on the Spring configuration you used?</td>
                 <td align="left" valign="top">A: Yes. Here it is: <a href="http://docs.spring.io/spring-security/site/docs/3.1.4.RELEASE/reference/cas.html" target="_cas_docs">Spring 3.1.4 CAS Reference</a></td>
             </tr>
