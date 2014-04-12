@@ -5,8 +5,8 @@
     
 <tiles-definitions>
     
-    <definition name="standardLayout"     template="/WEB-INF/layouts/standard.jsp"/>
     <definition name="simpleLayout"       template="/WEB-INF/layouts/simple.jsp"/>
+    <definition name="standardLayout"     template="/WEB-INF/layouts/standard.jsp"/>
     
     <definition name="home" extends="standardLayout">
         <put-attribute name="body" value="/WEB-INF/views/home/home.jsp" />        
