@@ -9,11 +9,11 @@
                     This system is a UH CAS demonstration. <br/><br/>
                     It was made using:
                     <ul>
-                        <li>Apache Maven 3.0.4</li>
-                        <li>Spring Framework 3.2.2</li>
-                        <li>Spring Security 3.1.4</li>
+                        <li>Apache Maven 3.2.1</li>
+                        <li>Apache Tomcat 7.0.21</li>
                         <li>Java 1.7</li>
-                        <li>Apache Tomcat 6.0.20</li>
+                        <li>Spring Framework 4.1.2</li>
+                        <li>Spring Security 3.2.5</li>
                     </ul>
                 </td>
             </tr>

@@ -9,11 +9,7 @@
             </tr>
             <tr>
                 <td align="left" valign="top">Q: Can I get the source for this project?</td>
-                <td align="left" valign="top">A: Sure thing. It is availlable at this <a href="https://github.com/fduckart/uh-casdemo" target="_git_repo">github repository.</a></td>
-            </tr>
-            <tr>
-                <td align="left" valign="top">Q: Can I get an archive of the project?</td>
-                <td align="left" valign="top">A: Download a tar archive here: <a href="https://www.test.hawaii.edu/casdemo/resources/download.tar" target="_tar_download">download.tar</a></td>
+                <td align="left" valign="top">A: Sure thing. It is available at this <a href="https://github.com/fduckart/uh-casdemo" target="_git_repo">github repository.</a></td>
             </tr>
             <tr>
                 <td align="left" valign="top">Q: There are a lot of files in the project. Are there some I should focus on in understanding the CAS integration?</td>
@@ -26,7 +22,7 @@
             </tr>
             <tr>
                 <td align="left" valign="top">Q: Is there documention on the Spring configuration you used?</td>
-                <td align="left" valign="top">A: Yes. Here it is: <a href="http://docs.spring.io/spring-security/site/docs/3.1.4.RELEASE/reference/cas.html" target="_cas_docs">Spring 3.1.4 CAS Reference</a></td>
+                <td align="left" valign="top">A: Yes. Here it is: <a href="http://docs.spring.io/spring-security/site/docs/3.2.5.RELEASE/reference/htmlsingle/#cas" target="_cas_docs">Spring 3.2.5 CAS Reference</a></td>
             </tr>
             <tr>
                 <td colspan="2" align="left" valign="top"><b>General Questions</b></td>
@@ -42,7 +38,7 @@
                 <td align="left" valign="top">Q: What&apos;s the story on the UH Number?</td>
                 <td align="left" valign="top">
                     A: The UH Number -- and most of the attributes -- returned in a CAS response are restriced by UH policy.
-                    Be careful not to display them on any public facing pages.
+                    Be careful not to display them on any public-facing pages.
                 </td>
             </tr>
             <tr>

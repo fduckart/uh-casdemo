@@ -23,11 +23,11 @@
         <maven-surefire-plugin.version>2.13</maven-surefire-plugin.version>
 
         <java-version>1.7</java-version>
-        <junit.version>4.8.2</junit.version>
-        
-        <org.springframework-version>3.2.2.RELEASE</org.springframework-version>
-        <org.springwebflow-version>2.3.2.RELEASE</org.springwebflow-version>
-        <org.springsecurity-version>3.1.4.RELEASE</org.springsecurity-version>
+        <junit.version>4.11</junit.version>
+                
+        <org.springframework-version>4.1.2.RELEASE</org.springframework-version>
+        <org.springwebflow-version>2.4.0.RELEASE</org.springwebflow-version>
+        <org.springsecurity-version>3.2.5.RELEASE</org.springsecurity-version>
         <org.aspectj-version>1.6.9</org.aspectj-version>
         
         <org.slf4j-version>1.6.1</org.slf4j-version>
@@ -363,8 +363,6 @@
             </includes>
             <excludes>
               <exclude>**/*.sql</exclude>
-              <exclude>**/cacerts*</exclude>
-              <exclude>**/download.tar</exclude>
             </excludes>
           </resource>
           <resource>
@@ -372,8 +370,6 @@
             <filtering>false</filtering>
             <includes>
               <include>**/*.sql</include>
-              <include>**/cacerts*</include>
-              <include>**/download.tar</include>
             </includes>
           </resource>
         </resources>
@@ -420,7 +416,6 @@
                             </includes>
                             <excludes>
                                 <exclude>**/*.js</exclude>
-                                <exclude>**/download.tar</exclude>
                             </excludes>
                         </resource>
                     </webResources>
