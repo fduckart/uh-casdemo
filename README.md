@@ -1,7 +1,7 @@
 A web application to demonstration how to use the UH CAS service. 
 
 ##### Build Tool
-First, you need to download and install maven (version 3.0.4). 
+First, you need to download and install maven (version 3+). 
 Be sure to set up a M2_REPO environment variable.
 
 ##### Java 
@@ -9,7 +9,7 @@ You'll need a Java JDK to build and run the project (version 1.7).
 
 ##### Apache Tomcat
 Install Apache Tomcat. 
-This demonstration application was developed with version 6.0.20.
+This demonstration application was developed with version 7.0.21.
 
 The files for the project are kept in a code repository, 
 available from here:
