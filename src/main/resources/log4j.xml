@@ -80,7 +80,7 @@
         <level value="error" />
     </logger>
 
-    <logger name="org.hibernate.ejb">
+    <logger name="org.hibernate">
         <level value="info" />    
     </logger>
 
