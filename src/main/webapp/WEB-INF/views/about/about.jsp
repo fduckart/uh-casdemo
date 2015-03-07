@@ -11,7 +11,7 @@
                     <ul>
                         <li>Apache Maven 3.2.1</li>
                         <li>Apache Tomcat 7.0.21</li>
-                        <li>Java 1.7</li>
+                        <li>Java 1.8</li>
                         <li>Spring Framework 4.1.2</li>
                         <li>Spring Security 3.2.5</li>
                     </ul>

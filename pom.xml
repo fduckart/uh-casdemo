@@ -8,11 +8,9 @@
     <packaging>war</packaging>
     <version>1.0.0</version>
     <url>https://www.test.hawaii.edu/casdemo</url>
-    <issueManagement>
-        <system>JIRA</system>
-        <url>https://www.hawaii.edu/jira/browse/CASDEMO</url>
-    </issueManagement>
-    
+    <prerequisites>
+        <maven>3.2.1</maven>
+    </prerequisites>    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -22,7 +20,7 @@
         <maven-war-plugin.version>2.4</maven-war-plugin.version>
         <maven-surefire-plugin.version>2.13</maven-surefire-plugin.version>
 
-        <java-version>1.7</java-version>
+        <java.version>1.8</java.version>
         <junit.version>4.11</junit.version>
                 
         <org.springframework-version>4.1.2.RELEASE</org.springframework-version>
@@ -379,8 +377,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${java-version}</source>
-                    <target>${java-version}</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -463,8 +461,8 @@
                 </executions>
                 <configuration>
                     <outxml>true</outxml>
-                    <source>${java-version}</source>
-                    <target>${java-version}</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -509,7 +507,7 @@
                                 <echo>Now that you have a clean project,</echo>
                                 <echo>here are some common goals for this project:</echo>
                                 <echo>$ mvn -Denv=dev clean test</echo>
-                                <echo>$ mvn -Denv=dev -Dtest=*SystemTest clean test</echo>
+                                <echo>$ mvn -Denv=dev clean test -Dtest=*SystemTest </echo>
                                 <echo>$ mvn -Denv=dev clean package</echo>
                                 <echo>$ mvn -Dmaven.test.skip=true -Denv=test clean package</echo>
                             </tasks>
@@ -561,20 +559,6 @@
             <build>
                 <filters>
                     <filter>src/main/filters/env-test.properties</filter>
-                </filters>
-            </build>
-        </profile>
-        <profile>
-            <id>env-prod</id>
-            <activation>
-                <property>
-                    <name>env</name>
-                    <value>prod</value>
-                </property>
-            </activation>
-            <build>
-                <filters>
-                    <filter>src/main/filters/env-prod.properties</filter>
                 </filters>
             </build>
         </profile>

@@ -1,11 +1,12 @@
 A web application to demonstration how to use the UH CAS service. 
 
 ##### Build Tool
-First, you need to download and install maven (version 3+). 
+First, you need to download and install maven (version 3.2.1+). 
+
 Be sure to set up a M2_REPO environment variable.
 
 ##### Java 
-You'll need a Java JDK to build and run the project (version 1.7).
+You'll need a Java JDK to build and run the project (version 1.8).
 
 ##### Apache Tomcat
 Install Apache Tomcat. 
@@ -34,6 +35,9 @@ To build a deployable war file for a specified environment:
 
 You should have a deployable war file in the target directory. 
 Deploy as usual in a servlet container.
+
+If you are setting up tomcat for the first time, 
+make sure you enable SSL and add any necessary certificates.
 
 ##### Deploying to Production
 Copy the casdemo.war file into the webapps directory of Tomcat. 
