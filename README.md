@@ -1,4 +1,4 @@
-A web application to demonstration how to use the UH CAS service. 
+A web application to demonstrate how to use the UH CAS service. 
 
 ##### Build Tool
 First, you need to download and install maven (version 3.2.1+). 
