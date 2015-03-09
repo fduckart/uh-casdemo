@@ -16,49 +16,47 @@
 </head>
 <body>    
 
-	<div class="page-container">	  
-	    <!-- top navbar -->
-	    <div id='uh-header'>
-	        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-	           <div class="container-fluid">
-	            <div class="navbar-header">
-	               <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".sidebar-nav">
-	                 <span class="icon-bar"></span>
-	                 <span class="icon-bar"></span>
-	                 <span class="icon-bar"></span>
-	               </button>
-	               <a class="navbar-brand" href="<c:url value="/gate" />">CAS&nbsp;Demonstration</a>
-	            </div>
-	           </div>
-	        </div>
-	    </div>
-	    
-	    <div class="container-fluid">
-	        <div class="row row-offcanvas row-offcanvas-left">	                    
-	            <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">                              
-		            <ul class="nav">
-		                <li><a href="<c:url value="/home" />">Home</a></li>
-		                <li><a href="<c:url value="/about" />">About</a></li>
-		                <li><a href="<c:url value="/faq" />">FAQ</a></li>
-		                <li><a href="<c:url value="/contact" />">Contact Us</a></li>
-		                <security:authorize ifAnyGranted="ROLE_ADMIN">
-		                    <li>
-		                        <a href="<c:url value="/admin" />">Admin</a>                                
-		                    </li>
-		                </security:authorize>
-		                <li><a href="<c:url value="/logout" />">Logout</a></li>
-		            </ul>
-	            </div>
-	
-	            <!-- main area -->
-	            <div class="col-xs-12 col-sm-10">
-	                <tiles:insertAttribute name="body"/>          
-	            </div>
-	            <!-- main area -->
-	            
-	        </div><!--/.row-->
-	    </div><!--/.container-->
-	</div><!--/.page-container-->
+    <div class="page-container">      
+        <!-- top navbar -->
+        <div id='uh-header'>
+            <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+               <div class="container-fluid">
+                <div class="navbar-header">
+                   <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".sidebar-nav">
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                   </button>
+                   <a class="navbar-brand" href="<c:url value="/gate" />">CAS&nbsp;Demonstration</a>
+                </div>
+               </div>
+            </div>
+        </div>
+        
+        <div class="container-fluid">
+            <div class="row row-offcanvas row-offcanvas-left">                        
+                <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">                              
+                    <ul class="nav">
+                        <li><a href="<c:url value="/home" />">Home</a></li>
+                        <li><a href="<c:url value="/about" />">About</a></li>
+                        <li><a href="<c:url value="/faq" />">FAQ</a></li>
+                        <li><a href="<c:url value="/contact" />">Contact Us</a></li>
+                        <security:authorize ifAnyGranted="ROLE_ADMIN">
+                            <li>
+                                <a href="<c:url value="/admin" />">Admin</a>                                
+                            </li>
+                        </security:authorize>
+                        <li><a href="<c:url value="/logout" />">Logout</a></li>
+                    </ul>
+                </div>
+    
+                <div class="col-xs-12 col-sm-10">
+                    <tiles:insertAttribute name="body"/>          
+                </div>
+                
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </div><!--/.page-container-->
     
     <tiles:insertAttribute name="footer" />
 
