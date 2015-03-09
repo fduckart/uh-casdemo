@@ -1,5 +1,5 @@
-<div>
-    <table class="bordered">
+<div class='container-fluid'>
+    <table class="uh-bordered">
         <thead>
             <th colspan="2">Frequently Asked Questions</th>
         </thead>

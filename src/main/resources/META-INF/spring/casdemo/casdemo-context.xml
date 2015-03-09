@@ -24,7 +24,7 @@
         
     <!-- Maps view names to Tiles Definitions with support for partial re-rendering -->
     <beans:bean id="viewResolver" class="org.springframework.js.ajax.AjaxUrlBasedViewResolver">
-        <beans:property name="viewClass" value="org.springframework.webflow.mvc.view.FlowAjaxTilesView"/>
+        <beans:property name="viewClass" value="org.springframework.webflow.mvc.view.FlowAjaxTiles3View"/>
         <beans:property name="order" value="0"/>
     </beans:bean>
     
@@ -33,14 +33,18 @@
         <beans:property name="basename" value="views"/>
     </beans:bean>
 
-    <!-- Initializes the Apache Tiles CompositeView system -->
-    <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+    <!-- Initializes the Apache Tiles CompositeView system -->    
+    <beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+    </beans:bean>
+
+    <beans:bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer" id="tilesConfigurer">
         <beans:property name="definitions">
             <beans:value>
                 /WEB-INF/**/tiles.xml
             </beans:value>
         </beans:property>
-    </beans:bean>
+    </beans:bean> 
 
     <!-- Configures Spring Web FLow -->
     <beans:import resource="webflow.xml" />

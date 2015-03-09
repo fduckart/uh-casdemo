@@ -1,39 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE tiles-definitions PUBLIC
-    "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
-    "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<!DOCTYPE tiles-definitions PUBLIC 
+    "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+    "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">    
     
 <tiles-definitions>
     
     <definition name="simpleLayout"       template="/WEB-INF/layouts/simple.jsp"/>
-    <definition name="standardLayout"     template="/WEB-INF/layouts/standard.jsp"/>
+    <definition name="layoutStandard"     template="/WEB-INF/layouts/standard.jsp"/>
     
-    <definition name="home" extends="standardLayout">
+    <definition name="baseStandard" extends="layoutStandard">
+        <put-attribute name="footer" value="/WEB-INF/views/a/footer.jsp" />
+    </definition>
+    
+    <definition name="baseSimple"   extends="simpleLayout">
+        <put-attribute name="header" value="/WEB-INF/views/a/header.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/a/footer.jsp" />
+    </definition>
+    
+    <definition name="home" extends="baseStandard">
         <put-attribute name="body" value="/WEB-INF/views/home/home.jsp" />        
     </definition>
     
-    <definition name="faq" extends="standardLayout">
+    <definition name="faq" extends="baseStandard">
         <put-attribute name="body" value="/WEB-INF/views/about/faq.jsp" />
     </definition>
     
-    <definition name="about" extends="standardLayout">
+    <definition name="about" extends="baseStandard">
         <put-attribute name="body" value="/WEB-INF/views/about/about.jsp" />
     </definition>
         
-    <definition name="contact" extends="standardLayout">
+    <definition name="contact" extends="baseStandard">
         <put-attribute name="body" value="/WEB-INF/views/contact/contact.jsp" />
     </definition>
         
-    <definition name="denied" extends="simpleLayout">
-        <put-attribute name="body" value="/WEB-INF/views/denied.jsp" />
+    <definition name="denied" extends="baseSimple">
+        <put-attribute name="body" value="/WEB-INF/views/gate/denied.jsp" />
     </definition>
         
-    <definition name="gate" extends="simpleLayout">
+    <definition name="gate" extends="baseSimple">
         <put-attribute name="body" value="/WEB-INF/views/gate/gate.jsp" />
     </definition>
     
-    <definition name="actions/list" extends="standardLayout">
+    <definition name="actions/list" extends="baseStandard">
         <put-attribute name="body" value="/WEB-INF/views/actions/listActions.jsp" />
+    </definition>
+    
+    <definition name="admin" extends="baseStandard">
+        <put-attribute name="body" value="/WEB-INF/views/admin/admin.jsp" />
     </definition>
     
 </tiles-definitions>

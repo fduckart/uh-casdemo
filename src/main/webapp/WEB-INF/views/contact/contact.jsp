@@ -1,5 +1,5 @@
-<div>
-    <table class="bordered">
+<div class='container-fluid'>
+    <table class="uh-bordered">
         <tbody>
             <th colspan="2">Contact Us</th>
             <tr>
@@ -16,9 +16,4 @@
             </tr>
         </tbody>
     </table>
-
-    <br><br>
-    <div>
-        <a href="http://www.hawaii.edu/its/" target="_its_office">Information Technology Services</a>
-    </div>
 </div>

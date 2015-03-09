@@ -10,7 +10,7 @@ You'll need a Java JDK to build and run the project (version 1.8).
 
 ##### Apache Tomcat
 Install Apache Tomcat. 
-This demonstration application was developed with version 7.0.21.
+This demonstration application was developed with version 7.0.42.
 
 The files for the project are kept in a code repository, 
 available from here:

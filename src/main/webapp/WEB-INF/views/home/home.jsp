@@ -1,6 +1,6 @@
-<div>
+<div class='container-fluid'>
     <security:authorize access="hasRole('ROLE_UH')">
-        <table class="bordered">
+        <table class="uh-bordered">
             <thead>
                 <tr>
                     <th colspan="3">Home</th>
@@ -26,12 +26,9 @@
                     <td colspan="1">cn</td>
                     <td colspan="2">${currentUser.name}</td>
                 </tr>                    
-                <tr>
-                    <td colspan="3"></td>
-                </tr>
                 <tr onMouseOver="this.bgColor='#E5F9C5';" onMouseOut="this.bgColor='#FFFFFF';">
-                    <td colspan="1" nowrap>All Attributes</td>
-                    <td colspan="2">${currentUser.attributes.map}</td>
+                    <td colspan="1" style="white-space: nowrap">All Attributes</td>
+                    <td colspan="2" class="uh-pre">${currentUser.attributes.map}</td>
                 </tr>                    
             </tbody>
         </table>

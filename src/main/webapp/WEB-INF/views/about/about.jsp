@@ -1,5 +1,5 @@
-<div>
-    <table class="bordered">
+<div class='container-fluid'>
+    <table class="uh-bordered">
         <thead>
             <th>About</th>
         </thead>
@@ -10,10 +10,12 @@
                     It was made using:
                     <ul>
                         <li>Apache Maven 3.2.1</li>
-                        <li>Apache Tomcat 7.0.21</li>
+                        <li>Apache Tomcat 7.0.42</li>
                         <li>Java 1.8</li>
-                        <li>Spring Framework 4.1.2</li>
+                        <li>Spring Framework 4.1.5</li>
                         <li>Spring Security 3.2.5</li>
+                        <li>Bootstrap 3.3.2</li>
+                        <li>JQuery 2.1.1</li>
                     </ul>
                 </td>
             </tr>
