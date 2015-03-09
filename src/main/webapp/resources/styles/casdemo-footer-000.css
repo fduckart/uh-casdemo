@@ -1,0 +1,31 @@
+#uh-footer-container {
+    position: fixed;
+    background: linear-gradient(#a7cc6c, #fbf8e9);
+    border: none;
+    bottom: 0;
+    height: 36px;
+    left: 0;
+    width: 100%;
+    vertical-align: middle;
+}
+
+#uh-footer {
+    position: relative;
+    float: left; 
+    width: 100%;
+    margin: 0 auto;    
+    padding-top: 4px; 
+    padding-right: 10px; 
+    padding-bottom: 5px; 
+    padding-left: 10px;  
+    color: #979797;
+    font-size: 85%;
+    font-weight: normal;
+    line-height: 15px;
+    text-align: center;
+}
+
+#uh-footer p {
+    word-wrap: normal;
+    white-space: normal;
+}
