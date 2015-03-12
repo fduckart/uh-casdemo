@@ -8,6 +8,11 @@
         <div class='col-sm-7 col-sm-offset-1 col-xs-11 col-xs-offset-1'>
             <h3>Latest News &amp; Announcements</h3>
             <p>${systemMessage}</p>
+            <br/>
+            <p>
+                <a href="https://github.com/fduckart/uh-casdemo" target="_code_vw">View</a>
+                the code for this application.
+            </p>
         </div>
     </div>
 </div>
