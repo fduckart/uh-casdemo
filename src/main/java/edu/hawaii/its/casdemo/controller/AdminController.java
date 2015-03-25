@@ -1,13 +1,12 @@
 package edu.hawaii.its.casdemo.controller;
 
-import edu.hawaii.its.casdemo.service.ActionService;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMethodException;
+import edu.hawaii.its.casdemo.service.ActionService;
 
 @Controller
 public class AdminController {
@@ -24,7 +23,7 @@ public class AdminController {
     ///////////////////////////////////////////////////////////////////////////
     // Exceptions for testing. Remove this stuff at some point.
     //
-    
+
     private boolean isExceptionTestingEnabled() {
         return true;
     }
@@ -43,14 +42,6 @@ public class AdminController {
             throw new NullPointerException("Threw an NullPointerException from admin!");
         }
         return "exception"; // Return view name.
-    }
-
-    @RequestMapping(value = "/admin/404", method = RequestMethod.GET)
-    public String pageNotFound(Model modelthrowable) throws Throwable {
-        if (isExceptionTestingEnabled()) {
-            throw new NoSuchRequestHandlingMethodException("pageNotFound", getClass());
-        }
-        return "pageNotFound"; // Return view name.
     }
 
 }

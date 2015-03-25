@@ -24,7 +24,7 @@
         </beans:property>
     </beans:bean>
 
-    <beans:import resource="data-source-${env.environment}.xml" />
+    <beans:import resource="data-source.xml" />
       
     <cache:annotation-driven/>
     

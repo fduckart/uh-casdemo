@@ -9,8 +9,7 @@
             Here are some exceptions that the Administration section<br/>
             has been coded to throw just for demonstration of their<br/>
             handling within the application.
-        </p>
-        <a href="/casdemo/admin/404">404 Page Not Found Error</a><br/>
+        </p>        
         <a href="/casdemo/admin/npe">Null Pointer Exception</a><br/>
         <a href="/casdemo/admin/ioexception">I/O Exception</a><br/>
         <hr/>
