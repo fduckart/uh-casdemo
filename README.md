@@ -36,8 +36,13 @@ To build a deployable war file for a specified environment:
 You should have a deployable war file in the target directory. 
 Deploy as usual in a servlet container.
 
+
+_Important Note:_    
 If you are setting up tomcat for the first time, 
 make sure you enable SSL and add any necessary certificates.
+
+Here are instructions for Tomcat 8, for example:  
+https://tomcat.apache.org/tomcat-8.0-doc/ssl-howto.html
 
 ##### Deploying to Production
 Copy the casdemo.war file into the webapps directory of Tomcat. 
