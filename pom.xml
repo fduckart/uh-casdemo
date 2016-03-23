@@ -10,7 +10,7 @@
     <url>https://www.test.hawaii.edu/casdemo</url>
     <prerequisites>
         <maven>3.2.1</maven>
-    </prerequisites>    
+    </prerequisites>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -22,21 +22,22 @@
 
         <java.version>1.8</java.version>
         <junit.version>4.11</junit.version>
-                
-        <org.springframework-version>4.1.5.RELEASE</org.springframework-version>
-        <org.springwebflow-version>2.4.0.RELEASE</org.springwebflow-version>
-        <org.springsecurity-version>3.2.5.RELEASE</org.springsecurity-version>
+
+        <org.springframework-version>4.2.5.RELEASE</org.springframework-version>
+        <org.springwebflow-version>2.4.2.RELEASE</org.springwebflow-version>
+        <org.springsecurity-version>4.0.4.RELEASE</org.springsecurity-version>
+        
+        <org.jasig.cas.client-version>3.4.1</org.jasig.cas.client-version>
+        
         <org.aspectj-version>1.6.9</org.aspectj-version>
-        
         <org.slf4j-version>1.6.1</org.slf4j-version>
-        <cxf.version>2.7.3</cxf.version>  
-        <commons-collections-version>3.2.1</commons-collections-version>     
-        <commons-dbcp-version>1.4</commons-dbcp-version>   
+        <commons-collections-version>3.2.1</commons-collections-version>
+        <commons-dbcp-version>2.0</commons-dbcp-version>
         <tiles.version>3.0.1</tiles.version>
-        
+
         <javax.servlet.version>3.0.1</javax.servlet.version>
         <javax.servlet.jsp.version>2.2.1</javax.servlet.jsp.version>
-        <javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>        
+        <javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
     </properties>
     <dependencies>
         <!-- Spring -->
@@ -44,7 +45,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
             <version>${org.springframework-version}</version>
-        </dependency>                    
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -67,7 +68,7 @@
                     <groupId>commons-logging</groupId>
                     <artifactId>commons-logging</artifactId>
                  </exclusion>
-            </exclusions>            
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -78,7 +79,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
             <version>${org.springframework-version}</version>
-        </dependency>                    
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
@@ -93,12 +94,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${org.springframework-version}</version>
-        </dependency>                    
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${org.springframework-version}</version>
-        </dependency>                    
+        </dependency>
         <dependency>
             <groupId>org.springframework.webflow</groupId>
             <artifactId>spring-webflow</artifactId>
@@ -109,7 +110,7 @@
             <artifactId>spring-js</artifactId>
             <version>${org.springwebflow-version}</version>
         </dependency>
-         
+
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
@@ -120,7 +121,7 @@
                     <artifactId>commons-logging</artifactId>
                  </exclusion>
             </exclusions>
-        </dependency> 
+        </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
@@ -148,11 +149,11 @@
                  </exclusion>
             </exclusions>
         </dependency>
-        
+
         <dependency>
             <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-cas-client</artifactId>
-            <version>3.0.8.RELEASE</version>
+            <artifactId>spring-security-cas</artifactId>
+            <version>${org.springsecurity-version}</version>
             <exclusions>
                 <!-- Exclude Commons Logging in favor of SLF4j -->
                 <exclusion>
@@ -161,19 +162,36 @@
                  </exclusion>
                  <exclusion>
                     <groupId>hsqldb</groupId>
-                    <artifactId>hsqldb</artifactId>                 
-                 </exclusion>                 
+                    <artifactId>hsqldb</artifactId>
+                 </exclusion>
                  <exclusion>
                     <groupId>org.springframework</groupId>
                     <artifactId>spring-core</artifactId>
-                 </exclusion>                 
+                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
-            <groupId>org.jasig.cas</groupId>
-            <artifactId>cas-client-core</artifactId>
-            <version>3.1.10</version>
+           <groupId>org.jasig.cas.client</groupId>
+           <artifactId>cas-client-core</artifactId>
+           <version>${org.jasig.cas.client-version}</version>
         </dependency>
+        <dependency>
+           <groupId>org.jasig.cas.client</groupId>
+           <artifactId>cas-client-support-saml</artifactId>
+           <version>${org.jasig.cas.client-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.7</version>
+        </dependency>
+        <dependency>
+           <groupId>commons-codec</groupId>
+           <artifactId>commons-codec</artifactId>
+           <version>1.4</version>
+        </dependency>
+
         <dependency>
             <groupId>org.opensaml</groupId>
             <artifactId>opensaml</artifactId>
@@ -184,8 +202,7 @@
             <artifactId>xmlsec</artifactId>
             <version>1.3.0</version>
         </dependency>
-                        
-                        
+
         <!-- AspectJ -->
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -221,27 +238,27 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.182</version>
+            <version>1.4.191</version>
         </dependency>
         <dependency>
-            <groupId>commons-dbcp</groupId>
-            <artifactId>commons-dbcp</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
             <version>${commons-dbcp-version}</version>
         </dependency>
-                        
+        
         <!-- Servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>${javax.servlet.version}</version>
             <scope>provided</scope>
-        </dependency>        
+        </dependency>
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>javax.servlet.jsp-api</artifactId>
             <version>${javax.servlet.jsp.version}</version>
             <scope>provided</scope>
-        </dependency>        
+        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
@@ -269,43 +286,30 @@
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-servlet</artifactId>
             <version>${tiles.version}</version>
-        </dependency>   
+        </dependency>
         <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-template</artifactId>
             <version>${tiles.version}</version>
-        </dependency>   
+        </dependency>
         <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-el</artifactId>
             <version>${tiles.version}</version>
         </dependency>
 
-        <!-- Hibernate JPA 2 Provider -->
+        <!-- Hibernate JPA Provider -->        
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.3.5.Final</version>
+        </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.1.10.Final</version>
+            <version>4.3.5.Final</version>  
         </dependency>
-
-        <!-- JSR 303 with Hibernate Validator -->
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>1.0.0.GA</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>4.2.0.Final</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <version>1.0.1.Final</version>
-        </dependency>
-
+        
         <!--  Eclipse related. -->
         <dependency>
             <groupId>org.antlr</groupId>
@@ -347,15 +351,15 @@
             <groupId>org.apache.ws.xmlschema</groupId>
             <artifactId>xmlschema-core</artifactId>
             <version>2.0.3</version>
-        </dependency>                    
+        </dependency>
     </dependencies>
     <repositories>
-        <!-- Spring -->  
+        <!-- Spring -->
         <repository>
             <id>springsource-repo</id>
             <name>SpringSource Repository</name>
             <url>http://repo.springsource.org/release</url>
-        </repository>        
+        </repository>
         <!-- For testing against latest Spring snapshots -->
         <repository>
             <id>org.springframework.maven.snapshot</id>
@@ -385,7 +389,7 @@
             <directory>src/main/resources</directory>
             <filtering>true</filtering>
             <includes>
-              <include>**/*.*</include>              
+              <include>**/*.*</include>
             </includes>
             <excludes>
               <exclude>**/*.sql</exclude>
@@ -415,7 +419,6 @@
                 <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <warName>${project.name}</warName>
-                    
                     <archive>
                         <addMavenDescriptor/>
                         <manifest>
@@ -428,7 +431,7 @@
                             <BuildTime>${maven.build.timestamp}</BuildTime>
                         </manifestEntries>
                     </archive>
-                                        
+
                     <webResources>
                         <resource>
                             <directory>src/main/webapp</directory>
@@ -531,7 +534,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>                        
+            </plugin>
         </plugins>
     </build>
     <profiles>
@@ -558,7 +561,7 @@
                                 <include>**/*Test.java</include>
                             </includes>
                             <excludes>
-                                <exclude>**/*SystemTest.java</exclude>                                
+                                <exclude>**/*SystemTest.java</exclude>
                             </excludes>
                         </configuration>
                     </plugin>

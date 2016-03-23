@@ -6,6 +6,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 public class User extends org.springframework.security.core.userdetails.User {
 
+	public static final long serialVersionUID = 2L;
     private Long uhuuid;
     private UhAttributes attributes;
 

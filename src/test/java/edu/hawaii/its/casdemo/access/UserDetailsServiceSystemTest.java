@@ -26,7 +26,7 @@ public class UserDetailsServiceSystemTest {
 
     @Test
     public void testAdminUsers() {
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, Object> map = new HashMap<String, Object>();
         map.put("uid", "duckart");
         map.put("uhuuid", "89999999");
         AttributePrincipal principal = new AttributePrincipalImpl("duckart", map);
@@ -47,7 +47,7 @@ public class UserDetailsServiceSystemTest {
 
         // Check a made-up junky role name.
 
-        map = new HashMap<String, String>();
+        map = new HashMap<String, Object>();
         map.put("uid", "someuser");
         map.put("uhuuid", "10000001");
         principal = new AttributePrincipalImpl("someuser", map);
@@ -67,7 +67,7 @@ public class UserDetailsServiceSystemTest {
 
     @Test
     public void testEmployees() {
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, Object> map = new HashMap<String, Object>();
         map.put("uid", "jjcale");
         map.put("uhuuid", "10000004");
 

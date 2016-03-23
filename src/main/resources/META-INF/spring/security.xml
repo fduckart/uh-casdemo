@@ -8,6 +8,7 @@
     <security:http entry-point-ref="casProcessingFilterEntryPoint" use-expressions="true">
         <security:intercept-url pattern="/"              access="permitAll()" requires-channel="any"/>      
         <security:intercept-url pattern="/gate"          access="permitAll()" requires-channel="any"/>      
+        <security:intercept-url pattern="/logout"        access="permitAll()" requires-channel="any"/>      
         <security:intercept-url pattern="/denied"        access="permitAll()" requires-channel="any"/>   
         <security:intercept-url pattern="/resources/**"  access="permitAll()" requires-channel="any"/>
         <security:intercept-url pattern="/admin/**"      access="hasRole('ROLE_ADMIN')"     requires-channel="https"/>
@@ -16,13 +17,19 @@
         <security:custom-filter ref="casAuthenticationFilter" after="CAS_FILTER"/>        
         
         <security:logout invalidate-session="true" logout-url="/logout" logout-success-url="/gate"/>
-        
+                
         <security:custom-filter ref="requestSingleLogoutFilter" before="LOGOUT_FILTER"/>
         <security:custom-filter ref="singleLogoutFilter" before="CAS_FILTER"/>
         
         <security:access-denied-handler error-page="/denied"/>        
+        
+        <security:csrf disabled="true"/>       
     </security:http>     
-
+    
+    <security:authentication-manager alias="authenticationManager">        
+        <security:authentication-provider ref="casAuthenticationProvider"/>       
+    </security:authentication-manager>
+    
     <!-- This filter handles a Single Logout Request from the CAS Server -->
     <bean id="singleLogoutFilter" class="org.jasig.cas.client.session.SingleSignOutFilter"/>
     
@@ -32,13 +39,20 @@
         <constructor-arg>
             <bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler"/>
         </constructor-arg>
-        <property name="filterProcessesUrl" value="/j_spring_cas_security_logout"/>
+        <property name="filterProcessesUrl" value="/logout/cas"/>
   </bean>
 
-    <security:authentication-manager alias="authenticationManager">        
-        <security:authentication-provider ref="casAuthenticationProvider"/>       
-    </security:authentication-manager>
+    <bean id="serviceProperties" class="org.springframework.security.cas.ServiceProperties">
+        <property name="service" value="${url-base}/login/cas"/>
+        <property name="sendRenew" value="${cas.send.renew}"/>
+        <property name="authenticateAllArtifacts" value="true"/>
+    </bean>
     
+    <bean id="casProcessingFilterEntryPoint" class="org.springframework.security.cas.web.CasAuthenticationEntryPoint">
+        <property name="loginUrl" value="${cas.login.url}"/>
+        <property name="serviceProperties" ref="serviceProperties"/>
+    </bean>
+
     <bean id="casAuthenticationFilter" class="org.springframework.security.cas.web.CasAuthenticationFilter">
         <property name="authenticationManager" ref="authenticationManager"/>
         <property name="authenticationFailureHandler">
@@ -52,17 +66,19 @@
                 <property name="defaultTargetUrl" value="/gate"/>
             </bean>
         </property>
+        <property name="authenticationDetailsSource">
+            <bean class="org.springframework.security.cas.web.authentication.ServiceAuthenticationDetailsSource">
+                <constructor-arg ref="serviceProperties"/>
+            </bean>
+        </property>        
         <property name="proxyGrantingTicketStorage" ref="proxyGrantingTicketStorage" />
         <property name="proxyReceptorUrl" value="/receptor" />
-    </bean>
-
-    <bean id="casProcessingFilterEntryPoint" class="org.springframework.security.cas.web.CasAuthenticationEntryPoint">
-        <property name="loginUrl" value="${cas.login.url}"/>
-        <property name="serviceProperties" ref="serviceProperties"/>
+        <property name="serviceProperties" ref="serviceProperties"/>        
     </bean>
     
+            
     <bean id="casAuthenticationProvider" class="org.springframework.security.cas.authentication.CasAuthenticationProvider">
-        <property name="authenticationUserDetailsService" ref="casdemoUserDetailsService"/>          
+        <property name="authenticationUserDetailsService" ref="casdemoUserDetailsService"/>             
         <property name="serviceProperties" ref="serviceProperties"/>        
         <property name="ticketValidator">   
             <bean class="org.jasig.cas.client.validation.Saml11TicketValidator">
@@ -71,11 +87,6 @@
             </bean>            
         </property>
         <property name="key" value="an_id_for_this_auth_provider_only"/>
-    </bean>
-
-    <bean id="serviceProperties" class="org.springframework.security.cas.ServiceProperties">
-        <property name="service" value="${url-base}/j_spring_cas_security_check"/>
-        <property name="sendRenew" value="${cas.send.renew}"/>
     </bean>
         
     <bean id="casdemoUserDetailsService" class="edu.hawaii.its.casdemo.access.UserDetailsServiceImpl" />

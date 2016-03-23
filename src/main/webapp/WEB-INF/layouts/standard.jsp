@@ -41,7 +41,7 @@
                         <li><a href="<c:url value="/about" />">About</a></li>
                         <li><a href="<c:url value="/faq" />">FAQ</a></li>
                         <li><a href="<c:url value="/contact" />">Contact Us</a></li>
-                        <security:authorize ifAnyGranted="ROLE_ADMIN">
+                        <security:authorize access="hasAnyRole('ROLE_ADMIN')">                        
                             <li>
                                 <a href="<c:url value="/admin" />">Admin</a>                                
                             </li>

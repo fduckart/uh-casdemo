@@ -8,12 +8,6 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd        
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:property-placeholder 
-        location="classpath:/META-INF/spring/messages.properties,
-                  classpath:/META-INF/spring/database.properties, 
-                  classpath:/META-INF/spring/general.properties" 
-        ignore-unresolvable="true"/>
-
     <!-- Maps '/' requests to the 'gate' view -->
     <mvc:view-controller path="/" view-name="gate"/>
 

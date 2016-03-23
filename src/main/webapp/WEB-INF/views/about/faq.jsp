@@ -22,7 +22,7 @@
             </tr>
             <tr>
                 <td align="left" valign="top">Q: Is there documention on the Spring configuration you used?</td>
-                <td align="left" valign="top">A: Yes. Here it is: <a href="http://docs.spring.io/spring-security/site/docs/3.2.5.RELEASE/reference/htmlsingle/#cas" target="_cas_docs">Spring 3.2.5 CAS Reference</a></td>
+                <td align="left" valign="top">A: Yes. Here it is: <a href="http://docs.spring.io/spring-security/site/docs/4.0.4.RELEASE/reference/htmlsingle/#cas" target="_cas_docs">Spring 4.0.4 CAS Reference</a></td>
             </tr>
             <tr>
                 <td colspan="2" align="left" valign="top"><b>General Questions</b></td>

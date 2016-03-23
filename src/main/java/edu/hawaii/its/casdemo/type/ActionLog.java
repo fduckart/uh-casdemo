@@ -13,7 +13,8 @@ import javax.persistence.Table;
 @Table(name = "ACTIONLOG", schema = "UHAPP_DB")
 public class ActionLog implements Serializable {
 
-    private Long id;
+	private static final long serialVersionUID = 2L;
+	private Long id;
     private Long actionId;
     private Long userUhuuid; // Logged in user.
     private Long viewUhuuid; // User viewed.

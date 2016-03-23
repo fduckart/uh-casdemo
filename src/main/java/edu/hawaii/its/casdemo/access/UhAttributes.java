@@ -5,23 +5,23 @@ import java.util.Map;
 
 public interface UhAttributes {
 
-    // Methods specific to UH results.
+	// Methods specific to UH results.
 
-    public String getUid();
+	public String getUid();
 
-    public String getUhUuid();
+	public String getUhUuid();
 
-    public String getName();
+	public String getName();
 
-    public List<String> getMail();
+	public List<String> getMail();
 
-    public List<String> getAffiliation();
+	public List<String> getAffiliation();
 
-    // Generic methods.
+	// Generic methods.
 
-    public String getValue(String name);
+	public String getValue(String name);
 
-    public List<String> getValues(String name);
+	public List<String> getValues(String name);
 
-    public Map getMap();
+	public Map<?, ?> getMap();
 }

@@ -11,7 +11,8 @@ import javax.persistence.Transient;
 @Table(name = "ACTION", schema = "UHAPP_DB")
 public class Action implements Serializable {
 
-    private Long id;
+	public static final long serialVersionUID = 2L;
+	private Long id;
     private String code;
     private String description;
     private String enabled;

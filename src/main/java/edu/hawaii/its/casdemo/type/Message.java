@@ -10,6 +10,7 @@ import javax.persistence.Table;
 @Table(name = "PS_MESSAGE", schema = "UHAPP_DB")
 public class Message implements Serializable {
 
+	public static final long serialVersionUID = 2L;
     public static final int GATE_MESSAGE = 1;
     
     private Integer id;
