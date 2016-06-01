@@ -1,9 +1,7 @@
-[![Build Status](https://travis-ci.org/fduckart/uh-casdemo.png?branch=master)](https://travis-ci.org/fduckart/uh-casdemo)
-***
-
 A web application to demonstrate how to use the UH CAS service.
 
-
+[![Build Status](https://travis-ci.org/fduckart/uh-casdemo.png?branch=master)](https://travis-ci.org/fduckart/uh-casdemo)
+***
 ##### Build Tool
 First, you need to download and install maven (version 3.2.1+).
 
