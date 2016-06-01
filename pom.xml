@@ -26,9 +26,9 @@
         <org.springframework-version>4.2.5.RELEASE</org.springframework-version>
         <org.springwebflow-version>2.4.2.RELEASE</org.springwebflow-version>
         <org.springsecurity-version>4.0.4.RELEASE</org.springsecurity-version>
-        
+
         <org.jasig.cas.client-version>3.4.1</org.jasig.cas.client-version>
-        
+
         <org.aspectj-version>1.6.9</org.aspectj-version>
         <org.slf4j-version>1.6.1</org.slf4j-version>
         <commons-collections-version>3.2.1</commons-collections-version>
@@ -245,7 +245,7 @@
             <artifactId>commons-dbcp2</artifactId>
             <version>${commons-dbcp-version}</version>
         </dependency>
-        
+
         <!-- Servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -298,7 +298,7 @@
             <version>${tiles.version}</version>
         </dependency>
 
-        <!-- Hibernate JPA Provider -->        
+        <!-- Hibernate JPA Provider -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -307,9 +307,9 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.3.5.Final</version>  
+            <version>4.3.5.Final</version>
         </dependency>
-        
+
         <!--  Eclipse related. -->
         <dependency>
             <groupId>org.antlr</groupId>
@@ -513,6 +513,9 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <linkXRef>false</linkXRef>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
