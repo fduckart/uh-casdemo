@@ -1,19 +1,22 @@
 package edu.hawaii.its.casdemo.service;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import edu.hawaii.its.casdemo.type.Message;
+
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
+
+import edu.hawaii.its.casdemo.type.Message;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
-@DirtiesContext
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MessageServiceSystemTest {
 
     @Autowired
@@ -28,7 +31,6 @@ public class MessageServiceSystemTest {
     }
 
     @Test
-    @Transactional
     public void update() {
         Message message = messageService.findMessage(Message.GATE_MESSAGE);
         assertEquals("Y", message.getEnabled());
@@ -52,4 +54,34 @@ public class MessageServiceSystemTest {
         assertTrue(message.getText().startsWith("University of Hawaii Information"));
         assertTrue(message.getText().endsWith("."));
     }
+
+    @Test
+    public void zzzmessageCache() {
+        Message m0 = messageService.findMessage(Message.GATE_MESSAGE);
+        Message m1 = messageService.findMessage(Message.GATE_MESSAGE);
+        assertSame(m0, m1);
+
+        m0.setText("This land is your land.");
+        messageService.update(m0);
+        assertSame(m0, m1);
+
+        m1 = messageService.findMessage(Message.GATE_MESSAGE);
+        assertSame(m0, m1);
+
+        Message m2 = messageService.findMessage(Message.GATE_MESSAGE);
+        assertSame(m0, m2);
+        assertSame(m1, m2);
+
+        Message m3 = new Message();
+        m3.setId(999);
+        m3.setEnabled("Y");
+        m3.setText("Testing");
+        m3.setTypeId(1);
+        messageService.add(m3);
+
+        Message m4 = messageService.findMessage(999);
+        assertEquals(m4, m3);
+        assertSame(m4, m3);
+    }
+
 }

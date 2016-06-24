@@ -38,14 +38,4 @@
       
     <cache:annotation-driven/>
     
-    <!-- Generic cache manager. -->
-    <beans:bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
-        <beans:property name="caches">
-            <beans:set>
-                <beans:bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" p:name="default"/>
-                <beans:bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" p:name="messages"/>
-            </beans:set>
-        </beans:property>
-    </beans:bean>
-    
 </beans:beans>
