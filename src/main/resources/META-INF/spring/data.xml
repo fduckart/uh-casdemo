@@ -9,14 +9,7 @@
                         http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
     
     <!-- Root Context: defines shared resources accessible to all other web components -->
-
-    <beans:import resource="data-source.xml" />
-    
-    <!-- Drives transactions using local JPA APIs -->
-    <beans:bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <beans:property name="entityManagerFactory" ref="entityManagerFactory" />
-    </beans:bean>
-        
+       
     <!-- Creates a EntityManagerFactory for use with the Hibernate JPA provider 
          and a simple in-memory data source populated with test data -->
     <beans:bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -34,7 +27,6 @@
             </beans:props>
         </beans:property>        
     </beans:bean>
-
       
     <cache:annotation-driven/>
     
