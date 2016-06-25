@@ -43,14 +43,6 @@ public class DatabaseConfig {
 
         return dataSource;
     }
-    /*    
-    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="${jdbc.driverClassName}"/>
-        <property name="url" value="${jdbc.url}"/>
-        <property name="username" value="${jdbc.user}" />
-        <property name="password" value="${jdbc.password}" />
-    </bean>    
-    */
 
     @Bean
     public JpaTransactionManager transactionManager(EntityManagerFactory emf) {

@@ -4,11 +4,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -16,7 +16,7 @@ import edu.hawaii.its.casdemo.type.Message;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 public class MessageServiceSystemTest {
 
     @Autowired
@@ -56,7 +56,7 @@ public class MessageServiceSystemTest {
     }
 
     @Test
-    public void zzzmessageCache() {
+    public void messageCache() {
         Message m0 = messageService.findMessage(Message.GATE_MESSAGE);
         Message m1 = messageService.findMessage(Message.GATE_MESSAGE);
         assertSame(m0, m1);
