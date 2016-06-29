@@ -34,6 +34,10 @@
     <logger name="org.springframework.web">
         <level value="warn" />
     </logger>
+
+    <logger name="org.springframework.test">
+        <level value="debug" />
+    </logger>
     
     <!--  Suppress some weird errors happening during testing. -->
     <logger name="org.hibernate">
