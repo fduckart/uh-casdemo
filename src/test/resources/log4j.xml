@@ -38,13 +38,16 @@
     <logger name="org.springframework.test">
         <level value="debug" />
     </logger>
-    
+        
     <!--  Suppress some weird errors happening during testing. -->
     <logger name="org.hibernate">
         <level value="info" />    
     </logger>
-    <logger name="org.hibernate.ejb">
-        <level value="debug" />    
+    <logger name="org.hibernate.jpa">
+        <level value="info" />    
+    </logger>    
+    <logger name="org.hibernate.internal">
+        <level value="info" />    
     </logger>
     <logger name="org.hibernate.ejb.packaging.AbstractJarVisitor">
         <level value="info" />    

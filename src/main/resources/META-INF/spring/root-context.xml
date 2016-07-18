@@ -24,9 +24,6 @@
     
     <context:component-scan base-package="edu.hawaii.its.casdemo" />
     
-    <!-- Configures shared data layer -->
-    <import resource="data.xml" />
-    
     <!-- Configures shared security layer -->
     <import resource="security.xml" />
     
