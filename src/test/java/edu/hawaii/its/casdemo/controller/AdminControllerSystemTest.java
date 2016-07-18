@@ -2,19 +2,24 @@ package edu.hawaii.its.casdemo.controller;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+
 import java.util.List;
 import java.util.Map;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
+
 import edu.hawaii.its.casdemo.type.Action;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration
+@WebAppConfiguration
+@ContextConfiguration({ "classpath:META-INF/spring/root-context.xml" })
 public class AdminControllerSystemTest {
 
     @Autowired

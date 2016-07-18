@@ -52,9 +52,6 @@
     <!-- Configures transaction management around @Transactional components -->
     <tx:annotation-driven />
 
-    <!-- Imports the application controllers that process client requests -->
-    <beans:import resource="controllers.xml" />
-    
     <security:global-method-security authentication-manager-ref="authenticationManager" pre-post-annotations="enabled" />
 
 </beans:beans>
