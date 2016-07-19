@@ -66,10 +66,6 @@
         <level value="debug" />
     </logger>
     
-    <logger name="org.springframework.web.context.support.XmlWebApplicationContext" >
-        <level value="info" />
-    </logger>
-       
     <logger name="org.jasig.cas.client.validation">
         <level value="debug" />
     </logger>

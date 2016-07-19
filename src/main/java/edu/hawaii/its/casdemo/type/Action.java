@@ -1,6 +1,7 @@
 package edu.hawaii.its.casdemo.type;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,8 +12,8 @@ import javax.persistence.Transient;
 @Table(name = "ACTION", schema = "UHAPP_DB")
 public class Action implements Serializable {
 
-	public static final long serialVersionUID = 2L;
-	private Long id;
+    public static final long serialVersionUID = 2L;
+    private Long id;
     private String code;
     private String description;
     private String enabled;

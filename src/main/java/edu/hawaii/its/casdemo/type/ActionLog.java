@@ -1,6 +1,7 @@
 package edu.hawaii.its.casdemo.type;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,8 +14,8 @@ import javax.persistence.Table;
 @Table(name = "ACTIONLOG", schema = "UHAPP_DB")
 public class ActionLog implements Serializable {
 
-	private static final long serialVersionUID = 2L;
-	private Long id;
+    private static final long serialVersionUID = 2L;
+    private Long id;
     private Long actionId;
     private Long userUhuuid; // Logged in user.
     private Long viewUhuuid; // User viewed.

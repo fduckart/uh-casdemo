@@ -23,38 +23,38 @@ import edu.hawaii.its.casdemo.type.ActionLog;
 @Repository
 public class ActionServiceImpl implements ActionService {
 
-	private EntityManager em;
+    private EntityManager em;
 
-	@PersistenceContext
-	public void setEntityManager(EntityManager em) {
-		this.em = em;
-	}
+    @PersistenceContext
+    public void setEntityManager(EntityManager em) {
+        this.em = em;
+    }
 
-	public EntityManager getEntityManager() {
-		return em;
-	}
+    public EntityManager getEntityManager() {
+        return em;
+    }
 
-	@Transactional(readOnly = true)
-	public List<Action> findActions() {
-		String qlString = "select a from Action a order by a.id";
+    @Transactional(readOnly = true)
+    public List<Action> findActions() {
+        String qlString = "select a from Action a order by a.id";
 
-		return em.createQuery(qlString, Action.class).getResultList();
-	}
+        return em.createQuery(qlString, Action.class).getResultList();
+    }
 
-	public Action findAction(Long id) {
-		return em.find(Action.class, id);
-	}
+    public Action findAction(Long id) {
+        return em.find(Action.class, id);
+    }
 
-	@Transactional
-	public void record(ActionLog actionLog) {
-		em.persist(actionLog);
-	}
+    @Transactional
+    public void record(ActionLog actionLog) {
+        em.persist(actionLog);
+    }
 
-	@Override
-	public long logCount() {
-		String qlString = "select count(a) from ActionLog a";
-		Query query = em.createQuery(qlString, Long.class);
-		return (long) query.getSingleResult();
-	}
+    @Override
+    public long logCount() {
+        String qlString = "select count(a) from ActionLog a";
+        Query query = em.createQuery(qlString, Long.class);
+        return (long) query.getSingleResult();
+    }
 
 }

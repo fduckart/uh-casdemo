@@ -1,6 +1,7 @@
 package edu.hawaii.its.casdemo.type;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,8 +10,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "UNIQUE_UH_NUMBER_V", schema = "UHAPP_DB")
 public class Employee implements Serializable {
-	
-	public static final long serialVersionUID = 2L;
+
+    public static final long serialVersionUID = 2L;
     private Long uhNumber;
 
     public Employee() {

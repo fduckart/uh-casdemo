@@ -1,13 +1,14 @@
 package edu.hawaii.its.casdemo.security;
 
-import edu.hawaii.its.casdemo.access.AnonymousUser;
-import edu.hawaii.its.casdemo.access.Role;
-import edu.hawaii.its.casdemo.access.UhAttributes;
-import edu.hawaii.its.casdemo.access.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
+import edu.hawaii.its.casdemo.access.AnonymousUser;
+import edu.hawaii.its.casdemo.access.Role;
+import edu.hawaii.its.casdemo.access.UhAttributes;
+import edu.hawaii.its.casdemo.access.User;
 
 @Service("userContextService")
 public class UserContextServiceImpl implements UserContextService {
@@ -46,12 +47,6 @@ public class UserContextServiceImpl implements UserContextService {
         }
     }
 
-    
-    
-    public String toString() {
-        return "UserContextServiceImpl [context=" + SecurityContextHolder.getContext() + "]";
-    }
-
     @Override
     public String getAttribute(String name) {
         return getCurrentUser().getAttribute(name);
@@ -60,5 +55,9 @@ public class UserContextServiceImpl implements UserContextService {
     @Override
     public UhAttributes getAttributes() {
         return getCurrentUser().getAttributes();
+    }
+
+    public String toString() {
+        return "UserContextServiceImpl [context=" + SecurityContextHolder.getContext() + "]";
     }
 }
