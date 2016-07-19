@@ -1,5 +1,5 @@
-<div id='uh-footer-container'>
-    <div id='uh-footer'>
+<footer class="footer">
+    <div class="container">
         <p>
             <a href="http://manoa.hawaii.edu/">Manoa</a> &#124;
             <a href="http://hilo.hawaii.edu/">Hilo</a> &#124;
@@ -13,4 +13,4 @@
             <a href="http://windward.hawaii.edu/">Windward</a>
         </p>
     </div>
-</div>
+</footer>

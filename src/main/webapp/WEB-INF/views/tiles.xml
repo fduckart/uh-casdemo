@@ -9,12 +9,12 @@
     <definition name="layoutStandard"     template="/WEB-INF/layouts/standard.jsp"/>
     
     <definition name="baseStandard" extends="layoutStandard">
-        <put-attribute name="footer" value="/WEB-INF/views/a/footer.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
     </definition>
     
     <definition name="baseSimple"   extends="simpleLayout">
-        <put-attribute name="header" value="/WEB-INF/views/a/header.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/views/a/footer.jsp" />
+        <put-attribute name="header" value="/WEB-INF/layouts/header.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
     </definition>
     
     <definition name="home" extends="baseStandard">
