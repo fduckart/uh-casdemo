@@ -9,18 +9,12 @@ h3 {
 }
 
 a {
-  text-decoration: none;
-  font-weight: normal;
-  color: #814f11;
+    color: #0275d8;
+    text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
-}
-
-a:visited {
-    color: #007F0E;
-    font-weight: normal;
 }
 
 table {
@@ -63,7 +57,6 @@ table {
     -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
     box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
     border-top: none;
-/*    text-shadow: 0 1px 0 rgba(255,255,255,.5); */
     padding-left: 5px;
     color: #5D8238;
 }
