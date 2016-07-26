@@ -3,3 +3,7 @@ install: true
 script: mvn -Denv=dev clean test
 jdk:
   - oraclejdk8
+
+branches:
+  only:
+  - master
