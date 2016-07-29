@@ -1,7 +1,9 @@
 <div class='container-fluid'>
     <table class="uh-bordered">
         <thead>
-            <th>About</th>
+            <tr>
+                <th>About</th>
+             </tr>
         </thead>
         <tbody>
             <tr>
@@ -12,8 +14,9 @@
                         <li>Apache Maven 3.2.1</li>
                         <li>Apache Tomcat 8.0.32</li>
                         <li>Java 1.8</li>
-                        <li>Spring Framework 4.2.5</li>
+                        <li>Spring Framework 4.3.2</li>
                         <li>Spring Security 4.0.4</li>
+                        <li>Apache Tiles 3.0.5</li>
                         <li>Bootstrap 3.3.2</li>
                         <li>JQuery 2.1.1</li>
                     </ul>
