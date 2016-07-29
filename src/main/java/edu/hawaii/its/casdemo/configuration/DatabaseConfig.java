@@ -82,7 +82,7 @@ public class DatabaseConfig {
     @Value("${db.hibernate.cache.provider_class}")
     private String hibernateCacheProviderClass;
 
-    @Value("${hibernate.connection.shutdown}")
+    @Value("${db.hibernate.connection.shutdown}")
     private String hibernateConnectionShutdown;
 
     @Value("${db.hibernate.show_sql}")
