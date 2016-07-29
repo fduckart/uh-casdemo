@@ -1,3 +1,4 @@
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <div class='container-fluid'>
     <security:authorize access="hasRole('ROLE_ADMIN')">        
         <a href="/casdemo/admin/actions">View Action codes</a>
