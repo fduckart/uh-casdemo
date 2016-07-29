@@ -7,19 +7,6 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:property-placeholder 
-        location="classpath:/META-INF/spring/messages.properties,        
-                  classpath:/META-INF/spring/database.properties,
-                  classpath:/META-INF/spring/general.properties"
-        order="1"                   
-        ignore-unresolvable="true" />
-        
-    <context:property-placeholder 
-        location="file://${env.override.properties.path}"
-        order="0"
-        ignore-unresolvable="true" 
-        ignore-resource-not-found="true" />
-        
     <tx:annotation-driven />    
     
     <context:component-scan base-package="edu.hawaii.its.casdemo" />
