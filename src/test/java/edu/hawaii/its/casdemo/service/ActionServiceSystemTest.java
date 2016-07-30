@@ -11,11 +11,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.hawaii.its.casdemo.configuration.CachingConfig;
+import edu.hawaii.its.casdemo.configuration.DatabaseConfig;
+import edu.hawaii.its.casdemo.configuration.WebConfig;
 import edu.hawaii.its.casdemo.type.ActionLog;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration({ "classpath:META-INF/spring/root-context.xml" })
+@ContextConfiguration(classes = { DatabaseConfig.class, WebConfig.class, CachingConfig.class })
 public class ActionServiceSystemTest {
 
     @Autowired

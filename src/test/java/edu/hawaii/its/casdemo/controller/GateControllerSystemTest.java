@@ -15,9 +15,13 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 
+import edu.hawaii.its.casdemo.configuration.CachingConfig;
+import edu.hawaii.its.casdemo.configuration.DatabaseConfig;
+import edu.hawaii.its.casdemo.configuration.WebConfig;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration({ "classpath:META-INF/spring/root-context.xml" })
+@ContextConfiguration(classes = { DatabaseConfig.class, WebConfig.class, CachingConfig.class })
 public class GateControllerSystemTest {
 
     @Autowired

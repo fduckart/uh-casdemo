@@ -6,12 +6,10 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
-
-    <tx:annotation-driven />    
     
-    <context:component-scan base-package="edu.hawaii.its.casdemo" />
+    <context:component-scan base-package="edu.hawaii.its.casdemo" />    
     
-    <!-- Configures shared security layer -->
+    <!-- Configures shared security layer -->    
     <import resource="security.xml" />
     
 </beans>

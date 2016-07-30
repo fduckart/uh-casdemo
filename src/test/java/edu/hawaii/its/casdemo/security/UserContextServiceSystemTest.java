@@ -14,10 +14,13 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import edu.hawaii.its.casdemo.access.AnonymousUser;
 import edu.hawaii.its.casdemo.access.Role;
 import edu.hawaii.its.casdemo.access.User;
+import edu.hawaii.its.casdemo.configuration.CachingConfig;
+import edu.hawaii.its.casdemo.configuration.DatabaseConfig;
+import edu.hawaii.its.casdemo.configuration.WebConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration({ "classpath:META-INF/spring/root-context.xml" })
+@ContextConfiguration(classes = { DatabaseConfig.class, WebConfig.class, CachingConfig.class })
 public class UserContextServiceSystemTest {
 
     @Autowired
