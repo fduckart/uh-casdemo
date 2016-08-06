@@ -1,50 +1,48 @@
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
 .navbar {
-    min-width: 92px;
-    min-height: 92px;
     background-color: white;
 }
-
-.navbar .container {
-    min-width: 92px;
-    min-height: 92px;
+.navbar-fixed-top .nav {
     background-color: white;
-
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-right: 15px;
-    margin-left: 15px;
-
-    width: 95%;
+    /* padding: 15px 0; */
+    padding-top: 40px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.navbar-fixed-top .navbar-brand {
+    padding-left: 20px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    min-height: 50px;
+    min-width: 50px;
+}
+.navbar-fixed-top .navbar-brand > img {
+    height: 50px;
+    width: 50px;
 }
 
-.navbar .navbar-right {
-    min-width: 92px;
-    min-height: 92px;
-    background-color: white;
+@media(min-width:768px) {
+    body {
+        padding-top: 90px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+    }
+    .navbar {
+        min-height: 90px;
+    }
+    .navbar-fixed-top .navbar-brand {
+        min-height: 90px;
+        min-width: 90px;
+        padding-left: 15px;
+        padding-right: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    .navbar-fixed-top .navbar-brand > img {
+        height: 90px;
+        width: 90px;
+    }
 }
-
-.navbar .navbar-brand {
-    min-width: 92px;
-    min-height: 92px;
-    background-color: white;
-    background: url(../images/seal.jpg);
-    background-size: 92px 92px;
-    background-repeat: no-repeat;
-    background-position: right top;
-}
-
-.navbar .navbar-toggle {
-    background-color: white;
-}
-
-/*
-.navbar .site-id {
-    color: red;
-    background-color: white;
-
-    position: relative;
-    top: 60px;
-    font-size: 16px;
-    padding-left: 10px;
-}
-*/
