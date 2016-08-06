@@ -6,6 +6,7 @@
 <tiles-definitions>
     
     <definition name="simpleLayout"       template="/WEB-INF/layouts/simple.jsp"/>
+    <definition name="simpleLayoutX"      template="/WEB-INF/layouts/simplex.jsp"/>
     <definition name="layoutStandard"     template="/WEB-INF/layouts/standard.jsp"/>
     
     <definition name="baseStandard" extends="layoutStandard">
@@ -14,6 +15,11 @@
     
     <definition name="baseSimple"   extends="simpleLayout">
         <put-attribute name="header" value="/WEB-INF/layouts/header.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+    </definition>
+    
+    <definition name="baseSimplex"  extends="simpleLayoutX">
+        <put-attribute name="header" value="/WEB-INF/layouts/headerx.jsp" />
         <put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
     </definition>
     
@@ -37,7 +43,7 @@
         <put-attribute name="body" value="/WEB-INF/views/gate/denied.jsp" />
     </definition>
         
-    <definition name="gate" extends="baseSimple">
+    <definition name="gate" extends="baseSimplex">
         <put-attribute name="body" value="/WEB-INF/views/gate/gate.jsp" />
     </definition>
     
