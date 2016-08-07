@@ -14,6 +14,7 @@
         <security:intercept-url pattern="/gate"          access="permitAll()" requires-channel="any"/>      
         <security:intercept-url pattern="/about"         access="permitAll()" requires-channel="any"/>   
         <security:intercept-url pattern="/faq"           access="permitAll()" requires-channel="any"/>   
+        <security:intercept-url pattern="/contact"       access="permitAll()" requires-channel="any"/>   
         <security:intercept-url pattern="/logout"        access="permitAll()" requires-channel="any"/>      
         <security:intercept-url pattern="/denied"        access="permitAll()" requires-channel="any"/>   
         <security:intercept-url pattern="/resources/**"  access="permitAll()" requires-channel="any"/>

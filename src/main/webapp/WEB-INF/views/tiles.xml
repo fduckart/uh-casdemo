@@ -27,15 +27,15 @@
         <put-attribute name="body" value="/WEB-INF/views/home/home.jsp" />        
     </definition>
     
-    <definition name="faq" extends="baseStandard">
+    <definition name="faq" extends="baseSimplex">
         <put-attribute name="body" value="/WEB-INF/views/about/faq.jsp" />
     </definition>
     
-    <definition name="about" extends="baseStandard">
+    <definition name="about" extends="baseSimplex">
         <put-attribute name="body" value="/WEB-INF/views/about/about.jsp" />
     </definition>
         
-    <definition name="contact" extends="baseStandard">
+    <definition name="contact" extends="baseSimplex">
         <put-attribute name="body" value="/WEB-INF/views/contact/contact.jsp" />
     </definition>
         
