@@ -3,7 +3,7 @@
         <div class='col-xs-offset-1 col-xs-10'>
 
             <h3>Frequently Asked Questions</h3>
-        
+
             <table class='table table-bordered'>
                 <tbody>
                     <tr>
@@ -37,7 +37,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td align="left" valign="top">Q: What&apos;s the story on the UH Number?</td>
+                        <td align="left" valign="top">Q: What is the story on the UH Number?</td>
                         <td align="left" valign="top">
                             A: The UH Number -- and most of the attributes -- returned in a CAS response are restriced by UH policy.
                             Be careful not to display them on any public-facing pages.
@@ -46,6 +46,23 @@
                     <tr>
                         <td align="left" valign="top">Q: Who can  answer some basic questions about the application?</td>
                         <td align="left" valign="top">A: Send an email to <a href="mailto:duckart@hawaii.edu">Frank Duckart</a></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="left" valign="top"><b>Technologies</b></td>
+                    <tr>
+                        <td align="left" valign="top">Q: What did you use to create the site?</td>
+                        <td align="left" valign="top">
+                        <ul  class="list-unstyled">
+                            <li>Apache Maven 3.2.1</li>
+                            <li>Apache Tomcat 8.0.32</li>
+                            <li>Java 1.8</li>
+                            <li>Spring Framework 4.3.2</li>
+                            <li>Spring Security 4.0.4</li>
+                            <li>Apache Tiles 3.0.5</li>
+                            <li>Bootstrap 3.3.7</li>
+                            <li>JQuery 2.1.1</li>
+                        </ul>
+                        </td>
                     </tr>
                 </tbody>
             </table>

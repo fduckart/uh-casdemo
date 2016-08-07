@@ -19,9 +19,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="about">About</a></li>
-                <li><a href="faq">FAQ</a></li>
+                <li><a href="gate">Home</a></li>
                 <li><a href="contact">Contact</a></li>
+                <li><a href="faq">About</a></li>
                 <li  class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Campuses <span class="caret"></span></a>
 

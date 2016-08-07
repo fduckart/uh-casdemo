@@ -12,7 +12,6 @@
     <security:http entry-point-ref="casProcessingFilterEntryPoint" use-expressions="true">
         <security:intercept-url pattern="/"              access="permitAll()" requires-channel="any"/>      
         <security:intercept-url pattern="/gate"          access="permitAll()" requires-channel="any"/>      
-        <security:intercept-url pattern="/about"         access="permitAll()" requires-channel="any"/>   
         <security:intercept-url pattern="/faq"           access="permitAll()" requires-channel="any"/>   
         <security:intercept-url pattern="/contact"       access="permitAll()" requires-channel="any"/>   
         <security:intercept-url pattern="/logout"        access="permitAll()" requires-channel="any"/>      

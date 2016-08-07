@@ -38,7 +38,6 @@
                 <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">                              
                     <ul class="nav">
                         <li><a href="<c:url value="/home" />">Home</a></li>
-                        <li><a href="<c:url value="/about" />">About</a></li>
                         <li><a href="<c:url value="/faq" />">FAQ</a></li>
                         <li><a href="<c:url value="/contact" />">Contact Us</a></li>
                         <security:authorize access="hasAnyRole('ROLE_ADMIN')">                        

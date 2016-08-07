@@ -31,10 +31,6 @@
         <put-attribute name="body" value="/WEB-INF/views/about/faq.jsp" />
     </definition>
     
-    <definition name="about" extends="baseSimplex">
-        <put-attribute name="body" value="/WEB-INF/views/about/about.jsp" />
-    </definition>
-        
     <definition name="contact" extends="baseSimplex">
         <put-attribute name="body" value="/WEB-INF/views/contact/contact.jsp" />
     </definition>
