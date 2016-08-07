@@ -12,6 +12,9 @@
             <a class="navbar-brand" href="gate">
                 <img src="resources/images/seal.jpg" alt="">
             </a>
+            <a class="navbar-brand uh-nav-app-name" href="gate">
+                CAS Demonstration
+            </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -23,17 +26,17 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Campuses <span class="caret"></span></a>
 
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="http://manoa.hawaii.edu/" target="_uhhi">Hilo</a></li>
-                      <li><a href="http://manoa.hawaii.edu/" target="_uhma">Manoa</a></li>
-                      <li><a href="http://manoa.hawaii.edu/" target="_uhwo">West Oahu</a></li>
+                      <li><a href="https://hilo.hawaii.edu/"     target="_uhhi">Hilo</a></li>
+                      <li><a href="https://manoa.hawaii.edu/"    target="_uhma">Manoa</a></li>
+                      <li><a href="http://westoahu.hawaii.edu/" target="_uhwo">West Oahu</a></li>
                       <li class="divider"></li>
-                      <li><a href="http://manoa.hawaii.edu/" target="_uhcchi">Hawaii</a></li>
-                      <li><a href="http://manoa.hawaii.edu/" target="_uhccho">Honolulu</a></li>
-                      <li><a href="http://manoa.hawaii.edu/" target="_uhccka">Kapiolani</a></li>
-                      <li><a href="http://manoa.hawaii.edu/" target="_uhccku">Kauai</a></li>
-                      <li><a href="http://manoa.hawaii.edu/" target="_uhccle">Leeward</a></li>
-                      <li><a href="http://manoa.hawaii.edu/" target="_uhccmu">Maui</a></li>
-                      <li><a href="http://manoa.hawaii.edu/" target="_uhccwi">Windward</a></li>
+                      <li><a href="https://hawaii.hawaii.edu/" target="_uhcchi">Hawaii</a></li>
+                      <li><a href="http://honolulu.hawaii.edu/" target="_uhccho">Honolulu</a></li>
+                      <li><a href="http://kapiolani.hawaii.edu/" target="_uhccka">Kapiolani</a></li>
+                      <li><a href="http://kauai.hawaii.edu/" target="_uhccku">Kauai</a></li>
+                      <li><a href="http://www.leeward.hawaii.edu/" target="_uhccle">Leeward</a></li>
+                      <li><a href="http://maui.hawaii.edu/" target="_uhccmu">Maui</a></li>
+                      <li><a href="https://windward.hawaii.edu/" target="_uhccwi">Windward</a></li>
                     </ul>
 
                 </li>

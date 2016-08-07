@@ -7,7 +7,6 @@ body {
 }
 .navbar-fixed-top .nav {
     background-color: white;
-    /* padding: 15px 0; */
     padding-top: 40px;
     padding-bottom: 0px;
     padding-left: 0px;
@@ -24,6 +23,11 @@ body {
 .navbar-fixed-top .navbar-brand > img {
     height: 50px;
     width: 50px;
+}
+.navbar-brand.uh-nav-app-name {
+    height: 50px;
+    padding-top: 22px;
+    background-color: white;
 }
 
 @media(min-width:768px) {
@@ -42,7 +46,19 @@ body {
         padding-bottom: 0px;
     }
     .navbar-fixed-top .navbar-brand > img {
+         position: fixed;
         height: 90px;
         width: 90px;
+        z-index: 1;
+    }
+    .navbar-brand.uh-nav-app-name {
+        font-size: 20px;
+        height: 90px;
+        width: 200px;
+        min-height: 90px;
+        min-width: 220px;
+        padding-top: 55px;
+        padding-left: 35px;
+        background-color: white;
     }
 }
