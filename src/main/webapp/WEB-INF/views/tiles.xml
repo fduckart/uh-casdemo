@@ -12,8 +12,8 @@
         <put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
     </definition>
     
-    <definition name="home" extends="baseSimple">
-        <put-attribute name="body" value="/WEB-INF/views/home/home.jsp" />        
+    <definition name="attributes" extends="baseSimple">
+        <put-attribute name="body" value="/WEB-INF/views/attributes/attributes.jsp" />        
     </definition>
     
     <definition name="faq" extends="baseSimple">
@@ -33,7 +33,7 @@
     </definition>
     
     <definition name="actions/list" extends="baseSimple">
-        <put-attribute name="body" value="/WEB-INF/views/actions/listActions.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/actions/actions.jsp" />
     </definition>
     
     <definition name="admin" extends="baseSimple">

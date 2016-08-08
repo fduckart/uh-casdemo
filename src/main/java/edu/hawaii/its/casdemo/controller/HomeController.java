@@ -28,18 +28,18 @@ public class HomeController {
 
     @PreAuthorize("hasRole('ROLE_UH')")
     @RequestMapping(value = { "/attributes" }, method = { RequestMethod.GET })
-    public String home(Locale locale, Model model) {
+    public String attributes(Locale locale, Model model) {
 
-        logger.info("Entered home...");
+        logger.info("Entered attributes...");
 
         User user = userContextService.getCurrentUser();
         logger.info("current user    : " + user);
         actionRecorder.publish("employee.view.home", user.getUhuuid());
         model.addAttribute("currentUser", user);
 
-        logger.info("Leaving home.");
+        logger.info("Leaving attributes.");
 
-        return "home";
+        return "attributes";
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
