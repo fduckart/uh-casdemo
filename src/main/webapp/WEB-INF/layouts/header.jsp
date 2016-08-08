@@ -11,19 +11,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="gate">
+            <a class="navbar-brand" href="<c:url value="/" />">
                 <img src="/casdemo/resources/images/seal.jpg" alt="">
             </a>
-            <a class="navbar-brand uh-nav-app-name" href="gate">
+            <a class="navbar-brand uh-nav-app-name" href="<c:url value="/" />">
                 CAS Demonstration
             </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/casdemo/gate">Home</a></li>
-                <li><a href="/casdemo/contact">Contact</a></li>
-                <li><a href="/casdemo/faq">About</a></li>
+                <li><a href="<c:url value="/" />">Home</a></li>
+                <li><a href="<c:url value="/contact" />">Contact</a></li>
+                <li><a href="<c:url value="/faq" />">About</a></li>
                 <security:authorize access="hasAnyRole('ROLE_ADMIN')">
                     <li>
                         <a href="<c:url value="/admin" />">Admin</a>

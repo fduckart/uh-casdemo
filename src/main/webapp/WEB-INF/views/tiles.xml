@@ -5,38 +5,38 @@
     
 <tiles-definitions>
     
-    <definition name="simpleLayoutX"      template="/WEB-INF/layouts/simplex.jsp"/>
+    <definition name="simpleLayout"      template="/WEB-INF/layouts/simple.jsp"/>
                 
-    <definition name="baseSimplex"  extends="simpleLayoutX">
-        <put-attribute name="header" value="/WEB-INF/layouts/headerx.jsp" />
+    <definition name="baseSimple"  extends="simpleLayout">
+        <put-attribute name="header" value="/WEB-INF/layouts/header.jsp" />
         <put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
     </definition>
     
-    <definition name="home" extends="baseSimplex">
+    <definition name="home" extends="baseSimple">
         <put-attribute name="body" value="/WEB-INF/views/home/home.jsp" />        
     </definition>
     
-    <definition name="faq" extends="baseSimplex">
+    <definition name="faq" extends="baseSimple">
         <put-attribute name="body" value="/WEB-INF/views/about/faq.jsp" />
     </definition>
     
-    <definition name="contact" extends="baseSimplex">
+    <definition name="contact" extends="baseSimple">
         <put-attribute name="body" value="/WEB-INF/views/contact/contact.jsp" />
     </definition>
         
-    <definition name="denied" extends="baseSimplex">
+    <definition name="denied" extends="baseSimple">
         <put-attribute name="body" value="/WEB-INF/views/gate/denied.jsp" />
     </definition>
         
-    <definition name="gate" extends="baseSimplex">
+    <definition name="gate" extends="baseSimple">
         <put-attribute name="body" value="/WEB-INF/views/gate/gate.jsp" />
     </definition>
     
-    <definition name="actions/list" extends="baseSimplex">
+    <definition name="actions/list" extends="baseSimple">
         <put-attribute name="body" value="/WEB-INF/views/actions/listActions.jsp" />
     </definition>
     
-    <definition name="admin" extends="baseSimplex">
+    <definition name="admin" extends="baseSimple">
         <put-attribute name="body" value="/WEB-INF/views/admin/admin.jsp" />
     </definition>
     

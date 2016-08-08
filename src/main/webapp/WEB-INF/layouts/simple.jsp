@@ -9,9 +9,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>University of Hawaii |-| CAS Demonstration</title>
     <link rel="stylesheet" href="<c:url value="/resources/bootstrap-3.3.7-dist/css/bootstrap.min.css" />" />
-    <link rel="stylesheet" href="<c:url value="/resources/styles/casdemo-main-00x.css" />"   type="text/css" media="screen" />
-    <link rel="stylesheet" href="<c:url value="/resources/styles/casdemo-header-00x.css" />" type="text/css" media="screen" />
-    <link rel="stylesheet" href="<c:url value="/resources/styles/casdemo-footer-00x.css" />" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<c:url value="/resources/styles/casdemo-main-001.css" />"   type="text/css" media="screen" />
+    <link rel="stylesheet" href="<c:url value="/resources/styles/casdemo-header-001.css" />" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<c:url value="/resources/styles/casdemo-footer-001.css" />" type="text/css" media="screen" />
 </head>
 <body>
     <tiles:insertAttribute name="header" />
