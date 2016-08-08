@@ -1,36 +1,42 @@
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <div class='container-fluid'>
     <security:authorize access="hasRole('ROLE_UH')">
-        <table class="uh-bordered">
-            <thead>
-                <tr>
-                    <th colspan="3">Home</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td colspan="3">Selected CAS Login Details</td>
-                </tr>
-                <tr onMouseOver="this.bgColor='#E5F9C5';" onMouseOut="this.bgColor='#FFFFFF';">
-                    <td colspan="1">uid</td>
-                    <td colspan="2">${currentUser.uid}</td>
-                </tr>                    
-                <tr onMouseOver="this.bgColor='#E5F9C5';" onMouseOut="this.bgColor='#FFFFFF';">
-                    <td colspan="1">username</td>
-                    <td colspan="2">${currentUser.username}</td>
-                </tr>                    
-                <tr onMouseOver="this.bgColor='#E5F9C5';" onMouseOut="this.bgColor='#FFFFFF';">
-                    <td colspan="1" nowrap>uhuuid</td>
-                    <td colspan="2">${currentUser.uhuuid}</td>
-                </tr>                    
-                <tr onMouseOver="this.bgColor='#E5F9C5';" onMouseOut="this.bgColor='#FFFFFF';">
-                    <td colspan="1">cn</td>
-                    <td colspan="2">${currentUser.name}</td>
-                </tr>                    
-                <tr onMouseOver="this.bgColor='#E5F9C5';" onMouseOut="this.bgColor='#FFFFFF';">
-                    <td colspan="1" style="white-space: nowrap">All Attributes</td>
-                    <td colspan="2" class="uh-pre">${currentUser.attributes.map}</td>
-                </tr>                    
-            </tbody>
-        </table>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10'>
+                <h3>Login Attributes</h3>
+                <table class='table table-bordered table-hover'>
+                    <tbody>
+                        <tr>
+                            <td colspan="3">Selected CAS Login Details</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">uid</td>
+                            <td colspan="2">${currentUser.uid}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">username</td>
+                            <td colspan="2">${currentUser.username}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" nowrap>uhuuid</td>
+                            <td colspan="2">${currentUser.uhuuid}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">cn</td>
+                            <td colspan="2">${currentUser.name}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" style="white-space: nowrap">All Attributes</td>
+                            <td colspan="2" class="uh-pre">${currentUser.attributes.map}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10'>
+                <a href="logout" class="btn btn-sm btn-primary" role="button" style='width: 12.2em'>Logout</a>
+            </div>
+        </div>
     </security:authorize>
 </div>

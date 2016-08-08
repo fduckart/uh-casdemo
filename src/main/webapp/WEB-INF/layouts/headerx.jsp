@@ -1,3 +1,5 @@
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -10,7 +12,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="gate">
-                <img src="resources/images/seal.jpg" alt="">
+                <img src="/casdemo/resources/images/seal.jpg" alt="">
             </a>
             <a class="navbar-brand uh-nav-app-name" href="gate">
                 CAS Demonstration
@@ -19,9 +21,14 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="gate">Home</a></li>
-                <li><a href="contact">Contact</a></li>
-                <li><a href="faq">About</a></li>
+                <li><a href="/casdemo/gate">Home</a></li>
+                <li><a href="/casdemo/contact">Contact</a></li>
+                <li><a href="/casdemo/faq">About</a></li>
+                <security:authorize access="hasAnyRole('ROLE_ADMIN')">
+                    <li>
+                        <a href="<c:url value="/admin" />">Admin</a>
+                    </li>
+                </security:authorize>
                 <li  class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Campuses <span class="caret"></span></a>
 

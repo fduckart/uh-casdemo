@@ -5,25 +5,14 @@
     
 <tiles-definitions>
     
-    <definition name="simpleLayout"       template="/WEB-INF/layouts/simple.jsp"/>
     <definition name="simpleLayoutX"      template="/WEB-INF/layouts/simplex.jsp"/>
-    <definition name="layoutStandard"     template="/WEB-INF/layouts/standard.jsp"/>
-    
-    <definition name="baseStandard" extends="layoutStandard">
-        <put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
-    </definition>
-    
-    <definition name="baseSimple"   extends="simpleLayout">
-        <put-attribute name="header" value="/WEB-INF/layouts/header.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
-    </definition>
-    
+                
     <definition name="baseSimplex"  extends="simpleLayoutX">
         <put-attribute name="header" value="/WEB-INF/layouts/headerx.jsp" />
         <put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
     </definition>
     
-    <definition name="home" extends="baseStandard">
+    <definition name="home" extends="baseSimplex">
         <put-attribute name="body" value="/WEB-INF/views/home/home.jsp" />        
     </definition>
     
@@ -35,7 +24,7 @@
         <put-attribute name="body" value="/WEB-INF/views/contact/contact.jsp" />
     </definition>
         
-    <definition name="denied" extends="baseSimple">
+    <definition name="denied" extends="baseSimplex">
         <put-attribute name="body" value="/WEB-INF/views/gate/denied.jsp" />
     </definition>
         
@@ -43,11 +32,11 @@
         <put-attribute name="body" value="/WEB-INF/views/gate/gate.jsp" />
     </definition>
     
-    <definition name="actions/list" extends="baseStandard">
+    <definition name="actions/list" extends="baseSimplex">
         <put-attribute name="body" value="/WEB-INF/views/actions/listActions.jsp" />
     </definition>
     
-    <definition name="admin" extends="baseStandard">
+    <definition name="admin" extends="baseSimplex">
         <put-attribute name="body" value="/WEB-INF/views/admin/admin.jsp" />
     </definition>
     

@@ -27,7 +27,7 @@ public class HomeController {
     private UserContextService userContextService;
 
     @PreAuthorize("hasRole('ROLE_UH')")
-    @RequestMapping(value = { "/home" }, method = { RequestMethod.GET })
+    @RequestMapping(value = { "/attributes" }, method = { RequestMethod.GET })
     public String home(Locale locale, Model model) {
 
         logger.info("Entered home...");

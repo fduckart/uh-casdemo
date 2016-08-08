@@ -2,18 +2,15 @@ h3 {
    color: #BD9319;
 }
 
-
 a {
     color: #0275d8;
     text-decoration: none;
 }
 
-
 a:hover {
     color: #0275d8;
     text-decoration: underline;
 }
-
 
 td.uh-pre {
     white-space: pre;           /* CSS 2.0 */
