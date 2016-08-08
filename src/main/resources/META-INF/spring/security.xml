@@ -22,7 +22,7 @@
         
         <security:custom-filter ref="casAuthenticationFilter" after="CAS_FILTER"/>        
         
-        <security:logout invalidate-session="true" logout-url="/logout" logout-success-url="/gate"/>
+        <security:logout invalidate-session="true" logout-url="/logout" logout-success-url="/"/>
                 
         <security:custom-filter ref="requestSingleLogoutFilter" before="LOGOUT_FILTER"/>
         <security:custom-filter ref="singleLogoutFilter" before="CAS_FILTER"/>
