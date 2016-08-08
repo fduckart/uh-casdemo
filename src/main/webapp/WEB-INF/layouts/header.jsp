@@ -12,7 +12,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="<c:url value="/" />">
-                <img src="/casdemo/resources/images/seal.jpg" alt="">
+                <img src="<c:url value="/resources/images/seal.jpg" />" alt="">                
             </a>
             <a class="navbar-brand uh-nav-app-name" href="<c:url value="/" />">
                 CAS Demonstration

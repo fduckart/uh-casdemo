@@ -36,7 +36,7 @@
         </div>
         <div class='row'>
             <div class='col-xs-offset-1 col-xs-10'>
-                <a href="logout" class="btn btn-sm btn-primary" role="button" style='width: 12.2em'>Logout</a>
+                <a href="<c:url value="logout" />" class="btn btn-sm btn-primary" role="button" style='width: 12.2em'>Logout</a>
             </div>
         </div>
     </security:authorize>
