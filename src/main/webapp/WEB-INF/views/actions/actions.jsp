@@ -4,7 +4,7 @@
     <security:authorize access="hasRole('ROLE_ADMIN')">
         <div class='row'>
             <div class='col-xs-offset-1 col-xs-10'>
-                <h3>Administration - Action Codes</h3>
+                <h3>Administration</h3>
                 <p class='lead'>Action Codes</p>
                 <c:if test="${not empty actionList}">
                     <table class="table table-bordered table-hover">
