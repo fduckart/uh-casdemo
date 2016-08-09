@@ -25,7 +25,7 @@ import org.springframework.util.Assert;
 @PropertySources({
         @PropertySource("classpath:META-INF/spring/general.properties"),
         @PropertySource("classpath:META-INF/spring/database.properties"),
-        @PropertySource(value = "file://${override.properties.path}",
+        @PropertySource(value = "file://${user.home}/.${user.name}-conf/casdemo-overrides.properties",
                         ignoreResourceNotFound = true),
 })
 public class DatabaseConfig {
