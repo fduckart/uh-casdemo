@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import edu.hawaii.its.casdemo.access.User;
 import edu.hawaii.its.casdemo.action.ActionRecorder;
 import edu.hawaii.its.casdemo.security.UserContextService;
+import edu.hawaii.its.casdemo.service.MessageService;
+import edu.hawaii.its.casdemo.type.Message;
 
 @Controller
 public class HomeController {
@@ -25,6 +27,25 @@ public class HomeController {
 
     @Autowired
     private UserContextService userContextService;
+
+    @Autowired
+    private MessageService messageService;
+
+    @RequestMapping(value = { "", "/", "/gate" }, method = { RequestMethod.GET })
+    public String gate(Locale locale, Model model) {
+        logger.debug("User at gate. The client locale is {}.", locale);
+
+        try {
+            Message message = messageService.findMessage(Message.GATE_MESSAGE);
+            if (message != null) {
+                model.addAttribute("systemMessage", message.getText());
+            }
+        } catch (Exception e) {
+            logger.error("Error", e);
+        }
+
+        return "gate";
+    }
 
     @PreAuthorize("hasRole('ROLE_UH')")
     @RequestMapping(value = { "/attributes" }, method = { RequestMethod.GET })
@@ -55,6 +76,16 @@ public class HomeController {
     @RequestMapping(value = "/faq", method = RequestMethod.GET)
     public String faq(Locale locale, Model model) {
         return "faq";
+    }
+
+    @RequestMapping(value = "/denied", method = RequestMethod.GET)
+    public String denied() {
+        return "denied";
+    }
+
+    @RequestMapping(value = "/404", method = RequestMethod.GET)
+    public String invalid() {
+        return "redirect:/";
     }
 
     public void setUserContextService(UserContextService userContextService) {

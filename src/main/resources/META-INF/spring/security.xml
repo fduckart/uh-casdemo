@@ -16,6 +16,7 @@
         <security:intercept-url pattern="/contact"       access="permitAll()" requires-channel="any"/>   
         <security:intercept-url pattern="/logout"        access="permitAll()" requires-channel="any"/>      
         <security:intercept-url pattern="/denied"        access="permitAll()" requires-channel="any"/>   
+        <security:intercept-url pattern="/404"           access="permitAll()" requires-channel="any"/>
         <security:intercept-url pattern="/resources/**"  access="permitAll()" requires-channel="any"/>
         <security:intercept-url pattern="/admin/**"      access="hasRole('ROLE_ADMIN')"     requires-channel="https"/>
         <security:intercept-url pattern="/**"            access="hasRole('ROLE_UH')"        requires-channel="https"/>
