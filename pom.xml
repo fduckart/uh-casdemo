@@ -25,7 +25,7 @@
 
         <org.springframework-version>4.3.2.RELEASE</org.springframework-version>
         <org.springwebflow-version>2.4.4.RELEASE</org.springwebflow-version>
-        <org.springsecurity-version>4.0.4.RELEASE</org.springsecurity-version>
+        <org.springsecurity-version>4.1.2.RELEASE</org.springsecurity-version>
 
         <org.jasig.cas.client-version>3.4.1</org.jasig.cas.client-version>
 
@@ -175,22 +175,13 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-cas</artifactId>
             <version>${org.springsecurity-version}</version>
-            <exclusions>
-                <!-- Exclude Commons Logging in favor of SLF4j -->
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                 </exclusion>
-                 <exclusion>
-                    <groupId>hsqldb</groupId>
-                    <artifactId>hsqldb</artifactId>
-                 </exclusion>
-                 <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-core</artifactId>
-                 </exclusion>
-            </exclusions>
         </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <version>${org.springsecurity-version}</version>
+        </dependency>        
 
         <dependency>
            <groupId>org.jasig.cas.client</groupId>
