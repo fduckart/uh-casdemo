@@ -18,13 +18,13 @@
                         <td align="left" valign="top">A: Yes! Take a look at the
                             <a href="https://github.com/fduckart/uh-casdemo/blob/master/src/main/webapp/WEB-INF/web.xml" target="_git_repo_web">web.xml</a>
                             and
-                            <a href="https://github.com/fduckart/uh-casdemo/blob/master/src/main/resources/META-INF/spring/security.xml" target="_git_repo_security">security.xml</a>
+                            <a href="https://github.com/fduckart/uh-casdemo/blob/master/src/main/java/edu/hawaii/its/casdemo/configuration/SecurityConfig.java" target="_git_repo_security">SecurityConfig.java</a>
                             files.
                         </td>
                     </tr>
                     <tr>
                         <td align="left" valign="top">Q: Is there documention on the Spring configuration you used?</td>
-                        <td align="left" valign="top">A: Yes. Here it is: <a href="http://docs.spring.io/spring-security/site/docs/4.0.4.RELEASE/reference/htmlsingle/#cas" target="_cas_docs">Spring 4.0.4 CAS Reference</a></td>
+                        <td align="left" valign="top">A: Yes. Here it is: <a href="http://docs.spring.io/spring-security/site/docs/4.1.2.RELEASE/reference/htmlsingle/#cas" target="_cas_docs">Spring 4.1.2 CAS Reference</a></td>
                     </tr>
                     <tr>
                         <td colspan="2" align="left" valign="top"><b>General Questions</b></td>
