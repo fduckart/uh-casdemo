@@ -57,7 +57,7 @@
                             <li>Apache Tomcat 8.0.32</li>
                             <li>Java 1.8</li>
                             <li>Spring Framework 4.3.2</li>
-                            <li>Spring Security 4.0.4</li>
+                            <li>Spring Security 4.1.2</li>
                             <li>Apache Tiles 3.0.5</li>
                             <li>Bootstrap 3.3.7</li>
                             <li>JQuery 2.1.1</li>
