@@ -1,18 +1,21 @@
 package edu.hawaii.its.casdemo.action;
 
-import edu.hawaii.its.casdemo.service.ActionService;
-import edu.hawaii.its.casdemo.type.Action;
-import edu.hawaii.its.casdemo.type.ActionLog;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.annotation.PostConstruct;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+
+import edu.hawaii.its.casdemo.service.ActionService;
+import edu.hawaii.its.casdemo.type.Action;
+import edu.hawaii.its.casdemo.type.ActionLog;
 
 @Service("actionListener")
 public class ActionListenerImpl implements ActionListener {
@@ -30,13 +33,13 @@ public class ActionListenerImpl implements ActionListener {
 
     @PostConstruct
     public void fillActionMap() {
-        logger.info("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
+        logger.debug("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
         try {
             synchronized (actionMap) {
                 if (actionMap.isEmpty()) {
                     List<Action> actions = actionService.findActions();
                     for (Action a : actions) {
-                        logger.info("> loading action: " + a);
+                        logger.debug("> loading action: " + a);
                         actionMap.put(a.getCode(), a);
                     }
                 }
@@ -45,7 +48,7 @@ public class ActionListenerImpl implements ActionListener {
             logger.error("Error", e);
         }
         Assert.notEmpty(actionMap);
-        logger.info("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+        logger.debug("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
     }
 
     @Transactional

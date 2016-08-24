@@ -1,5 +1,6 @@
+<%@ taglib prefix="form"     uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c"        uri="http://java.sun.com/jsp/jstl/core" %>
 <div class='container-fluid'>
     <security:authorize access="hasRole('ROLE_UH')">
         <div class='row'>
@@ -36,7 +37,10 @@
         </div>
         <div class='row'>
             <div class='col-xs-offset-1 col-xs-10'>
-                <a href="<c:url value="logout" />" class="btn btn-sm btn-primary" role="button" style='width: 12.2em'>Logout</a>
+                <form:form method="post" action="logout">                    
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <button type="submit" class="btn btn-sm btn-primary" style='width: 12.2em'>Logout</button>                
+                </form:form>
             </div>
         </div>
     </security:authorize>
