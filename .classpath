@@ -36,7 +36,7 @@
 	<classpathentry kind="var" path="M2_REPO/org/opensaml/opensaml/1.1/opensaml-1.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.6.1/slf4j-api-1.6.1.jar" sourcepath="M2_REPO/org/slf4j/slf4j-api/1.6.1/slf4j-api-1.6.1-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar" sourcepath="M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/junit/junit/4.11/junit-4.11.jar" sourcepath="M2_REPO/junit/junit/4.11/junit-4.11-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/junit/junit/4.12/junit-4.12.jar" sourcepath="M2_REPO/junit/junit/4.12/junit-4.12-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar" sourcepath="M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar" sourcepath="M2_REPO/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1-sources.jar"/>
@@ -53,29 +53,17 @@
 	<classpathentry kind="var" path="M2_REPO/org/apache/tiles/tiles-servlet/3.0.5/tiles-servlet-3.0.5.jar" sourcepath="M2_REPO/org/apache/tiles/tiles-servlet/3.0.5/tiles-servlet-3.0.5-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/tiles/tiles-core/3.0.5/tiles-core-3.0.5.jar" sourcepath="M2_REPO/org/apache/tiles/tiles-core/3.0.5/tiles-core-3.0.5-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/tiles/tiles-api/3.0.5/tiles-api-3.0.5.jar" sourcepath="M2_REPO/org/apache/tiles/tiles-api/3.0.5/tiles-api-3.0.5-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/apache/tiles/tiles-request-api/1.0.1/tiles-request-api-1.0.1.jar" sourcepath="M2_REPO/org/apache/tiles/tiles-request-api/1.0.1/tiles-request-api-1.0.1-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-digester/commons-digester/2.0/commons-digester-2.0.jar" sourcepath="M2_REPO/commons-digester/commons-digester/2.0/commons-digester-2.0-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-beanutils/commons-beanutils/1.8.0/commons-beanutils-1.8.0.jar" sourcepath="M2_REPO/commons-beanutils/commons-beanutils/1.8.0/commons-beanutils-1.8.0-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/apache/tiles/tiles-request-servlet/1.0.1/tiles-request-servlet-1.0.1.jar" sourcepath="M2_REPO/org/apache/tiles/tiles-request-servlet/1.0.1/tiles-request-servlet-1.0.1-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/tiles/tiles-template/3.0.5/tiles-template-3.0.5.jar" sourcepath="M2_REPO/org/apache/tiles/tiles-template/3.0.5/tiles-template-3.0.5-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/tiles/tiles-autotag-core-runtime/1.1.0/tiles-autotag-core-runtime-1.1.0.jar" sourcepath="M2_REPO/org/apache/tiles/tiles-autotag-core-runtime/1.1.0/tiles-autotag-core-runtime-1.1.0-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/apache/tiles/tiles-request-jsp/1.0.1/tiles-request-jsp-1.0.1.jar" sourcepath="M2_REPO/org/apache/tiles/tiles-request-jsp/1.0.1/tiles-request-jsp-1.0.1-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/tiles/tiles-extras/3.0.5/tiles-extras-3.0.5.jar" sourcepath="M2_REPO/org/apache/tiles/tiles-extras/3.0.5/tiles-extras-3.0.5-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/apache/tiles/tiles-request-servlet-wildcard/1.0.1/tiles-request-servlet-wildcard-1.0.1.jar" sourcepath="M2_REPO/org/apache/tiles/tiles-request-servlet-wildcard/1.0.1/tiles-request-servlet-wildcard-1.0.1-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/apache/tiles/tiles-request-mustache/1.0.1/tiles-request-mustache-1.0.1.jar" sourcepath="M2_REPO/org/apache/tiles/tiles-request-mustache/1.0.1/tiles-request-mustache-1.0.1-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/github/spullara/mustache/java/core/0.6.2/core-0.6.2.jar" sourcepath="M2_REPO/com/github/spullara/mustache/java/core/0.6.2/core-0.6.2-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/codehaus/jackson/jackson-mapper-asl/1.5.2/jackson-mapper-asl-1.5.2.jar" sourcepath="M2_REPO/org/codehaus/jackson/jackson-mapper-asl/1.5.2/jackson-mapper-asl-1.5.2-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/codehaus/jackson/jackson-core-asl/1.5.2/jackson-core-asl-1.5.2.jar" sourcepath="M2_REPO/org/codehaus/jackson/jackson-core-asl/1.5.2/jackson-core-asl-1.5.2-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/google/guava/guava/r09/guava-r09.jar" sourcepath="M2_REPO/com/google/guava/guava/r09/guava-r09-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/github/spullara/mustache/java/builder/0.6.2/builder-0.6.2.jar" sourcepath="M2_REPO/com/github/spullara/mustache/java/builder/0.6.2/builder-0.6.2-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/tiles/tiles-freemarker/3.0.5/tiles-freemarker-3.0.5.jar" sourcepath="M2_REPO/org/apache/tiles/tiles-freemarker/3.0.5/tiles-freemarker-3.0.5-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/apache/tiles/tiles-request-freemarker/1.0.1/tiles-request-freemarker-1.0.1.jar" sourcepath="M2_REPO/org/apache/tiles/tiles-request-freemarker/1.0.1/tiles-request-freemarker-1.0.1-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/freemarker/freemarker/2.3.15/freemarker-2.3.15.jar" sourcepath="M2_REPO/org/freemarker/freemarker/2.3.15/freemarker-2.3.15-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/tiles/tiles-velocity/3.0.5/tiles-velocity-3.0.5.jar" sourcepath="M2_REPO/org/apache/tiles/tiles-velocity/3.0.5/tiles-velocity-3.0.5-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/velocity/velocity-tools/2.0/velocity-tools-2.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/oro/oro/2.0.8/oro-2.0.8.jar" sourcepath="M2_REPO/oro/oro/2.0.8/oro-2.0.8-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/velocity/velocity/1.6.2/velocity-1.6.2.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/apache/tiles/tiles-request-velocity/1.0.1/tiles-request-velocity-1.0.1.jar" sourcepath="M2_REPO/org/apache/tiles/tiles-request-velocity/1.0.1/tiles-request-velocity-1.0.1-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/tiles/tiles-el/3.0.5/tiles-el-3.0.5.jar" sourcepath="M2_REPO/org/apache/tiles/tiles-el/3.0.5/tiles-el-3.0.5-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/tiles/tiles-mvel/3.0.5/tiles-mvel-3.0.5.jar" sourcepath="M2_REPO/org/apache/tiles/tiles-mvel/3.0.5/tiles-mvel-3.0.5-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/mvel/mvel2/2.0.11/mvel2-2.0.11.jar" sourcepath="M2_REPO/org/mvel/mvel2/2.0.11/mvel2-2.0.11-sources.jar"/>
