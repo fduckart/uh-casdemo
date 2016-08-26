@@ -330,18 +330,22 @@
             <directory>src/main/resources</directory>
             <filtering>true</filtering>
             <includes>
-              <include>**/*.*</include>
+                <include>**/database.properties</include>
+                <include>**/general.properties</include>
+                <include>**/messages.properties</include>
             </includes>
-            <excludes>
-              <exclude>**/*.sql</exclude>
-            </excludes>
           </resource>
           <resource>
             <directory>src/main/resources</directory>
             <filtering>false</filtering>
             <includes>
-              <include>**/*.sql</include>
+                <include>**/*.*</include>              
             </includes>
+            <excludes>
+                <exclude>**/database.properties</exclude>
+                <exclude>**/general.properties</exclude>
+                <exclude>**/messages.properties</exclude>
+            </excludes>
           </resource>
         </resources>
         <plugins>
@@ -372,24 +376,6 @@
                             <BuildTime>${maven.build.timestamp}</BuildTime>
                         </manifestEntries>
                     </archive>
-                    <webResources>
-                        <resource>
-                            <directory>src/main/webapp</directory>
-                            <filtering>true</filtering>
-                            <includes>
-                                <include>**/*.txt</include>
-                                <include>**/*.jsp</include>
-                                <include>**/*.xml</include>
-                                <include>**/*.properties</include>
-                                <include>**/velocity/*</include>
-                            </includes>
-                            <excludes>
-                                <exclude>**/*.js</exclude>
-                                <exclude>**/*.java</exclude>
-                                <exclude>**/*.jpg</exclude>
-                            </excludes>
-                        </resource>
-                    </webResources>
                 </configuration>
             </plugin>
             <plugin>
