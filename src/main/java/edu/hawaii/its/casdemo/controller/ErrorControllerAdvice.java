@@ -29,12 +29,9 @@ public class ErrorControllerAdvice {
         if (user != null) {
             username = user.getUsername();
         }
-        logger.error("username: " + username + "; Exception: ", ex);
+        logger.error("username: " + username + "; Exception: " + ex);
 
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/");
-
-        return modelAndView;
+        return new ModelAndView("redirect:/");
     }
 
 }
