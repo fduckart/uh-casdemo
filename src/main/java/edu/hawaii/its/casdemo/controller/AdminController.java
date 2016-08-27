@@ -1,11 +1,15 @@
 package edu.hawaii.its.casdemo.controller;
 
 import java.io.IOException;
+import java.util.Locale;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import edu.hawaii.its.casdemo.service.ActionService;
 
 @Controller
@@ -13,6 +17,12 @@ public class AdminController {
 
     @Autowired
     private ActionService actionService;
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public String admin(Locale locale, Model model) {
+        return "admin";
+    }
 
     @RequestMapping(value = "/admin/actions", method = RequestMethod.GET)
     public String listActions(Model model) {

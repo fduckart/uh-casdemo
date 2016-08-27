@@ -63,12 +63,6 @@ public class HomeController {
         return "attributes";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String admin(Locale locale, Model model) {
-        return "admin";
-    }
-
     @RequestMapping(value = "/contact", method = RequestMethod.GET)
     public String contact(Locale locale, Model model) {
         return "contact";
