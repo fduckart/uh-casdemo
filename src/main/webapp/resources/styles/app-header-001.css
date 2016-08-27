@@ -8,11 +8,11 @@ body {
     background-color: white;
 }
 .navbar-fixed-top .nav {
-    background-color: white;
     padding-top: 40px;
     padding-bottom: 0px;
     padding-left: 0px;
     padding-right: 0px;
+    background-color: white;
 }
 .navbar-fixed-top .navbar-brand {
     padding-left: 20px;
@@ -25,11 +25,13 @@ body {
 .navbar-fixed-top .navbar-brand > img {
     height: 50px;
     width: 50px;
+    background-color: transparent;
 }
 .navbar-brand.uh-nav-app-name {
     height: 50px;
-    padding-top: 22px;
-    background-color: white;
+    width: auto;
+    padding-top: 20px;
+    background-color: transparent;
 }
 
 @media(min-width:768px) {
@@ -46,20 +48,19 @@ body {
         left: 25px;
         height: 90px;
         width: 90px;
-        z-index: 1;
-        background-color: white;
+        background-color: transparent;
     }
     .navbar-brand.uh-nav-app-name {
         position: fixed;
         top: 0px;
         left: 115px;
         height: 90px;
-        width: 230px;
-        padding-top: 55px;
-        z-index: -1;
-        font-size: 20px;
+        width: auto;
+        padding-top: 51px;
+        font-size: 22px;
         white-space: nowrap;
         text-align: left;
-        background-color: white;
+        background-color: transparent;
+
     }
 }
