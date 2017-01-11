@@ -24,7 +24,6 @@
         <junit.version>4.12</junit.version>
 
         <org.springframework-version>4.3.2.RELEASE</org.springframework-version>
-        <org.springwebflow-version>2.4.4.RELEASE</org.springwebflow-version>
         <org.springsecurity-version>4.1.2.RELEASE</org.springsecurity-version>
 
         <org.jasig.cas.client-version>3.4.1</org.jasig.cas.client-version>
@@ -86,16 +85,6 @@
             <version>${org.springframework-version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.webflow</groupId>
-            <artifactId>spring-webflow</artifactId>
-            <version>${org.springwebflow-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.webflow</groupId>
-            <artifactId>spring-js</artifactId>
-            <version>${org.springwebflow-version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
             <version>${org.springframework-version}</version>
@@ -124,12 +113,12 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-cas</artifactId>
             <version>${org.springsecurity-version}</version>
-        </dependency>        
+        </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <version>${org.springsecurity-version}</version>
-        </dependency>        
+        </dependency>
         <dependency>
            <groupId>org.jasig.cas.client</groupId>
            <artifactId>cas-client-core</artifactId>
@@ -339,7 +328,7 @@
             <directory>src/main/resources</directory>
             <filtering>false</filtering>
             <includes>
-                <include>**/*.*</include>              
+                <include>**/*.*</include>
             </includes>
             <excludes>
                 <exclude>**/database.properties</exclude>
