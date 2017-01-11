@@ -54,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private boolean casSendRenew;
 
     @Autowired
-    private UserDetailsServiceImpl casdemoUserDetailsService;
+    private UserDetailsServiceImpl userDetailsService;
 
     @PostConstruct
     public void init() {
@@ -100,7 +100,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public CasAuthenticationProvider casAuthenticationProvider() {
         CasAuthenticationProvider provider = new CasAuthenticationProvider();
         provider.setKey("an_id_for_this_auth_provider_only");
-        provider.setAuthenticationUserDetailsService(casdemoUserDetailsService);
+        provider.setAuthenticationUserDetailsService(userDetailsService);
         provider.setServiceProperties(serviceProperties());
 
         Saml11TicketValidator ticketValidator = new Saml11TicketValidator(casMainUrl);
@@ -143,10 +143,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilter(casAuthenticationFilter());
         http.exceptionHandling()
                 .authenticationEntryPoint(casProcessingFilterEntryPoint());
-
+        http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/resources/**").permitAll()
                 .antMatchers("/").permitAll()
+                .antMatchers("/resources/**").permitAll()
                 .antMatchers("/gate").permitAll()
                 .antMatchers("/contact").permitAll()
                 .antMatchers("/faq").permitAll()
