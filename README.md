@@ -5,27 +5,20 @@ A web application to demonstrate how to use the UH CAS service.
 ##### Java
 You'll need a Java JDK to build and run the project (version 1.8).
 
-The files for the project are kept in a code repository,
-available from here:
-
-https://github.com/fduckart/uh-casdemo
-
-
 ##### Building
-Install the necessary project dependencies:
+Install the necessary project dependencies from the command line:
 
     $ ./mvnw install
 
-To run the Application from the Command Line:
+To start the application:
 
     $ ./mvnw clean spring-boot:run
 
-To build a deployable war file for local development, if preferred:
 
-    $ ./mvnw clean package
+After the application starts, navigate to here in a web browser:
 
-You should have a deployable war file in the target directory.
-Deploy as usual in a servlet container, e.g. tomcat.
+
+http://localhost:8080/casdemo
 
 ##### Running Unit Tests
 The project includes Unit Tests for various parts of the system.
@@ -45,11 +38,8 @@ To run a single method in a test class:
 
     $ ./mvnw clean test -Dtest=StringsTest#trunctate
 
-##### Running the Application locally
 
-http://localhost:8080/casdemo
-
-
+##### Build to deploy to an Environment
 To build a deployable war file for deployment:
 
     $ ./mvnw clean package
@@ -64,7 +54,7 @@ make sure you enable SSL and add any necessary certificates.
 Here are instructions for Tomcat 8, for example:
 https://tomcat.apache.org/tomcat-8.0-doc/ssl-howto.html
 
-##### Deploying to Environment
+
 Copy the casdemo.war file into the webapps directory of Tomcat.
 
 
@@ -73,7 +63,12 @@ Download and install maven (version 3.2.1+).
 
 Be sure to set up a M2_REPO environment variable.
 
+##### Source Repository
+The files for the project are kept here:
 
-**Important Note**
+https://github.com/fduckart/uh-casdemo
+
+
+##### Important Note
 
 The UH Number is restricted by University of Hawaii policy, so be sure not to expose it on any public page.
