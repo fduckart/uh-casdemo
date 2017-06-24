@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="header :: copy"></head>
+<body>
+    <nav th:replace="menubar :: copy"></nav>
+
+    <!--  Content container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h4>Frequently Asked Questions</h4>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td colspan="2" align="left" valign="top"><b>General Questions</b></td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">Q: Who can  answer some basic questions about the application?</td>
+                            <td align="left" valign="top">A: Send an email to <a href="mailto:its-iam-help@lists.hawaii.edu">ITS Identity &amp; Access Management Group</a></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="left" valign="top"><b>Resources</b></td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">Q: Can I get the source code for this project?</td>
+                            <td align="left" valign="top">A: Sure thing. It is available at this <a href="https://github.com/fduckart/uh-casdemo" target="_git_repo">github repository.</a></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="left" valign="top"><b>Technologies</b></td>
+                        </tr>
+                        <tr>
+                            <td align="left" valign="top">Q: What did you use to create the site?</td>
+                            <td align="left" valign="top">
+                                <ul  class="list-unstyled">
+                                    <li>Apache Maven</li>
+                                    <li>Apache Tomcat</li>
+                                    <li>Java</li>
+                                    <li>
+                                        Spring Framework
+                                        <a href="http://docs.spring.io/spring/docs/4.3.5.RELEASE/spring-framework-reference/htmlsingle/" target="_sprgu">(Guide)</a>
+                                        <a href="http://docs.spring.io/spring/docs/4.3.5.RELEASE/javadoc-api/" target="_sprapi">(API)</a>
+                                    </li>
+                                    <li>
+                                        Spring Security
+                                        <a href="http://docs.spring.io/spring-security/site/docs/4.2.2.RELEASE/reference/htmlsingle/" target="_sprsecgu">(Guide)</a>
+                                    </li>
+                                    <li>
+                                        Spring Data
+                                        <a href="https://docs.spring.io/spring-data/jpa/docs/1.11.1.RELEASE/reference/html/" target="_sprdatgu">(Guide)</a>
+                                        <a href="https://docs.spring.io/spring-data/jpa/docs/1.11.1.RELEASE/api/" target="_sprdatapi">(API)</a>
+                                    </li>
+                                    <li>
+                                        Thymeleaf
+                                        <a href="http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#introducing-thymeleaf" target="_thylgu">(Guide)</a>
+                                    </li>
+                                    <li>
+                                        Bootstrap
+                                        <a href="http://getbootstrap.com/" target="_boogu">(Guide)</a>
+                                    </li>
+                                    <li>
+                                        AngularJS 
+                                        <a href="https://code.angularjs.org/1.5.8/docs/guide" target="_anggu">(Guide)</a>
+                                        <a href="https://code.angularjs.org/1.5.8/docs/api" target="_angapi">(API)</a>
+                                    </li>
+
+                                    <li>
+                                        AngularJS Bootstrap UI
+                                        <a href="https://github.com/angular-ui/bootstrap/tree/2.2.0/src/modal/docs" target="_angguui">(API)</a>
+                                    </li>
+                                    <li>
+                                        JQuery
+                                        <a href="http://api.jquery.com/" target="_jquapi">(API)</a>
+                                    </li>
+                                    <li>
+                                        Jasmine
+                                        <a href="https://jasmine.github.io/" target="_jasmine">(Guide)</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- / Content container. -->
+
+    <div th:replace="footer :: copy"></div>
+</body>
+</html>

@@ -3,18 +3,15 @@ package edu.hawaii.its.casdemo.configuration;
 import java.util.Properties;
 
 import javax.annotation.PostConstruct;
-import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.annotation.PropertySources;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -22,25 +19,36 @@ import org.springframework.util.Assert;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySources({
-        @PropertySource("classpath:META-INF/spring/general.properties"),
-        @PropertySource("classpath:META-INF/spring/database.properties"),
-        @PropertySource(value = "file://${user.home}/.${user.name}-conf/casdemo-overrides.properties",
-                        ignoreResourceNotFound = true),
-})
 public class DatabaseConfig {
 
-    @Value("${jdbc.url}")
+    private static final Log logger = LogFactory.getLog(DatabaseConfig.class);
+
+    @Value("${app.datasource.url}")
     private String url;
 
-    @Value("${jdbc.user}")
+    @Value("${app.datasource.username}")
     private String username;
 
-    @Value("${jdbc.password}")
+    @Value("${app.datasource.password}")
     private String password;
 
-    @Value("${jdbc.driverClassName}")
+    @Value("${app.datasource.driver-class-name}")
     private String driverClassName;
+
+    @Value("${app.jpa.show-sql}")
+    private String hibernateShowSql;
+
+    @Value("${app.jpa.hibernate.ddl-auto}")
+    private String hibernateHbm2ddlAuto;
+
+    @Value("${app.jpa.properties.hibernate.dialect}")
+    private String hibernateDialect;
+
+    @Value("${app.jpa.properties.hibernate.cache.provider_class}")
+    private String hibernateCacheProviderClass;
+
+    @Value("${app.jpa.properties.hibernate.connection.shutdown}")
+    private String hibernateConnectionShutdown;
 
     @PostConstruct
     public void init() {
@@ -48,6 +56,9 @@ public class DatabaseConfig {
         Assert.hasLength(username, "property 'user' is required");
         Assert.hasLength(driverClassName, "property 'driverClassName' is required");
         Assert.hasLength(hibernateCacheProviderClass, "property 'hibernateCacheProviderClass' is required");
+
+        logger.info("url: " + url);
+        logger.info("username: " + username);
     }
 
     @Bean(name = "dataSource")
@@ -59,11 +70,6 @@ public class DatabaseConfig {
         dataSource.setPassword(password);
 
         return dataSource;
-    }
-
-    @Bean
-    public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
-        return new JpaTransactionManager(emf);
     }
 
     @Bean
@@ -80,26 +86,6 @@ public class DatabaseConfig {
 
         return em;
     }
-
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer propertyConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
-
-    @Value("${db.hibernate.dialect}")
-    private String hibernateDialect;
-
-    @Value("${db.hibernate.hbm2ddl.auto}")
-    private String hibernateHbm2ddlAuto;
-
-    @Value("${db.hibernate.cache.provider_class}")
-    private String hibernateCacheProviderClass;
-
-    @Value("${db.hibernate.connection.shutdown}")
-    private String hibernateConnectionShutdown;
-
-    @Value("${db.hibernate.show_sql}")
-    private String hibernateShowSql;
 
     protected Properties jpaProperties() {
         Properties properties = new Properties();

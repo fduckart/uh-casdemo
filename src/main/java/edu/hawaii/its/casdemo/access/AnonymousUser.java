@@ -9,7 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 public class AnonymousUser extends User {
 
-    private static final long serialVersionUID = 2L;
+    private static final long serialVersionUID = 3L;
 
     public AnonymousUser() {
         super("anonymous", authorities());

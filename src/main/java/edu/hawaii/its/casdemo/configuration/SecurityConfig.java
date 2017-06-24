@@ -2,40 +2,45 @@ package edu.hawaii.its.casdemo.configuration;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.jasig.cas.client.proxy.ProxyGrantingTicketStorage;
 import org.jasig.cas.client.proxy.ProxyGrantingTicketStorageImpl;
 import org.jasig.cas.client.session.SingleSignOutFilter;
 import org.jasig.cas.client.validation.Saml11TicketValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.cas.ServiceProperties;
+import org.springframework.security.cas.authentication.CasAssertionAuthenticationToken;
 import org.springframework.security.cas.authentication.CasAuthenticationProvider;
 import org.springframework.security.cas.web.CasAuthenticationEntryPoint;
 import org.springframework.security.cas.web.CasAuthenticationFilter;
 import org.springframework.security.cas.web.authentication.ServiceAuthenticationDetailsSource;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.util.Assert;
 
+import edu.hawaii.its.casdemo.access.UserBuilder;
 import edu.hawaii.its.casdemo.access.UserDetailsServiceImpl;
 
-@Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 @ComponentScan(basePackages = "edu.hawaii.its.casdemo")
+@ConfigurationProperties(prefix = "cas")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Value("${url-base}")
+    private static final Log logger = LogFactory.getLog(SecurityConfig.class);
+
+    @Value("${url.home}")
+    private String homeUrl;
+
+    @Value("${url.base}")
     private String urlBase;
 
     @Value("${cas.login.url}")
@@ -54,27 +59,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private boolean casSendRenew;
 
     @Autowired
-    private UserDetailsServiceImpl userDetailsService;
+    private UserBuilder userBuilder;
 
     @PostConstruct
     public void init() {
+        Assert.hasLength(homeUrl, "property 'homeUrl' is required");
         Assert.hasLength(urlBase, "property 'urlBase' is required");
         Assert.hasLength(casLoginUrl, "property 'casLoginUrl' is required");
         Assert.hasLength(casLogoutUrl, "property 'casLogoutUrl' is required");
+
+        logger.info("urlBase: " + urlBase);
+        logger.info("casLoginUrl: " + casLoginUrl);
+        logger.info("casLogoutUrl: " + casLogoutUrl);
+        logger.info("casSendRenew: " + casSendRenew);
     }
 
-    @Bean
-    public ProxyGrantingTicketStorage proxyGrantingTicketStorage() {
+    private ProxyGrantingTicketStorage proxyGrantingTicketStorage() {
         return new ProxyGrantingTicketStorageImpl();
     }
 
-    @Bean
-    public SingleSignOutFilter singleLogoutFilter() {
-        return new SingleSignOutFilter();
-    }
-
-    @Bean
-    public ServiceProperties serviceProperties() {
+    private ServiceProperties serviceProperties() {
         ServiceProperties serviceProperties = new ServiceProperties();
         serviceProperties.setService(urlBase + "/login/cas");
         serviceProperties.setSendRenew(casSendRenew);
@@ -83,24 +87,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return serviceProperties;
     }
 
-    @Bean
-    public CasAuthenticationEntryPoint casProcessingFilterEntryPoint() {
+    private CasAuthenticationEntryPoint casAuthenticationEntryPoint() {
         CasAuthenticationEntryPoint entryPoint = new CasAuthenticationEntryPoint();
         entryPoint.setLoginUrl(casLoginUrl);
         entryPoint.setServiceProperties(serviceProperties());
         return entryPoint;
     }
 
-    @Bean
-    public LogoutFilter logoutFilter() {
-        return new LogoutFilter(casLogoutUrl, new SecurityContextLogoutHandler());
+    private SingleSignOutFilter singleSignOutFilter() {
+        SingleSignOutFilter filter = new SingleSignOutFilter();
+        filter.setCasServerUrlPrefix(casMainUrl);
+
+        return filter;
     }
 
-    @Bean(name = "authenticationManager")
-    public CasAuthenticationProvider casAuthenticationProvider() {
+    private CasAuthenticationProvider casAuthenticationProvider() {
         CasAuthenticationProvider provider = new CasAuthenticationProvider();
         provider.setKey("an_id_for_this_auth_provider_only");
-        provider.setAuthenticationUserDetailsService(userDetailsService);
+        provider.setAuthenticationUserDetailsService(authenticationUserDetailsService());
         provider.setServiceProperties(serviceProperties());
 
         Saml11TicketValidator ticketValidator = new Saml11TicketValidator(casMainUrl);
@@ -110,20 +114,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return provider;
     }
 
-    @Bean
-    public CasAuthenticationFilter casAuthenticationFilter() throws Exception {
+    private AuthenticationUserDetailsService<CasAssertionAuthenticationToken> authenticationUserDetailsService() {
+        return new UserDetailsServiceImpl(userBuilder);
+    }
+
+    private CasAuthenticationFilter casAuthenticationFilter() throws Exception {
         CasAuthenticationFilter filter = new CasAuthenticationFilter();
         filter.setAuthenticationManager(authenticationManager());
 
         SimpleUrlAuthenticationFailureHandler authenticationFailureHandler =
                 new SimpleUrlAuthenticationFailureHandler();
-        authenticationFailureHandler.setDefaultFailureUrl("/gate");
+        authenticationFailureHandler.setDefaultFailureUrl(homeUrl);
         filter.setAuthenticationFailureHandler(authenticationFailureHandler);
 
         SavedRequestAwareAuthenticationSuccessHandler authenticationSuccessHandler =
                 new SavedRequestAwareAuthenticationSuccessHandler();
         authenticationSuccessHandler.setAlwaysUseDefaultTargetUrl(false);
-        authenticationSuccessHandler.setDefaultTargetUrl("/gate");
+        authenticationSuccessHandler.setDefaultTargetUrl(homeUrl);
         filter.setAuthenticationSuccessHandler(authenticationSuccessHandler);
 
         ServiceAuthenticationDetailsSource authenticationDetailsSource =
@@ -137,25 +144,49 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return filter;
     }
 
+    public SecurityContextLogoutHandler securityContextLogoutHandler() {
+        return new SecurityContextLogoutHandler();
+    }
+
+    public LogoutFilter logoutFilter() {
+        return new LogoutFilter(homeUrl, securityContextLogoutHandler());
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.addFilter(casAuthenticationFilter());
-        http.exceptionHandling()
-                .authenticationEntryPoint(casProcessingFilterEntryPoint());
+        http.exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint());
+
         http.csrf().disable();
+
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/resources/**").permitAll()
+                .antMatchers("/api/**").permitAll()
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/fonts/**").permitAll()
+                .antMatchers("/images/**").permitAll()
+                .antMatchers("/javascript/**").permitAll()
                 .antMatchers("/webjars/**").permitAll()
-                .antMatchers("/gate").permitAll()
+                .antMatchers("/campus").permitAll()
+                .antMatchers("/campuses").permitAll()
                 .antMatchers("/contact").permitAll()
-                .antMatchers("/faq").permitAll()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/logout").permitAll()
-                .antMatchers("/denied").permitAll()
+                .antMatchers("/home").permitAll()
+                .antMatchers("/help/**").permitAll()
                 .antMatchers("/404").permitAll()
-                .anyRequest().authenticated();
+                .antMatchers("/holiday").permitAll()
+                .antMatchers("/holidays").permitAll()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/user").hasRole("USER")
+                .anyRequest().authenticated()
+                .and()
+                .addFilter(casAuthenticationFilter())
+                .addFilterBefore(logoutFilter(), LogoutFilter.class)
+                .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
+                .logout()
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .logoutUrl("/logout").permitAll()
+                .logoutSuccessUrl(homeUrl);
     }
 
     @Override

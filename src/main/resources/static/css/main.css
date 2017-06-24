@@ -1,0 +1,256 @@
+/* -------------------------------------------------------- */
+@font-face {
+    font-family: cinzel-regular;
+    src: url(/casdemo/fonts/Cinzel-Regular.ttf);
+}
+@font-face {
+    font-family: cormorant-upright-regular;
+    src: url(/casdemo/fonts/CormorantUpright-Regular.ttf);
+}
+@font-face {
+    font-family: lato-regular;
+    src: url(/casdemo/fonts/Lato-Regular.ttf);
+}
+@font-face {
+    font-family: librefranklin-regular;
+    src: url(/casdemo/fonts/LibreFranklin-Regular.ttf);
+}
+@font-face {
+    font-family: opensans-regular;
+    src: url(/casdemo/fonts/OpenSans-Regular.ttf);
+}
+@font-face {
+    font-family: roboto-regular;
+    src: url(/casdemo/fonts/Roboto-Regular.ttf);
+}
+@font-face {
+    font-family: alegreyasans-regular;
+    src: url(/casdemo/fonts/AlegreyaSans-Regular.ttf);
+}
+@font-face {
+    font-family: josefinsans-regular;
+    src: url(/casdemo/fonts/JosefinSans-Regular.ttf);
+}
+@font-face {
+    font-family: raleway-regular;
+    src: url(/casdemo/fonts/Raleway-Regular.ttf);
+}
+@font-face {
+    font-family: alice-regular;
+    src: url(/casdemo/fonts/Alice-Regular.ttf);
+}
+@font-face {
+    font-family: marcellus-regular;
+    src: url(/casdemo/fonts/Marcellus-Regular.ttf);
+}
+@font-face {
+    font-family: ovo-regular;
+    src: url(/casdemo/fonts/Ovo-Regular.ttf);
+}
+@font-face {
+    font-family: vidaloka-regular;
+    src: url(/casdemo/fonts/Vidaloka-Regular.ttf);
+}
+@font-face {
+    font-family: playfairdisplaysc-regular;
+    src: url(/casdemo/fonts/PlayfairDisplaySC-Regular.ttf);
+}
+@font-face {
+    font-family: SourceSerifPro-Regular;
+    src: url(/casdemo/fonts/SourceSerifPro-Regular.ttf);
+}
+@font-face {
+    font-family: playfairdisplay-regular;
+    src: url(/casdemo/fonts/PlayfairDisplay-Regular.ttf);
+}
+/* -------------------------------------------------------- */
+
+html {
+    position: relative;
+    min-height: 100%;
+    overflow-y:scroll;
+}
+
+body {
+    padding-top: 60px;
+    background-color: white;
+}
+
+h4 {
+   color: #BD9319;
+}
+
+a {
+    color: #0275d8;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0275d8;
+    text-decoration: underline;
+}
+
+td.uh-pre {
+    white-space: pre;           /* CSS 2.0 */
+    white-space: pre-wrap;      /* CSS 2.1 */
+    white-space: pre-line;      /* CSS 3.0 */
+    white-space: -pre-wrap;     /* Opera 4-6 */
+    white-space: -o-pre-wrap;   /* Opera 7 */
+    white-space: -moz-pre-wrap; /* Mozilla */
+    white-space: -hp-pre-wrap;  /* HP Printers */
+    display: inline-block;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.uh-branding-one {
+    font-family: cinzel-regular, serif;
+    font-size: 1.6em;
+    font-style: normal;
+    letter-spacing: 2.2px;
+    color: #777;
+}
+.uh-branding-two {
+    font-family: cormorant-upright-regular, cursive;
+    font-size: 0.8em;
+    font-style: normal;
+    color: #777;
+}
+
+.navbar {
+    background-color: white;
+}
+.navbar-fixed-top .nav {
+    padding-top: 40px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 20px;
+    background-color: white;
+}
+.navbar-fixed-top .navbar-brand {
+    padding-left: 20px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    min-height: 50px;
+    min-width: 50px;
+}
+.navbar-fixed-top .navbar-brand > img {
+    height: 50px;
+    width: 50px;
+    background-color: transparent;
+}
+.navbar-brand.uh-nav-app-name {
+    height: 30px;
+    width: auto;
+    padding-left: 5px;
+    padding-top: 20px;
+    color: #BD9319;
+    background-color: transparent;
+
+    font-family: alegreyasans-regular, opensans-regular, serif;
+    font-weight: normal;
+    font-size: 20px;    
+}
+.navbar-brand.uh-nav-app-name:hover {
+    color: #b08a17;
+}
+.dropshadow {
+    text-shadow: 1px 1px 3px rgba(150, 150, 150, 1);
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+    color: #555;
+    background-color: white;
+}
+
+.amp {
+    font-family: alice-regular, alegreyasans-regular, opensans-regular, serif;
+    font-weight: normal;
+    font-size: 90%;
+}
+
+.footer {
+    position: absolute;
+    padding-top: 5px;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 50px;
+    font-size: 100%;
+    text-align: center;
+}
+
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+
+.panel-heading .panel-title.app-types {
+    text-align: left;
+    vertical-align: text-bottom;
+    margin-top: 6px;
+    font-weight: bold;
+}
+
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+/* -------------------------------------------------------- */
+
+
+/* -------------------------------------------------------- */
+
+@media(min-width: 1200px) {
+  .container {
+    width: 992px;
+  }
+}
+/* -------------------------------------------------------- */
+
+@media(min-width:768px) {
+    body {
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+    .navbar {
+        min-height: 90px;
+    }
+    .navbar-fixed-top .navbar-brand > img {
+        position: inherit;
+        top: 0px;
+        left: 25px;
+        height: 90px;
+        width: 90px;
+    }
+    .navbar-brand.uh-nav-app-name {
+        position: inherit;
+        top: 0px;
+        left: 115px;
+        height: 90px;
+        padding-top: 52px;
+        padding-left: 18px;        
+        white-space: nowrap;
+        text-align: left;
+        font-size: 28px;
+        
+        background-color: transparent;
+    }
+
+    .uh-branding-one {
+        font-size: 1.8em;
+    }
+    .uh-branding-two {
+        font-size: 1.0em;
+    }
+
+}
+/* -------------------------------------------------------- */

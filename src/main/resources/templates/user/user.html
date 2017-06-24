@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="header :: copy"></head>
+<body>
+    <nav th:replace="menubar :: copy"></nav>
+
+    <!--  Content container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div sec:authorize="isAnonymous()">
+                    No user logged in.
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-12 panel-title app-types">
+                                    Login Attributes
+                                </div>
+                            </div>
+                        </div>                                       
+                         <div class="panel-body" >
+                             <table class="table table-hover table-condensed">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3">Selected CAS Login Details</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="1">uid</td>
+                                        <td colspan="2"><p th:text="${user.uid}"></p></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="1">username</td>
+                                        <td colspan="2"><p th:text="${user.username}"></p></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="1">uhuuid</td>
+                                        <td colspan="2"><p th:text="${user.uhuuid}"></p></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="1">cn</td>
+                                        <td colspan="2"><p th:text="${user.name}"></p></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="1" style="white-space: nowrap">All Attributes</td>
+                                        <td colspan="2" class="uh-pre"><p th:text="${user.attributes.map}"></p></td>
+                                    </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / Content container. -->
+
+    <div th:replace="footer :: copy"></div>
+
+</body>
+</html>

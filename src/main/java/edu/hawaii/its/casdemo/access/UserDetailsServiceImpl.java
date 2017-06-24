@@ -2,24 +2,23 @@ package edu.hawaii.its.casdemo.access;
 
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.jasig.cas.client.validation.Assertion;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.cas.userdetails.AbstractCasAssertionUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-@Service("casdemoUserDetailsService")
-@Transactional(readOnly = true)
 public class UserDetailsServiceImpl extends AbstractCasAssertionUserDetailsService {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
+    private static final Log logger = LogFactory.getLog(UserDetailsServiceImpl.class);
 
-    @Autowired
     private UserBuilder userBuilder;
+
+    public UserDetailsServiceImpl(UserBuilder userBuilder) {
+        super();
+        this.userBuilder = userBuilder;
+    }
 
     @Override
     protected UserDetails loadUserDetails(Assertion assertion) {
@@ -28,16 +27,8 @@ public class UserDetailsServiceImpl extends AbstractCasAssertionUserDetailsServi
             throw new UsernameNotFoundException("principal is null");
         }
 
-        String username = assertion.getPrincipal().getName();
-        if (username == null || username.trim().length() == 0) {
-            // Not sure this possible, either.
-            throw new UsernameNotFoundException("username is null or empty");
-        }
-
         Map<String, Object> map = assertion.getPrincipal().getAttributes();
-        if (logger.isDebugEnabled()) {
-            logger.debug("map: " + map);
-        }
+        logger.info("map: " + map);
 
         return userBuilder.make(new UhCasAttributes(map));
     }

@@ -1,37 +1,27 @@
 package edu.hawaii.its.casdemo.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.servlet.ModelAndView;
 
-import edu.hawaii.its.casdemo.access.User;
-import edu.hawaii.its.casdemo.security.UserContextService;
+import edu.hawaii.its.casdemo.access.UserContextService;
 
 @ControllerAdvice
 public class ErrorControllerAdvice {
 
-    private static final Logger logger = LoggerFactory.getLogger(ErrorControllerAdvice.class);
+    private static final Log logger = LogFactory.getLog(ErrorControllerAdvice.class);
 
     @Autowired
     private UserContextService userContextService;
 
     @ExceptionHandler(Exception.class)
-    public ModelAndView handleException(Exception ex) {
-        return errorModelAndView(ex);
-    }
+    public String handleException(Exception e) {
+        String username = userContextService.getCurrentUsername();
+        logger.error("username: " + username + "; Exception: " + e, e);
 
-    private ModelAndView errorModelAndView(Exception ex) {
-        String username = null;
-        User user = userContextService.getCurrentUser();
-        if (user != null) {
-            username = user.getUsername();
-        }
-        logger.error("username: " + username + "; Exception: " + ex);
-
-        return new ModelAndView("redirect:/");
+        return "redirect:/";
     }
 
 }

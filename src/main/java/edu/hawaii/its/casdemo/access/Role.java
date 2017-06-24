@@ -1,12 +1,17 @@
 package edu.hawaii.its.casdemo.access;
 
 public enum Role {
-    ANONYMOUS, UH, EMPLOYEE, ADMIN;
+    ANONYMOUS,
+    USER,
+    FACULTY,
+    STAFF,
+    ADMIN;
 
     public String longName() {
         return "ROLE_" + name();
     }
 
+    @Override
     public String toString() {
         return longName();
     }

@@ -8,16 +8,27 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PS_MESSAGE", schema = "UHAPP_DB")
+@Table(name = "message")
 public class Message implements Serializable {
 
-    public static final long serialVersionUID = 2L;
-    public static final int GATE_MESSAGE = 1;
+    private static final long serialVersionUID = 2L;
+
+    public static final int JUMBOTRON_MESSAGE = 1;
+    public static final int GATE_MESSAGE = 2;
+    public static final int ACCESS_DENIED_MESSAGE = 3;
+    public static final int STAFF_GATE_MESSAGE = 5;
+    public static final int FACULTY_GATE_MESSAGE = 6;
+    public static final int DUAL_USER_MESSAGE = 7;
 
     private Integer id;
     private Integer typeId;
-    private String text;
+    private String text = "";
     private String enabled;
+
+    // Constructor.
+    public Message() {
+        // Empty.
+    }
 
     @Id
     @Column(name = "MSG_ID")

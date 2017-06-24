@@ -1,29 +1,22 @@
 package edu.hawaii.its.casdemo.controller;
 
-import java.util.Locale;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import edu.hawaii.its.casdemo.access.User;
-import edu.hawaii.its.casdemo.action.ActionRecorder;
-import edu.hawaii.its.casdemo.security.UserContextService;
+import edu.hawaii.its.casdemo.access.UserContextService;
 import edu.hawaii.its.casdemo.service.MessageService;
 import edu.hawaii.its.casdemo.type.Message;
 
 @Controller
 public class HomeController {
 
-    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-
-    @Autowired
-    private ActionRecorder actionRecorder;
+    private static final Log logger = LogFactory.getLog(HomeController.class);
 
     @Autowired
     private UserContextService userContextService;
@@ -31,63 +24,68 @@ public class HomeController {
     @Autowired
     private MessageService messageService;
 
-    @RequestMapping(value = { "", "/", "/gate" }, method = { RequestMethod.GET })
-    public String gate(Locale locale, Model model) {
-        logger.debug("User at gate. The client locale is {}.", locale);
+    @GetMapping(value = { "/", "/home" })
+    public String home(Model model) {
+        logger.debug("User at home. ");
 
-        try {
-            Message message = messageService.findMessage(Message.GATE_MESSAGE);
-            if (message != null) {
-                model.addAttribute("systemMessage", message.getText());
-            }
-        } catch (Exception e) {
-            logger.error("Error", e);
-        }
+        int messageId = Message.JUMBOTRON_MESSAGE;
+        Message message = messageService.findMessage(messageId);
+        model.addAttribute("jumbotron", message.getText());
 
-        return "gate";
+        return "home";
     }
 
-    @PreAuthorize("hasRole('ROLE_UH')")
-    @RequestMapping(value = { "/attributes" }, method = { RequestMethod.GET })
-    public String attributes(Locale locale, Model model) {
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping(value = "/login")
+    public String login() {
+        logger.debug("User at login.");
+        return "redirect:/user";
+    }
 
-        logger.info("Entered attributes...");
+    @GetMapping(value = { "/holiday", "/holidays" })
+    public String holiday() {
+        logger.debug("User at holiday.");
+        return "holiday";
+    }
+
+    @GetMapping(value = { "/campus", "/campuses" })
+    public String campus() {
+        logger.debug("User at campus.");
+        return "campus";
+    }
+
+    @GetMapping(value = { "/help/contact", "/help/contacts" })
+    public String contact() {
+        logger.debug("User at contact.");
+        return "help/contact";
+    }
+
+    @GetMapping(value = { "/help/faq", "/help/faqs" })
+    public String faq() {
+        logger.debug("User at faq.");
+        return "help/faq";
+    }
+
+    @GetMapping(value = "/help/fonts")
+    public String fonts() {
+        logger.debug("User at fonts.");
+        return "help/fonts";
+    }
+
+    @PreAuthorize("hasRole('USER')")
+    @GetMapping("/user")
+    public String adminUser(Model model) {
+        logger.debug("User at /user.");
 
         User user = userContextService.getCurrentUser();
-        logger.info("current user    : " + user);
-        actionRecorder.publish("employee.view.home", user.getUhuuid());
-        model.addAttribute("currentUser", user);
+        model.addAttribute("user", user);
 
-        logger.info("Leaving attributes.");
-
-        return "attributes";
+        return "user/user";
     }
 
-    @RequestMapping(value = "/contact", method = RequestMethod.GET)
-    public String contact(Locale locale, Model model) {
-        return "contact";
-    }
-
-    @RequestMapping(value = "/faq", method = RequestMethod.GET)
-    public String faq(Locale locale, Model model) {
-        return "faq";
-    }
-
-    @RequestMapping(value = "/denied", method = RequestMethod.GET)
-    public String denied() {
-        return "denied";
-    }
-
-    @RequestMapping(value = "/404", method = RequestMethod.GET)
+    @GetMapping(value = "/404")
     public String invalid() {
         return "redirect:/";
     }
 
-    public void setUserContextService(UserContextService userContextService) {
-        this.userContextService = userContextService;
-    }
-
-    public void setActionRecorder(ActionRecorder actionRecorder) {
-        this.actionRecorder = actionRecorder;
-    }
 }

@@ -7,12 +7,12 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 public class User extends org.springframework.security.core.userdetails.User {
 
-    public static final long serialVersionUID = 2L;
-    private Long uhuuid;
+    private static final long serialVersionUID = 5L;
+    private String uhuuid;
     private UhAttributes attributes;
 
     // Constructor.
-    public User(String username, Long uhuuid, Collection<GrantedAuthority> authorities) {
+    public User(String username, String uhuuid, Collection<GrantedAuthority> authorities) {
         super(username, "", authorities);
         setUhuuid(uhuuid);
     }
@@ -26,12 +26,12 @@ public class User extends org.springframework.security.core.userdetails.User {
         return getUsername();
     }
 
-    public Long getUhuuid() {
+    public String getUhuuid() {
         return uhuuid;
     }
 
-    public void setUhuuid(Long uhuuid) {
-        this.uhuuid = uhuuid;
+    public void setUhuuid(String uhuuid) {
+        this.uhuuid = uhuuid != null ? uhuuid : "";
     }
 
     public String getAttribute(String name) {
@@ -54,9 +54,32 @@ public class User extends org.springframework.security.core.userdetails.User {
         return getAuthorities().contains(new SimpleGrantedAuthority(role.longName()));
     }
 
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + uhuuid.hashCode();
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!super.equals(obj))
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        User other = (User) obj;
+        if (!uhuuid.equals(other.uhuuid))
+            return false;
+        return true;
+    }
+
+    @Override
     public String toString() {
-        return "User [uid: " + getUid()
-                + ", uhuuid: " + getUhuuid()
+        return "User [uid=" + getUid()
+                + ", uhuuid=" + getUhuuid()
                 + ", super-class: " + super.toString() + "]";
     }
 }

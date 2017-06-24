@@ -1,28 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>casdemo</name>
-	<comment>NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
-	<projects>
-	</projects>
-	<buildSpec>
-		<buildCommand>
-			<name>org.eclipse.jdt.core.javabuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-	</buildSpec>
-	<natures>
-		<nature>org.eclipse.jdt.core.javanature</nature>
-	</natures>
-	<filteredResources>
-		<filter>
-			<id>1458690824184</id>
-			<name></name>
-			<type>26</type>
-			<matcher>
-				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-true-false-target</arguments>
-			</matcher>
-		</filter>
-	</filteredResources>
+  <name>uh-casdemo</name>
+  <comment>University of Hawaii CAS Demonstration App.</comment>
+  <projects/>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
 </projectDescription>

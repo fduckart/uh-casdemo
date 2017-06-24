@@ -1,9 +1,14 @@
 language: java
 install: true
-script: mvn -Denv=dev clean test
 jdk:
   - oraclejdk8
 
 branches:
   only:
   - master
+
+script:
+  - mvn clean test
+
+after_success:
+  - mvn clean cobertura:cobertura coveralls:report

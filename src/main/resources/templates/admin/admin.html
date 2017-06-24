@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="header :: copy"></head>
+<body>
+    <nav th:replace="menubar :: copy"></nav>
+
+    <!--  Content container -->
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-12 panel-title app-types">
+                        Administration
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" >
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a class="text-left" th:href="@{/admin/application/role}">Application Roles</a><br/>
+                        <a class="text-left" th:href="@{/campus}">Campuses</a><br/>
+                        <a class="text-left" th:href="@{/holiday}">Holidays</a><br/>
+                    </div>
+                    <div class="col-xs-12">
+                        <p></p>
+                    </div>
+                    <div class="col-xs-12">
+                        <a class="text-left" th:href="@{/user}">Login Attributes</a><br/>
+                    </div>
+                    <div class="col-xs-12">
+                        <p></p>
+                    </div>
+                    <div class="col-xs-12">
+                        <a class="text-left" th:href="@{/help/fonts}">Font Experiments</a><br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / Content container. -->
+
+    <div th:replace="footer :: copy"></div>
+</body>
+</html>

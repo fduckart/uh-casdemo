@@ -3,24 +3,37 @@ package edu.hawaii.its.casdemo.service;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.hawaii.its.casdemo.type.Message;
 
-@Repository("messageService")
+@Service
 public class MessageServiceImpl implements MessageService {
 
-    private static final Logger logger = LoggerFactory.getLogger(MessageServiceImpl.class);
+    private static final Log logger = LogFactory.getLog(MessageServiceImpl.class);
     private EntityManager em;
 
+    @Override
     @PersistenceContext
     public void setEntityManager(EntityManager em) {
         this.em = em;
+    }
+
+    @Override
+    public EntityManager getEntityManager() {
+        return em;
+    }
+
+    @Override
+    @CacheEvict(value = "messages", allEntries = true)
+    public void evictCache() {
+        // Empty.
     }
 
     @Override
@@ -30,6 +43,9 @@ public class MessageServiceImpl implements MessageService {
         Message message = null;
         try {
             message = em.find(Message.class, id);
+            if (message == null) {
+                message = new Message();
+            }
         } catch (Exception e) {
             logger.error("Error:", e);
         }
