@@ -73,6 +73,7 @@ html {
 
 body {
     padding-top: 60px;
+    padding-bottom: 40px;    
     background-color: white;
 }
 
@@ -150,7 +151,7 @@ td.uh-pre {
 
     font-family: alegreyasans-regular, opensans-regular, serif;
     font-weight: normal;
-    font-size: 20px;    
+    font-size: 20px;
 }
 .navbar-brand.uh-nav-app-name:hover {
     color: #b08a17;
@@ -173,7 +174,7 @@ td.uh-pre {
 
 .footer {
     position: absolute;
-    padding-top: 5px;
+    padding-top: 10px;
     bottom: 0;
     width: 100%;
     /* Set the fixed height of the footer here */
@@ -183,12 +184,12 @@ td.uh-pre {
 }
 
 .jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
 }
 .jumbotron .btn {
-  padding: 14px 24px;
-  font-size: 21px;
+    padding: 14px 24px;
+    font-size: 21px;
 }
 
 .panel-heading .panel-title.app-types {
@@ -219,8 +220,9 @@ td.uh-pre {
 @media(min-width:768px) {
     body {
         padding-top: 100px;
-        padding-bottom: 50px;
+        padding-bottom: 30px;
     }
+
     .navbar {
         min-height: 90px;
     }
@@ -237,11 +239,11 @@ td.uh-pre {
         left: 115px;
         height: 90px;
         padding-top: 52px;
-        padding-left: 18px;        
+        padding-left: 18px;
         white-space: nowrap;
         text-align: left;
         font-size: 28px;
-        
+
         background-color: transparent;
     }
 
