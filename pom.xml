@@ -217,6 +217,14 @@
                 <version>4.3.0</version>
             </plugin>
             <plugin>
+                <groupId>com.github.klieber</groupId>
+                <artifactId>phantomjs-maven-plugin</artifactId>
+                <version>0.7</version>
+                <configuration>
+                    <version>1.9.7</version>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>com.github.searls</groupId>
                 <artifactId>jasmine-maven-plugin</artifactId>
                 <version>2.2</version>
