@@ -54,8 +54,8 @@ public class Holiday implements Serializable {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "holiday_type",
-               joinColumns = @JoinColumn(name = "holiday_id", unique = false),
-               inverseJoinColumns = @JoinColumn(name = "type_id", unique = false))
+            joinColumns = @JoinColumn(name = "holiday_id", unique = false),
+            inverseJoinColumns = @JoinColumn(name = "type_id", unique = false))
     @OrderBy(value = "id")
     private List<Type> holidayTypes = new ArrayList<>(0);
 

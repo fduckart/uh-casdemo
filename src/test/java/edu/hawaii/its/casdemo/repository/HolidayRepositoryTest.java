@@ -15,6 +15,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import edu.hawaii.its.casdemo.configuration.SpringBootWebApplication;
@@ -22,6 +27,7 @@ import edu.hawaii.its.casdemo.service.HolidayService;
 import edu.hawaii.its.casdemo.type.Holiday;
 import edu.hawaii.its.casdemo.type.Type;
 import edu.hawaii.its.casdemo.util.Dates;
+import edu.hawaii.its.casdemo.util.Strings;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { SpringBootWebApplication.class })
@@ -43,6 +49,39 @@ public class HolidayRepositoryTest {
         assertThat(h.getObservedDate(), equalTo(date));
         assertThat(h.getOfficialDate(), equalTo(date));
         assertThat(h.getHolidayTypes().size(), equalTo(3));
+    }
+
+    @Test
+    public void findAllPaged() {
+        int size = 14;
+        Sort sort = new Sort(new Sort.Order(Direction.ASC, "observedDate"));
+        Pageable pageable = new PageRequest(0, size, sort);
+        Page<Holiday> page = holidayRepository.findAll(pageable);
+        int pages = page.getTotalPages();
+        System.out.println("  >>> total-page: " + pages);
+        System.out.println("  >>>       sort: " + page.getSort());
+
+        System.out.println(Strings.fill('v', 98));
+        //Iterator<Holiday> itor = page.iterator();
+        //        while (itor.hasNext()) {
+        //            Holiday h = itor.next();
+        //            System.out.println("  >>> " + h);
+        //        }
+
+        System.out.println("++++++++++++++++++++++++++++++++++++++");
+
+        for (int i = 0; i < pages; i++) {
+            if (page.hasContent()) {
+                List<Holiday> list = page.getContent();
+                for (Holiday h : list) {
+                    System.out.println("  " + h);
+                }
+                System.out.println("  ---------------------------------------");
+            }
+            page = holidayRepository.findAll(page.nextPageable());
+        }
+
+        System.out.println(Strings.fill('^', 98));
     }
 
     @Test

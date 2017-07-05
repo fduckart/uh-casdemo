@@ -211,7 +211,8 @@ td.uh-pre {
 /* -------------------------------------------------------- */
 
 @media(min-width: 1200px) {
-  .container {
+  .container, 
+  .container-fluid {
     width: 992px;
   }
 }

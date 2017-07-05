@@ -3,6 +3,7 @@ package edu.hawaii.its.casdemo.controller;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -44,7 +45,9 @@ public class HolidayRestControllerTest {
 
     @Before
     public void setUp() {
-        mockMvc = webAppContextSetup(context).build();
+        mockMvc = webAppContextSetup(context)
+                .apply(springSecurity())
+                .build();
     }
 
     @Test
@@ -53,6 +56,7 @@ public class HolidayRestControllerTest {
     }
 
     @Test
+    @WithMockUhUser
     public void httpGetHolidays() throws Exception {
         mockMvc.perform(get("/api/holidays"))
                 .andExpect(status().isOk())
@@ -60,6 +64,7 @@ public class HolidayRestControllerTest {
     }
 
     @Test
+    @WithMockUhUser
     public void httpGetHolidaysById() throws Exception {
         mockMvc.perform(get("/api/holidays/1"))
                 .andExpect(status().isOk())
@@ -75,6 +80,7 @@ public class HolidayRestControllerTest {
     }
 
     @Test
+    @WithMockUhUser
     public void httpGetHolidaysWithWrongIdType() throws Exception {
         mockMvc.perform(get("/api/holidays/xxx"))
                 .andExpect(status().is3xxRedirection())
@@ -82,6 +88,23 @@ public class HolidayRestControllerTest {
     }
 
     @Test
+    @WithMockUhUser
+    public void httpGetHolidaysGrid() throws Exception {
+        mockMvc.perform(get("/api/holidaygrid/get?page=1&size=10"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("content", hasSize(10)))
+                .andExpect(jsonPath("last").value("false"))
+                .andExpect(jsonPath("totalPages").value("14"))
+                .andExpect(jsonPath("totalElements").value("140"))
+                .andExpect(jsonPath("size").value("10"))
+                .andExpect(jsonPath("number").value("1"))
+                .andExpect(jsonPath("first").value("false"))
+                .andExpect(jsonPath("numberOfElements").value("10"))
+                .andExpect(jsonPath("content[9].description").value("Memorial Day"));
+    }
+
+    @Test
+    @WithMockUhUser
     public void httpGetTypes() throws Exception {
         mockMvc.perform(get("/api/types"))
                 .andExpect(status().isOk())

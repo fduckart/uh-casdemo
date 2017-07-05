@@ -5,11 +5,13 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.hawaii.its.casdemo.service.HolidayService;
@@ -25,8 +27,8 @@ public class HolidayRestController {
     private HolidayService holidayService;
 
     @RequestMapping(value = "/api/holidays",
-                    method = RequestMethod.GET,
-                    produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<JsonData<List<Holiday>>> holidays() {
         logger.info("Entered REST holidays...");
         JsonData<List<Holiday>> data = new JsonData<>(holidayService.findHolidays());
@@ -36,8 +38,8 @@ public class HolidayRestController {
     }
 
     @RequestMapping(value = "/api/holidays/{id}",
-                    method = RequestMethod.GET,
-                    produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<JsonData<Holiday>> holiday(@PathVariable Integer id) {
         logger.info("Entered REST holiday(" + id + ") ...");
         JsonData<Holiday> data = new JsonData<>(holidayService.findHoliday(id));
@@ -46,9 +48,20 @@ public class HolidayRestController {
                 .body(data);
     }
 
+    @RequestMapping(value = "/api/holidaygrid/get",
+            params = { "page", "size" },
+            method = RequestMethod.GET,
+            produces = "application/json")
+    public Page<Holiday> findPaginated(
+            @RequestParam(value = "page") int page,
+            @RequestParam(value = "size") int size) {
+        logger.info("Entered REST holidays grid...");
+        return holidayService.findPaginatedHdays(page, size);
+    }
+
     @RequestMapping(value = "/api/types",
-                    method = RequestMethod.GET,
-                    produces = MediaType.APPLICATION_JSON_VALUE)
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<JsonData<List<Type>>> types() {
         logger.info("Entered REST types...");
         List<Type> types = holidayService.findTypes();

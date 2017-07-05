@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="header :: copy"></head>
+<body ng-app="casdemoApp">
+    <nav th:replace="menubar :: copy"></nav>
+
+    <!--  Content container -->
+    <div class="container">
+        <div ng-controller="HolidayGridJsController as vm">
+            <div ui-grid="gridOptions" class="grid" ui-grid-pagination="ui-grid-pagination" style="height: 400px;"></div>
+        </div>
+    </div>
+    <!-- / Content container. -->
+
+    <div th:replace="footer :: copy"></div>
+</body>
+</html>

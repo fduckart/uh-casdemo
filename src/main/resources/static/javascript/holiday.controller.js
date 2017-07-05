@@ -31,4 +31,44 @@
     }
     casdemoApp.controller("HolidayJsController", HolidayJsController);
 
+    function HolidayGridJsController($scope, holidayJsService) {
+        var options = {
+            pageNumber: 1,
+            pageSize: 10,
+            sort: null
+        };
+
+        holidayJsService.getHolidays(options.pageNumber, options.pageSize).success(function(data) {
+            $scope.gridOptions.data = data.content;
+            $scope.gridOptions.totalItems = data.totalElements;
+        });
+
+        $scope.gridOptions = {
+            paginationPageSizes: [ 10, 15, 20, 250 ],
+            paginationPageSize: options.pageSize,
+            enableColumnMenus: false,
+            useExternalPagination: true,
+            columnDefs: [ {
+                name: 'description'
+            }, {
+                name: 'observedDate'
+            }, {
+                name: 'officialDate'
+            } ],
+            onRegisterApi: function(gridApi) {
+                $scope.gridApi = gridApi;
+                gridApi.pagination.on.paginationChanged($scope, function(newPage, pageSize) {
+                    options.pageNumber = newPage;
+                    options.pageSize = pageSize;
+                    holidayJsService.getHolidays(newPage, pageSize).success(function(data) {
+                        $scope.gridOptions.data = data.content;
+                        $scope.gridOptions.totalItems = data.totalElements;
+                    });
+                });
+            }
+        };
+
+    }
+    casdemoApp.controller("HolidayGridJsController", HolidayGridJsController);
+
 })();

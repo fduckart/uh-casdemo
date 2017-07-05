@@ -1,2 +1,2 @@
 'use strict';
-var casdemoApp = angular.module('casdemoApp', []);
+var casdemoApp = angular.module('casdemoApp', [ 'ui.grid', 'ui.grid.pagination' ]);

@@ -8,3 +8,4 @@ output.txt
 /bin
 /target
 *-overrides.properties
+/.mvn/

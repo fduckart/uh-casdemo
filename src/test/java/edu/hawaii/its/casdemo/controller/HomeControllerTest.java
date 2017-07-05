@@ -92,11 +92,19 @@ public class HomeControllerTest {
     }
 
     @Test
-    @WithMockUhUser
+    @WithMockUhAdmin
     public void holidayViaUh() throws Exception {
         mockMvc.perform(get("/holiday"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("holiday"));
+    }
+
+    @Test
+    @WithMockUhAdmin
+    public void holidayGridViaUh() throws Exception {
+        mockMvc.perform(get("/holidaygrid"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("holiday-grid"));
     }
 
     @Test

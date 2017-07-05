@@ -50,7 +50,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-
+        
         <!-- Hot swapping, disable cache for template, enable live reload -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -163,6 +163,11 @@
             <artifactId>angularjs</artifactId>
             <version>${angularjs-version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>angular-ui-grid</artifactId>
+            <version>4.0.6</version>
+        </dependency>        
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>font-awesome</artifactId>
