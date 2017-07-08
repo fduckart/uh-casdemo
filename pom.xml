@@ -3,7 +3,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>edu.hawaii.its</artifactId>    
+    <artifactId>edu.hawaii.its</artifactId>
     <packaging>war</packaging>
     <name>casdemo</name>
     <description>University of Hawaii CAS Demonstration App</description>
@@ -50,7 +50,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        
+
         <!-- Hot swapping, disable cache for template, enable live reload -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
