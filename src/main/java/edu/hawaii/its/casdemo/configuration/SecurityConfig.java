@@ -179,6 +179,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/holidaysgrid").hasRole("ADMIN")
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/user").hasRole("USER")
+                .antMatchers("/user/data").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(casAuthenticationFilter())

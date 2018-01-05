@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.2.RELEASE</version>
+        <version>1.5.9.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -49,6 +49,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
 
         <!-- Hot swapping, disable cache for template, enable live reload -->
@@ -222,14 +226,6 @@
                 <version>4.3.0</version>
             </plugin>
             <plugin>
-                <groupId>com.github.klieber</groupId>
-                <artifactId>phantomjs-maven-plugin</artifactId>
-                <version>0.7</version>
-                <configuration>
-                    <version>1.9.7</version>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>com.github.searls</groupId>
                 <artifactId>jasmine-maven-plugin</artifactId>
                 <version>2.2</version>
@@ -240,11 +236,12 @@
                         <source>classpath/META-INF/resources/webjars/bootstrap/3.3.7/js/bootstrap.min.js</source>
                         <source>classpath/META-INF/resources/webjars/angular-ui-bootstrap/2.2.0/ui-bootstrap.min.js</source>
                         <source>classpath/META-INF/resources/webjars/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.min.js</source>
+                        <source>classpath/META-INF/resources/webjars/angular-ui-grid/4.0.6/ui-grid.min.js</source>
                         <source>classpath/META-INF/resources/webjars/angular-mocks/${angular-mocks-version}/angular-mocks.js</source>
                         <source>${basedir}/src/main/resources/static/javascript/app.js</source>
                         <source>${basedir}/src/main/resources/static/javascript/app.service.js</source>
-                        <source>${basedir}/src/main/resources/static/javascript/casdemo.controller.application.js</source>
                         <source>${basedir}/src/main/resources/static/javascript/casdemo.controller.campus.js</source>
+                        <source>${basedir}/src/main/resources/static/javascript/casdemo.controller.role.js</source>
                     </preloadSources>
                     <specIncludes>
                         <include>**/*.test.js</include>

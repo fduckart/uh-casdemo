@@ -1,8 +1,10 @@
 package edu.hawaii.its.casdemo.controller;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -24,11 +26,15 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.context.WebApplicationContext;
 
+import edu.hawaii.its.casdemo.access.User;
 import edu.hawaii.its.casdemo.configuration.SpringBootWebApplication;
+import edu.hawaii.its.casdemo.service.EmailService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { SpringBootWebApplication.class })
 public class HomeControllerTest {
+
+    private static boolean sendRan = false;
 
     @Value("${url.home}")
     private String homeUrl;
@@ -49,6 +55,12 @@ public class HomeControllerTest {
 
     @Before
     public void setUp() {
+        sendRan = false;
+
+        // Make sure the email service does not send emails.
+        homeController.getEmailService().setEnabled(false);
+        assertFalse(homeController.getEmailService().isEnabled());
+
         mockMvc = webAppContextSetup(context)
                 .apply(springSecurity())
                 .build();
@@ -147,6 +159,36 @@ public class HomeControllerTest {
         mockMvc.perform(get("/user"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("user/user"));
+    }
+
+    @Test
+    @WithAnonymousUser
+    public void userData() throws Exception {
+        // Anonymous users not allowed here.
+        mockMvc.perform(post("/user/data").with(csrf()))
+                .andExpect(status().is3xxRedirection());
+    }
+
+    @Test
+    @WithMockUhUser(username = "beno")
+    public void userDataViaUhUser() throws Exception {
+
+        assertFalse(sendRan);
+
+        homeController.setEmailService(new EmailService(null) {
+            @Override
+            public void send(User user) {
+                assertThat(user.getUid(), equalTo("beno"));
+                sendRan = true;
+            }
+        });
+
+        // Anonymous users not allowed here.
+        mockMvc.perform(post("/user/data").with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/user"));
+
+        assertTrue(sendRan);
     }
 
     @Test

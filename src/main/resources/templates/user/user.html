@@ -13,15 +13,19 @@
                     No user logged in.
                 </div>
                 <div sec:authorize="isAuthenticated()">
-                
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
-                                <div class="col-xs-12 panel-title app-types">
+                                <div class="col-xs-12 col-sm-8 panel-title app-types">
                                     Login Attributes
                                 </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <form action="/user/data" th:action="@{/user/data}" method="post">
+                                        <button type="submit" class="btn btn-default pull-right">Email Me Data</button>
+                                    </form>
+                                </div>
                             </div>
-                        </div>                                       
+                        </div>
                          <div class="panel-body" >
                              <table class="table table-hover table-condensed">
                                 <tbody>
