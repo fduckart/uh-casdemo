@@ -11,6 +11,8 @@ import java.time.Month;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,8 @@ import edu.hawaii.its.casdemo.util.Strings;
 @SpringBootTest(classes = { SpringBootWebApplication.class })
 public class HolidayRepositoryTest {
 
+    private static final Log logger = LogFactory.getLog(HolidayRepositoryTest.class);
+
     @Autowired
     private HolidayRepository holidayRepository;
 
@@ -51,6 +55,7 @@ public class HolidayRepositoryTest {
         assertThat(h.getHolidayTypes().size(), equalTo(3));
     }
 
+    // Not really a test, but used to learn some features.
     @Test
     public void findAllPaged() {
         int size = 14;
@@ -58,30 +63,25 @@ public class HolidayRepositoryTest {
         Pageable pageable = new PageRequest(0, size, sort);
         Page<Holiday> page = holidayRepository.findAll(pageable);
         int pages = page.getTotalPages();
-        System.out.println("  >>> total-page: " + pages);
-        System.out.println("  >>>       sort: " + page.getSort());
 
-        System.out.println(Strings.fill('v', 98));
-        //Iterator<Holiday> itor = page.iterator();
-        //        while (itor.hasNext()) {
-        //            Holiday h = itor.next();
-        //            System.out.println("  >>> " + h);
-        //        }
+        logger.debug(">>> total-pages: " + pages);
+        logger.debug(">>>        sort: " + page.getSort());
 
-        System.out.println("++++++++++++++++++++++++++++++++++++++");
+        logger.debug(Strings.fill('v', 98));
+        logger.debug("++++++++++++++++++++++++++++++++++++++");
 
         for (int i = 0; i < pages; i++) {
             if (page.hasContent()) {
                 List<Holiday> list = page.getContent();
                 for (Holiday h : list) {
-                    System.out.println("  " + h);
+                    logger.debug("  " + h);
                 }
-                System.out.println("  ---------------------------------------");
+                logger.debug("  ---------------------------------------");
             }
             page = holidayRepository.findAll(page.nextPageable());
         }
 
-        System.out.println(Strings.fill('^', 98));
+        logger.debug(Strings.fill('^', 98));
     }
 
     @Test
