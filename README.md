@@ -1,7 +1,8 @@
 A web application to demonstrate how to use the UH CAS service.
 
 [![Build Status](https://travis-ci.org/fduckart/uh-casdemo.png?branch=master)](https://travis-ci.org/fduckart/uh-casdemo)
-[![Coverage Status](https://coveralls.io/repos/github/fduckart/uh-casdemo/badge.svg)](https://coveralls.io/github/fduckart/uh-casdemo)
+[![Coverage Status](https://coveralls.io/repos/github/fduckart/uh-casdemo/badge.svg?branch=master)](https://coveralls.io/github/fduckart/uh-casdemo?branch=master)
+
 ##### Java
 You'll need a Java JDK to build and run the project (version 1.8).
 
