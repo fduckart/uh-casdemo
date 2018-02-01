@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="header :: copy"></head>
+<body>
+    <nav th:replace="menubar :: copy"></nav>
+
+    <!--   Content container -->
+    <div class='container'>
+
+        <div class="panel panel-default">
+             <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-12 panel-title app-types">
+                        Feedback Result
+                    </div>
+                </div>
+             </div>
+             <div class="panel-body" >
+                 <table class="table table-hover table-condensed">
+                    <tbody>
+                        <tr>
+                            <td th:text="'Email: ' + ${feedback.email}"></td>
+                        </tr>
+                        <tr>
+                            <td th:text="'Message: ' + ${feedback.message}"></td>
+                        </tr>
+                        <tr>
+                            <td th:text="'Cool?: ' + ${feedback.cool}"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a class="text-left" th:href="@{/feedback}">Submit another feedback</a>
+                            </td>
+                        </tr>
+                      </tbody>
+                  </table>
+              </div>
+         </div>
+
+    </div>
+    <!-- / Content container. -->
+
+</body>
+</html>

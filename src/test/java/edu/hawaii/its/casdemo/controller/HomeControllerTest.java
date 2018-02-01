@@ -1,6 +1,7 @@
 package edu.hawaii.its.casdemo.controller;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.Matchers.hasProperty;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
@@ -9,6 +10,7 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrlPattern;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
@@ -29,6 +31,7 @@ import org.springframework.web.context.WebApplicationContext;
 import edu.hawaii.its.casdemo.access.User;
 import edu.hawaii.its.casdemo.configuration.SpringBootWebApplication;
 import edu.hawaii.its.casdemo.service.EmailService;
+import edu.hawaii.its.casdemo.type.Feedback;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { SpringBootWebApplication.class })
@@ -177,16 +180,73 @@ public class HomeControllerTest {
 
         homeController.setEmailService(new EmailService(null) {
             @Override
-            public void send(User user) {
+            public void sendCasData(User user) {
                 assertThat(user.getUid(), equalTo("beno"));
                 sendRan = true;
             }
         });
 
-        // Anonymous users not allowed here.
         mockMvc.perform(post("/user/data").with(csrf()))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/user"));
+
+        assertTrue(sendRan);
+    }
+
+    @Test
+    @WithAnonymousUser
+    public void feedbackViaAnonymous() throws Exception {
+        // Anonymous users not allowed here.
+        mockMvc.perform(post("/feedback").with(csrf()))
+                .andExpect(status().is3xxRedirection());
+    }
+
+    @Test
+    @WithMockUhUser(username = "krichards")
+    public void feedbackGetViaUhUser() throws Exception {
+
+        // Be sure not to send email.
+        assertFalse(homeController.getEmailService().isEnabled());
+
+        // What we are testing.
+        mockMvc.perform(get("/feedback").with(csrf()))
+                .andExpect(status().isOk())
+                .andExpect(view().name("feedback/form"));
+    }
+
+    @Test
+    @WithMockUhUser(username = "krichards")
+    public void feedbackPostViaUhUser() throws Exception {
+
+        assertFalse(sendRan);
+
+        homeController.setEmailService(new EmailService(null) {
+            @Override
+            public void sendFeedbackData(User user, Feedback feedback) {
+                assertThat(user.getUid(), equalTo("krichards"));
+                assertNotNull(feedback);
+                assertThat(feedback.getEmail(), equalTo("fbi@gov"));
+                assertThat(feedback.getMessage(), equalTo("spy"));
+                assertThat(feedback.isCool(), equalTo(true));
+                sendRan = true;
+            }
+        });
+
+        Feedback feedback = new Feedback();
+        feedback.setCool(true);
+        feedback.setEmail("fbi@gov");
+        feedback.setMessage("spy");
+
+        mockMvc.perform(post("/feedback")
+                .flashAttr("feedback", feedback)
+                .with(csrf()))
+                .andExpect(status().isOk())
+                .andExpect(view().name("feedback/result"))
+                .andExpect(model().attributeExists("feedback"))
+                .andExpect(model().attribute("feedback",
+                        hasProperty("email", equalTo("fbi@gov"))))
+                .andExpect(model().attribute("feedback",
+                        hasProperty("message", equalTo("spy"))));
 
         assertTrue(sendRan);
     }

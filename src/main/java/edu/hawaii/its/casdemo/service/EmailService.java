@@ -10,6 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import edu.hawaii.its.casdemo.access.User;
+import edu.hawaii.its.casdemo.type.Feedback;
 
 @Service
 public class EmailService {
@@ -37,23 +38,41 @@ public class EmailService {
         this.isEnabled = isEnabled;
     }
 
-    public void send(User user) {
-        logger.info("Sending email from send(user)...");
+    public void send(SimpleMailMessage msg) {
+        try {
+            javaMailSender.send(msg);
+        } catch (MailException ex) {
+            logger.error("Error", ex);
+        }
+    }
+
+    public void sendCasData(User user) {
+        logger.info("Sending email from sendCasData(user)...");
         if (isEnabled && user != null) {
             SimpleMailMessage msg = new SimpleMailMessage();
             msg.setTo(user.getAttribute("eduPersonPrincipalName"));
-
             msg.setFrom(from);
             String text = "Test from the CAS Demonstration Application."
                     + "\n\nYour basic User information:\n" + user;
             msg.setText(text);
-            msg.setSubject("Testing from Spring Boot");
-            try {
-                javaMailSender.send(msg);
-            } catch (MailException ex) {
-                logger.error("Error", ex);
-            }
+            msg.setSubject("Testing from CAS Demo");
+
+            send(msg);
         }
     }
 
+    public void sendFeedbackData(User user, Feedback feedback) {
+        logger.info("Sending email from sendFeedbackData(user)...");
+        if (isEnabled && user != null && feedback != null) {
+            SimpleMailMessage msg = new SimpleMailMessage();
+            msg.setTo(user.getAttribute("eduPersonPrincipalName"));
+            msg.setFrom(from);
+            String text = "Test from the CAS Demonstration Application."
+                    + "\n\nFeedback data:\n" + feedback;
+            msg.setText(text);
+            msg.setSubject("Testing from CAS Demo");
+
+            send(msg);
+        }
+    }
 }

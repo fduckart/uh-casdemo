@@ -7,12 +7,14 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import edu.hawaii.its.casdemo.access.User;
 import edu.hawaii.its.casdemo.access.UserContextService;
 import edu.hawaii.its.casdemo.service.EmailService;
 import edu.hawaii.its.casdemo.service.MessageService;
+import edu.hawaii.its.casdemo.type.Feedback;
 import edu.hawaii.its.casdemo.type.Message;
 
 @Controller
@@ -44,14 +46,6 @@ public class HomeController {
     @GetMapping(value = "/login")
     public String login() {
         logger.debug("User at login.");
-        return "redirect:/user";
-    }
-
-    @PreAuthorize("isAuthenticated()")
-    @PostMapping("/user/data")
-    public String userData() {
-        logger.debug("User at user/data.");
-        emailService.send(userContextService.getCurrentUser());
         return "redirect:/user";
     }
 
@@ -105,6 +99,30 @@ public class HomeController {
     @GetMapping(value = "/404")
     public String invalid() {
         return "redirect:/";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/user/data")
+    public String userData() {
+        logger.debug("User at user/data.");
+        emailService.sendCasData(userContextService.getCurrentUser());
+        return "redirect:/user";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/feedback")
+    public String feedbackForm(Model model) {
+        model.addAttribute("feedback", new Feedback());
+        return "feedback/form";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/feedback")
+    public String feedbackSubmit(@ModelAttribute Feedback feedback) {
+        logger.debug("feedback: " + feedback);
+        User user = userContextService.getCurrentUser();
+        emailService.sendFeedbackData(user, feedback);
+        return "feedback/result";
     }
 
     public EmailService getEmailService() {
