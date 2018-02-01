@@ -19,11 +19,11 @@
                 <form action="#" th:action="@{/feedback}" th:object="${feedback}" method="post">
                     <div class="form-group">
                         <label for="emailField">Email</label>
-                        <input th:field="*{email}" type="email" class="form-control" id="emailField" placeholder="Email"/>
+                        <input th:field="*{email}" type="email" class="form-control" id="emailField" placeholder="Email" required="true"/>
                     </div>
                     <div class="form-group">
                         <label for="messageField">Message</label>
-                        <input th:field="*{message}" type="text" class="form-control" id="messageField" placeholder="Message"/>
+                        <input th:field="*{message}" type="text" class="form-control" id="messageField" placeholder="Message" required="true"/>
                     </div>
                     <div class="checkbox">
                         <label>
