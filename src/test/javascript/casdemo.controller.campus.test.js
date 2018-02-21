@@ -2,14 +2,17 @@ describe("CampusJsController", function() {
 
     beforeEach(module('casdemoApp'));
 
+    var app;
     var scope;
     var controller;
     var dataProvider;
 
-    beforeEach(inject(function($rootScope, $controller, dataProvider) {
+    beforeEach(inject(function($rootScope, $controller, App, dataProvider) {
         scope = $rootScope.$new();
+        app = App;
         controller = $controller('CampusJsController', {
             $scope: scope,
+            App: app,
             dataProvider: dataProvider
         });
     }));
@@ -31,6 +34,9 @@ describe("CampusJsController", function() {
         expect(controller).toBeDefined();
         expect(scope.campuses).toBeDefined();
         expect(scope.campuses.length).toEqual(0);
+        expect(app.URL.CAMPUS_LOAD).toBeDefined();
+        expect(scope.url).toBeDefined();
+        expect(scope.url).toEqual(app.URL.CAMPUS_LOAD);
 
         // What we are testing:
         scope.init();
