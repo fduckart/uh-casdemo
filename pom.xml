@@ -3,7 +3,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>edu.hawaii.its</artifactId>
+    <groupId>edu.hawaii.its</groupId>
+    <artifactId>casdemo</artifactId>
     <packaging>war</packaging>
     <name>casdemo</name>
     <description>University of Hawaii CAS Demonstration App</description>
@@ -23,9 +24,9 @@
         <maven-war-plugin.version>2.4</maven-war-plugin.version>
         <java.version>1.8</java.version>
         <junit.version>4.12</junit.version>
-        <commons-dbcp-version>2.1.1</commons-dbcp-version>
+        <commons-dbcp.version>2.1.1</commons-dbcp.version>
         <hibernate.version>5.2.3.Final</hibernate.version>
-        <h2.version>1.4.192</h2.version>
+        <h2database.version>1.4.194</h2database.version>
         <cas.client-version>3.4.1</cas.client-version>
 
         <jquery-version>3.2.0</jquery-version>
@@ -78,18 +79,14 @@
 
         <!-- Database -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
+            <version>${h2database.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
-            <version>${commons-dbcp-version}</version>
+            <version>${commons-dbcp.version}</version>
         </dependency>
 
         <!-- Hibernate JPA Provider -->
@@ -145,13 +142,12 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.pdfbox</groupId>
-            <artifactId>pdfbox</artifactId>
-            <version>2.0.4</version>
-        </dependency>
-
         <!-- Webjars -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator</artifactId>
+            <version>0.30</version>
+        </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
@@ -237,6 +233,7 @@
                         <source>${basedir}/src/main/resources/static/javascript/app.service.js</source>
                         <source>${basedir}/src/main/resources/static/javascript/casdemo.controller.campus.js</source>
                         <source>${basedir}/src/main/resources/static/javascript/casdemo.controller.role.js</source>
+                        <source>${basedir}/src/main/resources/static/javascript/feedback.controller.js</source>
                     </preloadSources>
                     <specIncludes>
                         <include>**/*.test.js</include>
@@ -278,7 +275,7 @@
                 <version>0.8.0</version>
                 <configuration>
                     <excludes>
-                        <exclude>edu/hawaii/its/casdemo/configuration/SpringBootWebApplication.class</exclude>
+                        <exclude>**/configuration/SpringBootWebApplication.class</exclude>
                     </excludes>
                 </configuration>
                 <executions>
