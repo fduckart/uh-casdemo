@@ -62,8 +62,6 @@ Copy the casdemo.war file into the webapps directory of Tomcat.
 ##### Build Tool (Optional)
 Download and install maven (version 3.2.1+).
 
-Be sure to set up a M2_REPO environment variable.
-
 ##### Source Repository
 The files for the project are kept here:
 
