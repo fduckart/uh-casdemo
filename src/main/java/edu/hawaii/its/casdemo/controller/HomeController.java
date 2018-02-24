@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.hawaii.its.casdemo.access.User;
 import edu.hawaii.its.casdemo.access.UserContextService;
@@ -110,9 +112,17 @@ public class HomeController {
     }
 
     @PreAuthorize("isAuthenticated()")
+    @GetMapping("/feedback/{error}")
+    public String feedbackError(RedirectAttributes redirectAttributes, @PathVariable String error) {
+        Feedback feedback = new Feedback(new Exception(error));
+        redirectAttributes.addFlashAttribute("feedback", feedback);
+        return "redirect:/feedback";
+    }
+
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/feedback")
-    public String feedbackForm(Model model) {
-        model.addAttribute("feedback", new Feedback());
+    public String feedbackForm(Model model, Feedback feedback) {
+        model.addAttribute("feedback", feedback);
         return "feedback/form";
     }
 

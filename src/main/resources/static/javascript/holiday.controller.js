@@ -1,18 +1,22 @@
 (function() {
     'use strict';
 
-    function HolidayJsController($scope, dataProvider) {
-        const URL_HOLIDAY_LOAD = '/casdemo/api/holidays';
+    function HolidayJsController($scope, App, dataProvider) {
+        $scope.url = App.URL.API.HOLIDAY;
         $scope.years = [];
 
         $scope.init = function() {
             var date = new Date();
             var year = date.getFullYear();
             $scope.yearCode = year.toString();
-            $scope.maxYear = year;
-            $scope.years = [];
-            $scope.years.push(year);
+            $scope.years = [ year ];
+            $scope.loadData();
+            $scope.years.sort(function(a, b) {
+                return b - a
+            });
+        };
 
+        $scope.loadData = function() {
             dataProvider.loadData(function(d) {
                 var data = d.data;
                 $scope.holidays = data;
@@ -22,12 +26,8 @@
                         $scope.years.push(y);
                     }
                 }
-                $scope.years.sort(function(a, b) {
-                    return b - a
-                });
-            }, URL_HOLIDAY_LOAD);
-
-        };
+            }, $scope.url);
+        }
     }
     casdemoApp.controller("HolidayJsController", HolidayJsController);
 

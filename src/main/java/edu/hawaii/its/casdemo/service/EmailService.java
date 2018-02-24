@@ -46,33 +46,34 @@ public class EmailService {
         }
     }
 
+    private void sendMessage(User user, String message) {
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setSubject("Testing from CAS Demo");
+        msg.setTo(user.getAttribute("eduPersonPrincipalName"));
+        msg.setFrom(from);
+        msg.setText(message);
+
+        send(msg);
+    }
+
     public void sendCasData(User user) {
         logger.info("Sending email from sendCasData(user)...");
         if (isEnabled && user != null) {
-            SimpleMailMessage msg = new SimpleMailMessage();
-            msg.setTo(user.getAttribute("eduPersonPrincipalName"));
-            msg.setFrom(from);
             String text = "Test from the CAS Demonstration Application."
                     + "\n\nYour basic User information:\n" + user;
-            msg.setText(text);
-            msg.setSubject("Testing from CAS Demo");
-
-            send(msg);
+            sendMessage(user, text);
         }
     }
 
     public void sendFeedbackData(User user, Feedback feedback) {
         logger.info("Sending email from sendFeedbackData(user)...");
         if (isEnabled && user != null && feedback != null) {
-            SimpleMailMessage msg = new SimpleMailMessage();
-            msg.setTo(user.getAttribute("eduPersonPrincipalName"));
-            msg.setFrom(from);
             String text = "Test from the CAS Demonstration Application."
                     + "\n\nFeedback data:\n" + feedback;
-            msg.setText(text);
-            msg.setSubject("Testing from CAS Demo");
-
-            send(msg);
+            if (feedback.getExceptionStr() != null) {
+                text += "\n\nException: " + feedback.getExceptionStr();
+            }
+            sendMessage(user, text);
         }
     }
 }

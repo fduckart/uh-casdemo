@@ -2,6 +2,7 @@ package edu.hawaii.its.casdemo.type;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -37,6 +38,21 @@ public class FeedbackTest {
         assertThat(feedback.getEmail(), equalTo("u@v"));
         assertThat(feedback.getMessage(), equalTo("The Beast"));
         assertThat(feedback.isCool(), equalTo(true));
+
+        assertThat(feedback.getException(), equalTo(null));
+        feedback.setException(new Throwable("Mueller"));
+        assertThat(feedback.getException(), not(equalTo(null)));
+        assertThat(feedback.getExceptionStr(),
+                containsString("java.lang.Throwable: Mueller"));
+
+        feedback.setExceptionStr(null);
+        assertThat(feedback.getExceptionStr(), equalTo(null));
+        feedback.setExceptionStr("George Orwell");
+        assertThat(feedback.getExceptionStr(), equalTo("George Orwell"));
+
+        feedback.setException(null);
+        assertThat(feedback.getException(), equalTo(null));
+        assertThat(feedback.getExceptionStr(), equalTo(null));
     }
 
     @Test

@@ -84,7 +84,7 @@ public class HolidayRestControllerTest {
     public void httpGetHolidaysWithWrongIdType() throws Exception {
         mockMvc.perform(get("/api/holidays/xxx"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/"));
+                .andExpect(view().name("redirect:/feedback"));
     }
 
     @Test

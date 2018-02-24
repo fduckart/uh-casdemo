@@ -1,70 +1,6 @@
-/* -------------------------------------------------------- */
-@font-face {
-    font-family: cinzel-regular;
-    src: url(/casdemo/fonts/Cinzel-Regular.ttf);
-}
-@font-face {
-    font-family: cormorant-upright-regular;
-    src: url(/casdemo/fonts/CormorantUpright-Regular.ttf);
-}
-@font-face {
-    font-family: lato-regular;
-    src: url(/casdemo/fonts/Lato-Regular.ttf);
-}
-@font-face {
-    font-family: librefranklin-regular;
-    src: url(/casdemo/fonts/LibreFranklin-Regular.ttf);
-}
-@font-face {
-    font-family: opensans-regular;
-    src: url(/casdemo/fonts/OpenSans-Regular.ttf);
-}
-@font-face {
-    font-family: roboto-regular;
-    src: url(/casdemo/fonts/Roboto-Regular.ttf);
-}
-@font-face {
-    font-family: alegreyasans-regular;
-    src: url(/casdemo/fonts/AlegreyaSans-Regular.ttf);
-}
-@font-face {
-    font-family: josefinsans-regular;
-    src: url(/casdemo/fonts/JosefinSans-Regular.ttf);
-}
-@font-face {
-    font-family: raleway-regular;
-    src: url(/casdemo/fonts/Raleway-Regular.ttf);
-}
-@font-face {
-    font-family: alice-regular;
-    src: url(/casdemo/fonts/Alice-Regular.ttf);
-}
-@font-face {
-    font-family: marcellus-regular;
-    src: url(/casdemo/fonts/Marcellus-Regular.ttf);
-}
-@font-face {
-    font-family: ovo-regular;
-    src: url(/casdemo/fonts/Ovo-Regular.ttf);
-}
-@font-face {
-    font-family: vidaloka-regular;
-    src: url(/casdemo/fonts/Vidaloka-Regular.ttf);
-}
-@font-face {
-    font-family: playfairdisplaysc-regular;
-    src: url(/casdemo/fonts/PlayfairDisplaySC-Regular.ttf);
-}
-@font-face {
-    font-family: SourceSerifPro-Regular;
-    src: url(/casdemo/fonts/SourceSerifPro-Regular.ttf);
-}
-@font-face {
-    font-family: playfairdisplay-regular;
-    src: url(/casdemo/fonts/PlayfairDisplay-Regular.ttf);
-}
-/* -------------------------------------------------------- */
+@import url('font.css');
 
+/* -------------------------------------------------------- */
 html {
     position: relative;
     min-height: 100%;
@@ -73,7 +9,7 @@ html {
 
 body {
     padding-top: 60px;
-    padding-bottom: 40px;    
+    padding-bottom: 40px;
     background-color: white;
 }
 
@@ -90,6 +26,8 @@ a:hover {
     color: #0275d8;
     text-decoration: underline;
 }
+
+
 
 td.uh-pre {
     white-space: pre;           /* CSS 2.0 */
@@ -205,6 +143,18 @@ td.uh-pre {
 .marketing p + h4 {
   margin-top: 28px;
 }
+
+.a-link.btn-link {
+    color: #0275d8;  
+    text-decoration: none; 
+    padding: 0px;
+}
+.a-link.btn-link:focus, 
+.a-link.btn-link:hover {
+    color: #0275d8; 
+    text-decoration: underline;
+}
+
 /* -------------------------------------------------------- */
 
 @media(min-width: 1200px) {

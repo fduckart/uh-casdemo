@@ -1,7 +1,7 @@
 (function() {
 
-    function CampusJsController($scope, dataProvider) {
-        const URL_CAMPUS_LOAD = '/casdemo/api/campuses';
+    function CampusJsController($scope, App, dataProvider) {
+        $scope.url = App.URL.API.CAMPUS;
         $scope.campuses = [];
 
         $scope.init = function() {
@@ -11,7 +11,7 @@
         $scope.loadData = function() {
             dataProvider.loadData(function(data) {
                 $scope.campuses = data;
-            }, URL_CAMPUS_LOAD);
+            }, $scope.url);
         }
     }
     casdemoApp.controller("CampusJsController", CampusJsController);

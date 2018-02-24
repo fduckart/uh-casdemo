@@ -30,15 +30,21 @@
                           <input th:field="*{cool}" type="checkbox"/> Cool or Not?
                         </label>
                     </div>
+                    <div class="form-group" style="display:none;">
+                        <label for="exceptionField">Exception</label>
+                        <textarea class="form-control" th:if="*{exceptionStr != null}" th:field="*{exceptionStr}" type="text" id="exceptionField" required="false"></textarea>
+                    </div>
                     <div>
                         <br/>
                         <button type="reset"  class="btn btn-default">Reset</button>&nbsp;&nbsp;
                         <button type="submit" class="btn btn-default">Email Form Data to Me</button>
                     </div>
                 </form>
+                <br/>
              </div>
         </div>
     </div>
+    <!-- / Content container. -->
 
 </body>
 </html>

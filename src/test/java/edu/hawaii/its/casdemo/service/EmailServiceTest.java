@@ -75,9 +75,6 @@ public class EmailServiceTest {
         emailService.setEnabled(true);
         emailService.sendCasData(user);
         assertTrue(sendRan);
-
-        if ("off".equals("")) {
-        }
     }
 
     @Test
@@ -133,6 +130,19 @@ public class EmailServiceTest {
         emailService.setEnabled(true);
         emailService.sendFeedbackData(user, new Feedback());
         assertTrue(sendRan);
-    }
 
+        sendRan = false;
+        assertFalse(sendRan);
+        sender = new JavaMailSenderDummy() {
+            @Override
+            public void send(SimpleMailMessage arg0) throws MailException {
+                sendRan = true;
+                throw new MailSendException("Some Exception");
+            }
+        };
+        emailService = new EmailService(sender);
+        emailService.setEnabled(true);
+        emailService.sendFeedbackData(user, new Feedback(new Exception("cute")));
+        assertTrue(sendRan);
+    }
 }

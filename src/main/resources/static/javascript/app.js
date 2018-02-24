@@ -8,6 +8,12 @@ casdemoApp.constant('App', {
     },
     URL: {
         CAMPUS_LOAD: '/casdemo/api/campuses',
-        FEEDBACK: '/casdemo/api/feedabck'
+        FEEDBACK: '/casdemo/feedback/',
+        API: {
+            CAMPUS: '/casdemo/api/campuses',
+            ERROR: '/casdemo/api/error/',
+            HOLIDAY: '/casdemo/api/holidays',
+            ROLE: '/casdemo/api/roles'
+        }
     }
 });

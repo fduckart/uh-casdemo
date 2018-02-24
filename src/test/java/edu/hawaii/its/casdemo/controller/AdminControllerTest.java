@@ -75,6 +75,64 @@ public class AdminControllerTest {
     }
 
     @Test
+    @WithAnonymousUser
+    public void excViaAnonymous() throws Exception {
+        // Anonymous users not allowed into admin area.
+        mockMvc.perform(get("/admin/exc"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrlPattern(casLoginUrl + "**"));
+    }
+
+    @Test
+    @WithMockUhUser
+    public void excViaUh() throws Exception {
+        // Access forbidden due to insufficient role.
+        mockMvc.perform(get("/admin/exc"))
+                .andExpect(status().is4xxClientError())
+                .andExpect(status().is(403));
+    }
+
+    @Test
+    @WithMockUhAdmin
+    public void excViaAdmin() throws Exception {
+        mockMvc.perform(get("/admin/exc"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/feedback"));
+    }
+
+    @Test
+    @WithMockUhAdmin
+    public void fnfViaAdmin() throws Exception {
+        mockMvc.perform(get("/admin/fnf"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/feedback"));
+    }
+
+    @Test
+    @WithMockUhAdmin
+    public void ioeViaAdmin() throws Exception {
+        mockMvc.perform(get("/admin/ioe"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/feedback"));
+    }
+
+    @Test
+    @WithMockUhAdmin
+    public void rteViaAdmin() throws Exception {
+        mockMvc.perform(get("/admin/rte"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/feedback"));
+    }
+
+    @Test
+    @WithMockUhAdmin
+    public void thwViaAdmin() throws Exception {
+        mockMvc.perform(get("/admin/thw"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/feedback"));
+    }
+
+    @Test
     @WithMockUhAdmin
     public void adminUserRole() throws Exception {
         mockMvc.perform(get("/admin/application/role"))

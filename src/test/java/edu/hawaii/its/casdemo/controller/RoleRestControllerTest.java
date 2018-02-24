@@ -42,12 +42,6 @@ public class RoleRestControllerTest {
         mockMvc = webAppContextSetup(context).build();
     }
 
-    /*
-    insert into role (id, role, short_description, description) values (1,  'USER',    'User',          'User');
-    insert into role (id, role, short_description, description) values (2,  'FACULTY', 'Faculty',       'Faculty');
-    insert into role (id, role, short_description, description) values (3,  'STAFF',   'Staff',         'Staff');
-    insert into role (id, role, short_description, description) values (99, 'ADMIN',   'Administrator', 'Administrator');    
-    */
     @Test
     public void httpGetOffices() throws Exception {
         mockMvc.perform(get("/api/roles"))

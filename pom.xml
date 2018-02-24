@@ -233,7 +233,8 @@
                         <source>${basedir}/src/main/resources/static/javascript/app.service.js</source>
                         <source>${basedir}/src/main/resources/static/javascript/casdemo.controller.campus.js</source>
                         <source>${basedir}/src/main/resources/static/javascript/casdemo.controller.role.js</source>
-                        <source>${basedir}/src/main/resources/static/javascript/feedback.controller.js</source>
+                        <source>${basedir}/src/main/resources/static/javascript/error.controller.js</source>
+                        <source>${basedir}/src/main/resources/static/javascript/holiday.controller.js</source>
                     </preloadSources>
                     <specIncludes>
                         <include>**/*.test.js</include>

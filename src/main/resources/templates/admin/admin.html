@@ -30,11 +30,17 @@
                         <a class="text-left" th:href="@{/user}">Login Attributes</a><br/>
                     </div>
                     <div class="col-xs-12">
-                        <p></p>
+                        <a class="text-left" th:href="@{/help/fonts}">Font Experiments</a><br/>
+                        <a class="text-left" th:href="@{/feedback}">Feedback Experiment</a><br/><br/>
                     </div>
                     <div class="col-xs-12">
-                        <a class="text-left" th:href="@{/help/fonts}">Font Experiments</a><br/>
-                        <a class="text-left" th:href="@{/feedback}">Feedback Experiment</a><br/>
+                        <a class="text-left" th:href="@{/admin/ioe}">Throw IOException</a><br/>
+                        <a class="text-left" th:href="@{/admin/fnf}">Throw FileNotFoundException</a><br/>
+                        <a class="text-left" th:href="@{/admin/rte}">Throw RuntimeException</a><br/>
+                        <a class="text-left" th:href="@{/admin/exc}">Throw Exception</a><br/>
+                        <div ng-app="casdemoApp" ng-controller="ErrorJsController">
+                            <button type="button" class="btn btn-link a-link" ng-click="submit()">Throw Error via Javascript</button><br/>
+                        </div>
                     </div>
                 </div>
             </div>

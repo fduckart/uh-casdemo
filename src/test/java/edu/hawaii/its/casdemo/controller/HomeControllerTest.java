@@ -215,6 +215,27 @@ public class HomeControllerTest {
     }
 
     @Test
+    @WithAnonymousUser
+    public void feedbackErrorViaAnonymous() throws Exception {
+        // Anonymous users not allowed here.
+        mockMvc.perform(post("/feedback/politics").with(csrf()))
+                .andExpect(status().is3xxRedirection());
+    }
+
+    @Test
+    @WithMockUhUser(username = "krichards")
+    public void feedbackErrorGetViaUhUser() throws Exception {
+
+        // Be sure not to send email.
+        assertFalse(homeController.getEmailService().isEnabled());
+
+        // What we are testing.
+        mockMvc.perform(get("/feedback/icarus").with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/feedback"));
+    }
+
+    @Test
     @WithMockUhUser(username = "krichards")
     public void feedbackPostViaUhUser() throws Exception {
 
