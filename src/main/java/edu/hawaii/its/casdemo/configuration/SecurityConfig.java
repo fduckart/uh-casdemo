@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${cas.saml.tolerance}")
     private long casSamlTolerance;
 
-    @Value("${cas.send.renew}")
+    @Value("${cas.send.renew:false}")
     private boolean casSendRenew;
 
     @Autowired
@@ -63,15 +63,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @PostConstruct
     public void init() {
+        logger.info("     urlBase: " + urlBase);
+        logger.info("  casMainUrl: " + casMainUrl);
+        logger.info(" casLoginUrl: " + casLoginUrl);
+        logger.info("casLogoutUrl: " + casLogoutUrl);
+        logger.info("casSendRenew: " + casSendRenew);
+
         Assert.hasLength(homeUrl, "property 'homeUrl' is required");
         Assert.hasLength(urlBase, "property 'urlBase' is required");
         Assert.hasLength(casLoginUrl, "property 'casLoginUrl' is required");
         Assert.hasLength(casLogoutUrl, "property 'casLogoutUrl' is required");
-
-        logger.info("urlBase: " + urlBase);
-        logger.info("casLoginUrl: " + casLoginUrl);
-        logger.info("casLogoutUrl: " + casLogoutUrl);
-        logger.info("casSendRenew: " + casSendRenew);
     }
 
     private ProxyGrantingTicketStorage proxyGrantingTicketStorage() {
@@ -97,7 +98,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private SingleSignOutFilter singleSignOutFilter() {
         SingleSignOutFilter filter = new SingleSignOutFilter();
         filter.setCasServerUrlPrefix(casMainUrl);
-
         return filter;
     }
 

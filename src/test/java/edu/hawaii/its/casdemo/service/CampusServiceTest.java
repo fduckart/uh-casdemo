@@ -93,6 +93,7 @@ public class CampusServiceTest {
         campus = new Campus();
         campus.setCode("SS");
         campus.setDescription("Sky Saw");
+        campus.setActual("N");
 
         // What we are testing.
         campusService.addCampus(campus);

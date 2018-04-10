@@ -18,11 +18,11 @@ public final class UserBuilder {
     @Autowired
     private AuthorizationService authorizationService;
 
-    public final User make(Map<String, ?> map) {
+    public final synchronized User make(Map<String, ?> map) {
         return make(new UhCasAttributes(map));
     }
 
-    public final User make(UhAttributes attributes) {
+    public final synchronized User make(UhAttributes attributes) {
 
         String uid = attributes.getUid();
         if (Strings.isBlank(uid)) {
