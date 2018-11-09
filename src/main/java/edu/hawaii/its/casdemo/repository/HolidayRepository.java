@@ -1,6 +1,7 @@
 package edu.hawaii.its.casdemo.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +13,8 @@ import edu.hawaii.its.casdemo.type.Holiday;
 @Repository
 public interface HolidayRepository extends JpaRepository<Holiday, Integer> {
 
-    Holiday findById(Integer id);
+    @Override
+    Optional<Holiday> findById(Integer id);
 
     @Override
     Page<Holiday> findAll(Pageable pageable);

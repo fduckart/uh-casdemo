@@ -1,6 +1,7 @@
 package edu.hawaii.its.casdemo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -25,20 +26,21 @@ public class HolidayService {
 
     @Transactional(readOnly = true)
     public Page<Holiday> findPaginatedHdays(final int page, final int size) {
-        return holidayRepository.findAll(new PageRequest(page, size));
-
+        return holidayRepository.findAll(PageRequest.of(page, size));
     }
 
     @Transactional(readOnly = true)
     @Cacheable(value = "holidaysById", key = "#id")
     public Holiday findHoliday(Integer id) {
-        return holidayRepository.findById(id);
+        Optional<Holiday> holiday = holidayRepository.findById(id);
+        return holiday.isPresent() ? holiday.get() : null;
     }
 
     @Transactional(readOnly = true)
     @Cacheable(value = "holidayTypesById", key = "#id")
     public Type findType(Integer id) {
-        return holidayTypeRepository.findById(id);
+        Optional<Type> type = holidayTypeRepository.findById(id);
+        return type.isPresent() ? type.get() : null;
     }
 
     @Transactional(readOnly = true)

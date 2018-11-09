@@ -63,6 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @PostConstruct
     public void init() {
+        logger.info("     homeUrl: " + homeUrl);
         logger.info("     urlBase: " + urlBase);
         logger.info("  casMainUrl: " + casMainUrl);
         logger.info(" casLoginUrl: " + casLoginUrl);
@@ -71,8 +72,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         Assert.hasLength(homeUrl, "property 'homeUrl' is required");
         Assert.hasLength(urlBase, "property 'urlBase' is required");
+        Assert.hasLength(casMainUrl, "property 'casMainUrl' is required");
         Assert.hasLength(casLoginUrl, "property 'casLoginUrl' is required");
         Assert.hasLength(casLogoutUrl, "property 'casLogoutUrl' is required");
+
+        logger.info("SecurityConfig started. userBuilder: " + userBuilder);
     }
 
     private ProxyGrantingTicketStorage proxyGrantingTicketStorage() {

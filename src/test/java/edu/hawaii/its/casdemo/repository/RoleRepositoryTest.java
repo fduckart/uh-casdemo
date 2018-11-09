@@ -3,9 +3,10 @@ package edu.hawaii.its.casdemo.repository;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThat;
+
+import java.util.Optional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,8 +32,8 @@ public class RoleRepositoryTest {
         assertThat(count, equalTo(4L));
 
         final int id = 1;
-        Role r0 = roleRepository.findById(id);
-        Role r1 = roleRepository.findById(id);
+        Role r0 = roleRepository.findById(id).get();
+        Role r1 = roleRepository.findById(id).get();
         assertEquals(r0, r1);
         assertSame(r0, r1);
 
@@ -42,15 +43,15 @@ public class RoleRepositoryTest {
         assertEquals(r0, r1);
         assertSame(r0, r1);
 
-        Role r2 = roleRepository.findById(id);
+        Role r2 = roleRepository.findById(id).get();
         assertEquals(r0, r2);
         assertSame(r0, r2);
 
         Role r3 = roleRepository.findByRole("STAFF");
         assertThat(r3.getRole(), equalTo("STAFF"));
 
-        Role rn = roleRepository.findById(666);
-        assertNull(rn);
+        Optional<Role> rn = roleRepository.findById(666);
+        assertThat(rn.isPresent(), equalTo(false));
     }
 
 }

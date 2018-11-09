@@ -21,7 +21,7 @@ public class AppConfig {
 
     @PostConstruct
     public void init() {
-        logger.info("AppConfig init");
+        logger.info("AppConfig started.");
     }
 
 }

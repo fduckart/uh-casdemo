@@ -3,6 +3,10 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <prerequisites>
+        <maven>3.2.1</maven>
+    </prerequisites>
+
     <groupId>edu.hawaii.its</groupId>
     <artifactId>casdemo</artifactId>
     <packaging>war</packaging>
@@ -13,21 +17,18 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.9.RELEASE</version>
+        <version>2.1.0.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <prerequisites>
-        <maven>3.2.1</maven>
-    </prerequisites>
     <properties>
         <maven-war-plugin.version>2.4</maven-war-plugin.version>
         <java.version>1.8</java.version>
         <junit.version>4.12</junit.version>
         <commons-dbcp.version>2.1.1</commons-dbcp.version>
         <hibernate.version>5.2.3.Final</hibernate.version>
-        <h2database.version>1.4.194</h2database.version>
-        <cas.client-version>3.4.1</cas.client-version>
+        <h2database.version>1.4.197</h2database.version>
+        <cas.client-version>3.5.1</cas.client-version>
 
         <jquery-version>3.2.0</jquery-version>
         <angularjs-version>1.5.8</angularjs-version>
@@ -35,6 +36,10 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>    
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -55,8 +60,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
-
-        <!-- Hot swapping, disable cache for template, enable live reload -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -123,7 +126,7 @@
         </dependency>
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
         </dependency>
 
         <!-- Test -->
@@ -250,7 +253,7 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                            <tasks>
+                            <target>
                                 <echo>Now that you have a clean project,</echo>
                                 <echo>here are some common goals for this project:</echo>
                                 <echo>$ mvn clean test</echo>
@@ -260,7 +263,7 @@
                                 <echo>$ mvn jasmine:test</echo>
                                 <echo>$ mvn clean test jacoco:report</echo>
                                 <echo>$ mvn clean spring-boot:run</echo>
-                            </tasks>
+                            </target>
                         </configuration>
                     </execution>
                 </executions>

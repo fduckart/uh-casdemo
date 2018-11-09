@@ -1,6 +1,7 @@
 package edu.hawaii.its.casdemo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,8 @@ public class RoleService {
     }
 
     public Role find(Integer id) {
-        return roleRepository.findById(id);
+        Optional<Role> role = roleRepository.findById(id);
+        return role.isPresent() ? role.get() : null;
     }
 
     public Role findByRole(String role) {

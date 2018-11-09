@@ -59,6 +59,7 @@ public class DatabaseConfig {
 
         logger.info("url: " + url);
         logger.info("username: " + username);
+        logger.info("DatabaseConfig started.");
     }
 
     @Bean(name = "dataSource")
