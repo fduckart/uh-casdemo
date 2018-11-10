@@ -69,6 +69,10 @@ public class HolidayServiceTest {
         assertThat(t1.getId(), equalTo(1));
         assertEquals(t0, t1);
         assertSame(t0, t1); // Check if caching is working.
+
+        // Invalid ID value.
+        Type t3 = holidayService.findType(666);
+        assertThat(t3, equalTo(null));
     }
 
     @Test
@@ -127,6 +131,10 @@ public class HolidayServiceTest {
 
         Holiday h4 = holidayService.findHoliday(4);
         assertEquals("Prince Kuhio Day", h4.getDescription());
+
+        // Invalid ID value.
+        Holiday h9 = holidayService.findHoliday(666);
+        assertThat(h9, equalTo(null));
 
         assertEquals(3, h1.getHolidayTypes().size());
         assertEquals(3, h2.getHolidayTypes().size());
