@@ -1,7 +1,8 @@
+dist: trusty
 language: java
 install: true
 jdk:
-  - openjdk8
+  - oraclejdk8
 
 branches:
   only:
