@@ -5,6 +5,7 @@ A web application to demonstrate how to use the UH CAS service.
 
 ##### Java
 You'll need a Java JDK to build and run the project (version 1.8).
+If necessary, be sure to set your JAVA_HOME environment variable.
 
 ##### Building
 Install the necessary project dependencies from the command line:
