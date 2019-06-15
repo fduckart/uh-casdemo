@@ -24,7 +24,7 @@ import edu.hawaii.its.casdemo.configuration.SpringBootWebApplication;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { SpringBootWebApplication.class })
-@DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
+@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 public class RoleRestControllerTest {
 
     final MediaType APPLICATION_JSON_UTF8 =
