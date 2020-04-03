@@ -1,6 +1,7 @@
 package edu.hawaii.its.casdemo.access;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
@@ -108,5 +109,11 @@ public class UserDetailsServiceTest {
             assertEquals(e.getClass(), UsernameNotFoundException.class);
             assertThat(e.getMessage(), containsString("principal is null"));
         }
+    }
+
+    @Test
+    public void testToString() {
+        UserDetailsServiceImpl userDetailsService = new UserDetailsServiceImpl(userBuilder);
+        assertThat(userDetailsService.toString(), startsWith("UserDetailsServiceImpl"));
     }
 }

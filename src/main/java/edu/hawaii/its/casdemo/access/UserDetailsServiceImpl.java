@@ -2,22 +2,40 @@ package edu.hawaii.its.casdemo.access;
 
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jasig.cas.client.validation.Assertion;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.cas.userdetails.AbstractCasAssertionUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
+@Service
+@Transactional
 public class UserDetailsServiceImpl extends AbstractCasAssertionUserDetailsService {
 
     private static final Log logger = LogFactory.getLog(UserDetailsServiceImpl.class);
 
+    @Autowired
     private UserBuilder userBuilder;
 
-    public UserDetailsServiceImpl(UserBuilder userBuilder) {
+    // Constructor.
+    public UserDetailsServiceImpl(@Autowired UserBuilder userBuilder) {
         super();
         this.userBuilder = userBuilder;
+    }
+
+    @PostConstruct
+    public void init() {
+        logger.info("init; starting...");
+        logger.info("  userBuilder       : " + userBuilder);
+        Assert.notNull(userBuilder, "Property 'userBuilder' not set.");
+        logger.info("init; started.");
     }
 
     @Override
@@ -31,6 +49,11 @@ public class UserDetailsServiceImpl extends AbstractCasAssertionUserDetailsServi
         logger.info("map: " + map);
 
         return userBuilder.make(new UhCasAttributes(map));
+    }
+
+    @Override
+    public String toString() {
+        return "UserDetailsServiceImpl [userBuilder=" + userBuilder + "]";
     }
 
 }

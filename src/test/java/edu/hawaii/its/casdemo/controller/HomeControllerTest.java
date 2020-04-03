@@ -39,14 +39,11 @@ public class HomeControllerTest {
 
     private static boolean sendRan = false;
 
-    @Value("${url.home}")
-    private String homeUrl;
+    @Value("${app.url.home}")
+    private String appUrlHome;
 
     @Value("${cas.login.url}")
     private String casLoginUrl;
-
-    @Value("${cas.logout.url}")
-    private String casLoginOut;
 
     @Autowired
     private HomeController homeController;
@@ -145,7 +142,7 @@ public class HomeControllerTest {
         MvcResult mvcResult = mockMvc.perform(post("/logout").with(csrf()))
                 .andExpect(status().is3xxRedirection())
                 .andReturn();
-        assertThat(mvcResult.getResponse().getRedirectedUrl(), equalTo(homeUrl));
+        assertThat(mvcResult.getResponse().getRedirectedUrl(), equalTo(appUrlHome));
     }
 
     @Test
