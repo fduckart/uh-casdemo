@@ -38,7 +38,7 @@ public class UserDetailsServiceTest {
         map.put("uhuuid", "89999999");
         AttributePrincipal principal = new AttributePrincipalImpl("duckart", map);
         Assertion assertion = new AssertionImpl(principal);
-        UserDetailsServiceImpl userDetailsService = new UserDetailsServiceImpl(userBuilder);
+        CasUserDetailsService userDetailsService = new CasUserDetailsService(userBuilder);
         User user = (User) userDetailsService.loadUserDetails(assertion);
 
         // Basics.
@@ -81,7 +81,7 @@ public class UserDetailsServiceTest {
 
         AttributePrincipal principal = new AttributePrincipalImpl("jjcale", map);
         Assertion assertion = new AssertionImpl(principal);
-        UserDetailsServiceImpl userDetailsService = new UserDetailsServiceImpl(userBuilder);
+        CasUserDetailsService userDetailsService = new CasUserDetailsService(userBuilder);
         User user = (User) userDetailsService.loadUserDetails(assertion);
 
         // Basics.
@@ -101,7 +101,7 @@ public class UserDetailsServiceTest {
     @Test
     public void loadUserDetailsExceptionOne() {
         Assertion assertion = new AssertionDummy();
-        UserDetailsServiceImpl userDetailsService = new UserDetailsServiceImpl(userBuilder);
+        CasUserDetailsService userDetailsService = new CasUserDetailsService(userBuilder);
         try {
             userDetailsService.loadUserDetails(assertion);
             fail("Should not have reached here.");
@@ -113,7 +113,7 @@ public class UserDetailsServiceTest {
 
     @Test
     public void testToString() {
-        UserDetailsServiceImpl userDetailsService = new UserDetailsServiceImpl(userBuilder);
-        assertThat(userDetailsService.toString(), startsWith("UserDetailsServiceImpl"));
+        CasUserDetailsService userDetailsService = new CasUserDetailsService(userBuilder);
+        assertThat(userDetailsService.toString(), startsWith("CasUserDetailsService"));
     }
 }

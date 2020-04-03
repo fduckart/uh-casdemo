@@ -17,15 +17,15 @@ import org.springframework.util.Assert;
 
 @Service
 @Transactional
-public class UserDetailsServiceImpl extends AbstractCasAssertionUserDetailsService {
+public class CasUserDetailsService extends AbstractCasAssertionUserDetailsService {
 
-    private static final Log logger = LogFactory.getLog(UserDetailsServiceImpl.class);
+    private static final Log logger = LogFactory.getLog(CasUserDetailsService.class);
 
     @Autowired
     private UserBuilder userBuilder;
 
     // Constructor.
-    public UserDetailsServiceImpl(@Autowired UserBuilder userBuilder) {
+    public CasUserDetailsService(@Autowired UserBuilder userBuilder) {
         super();
         this.userBuilder = userBuilder;
     }
@@ -53,7 +53,7 @@ public class UserDetailsServiceImpl extends AbstractCasAssertionUserDetailsServi
 
     @Override
     public String toString() {
-        return "UserDetailsServiceImpl [userBuilder=" + userBuilder + "]";
+        return "CasUserDetailsService [userBuilder=" + userBuilder + "]";
     }
 
 }

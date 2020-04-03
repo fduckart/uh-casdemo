@@ -30,8 +30,8 @@ import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.util.Assert;
 
+import edu.hawaii.its.casdemo.access.CasUserDetailsService;
 import edu.hawaii.its.casdemo.access.UserBuilder;
-import edu.hawaii.its.casdemo.access.UserDetailsServiceImpl;
 
 @EnableWebSecurity
 @ComponentScan(basePackages = "edu.hawaii.its.casdemo")
@@ -111,7 +111,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     public AuthenticationUserDetailsService<CasAssertionAuthenticationToken> authenticationUserDetailsService() {
-        return new UserDetailsServiceImpl(userBuilder);
+        return new CasUserDetailsService(userBuilder);
     }
 
     private CasAuthenticationFilter casAuthenticationFilter() throws Exception {
