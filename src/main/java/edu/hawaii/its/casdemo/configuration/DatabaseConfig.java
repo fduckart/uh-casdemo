@@ -8,7 +8,6 @@ import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -78,9 +77,8 @@ public class DatabaseConfig {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 
         em.setPersistenceUnitName("casdemoPersistenceUnit");
-        em.setPersistenceProviderClass(HibernatePersistenceProvider.class);
+        em.setDataSource(dataSource());
         em.setPackagesToScan("edu.hawaii.its.casdemo.type");
-
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setJpaProperties(jpaProperties());
         em.setDataSource(dataSource());
