@@ -22,7 +22,7 @@ public class WithMockUserSecurityContextFactory
 
     @Override
     public SecurityContext createSecurityContext(WithMockUhUser uhUser) {
-        Set<GrantedAuthority> authorities = new LinkedHashSet<GrantedAuthority>();
+        Set<GrantedAuthority> authorities = new LinkedHashSet<>();
         for (String role : uhUser.roles()) {
             authorities.add(new SimpleGrantedAuthority(role));
         }

@@ -22,7 +22,7 @@ public class UserTest {
 
     @Test
     public void construction() {
-        Set<GrantedAuthority> authorities = new LinkedHashSet<GrantedAuthority>();
+        Set<GrantedAuthority> authorities = new LinkedHashSet<>();
 
         User user = new User("a", authorities);
         assertNotNull(user);
@@ -32,7 +32,7 @@ public class UserTest {
         assertThat(user.getUhuuid(), equalTo(""));
         assertNull(user.getAttributes());
 
-        authorities = new LinkedHashSet<GrantedAuthority>();
+        authorities = new LinkedHashSet<>();
         authorities.add(new SimpleGrantedAuthority(Role.ANONYMOUS.longName()));
         user = new User("b", "12345", authorities);
 
@@ -55,7 +55,7 @@ public class UserTest {
         map.put("mail", "frank@example.com");
         map.put("eduPersonAffiliation", "aff");
 
-        Set<GrantedAuthority> authorities = new LinkedHashSet<GrantedAuthority>();
+        Set<GrantedAuthority> authorities = new LinkedHashSet<>();
         User user = new User("a", authorities);
         user.setAttributes(new UhCasAttributes(map));
 
@@ -67,7 +67,7 @@ public class UserTest {
 
     @Test
     public void testEquals() {
-        Set<GrantedAuthority> authorities = new LinkedHashSet<GrantedAuthority>();
+        Set<GrantedAuthority> authorities = new LinkedHashSet<>();
 
         User u0 = new User("user0", "u0", authorities);
         assertTrue(u0.equals(u0));

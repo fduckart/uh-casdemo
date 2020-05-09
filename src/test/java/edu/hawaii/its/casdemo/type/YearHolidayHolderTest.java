@@ -36,7 +36,7 @@ public class YearHolidayHolderTest {
         assertNotNull(holder);
         assertTrue(holder.isEmpty());
 
-        List<Holiday> holidays = new ArrayList<Holiday>();
+        List<Holiday> holidays = new ArrayList<>();
         holder = new YearHolidayHolder(holidays);
         assertNotNull(holder);
         assertTrue(holder.isEmpty());
@@ -48,7 +48,7 @@ public class YearHolidayHolderTest {
 
         Date date = Dates.toDate(Dates.firstDateOfYear(2017));
         Holiday h = new Holiday(date, date);
-        List<Holiday> holidays = new ArrayList<Holiday>();
+        List<Holiday> holidays = new ArrayList<>();
         holidays.add(h);
         holder = new YearHolidayHolder(holidays);
         assertFalse(holder.isEmpty());
@@ -57,7 +57,7 @@ public class YearHolidayHolderTest {
     @Test
     public void addNullHoliday() {
         assertTrue(holder.isEmpty());
-        List<Holiday> holidays = new ArrayList<Holiday>();
+        List<Holiday> holidays = new ArrayList<>();
         holidays.add(null); // Null Holiday.
         holder = new YearHolidayHolder(holidays);
         assertTrue(holder.isEmpty());
@@ -67,7 +67,7 @@ public class YearHolidayHolderTest {
     public void getYears() {
         assertTrue(holder.isEmpty());
 
-        List<Holiday> holidays = new ArrayList<Holiday>();
+        List<Holiday> holidays = new ArrayList<>();
         for (int year = 2000; year <= 2015; year++) {
             Date date = Dates.toDate(Dates.firstDateOfYear(year));
             holidays.add(new Holiday(date, date));
@@ -98,7 +98,7 @@ public class YearHolidayHolderTest {
         assertThat(holder.currentYear(), equalTo(2016));
         assertThat(holder.getYear(), equalTo(0)); // Weird.
 
-        List<Holiday> holidays = new ArrayList<Holiday>();
+        List<Holiday> holidays = new ArrayList<>();
         for (int year = 2000; year <= 2017; year++) {
             Date date = Dates.toDate(Dates.firstDateOfYear(year));
             holidays.add(new Holiday(date, date));
@@ -121,7 +121,7 @@ public class YearHolidayHolderTest {
         // the years range spans accross it.
         assertThat(holder.getYear(), equalTo(2016));
 
-        holidays = new ArrayList<Holiday>();
+        holidays = new ArrayList<>();
         for (int year = 2000; year <= 2014; year++) {
             Date date = Dates.toDate(Dates.firstDateOfYear(year));
             holidays.add(new Holiday(date, date));
@@ -144,7 +144,7 @@ public class YearHolidayHolderTest {
         holder.setYear(2013);
         assertThat(holder.getYear(), equalTo(2013));
 
-        holidays = new ArrayList<Holiday>();
+        holidays = new ArrayList<>();
         for (int year = 2014; year <= 2015; year++) {
             for (Month month : Month.values()) {
                 LocalDate localDate = Dates.newLocalDate(year, month, 1);
@@ -178,7 +178,7 @@ public class YearHolidayHolderTest {
         holidays = holder.getHolidays(2016);
         assertThat(holidays.size(), equalTo(31));
 
-        holidays = new ArrayList<Holiday>();
+        holidays = new ArrayList<>();
         for (Month month : Month.values()) {
             LocalDate localDate = Dates.firstDateOfMonth(month, 2016);
             Date date = Dates.toDate(localDate);

@@ -9,7 +9,7 @@ import edu.hawaii.its.casdemo.util.Dates;
 
 public class YearHolidayHolder {
 
-    private TreeMap<Integer, List<Holiday>> yearMap = new TreeMap<Integer, List<Holiday>>();
+    private TreeMap<Integer, List<Holiday>> yearMap = new TreeMap<>();
     private int year = 0;
 
     public YearHolidayHolder() {
@@ -37,7 +37,7 @@ public class YearHolidayHolder {
     private void add(int year, Holiday holiday) {
         List<Holiday> list = yearMap.get(Integer.valueOf(year));
         if (list == null) {
-            list = new ArrayList<Holiday>();
+            list = new ArrayList<>();
             yearMap.put(Integer.valueOf(year), list);
         }
         if (!list.contains(holiday)) {
@@ -48,7 +48,7 @@ public class YearHolidayHolder {
 
     public List<Holiday> getHolidays(Integer year) {
         if (year == null || !yearMap.containsKey(year)) {
-            return new ArrayList<Holiday>(0);
+            return new ArrayList<>(0);
         }
         return yearMap.get(year);
     }

@@ -8,7 +8,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 public class RoleHolder {
 
-    private Set<GrantedAuthority> authorities = new LinkedHashSet<GrantedAuthority>();
+    private Set<GrantedAuthority> authorities = new LinkedHashSet<>();
 
     // Constructor.
     public RoleHolder() {

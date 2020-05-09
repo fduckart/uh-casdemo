@@ -55,7 +55,7 @@ public class EmailServiceTest {
         map.put("cn", "Frank");
         map.put("mail", "frank@example.com");
         map.put("eduPersonAffiliation", "aff");
-        Set<GrantedAuthority> authorities = new LinkedHashSet<GrantedAuthority>();
+        Set<GrantedAuthority> authorities = new LinkedHashSet<>();
         User user = new User("eno", authorities);
         user.setAttributes(new UhCasAttributes(map));
 
@@ -104,7 +104,7 @@ public class EmailServiceTest {
         map.put("cn", "Frank");
         map.put("mail", "frank@example.com");
         map.put("eduPersonAffiliation", "aff");
-        Set<GrantedAuthority> authorities = new LinkedHashSet<GrantedAuthority>();
+        Set<GrantedAuthority> authorities = new LinkedHashSet<>();
         User user = new User("eno", authorities);
         user.setAttributes(new UhCasAttributes(map));
 

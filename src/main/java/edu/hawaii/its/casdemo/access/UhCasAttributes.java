@@ -15,7 +15,7 @@ public class UhCasAttributes implements UhAttributes {
 
     // Constructor.
     public UhCasAttributes() {
-        this(new HashMap<Object, Object>());
+        this(new HashMap<>());
     }
 
     // Constructor.
@@ -36,7 +36,7 @@ public class UhCasAttributes implements UhAttributes {
                         if (v instanceof String) {
                             attributes.put(k, Arrays.asList((String) v));
                         } else if (v instanceof List) {
-                            List<String> lst = new ArrayList<String>();
+                            List<String> lst = new ArrayList<>();
                             for (Object o : (List<?>) v) {
                                 if (o instanceof String) {
                                     lst.add((String) o);
