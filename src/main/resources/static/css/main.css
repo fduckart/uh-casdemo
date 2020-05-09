@@ -1,16 +1,14 @@
-@import url('font.css');
-
 /* -------------------------------------------------------- */
 html {
-    position: relative;
-    min-height: 100%;
-    overflow-y:scroll;
+  position: relative;
+  min-height: 100%;
+  overflow-y:scroll;
 }
 
 body {
-    padding-top: 60px;
-    padding-bottom: 40px;
-    background-color: white;
+  padding-top: 60px;
+  padding-bottom: 40px;
+  background-color: white;
 }
 
 h4 {
@@ -18,123 +16,123 @@ h4 {
 }
 
 a {
-    color: #0275d8;
-    text-decoration: none;
+  color: #0275d8;
+  text-decoration: none;
 }
 
 a:hover {
-    color: #0275d8;
-    text-decoration: underline;
+  color: #0275d8;
+  text-decoration: underline;
 }
 
 
 
 td.uh-pre {
-    white-space: pre;           /* CSS 2.0 */
-    white-space: pre-wrap;      /* CSS 2.1 */
-    white-space: pre-line;      /* CSS 3.0 */
-    white-space: -pre-wrap;     /* Opera 4-6 */
-    white-space: -o-pre-wrap;   /* Opera 7 */
-    white-space: -moz-pre-wrap; /* Mozilla */
-    white-space: -hp-pre-wrap;  /* HP Printers */
-    display: inline-block;
-    word-wrap: break-word;
-    word-break: break-all;
+  white-space: pre;           /* CSS 2.0 */
+  white-space: pre-wrap;      /* CSS 2.1 */
+  white-space: pre-line;      /* CSS 3.0 */
+  white-space: -pre-wrap;     /* Opera 4-6 */
+  white-space: -o-pre-wrap;   /* Opera 7 */
+  white-space: -moz-pre-wrap; /* Mozilla */
+  white-space: -hp-pre-wrap;  /* HP Printers */
+  display: inline-block;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .uh-branding-one {
-    font-family: cinzel-regular, serif;
-    font-size: 1.6em;
-    font-style: normal;
-    letter-spacing: 2.2px;
-    color: #777;
+  font-family: cinzel-regular, serif;
+  font-size: 1.6em;
+  font-style: normal;
+  letter-spacing: 2.2px;
+  color: #777;
 }
 .uh-branding-two {
-    font-family: cormorant-upright-regular, cursive;
-    font-size: 0.8em;
-    font-style: normal;
-    color: #777;
+  font-family: cormorant-upright-regular, cursive;
+  font-size: 0.8em;
+  font-style: normal;
+  color: #777;
 }
 
 .navbar {
-    background-color: white;
+  background-color: white;
 }
 .navbar-fixed-top .nav {
-    padding-top: 40px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    padding-right: 20px;
-    background-color: white;
+  padding-top: 40px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 20px;
+  background-color: white;
 }
 .navbar-fixed-top .navbar-brand {
-    padding-left: 20px;
-    padding-right: 0px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    min-height: 50px;
-    min-width: 50px;
+  padding-left: 20px;
+  padding-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  min-height: 50px;
+  min-width: 50px;
 }
 .navbar-fixed-top .navbar-brand > img {
-    height: 50px;
-    width: 50px;
-    background-color: transparent;
+  height: 50px;
+  width: 50px;
+  background-color: transparent;
 }
 .navbar-brand.uh-nav-app-name {
-    height: 30px;
-    width: auto;
-    padding-left: 5px;
-    padding-top: 20px;
-    color: #BD9319;
-    background-color: transparent;
+  height: 30px;
+  width: auto;
+  padding-left: 5px;
+  padding-top: 20px;
+  color: #BD9319;
+  background-color: transparent;
 
-    font-family: alegreyasans-regular, opensans-regular, serif;
-    font-weight: normal;
-    font-size: 20px;
+  font-family: alegreyasans-regular, opensans-regular, serif;
+  font-weight: normal;
+  font-size: 20px;
 }
 .navbar-brand.uh-nav-app-name:hover {
-    color: #b08a17;
+  color: #b08a17;
 }
 .dropshadow {
-    text-shadow: 1px 1px 3px rgba(150, 150, 150, 1);
+  text-shadow: 1px 1px 3px rgba(150, 150, 150, 1);
 }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:focus,
 .navbar-default .navbar-nav > .open > a:hover {
-    color: #555;
-    background-color: white;
+  color: #555;
+  background-color: white;
 }
 
 .amp {
-    font-family: alice-regular, alegreyasans-regular, opensans-regular, serif;
-    font-weight: normal;
-    font-size: 90%;
+  font-family: alice-regular, alegreyasans-regular, opensans-regular, serif;
+  font-weight: normal;
+  font-size: 90%;
 }
 
 .footer {
-    position: absolute;
-    padding-top: 10px;
-    bottom: 0;
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 50px;
-    font-size: 100%;
-    text-align: center;
+  position: absolute;
+  padding-top: 10px;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+  font-size: 100%;
+  text-align: center;
 }
 
 .jumbotron {
-    text-align: center;
-    border-bottom: 1px solid #e5e5e5;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
 }
 .jumbotron .btn {
-    padding: 14px 24px;
-    font-size: 21px;
+  padding: 14px 24px;
+  font-size: 21px;
 }
 
 .panel-heading .panel-title.app-types {
-    text-align: left;
-    vertical-align: text-bottom;
-    margin-top: 6px;
-    font-weight: bold;
+  text-align: left;
+  vertical-align: text-bottom;
+  margin-top: 6px;
+  font-weight: bold;
 }
 
 .marketing {
@@ -145,14 +143,14 @@ td.uh-pre {
 }
 
 .a-link.btn-link {
-    color: #0275d8;  
-    text-decoration: none; 
-    padding: 0px;
+  color: #0275d8;  
+  text-decoration: none; 
+  padding: 0px;
 }
 .a-link.btn-link:focus, 
 .a-link.btn-link:hover {
-    color: #0275d8; 
-    text-decoration: underline;
+  color: #0275d8; 
+  text-decoration: underline;
 }
 
 /* -------------------------------------------------------- */
@@ -160,58 +158,46 @@ td.uh-pre {
 @media(min-width: 1200px) {
   .container, 
   .container-fluid {
-    width: 992px;
+  width: 992px;
   }
 }
 /* -------------------------------------------------------- */
 
 @media(min-width:768px) {
-    body {
-        padding-top: 100px;
-        padding-bottom: 30px;
-    }
-    .navbar {
-        min-height: 90px;
-    }
-    .navbar-fixed-top .navbar-brand > img {
-        position: inherit;
-        top: 0px;
-        left: 25px;
-        height: 90px;
-        width: 90px;
-    }
-    .navbar-brand.uh-nav-app-name {
-        position: inherit;
-        top: 0px;
-        left: 115px;
-        height: 90px;
-        padding-left: 18px;
-        padding-top: 52px;
-        white-space: nowrap;
-        text-align: left;
-        font-size: 28px;
+  body {
+    padding-top: 100px;
+    padding-bottom: 30px;
+  }
+  .navbar {
+    min-height: 90px;
+  }
+  .navbar-fixed-top .navbar-brand > img {
+    position: inherit;
+    top: 0px;
+    left: 25px;
+    height: 90px;
+    width: 90px;
+  }
+  .navbar-brand.uh-nav-app-name {
+    position: inherit;
+    top: 0px;
+    left: 115px;
+    height: 90px;
+    padding-left: 18px;
+    padding-top: 52px;
+    white-space: nowrap;
+    text-align: left;
+    font-size: 28px;
 
-        background-color: transparent;
-    }
+    background-color: transparent;
+  }
 
-    .uh-branding-one {
-        font-size: 1.8em;
-    }
-    .uh-branding-two {
-        font-size: 1.0em;
-    }
+  .uh-branding-one {
+    font-size: 1.8em;
+  }
+  .uh-branding-two {
+    font-size: 1.0em;
+  }
 
 }
-/* -------------------------------------------------------- */
-
-
-
-
-
-
-
-
-
-
-
 /* -------------------------------------------------------- */
