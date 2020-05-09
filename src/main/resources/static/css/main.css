@@ -2,7 +2,7 @@
 html {
   position: relative;
   min-height: 100%;
-  overflow-y:scroll;
+  overflow-y: scroll;
 }
 
 body {
@@ -12,7 +12,7 @@ body {
 }
 
 h4 {
-   color: #BD9319;
+  color: #BD9319;
 }
 
 a {
@@ -24,8 +24,6 @@ a:hover {
   color: #0275d8;
   text-decoration: underline;
 }
-
-
 
 td.uh-pre {
   white-space: pre;           /* CSS 2.0 */
@@ -59,16 +57,16 @@ td.uh-pre {
 }
 .navbar-fixed-top .nav {
   padding-top: 40px;
-  padding-bottom: 0px;
-  padding-left: 0px;
+  padding-bottom: 0;
+  padding-left: 0;
   padding-right: 20px;
   background-color: white;
 }
 .navbar-fixed-top .navbar-brand {
   padding-left: 20px;
-  padding-right: 0px;
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
   min-height: 50px;
   min-width: 50px;
 }
@@ -82,9 +80,8 @@ td.uh-pre {
   width: auto;
   padding-left: 5px;
   padding-top: 20px;
-  color: #BD9319;
+  color: #bd9319;
   background-color: transparent;
-
   font-family: alegreyasans-regular, opensans-regular, serif;
   font-weight: normal;
   font-size: 20px;
@@ -113,8 +110,7 @@ td.uh-pre {
   padding-top: 10px;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 50px;
+  height: 50px; /* Set the fixed height of the footer here */
   font-size: 100%;
   text-align: center;
 }
@@ -143,26 +139,24 @@ td.uh-pre {
 }
 
 .a-link.btn-link {
-  color: #0275d8;  
-  text-decoration: none; 
-  padding: 0px;
+  color: #0275d8;
+  text-decoration: none;
+  padding: 0;
 }
-.a-link.btn-link:focus, 
+.a-link.btn-link:focus,
 .a-link.btn-link:hover {
-  color: #0275d8; 
+  color: #0275d8;
   text-decoration: underline;
 }
 
 /* -------------------------------------------------------- */
-
 @media(min-width: 1200px) {
-  .container, 
-  .container-fluid {
-  width: 992px;
+  .container, .container-fluid {
+    width: 992px;
   }
 }
-/* -------------------------------------------------------- */
 
+/* -------------------------------------------------------- */
 @media(min-width:768px) {
   body {
     padding-top: 100px;
@@ -173,14 +167,14 @@ td.uh-pre {
   }
   .navbar-fixed-top .navbar-brand > img {
     position: inherit;
-    top: 0px;
+    top: 0;
     left: 25px;
     height: 90px;
     width: 90px;
   }
   .navbar-brand.uh-nav-app-name {
     position: inherit;
-    top: 0px;
+    top: 0;
     left: 115px;
     height: 90px;
     padding-left: 18px;
@@ -198,6 +192,4 @@ td.uh-pre {
   .uh-branding-two {
     font-size: 1.0em;
   }
-
 }
-/* -------------------------------------------------------- */
