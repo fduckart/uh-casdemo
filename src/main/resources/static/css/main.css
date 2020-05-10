@@ -99,6 +99,7 @@ td.uh-pre {
 .dropshadow {
   text-shadow: 1px 1px 3px rgba(150, 150, 150, 1);
 }
+
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:focus,
 .navbar-default .navbar-nav > .open > a:hover {
@@ -126,6 +127,7 @@ td.uh-pre {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
 }
+
 .jumbotron .btn {
   padding: 14px 24px;
   font-size: 21px;
@@ -141,6 +143,7 @@ td.uh-pre {
 .marketing {
   margin: 40px 0;
 }
+
 .marketing p + h4 {
   margin-top: 28px;
 }
@@ -150,6 +153,7 @@ td.uh-pre {
   text-decoration: none;
   padding: 0;
 }
+
 .a-link.btn-link:focus,
 .a-link.btn-link:hover {
   color: #0275d8;
@@ -157,22 +161,24 @@ td.uh-pre {
 }
 
 /* -------------------------------------------------------- */
-@media(min-width: 1200px) {
-  .container, 
+@media (min-width: 1200px) {
+  .container,
   .container-fluid {
     width: 992px;
   }
 }
 
 /* -------------------------------------------------------- */
-@media(min-width:768px) {
+@media (min-width:768px) {
   body {
     padding-top: 100px;
     padding-bottom: 30px;
   }
+
   .navbar {
     min-height: 90px;
   }
+
   .navbar-fixed-top .navbar-brand > img {
     position: inherit;
     top: 0;
@@ -180,6 +186,7 @@ td.uh-pre {
     height: 90px;
     width: 90px;
   }
+
   .navbar-brand.uh-nav-app-name {
     position: inherit;
     top: 0;
@@ -190,13 +197,13 @@ td.uh-pre {
     white-space: nowrap;
     text-align: left;
     font-size: 28px;
-
     background-color: transparent;
   }
 
   .uh-branding-one {
     font-size: 1.8em;
   }
+
   .uh-branding-two {
     font-size: 1.01em;
   }

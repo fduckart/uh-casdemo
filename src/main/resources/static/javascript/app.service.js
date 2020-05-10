@@ -1,3 +1,6 @@
+/*global casdemoApp*/
+/*eslint no-undef: "error"*/
+
 (function() {
 
     casdemoApp.factory("dataProvider", function($http, $log) {
@@ -17,7 +20,7 @@
                     $log.error("Error in dataProvider; status: ", status);
                 });
             }
-        }
+        };
     });
 
     casdemoApp.service("holidayJsService", [ "$http", function($http) {
@@ -33,4 +36,4 @@
         };
     } ]);
 
-})();
+}());

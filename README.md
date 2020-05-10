@@ -2,6 +2,7 @@ A web application to demonstrate how to use the UH CAS service.
 
 [![Build Status](https://travis-ci.org/fduckart/uh-casdemo.png?branch=master)](https://travis-ci.org/fduckart/uh-casdemo)
 [![Coverage Status](https://coveralls.io/repos/github/fduckart/uh-casdemo/badge.svg?branch=master)](https://coveralls.io/github/fduckart/uh-casdemo?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f5fdc71206a64aa4a7dc9ffe9c988cd1)](https://www.codacy.com/manual/fduckart/uh-casdemo?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fduckart/uh-casdemo&amp;utm_campaign=Badge_Grade)
 
 ##### Java
 You'll need a Java JDK to build and run the project (version 1.8).
@@ -38,7 +39,6 @@ To run a single method in a test class:
 
     $ ./mvnw clean test -Dtest=StringsTest#trunctate
 
-
 ##### Build to deploy to an Environment
 To build a deployable war file for deployment:
 
@@ -52,7 +52,7 @@ If you are setting up tomcat for the first time,
 make sure you enable SSL and add any necessary certificates.
 
 Here are instructions for Tomcat 8, for example:
-https://tomcat.apache.org/tomcat-8.0-doc/ssl-howto.html
+<https://tomcat.apache.org/tomcat-8.0-doc/ssl-howto.html>
 
 Copy the casdemo.war file into the webapps directory of Tomcat.
 

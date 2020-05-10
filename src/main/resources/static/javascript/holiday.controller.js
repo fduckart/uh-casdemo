@@ -71,4 +71,4 @@
     }
     casdemoApp.controller("HolidayGridJsController", HolidayGridJsController);
 
-})();
+}());

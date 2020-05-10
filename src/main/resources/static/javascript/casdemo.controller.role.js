@@ -1,3 +1,6 @@
+/*global casdemoApp*/
+/*eslint no-undef: "error"*/
+
 (function() {
 
     function RoleJsController($scope, App, dataProvider) {
@@ -15,4 +18,4 @@
     }
     casdemoApp.controller("RoleJsController", RoleJsController);
 
-})();
+}());
