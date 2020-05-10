@@ -1,6 +1,6 @@
 describe("HolidayJsController", function() {
 
-    beforeEach(module('casdemoApp'));
+    beforeEach(module("casdemoApp"));
 
     var app;
     var scope;
@@ -10,7 +10,7 @@ describe("HolidayJsController", function() {
     beforeEach(inject(function($controller, $rootScope, App, dataProvider) {
         scope = $rootScope.$new();
         app = App;
-        controller = $controller('HolidayJsController', {
+        controller = $controller("HolidayJsController", {
             $scope: scope,
             App: app,
             dataProvider: dataProvider

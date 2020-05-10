@@ -16,11 +16,9 @@ To start the application:
 
     $ ./mvnw clean spring-boot:run
 
-
 After the application starts, navigate to here in a web browser:
 
-
-http://localhost:8080/casdemo
+<http://localhost:8080/casdemo>
 
 ##### Running Unit Tests
 The project includes Unit Tests for various parts of the system.
@@ -56,9 +54,7 @@ make sure you enable SSL and add any necessary certificates.
 Here are instructions for Tomcat 8, for example:
 https://tomcat.apache.org/tomcat-8.0-doc/ssl-howto.html
 
-
 Copy the casdemo.war file into the webapps directory of Tomcat.
-
 
 ##### Build Tool (Optional)
 Download and install maven (version 3.2.1+).
@@ -66,9 +62,7 @@ Download and install maven (version 3.2.1+).
 ##### Source Repository
 The files for the project are kept here:
 
-https://github.com/fduckart/uh-casdemo
-
+<https://github.com/fduckart/uh-casdemo>
 
 ##### Important Note
-
 The UH Number is restricted by University of Hawaii policy, so be sure not to expose it on any public page.

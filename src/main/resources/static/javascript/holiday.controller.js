@@ -1,5 +1,5 @@
 (function() {
-    'use strict';
+    "use strict";
 
     function HolidayJsController($scope, App, dataProvider) {
         $scope.url = App.URL.API.HOLIDAY;
@@ -49,11 +49,11 @@
             enableColumnMenus: false,
             useExternalPagination: true,
             columnDefs: [ {
-                name: 'description'
+                name: "description"
             }, {
-                name: 'observedDate'
+                name: "observedDate"
             }, {
-                name: 'officialDate'
+                name: "officialDate"
             } ],
             onRegisterApi: function(gridApi) {
                 $scope.gridApi = gridApi;

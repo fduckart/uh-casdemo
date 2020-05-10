@@ -1,6 +1,6 @@
 describe("ErrorJsController", function() {
 
-    beforeEach(module('casdemoApp'));
+    beforeEach(module("casdemoApp"));
 
     var app;
     var scope;
@@ -12,7 +12,7 @@ describe("ErrorJsController", function() {
         scope = $rootScope.$new();
         window = $window;
         app = App;
-        controller = $controller('ErrorJsController', {
+        controller = $controller("ErrorJsController", {
             $scope: scope,
             $window: window,
             App: app,
@@ -23,16 +23,16 @@ describe("ErrorJsController", function() {
     it("checkSubmit", function() {
         expect(controller).toBeDefined();
 
-        var data = '';
+        var data = "";
         spyOn(scope, "submit").and.callFake(function() {
-            data = 'Slouches towards Bethlehem';
+            data = "Slouches towards Bethlehem";
         });
 
         // What we are testing:
         scope.submit();
 
         expect(scope.submit).toHaveBeenCalled();
-        expect(data).toEqual('Slouches towards Bethlehem');
+        expect(data).toEqual("Slouches towards Bethlehem");
     });
 
 });

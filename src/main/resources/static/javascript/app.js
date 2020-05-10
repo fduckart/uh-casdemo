@@ -1,19 +1,19 @@
-'use strict';
-var casdemoApp = angular.module('casdemoApp', [ 'ui.grid', 'ui.grid.pagination' ]);
+"use strict";
+var casdemoApp = angular.module("casdemoApp", [ "ui.grid", "ui.grid.pagination" ]);
 
-casdemoApp.constant('App', {
+casdemoApp.constant("App", {
     CAMPUS: {
-        'MANOA': '7',
-        'SYSTEM': '11'
+        "MANOA": "7",
+        "SYSTEM": "11"
     },
     URL: {
-        CAMPUS_LOAD: '/casdemo/api/campuses',
-        FEEDBACK: '/casdemo/feedback/',
+        CAMPUS_LOAD: "/casdemo/api/campuses",
+        FEEDBACK: "/casdemo/feedback/",
         API: {
-            CAMPUS: '/casdemo/api/campuses',
-            ERROR: '/casdemo/api/error/',
-            HOLIDAY: '/casdemo/api/holidays',
-            ROLE: '/casdemo/api/roles'
+            CAMPUS: "/casdemo/api/campuses",
+            ERROR: "/casdemo/api/error/",
+            HOLIDAY: "/casdemo/api/holidays",
+            ROLE: "/casdemo/api/roles"
         }
     }
 });

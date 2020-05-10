@@ -1,11 +1,42 @@
 package edu.hawaii.its.casdemo.access;
 
-public interface UserContextService {
-    public abstract User getCurrentUser();
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 
-    public abstract String getCurrentUsername();
+@Service
+public class UserContextService {
 
-    public abstract String getCurrentUhuuid();
+    public User getCurrentUser() {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        Authentication authentication = securityContext.getAuthentication();
+        if (authentication != null) {
+            Object principal = authentication.getPrincipal();
+            if (principal instanceof UserDetails) {
+                return (User) principal;
+            }
+        }
+        return new AnonymousUser();
+    }
 
-    public void setCurrentUhuuid(String uhuuid);
+    public String getCurrentUsername() {
+        return getCurrentUser().getUsername();
+    }
+
+    public String getCurrentUhuuid() {
+        return getCurrentUser().getUhuuid();
+    }
+
+    public void setCurrentUhuuid(String uhuuid) {
+        User user = getCurrentUser();
+        if (user.hasRole(Role.ADMIN)) {
+            user.setUhuuid(uhuuid);
+        }
+    }
+
+    public String toString() {
+        return "UserContextServiceImpl [context=" + SecurityContextHolder.getContext() + "]";
+    }
 }

@@ -42,7 +42,7 @@ public class MessageServiceTest {
 
         // Turn down logging just for a second, just 
         // to reduce the Exception noise a little bit.
-        Logger logger = (Logger) LoggerFactory.getLogger(MessageServiceImpl.class);
+        Logger logger = (Logger) LoggerFactory.getLogger(MessageService.class);
         Level level = logger.getLevel();
         logger.setLevel(Level.OFF);
 

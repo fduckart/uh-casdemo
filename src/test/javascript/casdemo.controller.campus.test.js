@@ -1,6 +1,6 @@
 describe("CampusJsController", function() {
 
-    beforeEach(module('casdemoApp'));
+    beforeEach(module("casdemoApp"));
 
     var app;
     var scope;
@@ -10,7 +10,7 @@ describe("CampusJsController", function() {
     beforeEach(inject(function($rootScope, $controller, App, dataProvider) {
         scope = $rootScope.$new();
         app = App;
-        controller = $controller('CampusJsController', {
+        controller = $controller("CampusJsController", {
             $scope: scope,
             App: app,
             dataProvider: dataProvider

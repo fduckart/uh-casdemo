@@ -1,5 +1,5 @@
 $(function() {
-    $('#year').change(function() {
+    $("#year").change(function() {
         this.form.submit();
     });
 });

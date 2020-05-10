@@ -7,12 +7,23 @@
     <artifactId>casdemo</artifactId>
     <packaging>war</packaging>
     <name>casdemo</name>
-    <description>University of Hawaii CAS Demonstration App</description>
     <version>1.1</version>
-    
-  	<scm>
-    	<url>https://github.com/fduckart/uh-casdemo</url>
-  	</scm>
+    <url>https://www.test.hawaii.edu/casdemo</url>
+    <description>University of Hawaii CAS Demonstration App</description>
+    <organization>
+        <name>University of Hawaii Information Technology Services</name>
+        <url>https://www.hawaii.edu/its</url>
+    </organization>
+    <developers>
+        <developer>
+            <name>Frank Duckart</name>
+            <email>duckart@hawaii.edu</email>
+            <url>https://github.com/fduckart</url>
+        </developer>
+    </developers>
+    <scm>
+        <url>https://github.com/fduckart/uh-casdemo</url>
+    </scm>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -22,21 +33,23 @@
     </parent>
 
     <properties>
-    	<maven.version>3.5.2</maven.version>
-    
+        <maven.version>3.5.2</maven.version>
+
         <java.version>1.8</java.version>
         <cas.client-version>3.5.1</cas.client-version>
 
         <jquery-version>3.2.0</jquery-version>
         <angularjs-version>1.5.8</angularjs-version>
         <angular-mocks-version>1.5.8</angular-mocks-version>
+        <pmd.plugin.version>3.11.0</pmd.plugin.version>
+       <pmdVersion>6.12.0</pmdVersion>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>    
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -133,12 +146,12 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
         </dependency>
-		
+
         <!-- Webjars -->
-      	<dependency>
-        	<groupId>org.webjars</groupId>
-        	<artifactId>webjars-locator-core</artifactId>
-      	</dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator-core</artifactId>
+          </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
@@ -188,26 +201,26 @@
     </dependencies>
     <build>
         <plugins>
-			<plugin>
-			  <groupId>org.apache.maven.plugins</groupId>
-			  <artifactId>maven-enforcer-plugin</artifactId>
-			  <version>${maven-enforcer-plugin.version}</version>
-			  <executions>
-			    <execution>
-			      <id>enforce-versions</id>
-			      <goals>
-			        <goal>enforce</goal>
-			      </goals>
-			      <configuration>
-			        <rules>
-			          <requireMavenVersion>
-			            <version>${maven.version}</version>
-			          </requireMavenVersion>
-			        </rules>
-			      </configuration>
-			    </execution>
-			  </executions>
-			</plugin>        
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${maven-enforcer-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>enforce-versions</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>${maven.version}</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -217,7 +230,7 @@
                     <target>${java-version}</target>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
-            </plugin>        
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -231,6 +244,13 @@
                 <groupId>com.github.searls</groupId>
                 <artifactId>jasmine-maven-plugin</artifactId>
                 <version>2.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
                     <preloadSources>
                         <source>classpath/META-INF/resources/webjars/angularjs/${angularjs-version}/angular.min.js"></source>
@@ -305,6 +325,57 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.8.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${pmd.plugin.version}</version>
+                <configuration>
+                    <rulesets>
+                        <ruleset>src/test/resources/pmd/ruleset.xml</ruleset>
+                    </rulesets>
+                    <minimumTokens>110</minimumTokens>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.0.0</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>index</report>
+                            <report>summary</report>
+                            <report>scm</report>
+                            <report>team</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${pmd.plugin.version}</version>
+                <configuration>
+                    <rulesets>
+                        <ruleset>src/test/resources/pmd/ruleset.xml</ruleset>
+                    </rulesets>
+                    <minimumTokens>110</minimumTokens>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
