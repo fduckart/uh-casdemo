@@ -6,16 +6,12 @@
     <nav th:replace="menubar :: copy"></nav>
 
     <!--   Content container -->
-    <div class='container'>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-12 panel-title app-types">
-                        Feedback
-                    </div>
-                </div>
+    <div class="container-lg">
+        <div class="card">
+            <div class="card-header border-1">
+                <h4 class="ml-2 ml-sm-0 my-0">Feedback</h4>
             </div>
-             <div class="panel-body" >
+            <div class="card-body text-left">
                 <form action="#" th:action="@{/feedback}" th:object="${feedback}" method="post">
                     <div class="form-group">
                         <label for="emailField">Email</label>
@@ -36,8 +32,8 @@
                     </div>
                     <div>
                         <br/>
-                        <button type="reset"  class="btn btn-default">Reset</button>&nbsp;&nbsp;
-                        <button type="submit" class="btn btn-default">Email Form Data to Me</button>
+                        <button type="reset"  class="btn btn-outline-secondary">Reset</button>&nbsp;&nbsp;
+                        <button type="submit" class="btn btn-outline-primary">Email Form Data to Me</button>
                     </div>
                 </form>
                 <br/>

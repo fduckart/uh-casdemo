@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ruleset name="FileDrop Rulesets" 
+<ruleset name="FileDrop Rulesets"
     xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 ruleset.xsd">
-                
+
     <description>
         Custom ruleset.
-        
+
         See:
-          https://pmd.github.io/pmd-6.8.0/pmd_rules_java.html 
-          https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html 
+          https://pmd.github.io/pmd-6.8.0/pmd_rules_java.html
+          https://pmd.github.io/pmd-6.8.0/pmd_rules_java_codestyle.html
     </description>
-    
+
     <rule ref="category/java/bestpractices.xml/AvoidUsingHardCodedIP" />
     <rule ref="category/java/bestpractices.xml/CheckResultSet" />
     <rule ref="category/java/bestpractices.xml/UnusedImports" />
@@ -23,21 +23,21 @@
     <rule ref="category/java/codestyle.xml/DontImportJavaLang" />
     <rule ref="category/java/codestyle.xml/DuplicateImports" />
     <rule ref="category/java/codestyle.xml/ExtendsObject" />
-    <rule ref="category/java/codestyle.xml/ForLoopShouldBeWhileLoop" />    
+    <rule ref="category/java/codestyle.xml/ForLoopShouldBeWhileLoop" />
     <rule ref="category/java/codestyle.xml/TooManyStaticImports"
           message="Too many static imports may lead to messy code!" >
         <priority>3</priority>
         <properties>
             <property name="maximumStaticImports" value="8"/>
-        </properties>    
-    </rule>    
+        </properties>
+    </rule>
     <rule ref="category/java/codestyle.xml/UnnecessaryFullyQualifiedName" />
     <rule ref="category/java/codestyle.xml/UnnecessaryModifier" />
-    <rule ref="category/java/codestyle.xml/UnnecessaryReturn" />    
-    <rule ref="category/java/codestyle.xml/UselessParentheses" />    
+    <rule ref="category/java/codestyle.xml/UnnecessaryReturn" />
+    <rule ref="category/java/codestyle.xml/UselessParentheses" />
     <rule ref="category/java/codestyle.xml/UselessQualifiedThis" />
-    
-    <!--  
+
+    <!--
     <rule ref="category/java/design.xml/CollapsibleIfStatements" />
     -->
     <rule ref="category/java/design.xml/SimplifiedTernary" />
@@ -87,5 +87,5 @@
             <property name="utilityClassPattern" value="[A-Z][a-zA-Z0-9]+\_{0,1}"/>
         </properties>
     </rule>
-    
+
 </ruleset>

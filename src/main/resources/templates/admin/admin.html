@@ -7,41 +7,24 @@
 
     <!--  Content container -->
     <div class="container">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-12 panel-title app-types">
-                        Administration
-                    </div>
-                </div>
+        <div class="card border-1">
+            <div class="card-header border-1">
+                <h4 class="ml-2 ml-sm-0 my-0">Administration</h4>
             </div>
-            <div class="panel-body" >
-                <div class="row">
-                    <div class="col-xs-12">
-                        <a class="text-left" th:href="@{/admin/application/role}">Application Roles</a><br/>
-                        <a class="text-left" th:href="@{/campus}">Campuses</a><br/>
-                        <a class="text-left" th:href="@{/holiday}">Holidays (Year Selection)</a><br/>
-                        <a class="text-left" th:href="@{/holidaygrid}">Holidays (Paged)</a><br/>
-                    </div>
-                    <div class="col-xs-12">
-                        <p></p>
-                    </div>
-                    <div class="col-xs-12">
-                        <a class="text-left" th:href="@{/user}">Login Attributes</a><br/>
-                    </div>
-                    <div class="col-xs-12">
-                        <a class="text-left" th:href="@{/help/fonts}">Font Experiments</a><br/>
-                        <a class="text-left" th:href="@{/feedback}">Feedback Experiment</a><br/><br/>
-                    </div>
-                    <div class="col-xs-12">
-                        <a class="text-left" th:href="@{/admin/ioe}">Throw IOException</a><br/>
-                        <a class="text-left" th:href="@{/admin/fnf}">Throw FileNotFoundException</a><br/>
-                        <a class="text-left" th:href="@{/admin/rte}">Throw RuntimeException</a><br/>
-                        <a class="text-left" th:href="@{/admin/exc}">Throw Exception</a><br/>
-                        <div ng-app="casdemoApp" ng-controller="ErrorJsController">
-                            <button type="button" class="btn btn-link a-link" ng-click="submit()">Throw Error via Javascript</button><br/>
-                        </div>
-                    </div>
+            <div class="card-body text-left">
+                <a class="text-left" th:href="@{/admin/application/role}">Application Roles</a><br/>
+                <a class="text-left" th:href="@{/campus}">Campuses</a><br/>
+                <a class="text-left" th:href="@{/holiday}">Holidays (Year Selection)</a><br/>
+                <a class="text-left" th:href="@{/holidaygrid}">Holidays (Paged)</a><br/><br/>
+                <a class="text-left" th:href="@{/user}">Login Attributes</a><br/><br/>
+                <a class="text-left" th:href="@{/help/fonts}">Font Experiments</a><br/>
+                <a class="text-left" th:href="@{/feedback}">Feedback Experiment</a><br/><br/>
+                <a class="text-left" th:href="@{/admin/ioe}">Throw IOException</a><br/>
+                <a class="text-left" th:href="@{/admin/fnf}">Throw FileNotFoundException</a><br/>
+                <a class="text-left" th:href="@{/admin/rte}">Throw RuntimeException</a><br/>
+                <a class="text-left" th:href="@{/admin/exc}">Throw Exception</a><br/>
+                <div ng-app="casdemoApp" ng-controller="ErrorJsController">
+                    <button type="button" class="btn btn-link a-link" ng-click="submit()">Throw Error via Javascript</button><br/>
                 </div>
             </div>
         </div>

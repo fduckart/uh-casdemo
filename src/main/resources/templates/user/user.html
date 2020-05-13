@@ -7,55 +7,39 @@
 
     <!--  Content container -->
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div sec:authorize="isAnonymous()">
-                    No user logged in.
-                </div>
-                <div sec:authorize="isAuthenticated()">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-8 panel-title app-types">
-                                    Login Attributes
-                                </div>
-                                <div class="col-xs-12 col-sm-4">
-                                    <form action="/user/data" th:action="@{/user/data}" method="post">
-                                        <button type="submit" class="btn btn-default pull-right">Email Me Data</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="panel-body" >
-                             <table class="table table-hover table-condensed">
-                                <tbody>
-                                    <tr>
-                                        <td colspan="3">Selected CAS Login Details</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="1">uid</td>
-                                        <td colspan="2"><p th:text="${user.uid}"></p></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="1">username</td>
-                                        <td colspan="2"><p th:text="${user.username}"></p></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="1">uhuuid</td>
-                                        <td colspan="2"><p th:text="${user.uhuuid}"></p></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="1">cn</td>
-                                        <td colspan="2"><p th:text="${user.name}"></p></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="1" style="white-space: nowrap">All Attributes</td>
-                                        <td colspan="2" class="uh-pre"><p th:text="${user.attributes.map}"></p></td>
-                                    </tr>
-                                  </tbody>
-                              </table>
-                          </div>
-                     </div>
+        <div class="card border-1">
+            <div class="card-header border-1">
+                <h4 class="ml-2 ml-sm-0 my-0">Login Details</h4>
+            </div>
+            <div class="card-body text-left">
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover ">
+                        <tbody>
+                            <tr>
+                                <td colspan="3">Selected CAS Login Details</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1">uid</td>
+                                <td colspan="2"><span th:text="${user.uid}"></span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="1">username</td>
+                                <td colspan="2"><span th:text="${user.username}"></span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="1">uhuuid</td>
+                                <td colspan="2"><span th:text="${user.uhuuid}"></span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="1">cn</td>
+                                <td colspan="2"><span th:text="${user.name}"></span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="1" style="white-space: nowrap">All Attributes</td>
+                                <td colspan="2" class="uh-pre"><span th:text="${user.attributes.map}"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

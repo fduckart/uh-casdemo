@@ -38,11 +38,13 @@
         <java.version>1.8</java.version>
         <cas.client-version>3.5.1</cas.client-version>
 
-        <jquery-version>3.2.0</jquery-version>
+        <bootstrap-version>4.4.1</bootstrap-version>
+        <jquery-version>3.4.1</jquery-version>
+        <popper.js-version>1.16.0</popper.js-version>
         <angularjs-version>1.5.8</angularjs-version>
         <angular-mocks-version>1.5.8</angular-mocks-version>
         <pmd.plugin.version>3.11.0</pmd.plugin.version>
-       <pmdVersion>6.12.0</pmdVersion>
+        <pmdVersion>6.12.0</pmdVersion>
     </properties>
 
     <dependencies>
@@ -151,16 +153,21 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>webjars-locator-core</artifactId>
-          </dependency>
+        </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
-            <version>3.3.7</version>
+            <version>${bootstrap-version}</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
             <version>${jquery-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>popper.js</artifactId>
+            <version>${popper.js-version}</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
@@ -255,7 +262,7 @@
                     <preloadSources>
                         <source>classpath/META-INF/resources/webjars/angularjs/${angularjs-version}/angular.min.js"></source>
                         <source>classpath/META-INF/resources/webjars/jquery/${jquery-version}/jquery.min.js</source>
-                        <source>classpath/META-INF/resources/webjars/bootstrap/3.3.7/js/bootstrap.min.js</source>
+                        <source>classpath/META-INF/resources/webjars/bootstrap/${bootstrap-version}/js/bootstrap.min.js</source>
                         <source>classpath/META-INF/resources/webjars/angular-ui-bootstrap/2.2.0/ui-bootstrap.min.js</source>
                         <source>classpath/META-INF/resources/webjars/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.min.js</source>
                         <source>classpath/META-INF/resources/webjars/angular-ui-grid/4.0.6/ui-grid.min.js</source>

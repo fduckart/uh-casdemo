@@ -202,7 +202,7 @@ public class DatesTest {
         assertEquals(29, Dates.lastDayOfMonth(Month.FEBRUARY, 2000));
         assertEquals(29, Dates.lastDayOfMonth(Month.FEBRUARY, 2012));
 
-        // Now just run some comparisons against 
+        // Now just run some comparisons against
         // methods available from the Calendar class.
         Calendar cal = Calendar.getInstance();
         for (int year = 1979; year < 2039; year++) {

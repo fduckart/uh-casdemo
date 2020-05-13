@@ -6,18 +6,14 @@
     <nav th:replace="menubar :: copy"></nav>
 
     <!--   Content container -->
-    <div class='container'>
+    <div class="container-lg">
 
-        <div class="panel panel-default">
-             <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-12 panel-title app-types">
-                        Feedback Result
-                    </div>
-                </div>
-             </div>
-             <div class="panel-body" >
-                 <table class="table table-hover table-condensed">
+        <div class="card card-default">
+            <div class="card-header border-1">
+                <h4 class="ml-2 ml-sm-0 my-0">Feedback Result</h4>
+            </div>
+             <div class="card-body" >
+                 <table class="table table-hover table-sm">
                     <tbody>
                         <tr>
                             <td th:text="'Email: ' + ${feedback.email}"></td>
@@ -30,7 +26,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <a class="text-left" th:href="@{/feedback}">Submit another feedback</a>
+                                <a class="btn btn-outline-secondary text-left" th:href="@{/feedback}">Submit another feedback</a>
                             </td>
                         </tr>
                       </tbody>

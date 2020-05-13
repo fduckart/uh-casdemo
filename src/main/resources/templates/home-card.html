@@ -1,0 +1,16 @@
+<div th:fragment="frag" th:remove="tag">
+            <div class="card border-0">
+                <div class="card-header border-0 bg-transparent py-1">
+                    <span class="lead" th:text="${title}"></span>
+                </div>
+                <div class="card-body border-0 text-left py-1">
+                    <p class="card-text" >
+                        <span th:text="${message}"></span>
+                    </p>
+                </div>
+                <div class="card-footer bg-transparent border-0 py-1">
+                    <a th:href="${href}" class="btn btn-outline-primary btn-sm pull-left">View</a>
+                </div>
+            </div>
+        </div>
+</div>

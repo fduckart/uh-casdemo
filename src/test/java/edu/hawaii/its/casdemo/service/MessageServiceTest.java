@@ -40,7 +40,7 @@ public class MessageServiceTest {
         assertEquals("Y", message.getEnabled());
         assertTrue(message.getText().startsWith("University of Hawaii Information"));
 
-        // Turn down logging just for a second, just 
+        // Turn down logging just for a second, just
         // to reduce the Exception noise a little bit.
         Logger logger = (Logger) LoggerFactory.getLogger(MessageService.class);
         Level level = logger.getLevel();

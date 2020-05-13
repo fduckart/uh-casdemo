@@ -6,44 +6,27 @@
     <nav th:replace="menubar :: copy"></nav>
 
     <!--  Content container -->
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="dropshadow">Identity <span class="amp">&amp;</span> Access Management<br/>CAS Demonstration</h1>
+    <div class="container-lg">
+        <div class="jumbotron text-center my-3">
+            <h1 class="display-4 dropshadow">Identity <span class="amp">&amp;</span> Access Management<br/>CAS Demonstration</h1>
             <p class="lead" th:text="${jumbotron}"></p>
             <div sec:authorize="isAnonymous()">
                 <p><a class="btn btn-lg btn-success" th:href="@{/login}"  role="button">UH Login Here</a></p>
             </div>
             <div sec:authorize="isAuthenticated()">
-                <form action="/casdemo/logout" th:action="@{/logout}" method="post" id="logout_form">
-                    <button class="btn btn-lg btn-default" type="submit">Logout</button>
+                <form th:action="@{/logout}" method="post" id="logout_form">
+                    <button type="submit" class="btn btn-outline-primary">Logout</button>
                 </form>
             </div>
         </div>
-        <div class="row marketing">
-            <div class="col-sm-6">
-                <p class="h4">
-                    Contact Information &nbsp;
-                    <a th:href="@{/help/contact}" type="button" class="btn btn-default btn-xs">View</a>
-                </p>
-                <p>
-                    A list of university website and email addresses 
-                    to contact us with questions or comments. Please
-                    do not hesitate to contact us with any questions
-                    you might have about the application.
-                </p>
-            </div>
-            <div class="col-sm-6">
-                <p class="h4">
-                    Frequently Asked Questions &nbsp;
-                    <a th:href="@{/help/faq}" type="button" class="btn btn-default btn-xs">View</a>
-                </p>
-                <p>
-                    We have assembled responses to a number of common 
-                    questions you might have about the process, including
-                    where you can find the source code for this application.
-                </p>
-            </div>
+
+        <div class="row"><p></p></div>
+
+        <div class="row row-cols-1 row-cols-sm-2 justify-content-md-center card-deck px-2 px-sm-0">
+            <div th:insert="home-card :: frag" th:with="title=#{home.contact}, message=#{home.contact.message}, href=@{/help/contact}"></div>
+            <div th:insert="home-card :: frag" th:with="title=#{home.faq}, message=#{home.faq.message}, href=@{/help/faq}"></div>
         </div>
+
     </div>
     <!-- / Content container. -->
 
