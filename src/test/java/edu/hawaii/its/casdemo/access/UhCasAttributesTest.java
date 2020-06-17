@@ -211,6 +211,7 @@ public class UhCasAttributesTest {
         map.put("eduPersonAffiliation", "aff");
         UhCasAttributes attributes = new UhCasAttributes(map);
 
+        assertThat(attributes.getRawMap().size(), equalTo(5));
         assertThat(attributes.getMap().size(), equalTo(5));
         assertThat(attributes.getUid(), equalTo("duckart"));
         assertThat(attributes.getUhUuid(), equalTo("666666"));

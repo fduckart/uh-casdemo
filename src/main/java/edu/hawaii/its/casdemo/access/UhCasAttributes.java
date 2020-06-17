@@ -3,19 +3,20 @@ package edu.hawaii.its.casdemo.access;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class UhCasAttributes implements UhAttributes {
 
-    private Map<String, List<String>> attributes = new HashMap<>();
     private final String username; // CAS login username.
     private final Map<?, ?> map; // Original CAS results.
+    private Map<String, List<String>> attributes =
+            new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
     // Constructor.
     public UhCasAttributes() {
-        this(new HashMap<>());
+        this(new TreeMap<>());
     }
 
     // Constructor.
@@ -30,7 +31,7 @@ public class UhCasAttributes implements UhAttributes {
         if (map != null) {
             for (Object key : map.keySet()) {
                 if (key != null && key instanceof String) {
-                    String k = ((String) key).toLowerCase();
+                    String k = (String) key;
                     Object v = map.get(key);
                     if (v != null) {
                         if (v instanceof String) {
@@ -103,10 +104,13 @@ public class UhCasAttributes implements UhAttributes {
 
     @Override
     public List<String> getValues(String name) {
-        List<String> results = attributes.get(toLowerCase(name));
-        if (results != null) {
-            return Collections.unmodifiableList(results);
+        if (name != null) {
+            List<String> results = attributes.get(name);
+            if (results != null) {
+                return Collections.unmodifiableList(results);
+            }
         }
+
         return Collections.emptyList();
     }
 
@@ -117,12 +121,13 @@ public class UhCasAttributes implements UhAttributes {
     }
 
     @Override
-    public Map<?, ?> getMap() {
-        return Collections.unmodifiableMap(map);
+    public Map<String, List<String>> getMap() {
+        return Collections.unmodifiableMap(attributes);
     }
 
-    private String toLowerCase(String s) {
-        return (s != null) ? s.toLowerCase() : s;
+    @Override
+    public Map<?, ?> getRawMap() {
+        return Collections.unmodifiableMap(map);
     }
 
     @Override

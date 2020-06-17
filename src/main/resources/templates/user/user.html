@@ -13,31 +13,18 @@
             </div>
             <div class="card-body text-left">
                 <div class="table-responsive">
-                    <table class="table table-sm table-hover ">
-                        <tbody>
-                            <tr>
-                                <td colspan="3">Selected CAS Login Details</td>
+                    <table class="table table-sm table-borderless table-hover">
+                        <thead>
+                            <tr class="border-bottom">
+                                <th>Attribute</th>
+                                <th>Data</th>
                             </tr>
-                            <tr>
-                                <td colspan="1">uid</td>
-                                <td colspan="2"><span th:text="${user.uid}"></span></td>
-                            </tr>
-                            <tr>
-                                <td colspan="1">username</td>
-                                <td colspan="2"><span th:text="${user.username}"></span></td>
-                            </tr>
-                            <tr>
-                                <td colspan="1">uhuuid</td>
-                                <td colspan="2"><span th:text="${user.uhuuid}"></span></td>
-                            </tr>
-                            <tr>
-                                <td colspan="1">cn</td>
-                                <td colspan="2"><span th:text="${user.name}"></span></td>
-                            </tr>
-                            <tr>
-                                <td colspan="1" style="white-space: nowrap">All Attributes</td>
-                                <td colspan="2" class="uh-pre"><span th:text="${user.attributes.map}"></span></td>
-                            </tr>
+                        </thead>
+                        <tbody>                        
+                            <tr th:each="entry : ${user.attributes.map}">
+                                <td th:text="${entry.key}">&nbsp;</td>
+                                <td class="uh-pre"><span th:text="${#strings.arrayJoin(entry.value, ', ')}"></span></td>
+                            </tr>                            
                         </tbody>
                     </table>
                 </div>

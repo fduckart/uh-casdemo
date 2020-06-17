@@ -23,5 +23,7 @@ public interface UhAttributes {
 
     List<String> getValues(String name);
 
-    Map<?, ?> getMap();
+    Map<String, List<String>> getMap();
+
+    Map<?, ?> getRawMap();
 }
