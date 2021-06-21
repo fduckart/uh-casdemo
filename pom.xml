@@ -45,6 +45,7 @@
         <angular-mocks-version>1.5.8</angular-mocks-version>
         <pmd.plugin.version>3.11.0</pmd.plugin.version>
         <pmdVersion>6.12.0</pmdVersion>
+        <js-tests.skip>false</js-tests.skip>        
     </properties>
 
     <dependencies>
@@ -259,6 +260,7 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <skipJasmineTests>${js-tests.skip}</skipJasmineTests>
                     <preloadSources>
                         <source>classpath/META-INF/resources/webjars/angularjs/${angularjs-version}/angular.min.js"></source>
                         <source>classpath/META-INF/resources/webjars/jquery/${jquery-version}/jquery.min.js</source>
@@ -292,11 +294,12 @@
                                 <echo>Now that you have a clean project,</echo>
                                 <echo>here are some common goals for this project:</echo>
                                 <echo>$ mvn clean test</echo>
-                                <echo>$ mvn clean test -Dtest=*Test </echo>
-                                <echo>$ mvn clean package</echo>
-                                <echo>$ mvn -Dmaven.test.skip=true clean package</echo>
+                                <echo>$ mvn clean test -Dtest=*Test</echo>
+                                <echo>$ mvn clean test jacoco:report -Djs-tests.skip=true -Dtest=*Test</echo>                                
                                 <echo>$ mvn jasmine:test</echo>
                                 <echo>$ mvn clean test jacoco:report</echo>
+                                <echo>$ mvn clean package</echo>
+                                <echo>$ mvn -Dmaven.test.skip=true clean package</echo>                                
                                 <echo>$ mvn clean spring-boot:run</echo>
                             </target>
                         </configuration>
