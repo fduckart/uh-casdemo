@@ -16,4 +16,4 @@
     }
     casdemoApp.controller("ErrorJsController", ErrorJsController);
 
-}());
+})();

@@ -1,3 +1,6 @@
+/*global casdemoApp*/
+/*eslint no-undef: "error"*/
+
 (function() {
 
     function CampusJsController($scope, App, dataProvider) {
@@ -12,8 +15,8 @@
             dataProvider.loadData(function(data) {
                 $scope.campuses = data;
             }, $scope.url);
-        }
+        };
     }
     casdemoApp.controller("CampusJsController", CampusJsController);
 
-}());
+})();

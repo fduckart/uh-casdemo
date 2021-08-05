@@ -1,3 +1,6 @@
+/*global casdemoApp*/
+/*eslint no-undef: "error"*/
+
 (function() {
     "use strict";
 
@@ -27,7 +30,7 @@
                     }
                 }
             }, $scope.url);
-        }
+        };
     }
     casdemoApp.controller("HolidayJsController", HolidayJsController);
 
@@ -67,8 +70,7 @@
                 });
             }
         };
-
     }
     casdemoApp.controller("HolidayGridJsController", HolidayGridJsController);
 
-}());
+})();

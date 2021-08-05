@@ -14,8 +14,8 @@
             dataProvider.loadData(function(data) {
                 $scope.roles = data;
             }, App.URL.API.ROLE);
-        }
+        };
     }
     casdemoApp.controller("RoleJsController", RoleJsController);
 
-}());
+})();
