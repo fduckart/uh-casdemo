@@ -1,7 +1,7 @@
 A web application to demonstrate how to use the UH CAS service.
 
+[![Build and Test](https://github.com/fduckart/uh-casdemo/actions/workflows/build-test.yml/badge.svg)](https://github.com/fduckart/uh-casdemo/actions/workflows/build-test.yml)
 [![Build Status](https://travis-ci.org/fduckart/uh-casdemo.png?branch=master)](https://travis-ci.org/fduckart/uh-casdemo)
-[![Test](https://github.com/fduckart/uh-casdemo/actions/workflows/build-test.yml/badge.svg)](https://github.com/fduckart/uh-casdemo/actions/workflows/build-test.yml)
 [![Coverage Status](https://coveralls.io/repos/github/fduckart/uh-casdemo/badge.svg?branch=master)](https://coveralls.io/github/fduckart/uh-casdemo?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f5fdc71206a64aa4a7dc9ffe9c988cd1)](https://www.codacy.com/manual/fduckart/uh-casdemo?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fduckart/uh-casdemo&amp;utm_campaign=Badge_Grade)
 
