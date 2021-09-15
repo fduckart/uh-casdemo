@@ -4,7 +4,10 @@ on: [push, pull_request]
 
 jobs:
   test:
-    runs-on: [macos-latest, ubuntu-latest]
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.platform }}
     name: Running Java ${{ matrix.java }} compile
     steps:
     - uses: actions/checkout@v2
