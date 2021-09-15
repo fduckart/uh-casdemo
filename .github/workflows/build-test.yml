@@ -3,8 +3,8 @@ name: Build and Test
 on: [push, pull_request]
 
 jobs:
-  compile:
-    runs-on: ubuntu-latest
+  test:
+    runs-on: [macos-latest, ubuntu-latest]
     name: Running Java ${{ matrix.java }} compile
     steps:
     - uses: actions/checkout@v2
@@ -13,4 +13,4 @@ jobs:
       with:
         java-version: 1.8
     - name: Compile code
-      run: mvn clean test -Dlogging.level.edu.hawaii.its.casdemo=OFF -Dlogging.level.org.springframework=ERROR -Dspring.main.banner-mode=off
+      run: mvn -q clean test -Dlogging.level.edu.hawaii.its.casdemo=OFF -Dlogging.level.org.springframework=ERROR -Dspring.main.banner-mode=off
