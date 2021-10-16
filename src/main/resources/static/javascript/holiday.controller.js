@@ -5,7 +5,7 @@
     "use strict";
 
     function HolidayJsController($scope, App, dataProvider) {
-        $scope.url = App.URL.API.HOLIDAY;
+        $scope.url = App.Url.Api.HOLIDAY;
         $scope.years = [];
 
         $scope.init = function() {

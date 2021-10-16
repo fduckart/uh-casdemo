@@ -13,7 +13,7 @@
         $scope.loadData = function() {
             dataProvider.loadData(function(data) {
                 $scope.roles = data;
-            }, App.URL.API.ROLE);
+            }, App.Url.Api.ROLE);
         };
     }
     casdemoApp.controller("RoleJsController", RoleJsController);

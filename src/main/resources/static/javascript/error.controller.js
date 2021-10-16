@@ -10,8 +10,8 @@
             dataProvider.saveData(function(data) {
                 $log.info("FeedyJsController.ok; data: ", data);
                 var error = encodeURI(data);
-                $window.location.href = App.URL.FEEDBACK + error;
-            }, App.URL.API.ERROR + "666");
+                $window.location.href = App.Url.FEEDBACK + error;
+            }, App.Url.Api.ERROR + "666");
         };
     }
     casdemoApp.controller("ErrorJsController", ErrorJsController);

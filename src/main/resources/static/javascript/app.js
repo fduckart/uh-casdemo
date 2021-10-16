@@ -5,14 +5,13 @@
 var casdemoApp = angular.module("casdemoApp", [ "ui.grid", "ui.grid.pagination" ]);
 
 casdemoApp.constant("App", {
-    CAMPUS: {
+    Campus: {
         "MANOA": "7",
         "SYSTEM": "11"
     },
-    URL: {
-        CAMPUS_LOAD: "/casdemo/api/campuses",
+    Url: {
         FEEDBACK: "/casdemo/feedback/",
-        API: {
+        Api: {
             CAMPUS: "/casdemo/api/campuses",
             ERROR: "/casdemo/api/error/",
             HOLIDAY: "/casdemo/api/holidays",

@@ -34,9 +34,7 @@ describe("CampusJsController", function() {
         expect(controller).toBeDefined();
         expect(scope.campuses).toBeDefined();
         expect(scope.campuses.length).toEqual(0);
-        expect(app.URL.CAMPUS_LOAD).toBeDefined();
-        expect(scope.url).toBeDefined();
-        expect(scope.url).toEqual(app.URL.CAMPUS_LOAD);
+        expect(app.Url.Api.CAMPUS).toBeDefined();
 
         // What we are testing:
         scope.init();

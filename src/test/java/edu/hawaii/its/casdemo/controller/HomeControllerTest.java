@@ -81,12 +81,37 @@ public class HomeControllerTest {
     @Test
     public void requestCampus() throws Exception {
         mockMvc.perform(get("/campus"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrlPattern(casLoginUrl + "**"));
+
+        mockMvc.perform(get("/campuses"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrlPattern(casLoginUrl + "**"));
+    }
+
+    @Test
+    @WithAnonymousUser
+    public void requestCampusViaAnonymous() throws Exception {
+        mockMvc.perform(get("/campus"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrlPattern(casLoginUrl + "**"));
+
+        mockMvc.perform(get("/campuses"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrlPattern(casLoginUrl + "**"));
+    }
+
+    @Test
+    @WithMockUhUser
+    public void requestCampusViaUser() throws Exception {
+        mockMvc.perform(get("/campus"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("campus"));
 
         mockMvc.perform(get("/campuses"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("campus"));
+
     }
 
     @Test
@@ -105,7 +130,7 @@ public class HomeControllerTest {
 
     @Test
     @WithMockUhAdmin
-    public void holidayViaUh() throws Exception {
+    public void holidayViaUhUser() throws Exception {
         mockMvc.perform(get("/holiday"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("holiday"));
@@ -113,7 +138,7 @@ public class HomeControllerTest {
 
     @Test
     @WithMockUhAdmin
-    public void holidayGridViaUh() throws Exception {
+    public void holidayGridViaUhUser() throws Exception {
         mockMvc.perform(get("/holidaygrid"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("holiday-grid"));
@@ -129,7 +154,7 @@ public class HomeControllerTest {
 
     @Test
     @WithMockUhUser
-    public void loginViaUh() throws Exception {
+    public void loginViaUhUser() throws Exception {
         // Logged in already, URL redirects back to home page.
         mockMvc.perform(get("/login"))
                 .andExpect(status().is3xxRedirection())
@@ -138,7 +163,7 @@ public class HomeControllerTest {
 
     @Test
     @WithMockUhUser
-    public void logoutViaUh() throws Exception {
+    public void logoutViaUhUser() throws Exception {
         MvcResult mvcResult = mockMvc.perform(post("/logout").with(csrf()))
                 .andExpect(status().is3xxRedirection())
                 .andReturn();
@@ -155,7 +180,7 @@ public class HomeControllerTest {
 
     @Test
     @WithMockUhUser
-    public void userViaUh() throws Exception {
+    public void userViaUhUser() throws Exception {
         mockMvc.perform(get("/user"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("user/user"));
