@@ -301,6 +301,7 @@
                                 <echo>$ mvn clean package</echo>
                                 <echo>$ mvn -Dmaven.test.skip=true clean package</echo>                                
                                 <echo>$ mvn clean spring-boot:run</echo>
+                                <echo>$ mvn spring-boot:run -Dspring-boot.run.jvmArguments="..."</echo>
                             </target>
                         </configuration>
                     </execution>

@@ -29,11 +29,13 @@ public class CasUserDetailsService extends AbstractCasAssertionUserDetailsServic
             // Not sure this is possible.
             throw new UsernameNotFoundException("principal is null");
         }
+        String username = assertion.getPrincipal().getName();
+        logger.debug("principal.name: " + username);
 
         Map<String, Object> map = assertion.getPrincipal().getAttributes();
         logger.info("map: " + map);
 
-        return userBuilder.make(new UhCasAttributes(map));
+        return userBuilder.make(new UhCasAttributes(username, map));
     }
 
     @Override

@@ -56,6 +56,7 @@ public class UhCasAttributes implements UhAttributes {
         return getValue("cn");
     }
 
+    @Override
     public String getUsername() {
         return username;
     }

@@ -33,7 +33,8 @@ public class UserBuilderTest {
         Map<String, String> map = new HashMap<>();
         map.put("uid", "duckart");
         map.put("uhuuid", "89999999");
-        User user = userBuilder.make(map);
+        UhAttributes attributes = new UhCasAttributes("duckart", map);
+        User user = userBuilder.make(attributes);
 
         // Basics.
         assertEquals("duckart", user.getUsername());
@@ -49,7 +50,8 @@ public class UserBuilderTest {
         map = new HashMap<>();
         map.put("uid", "someuser");
         map.put("uhuuid", "10000001");
-        user = userBuilder.make(map);
+        attributes = new UhCasAttributes("someuser", map);
+        user = userBuilder.make(attributes);
 
         assertEquals("someuser", user.getUsername());
         assertEquals("someuser", user.getUid());
@@ -68,7 +70,8 @@ public class UserBuilderTest {
         Map<String, String> map = new HashMap<>();
         map.put("uid", "jjcale");
         map.put("uhuuid", "10000004");
-        User user = userBuilder.make(map);
+        UhAttributes attributes = new UhCasAttributes("jjcale", map);
+        User user = userBuilder.make(attributes);
 
         // Basics.
         assertEquals("jjcale", user.getUsername());
@@ -93,7 +96,8 @@ public class UserBuilderTest {
         uids.add("bbbbbbb");
         map.put("uid", uids);
         map.put("uhuuid", "10000003");
-        User user = userBuilder.make(map);
+        UhAttributes attributes = new UhCasAttributes("aaaaaaa", map);
+        User user = userBuilder.make(attributes);
 
         // Basics.
         assertEquals("aaaaaaa", user.getUsername());
@@ -114,7 +118,8 @@ public class UserBuilderTest {
         Map<String, String> map = new HashMap<>();
         map.put("uid", "nobody");
         map.put("uhuuid", "10000009");
-        User user = userBuilder.make(map);
+        UhAttributes attributes = new UhCasAttributes("nobody", map);
+        User user = userBuilder.make(attributes);
 
         // Basics.
         assertEquals("nobody", user.getUsername());
@@ -131,51 +136,53 @@ public class UserBuilderTest {
     }
 
     @Test
-    public void testUidNull() {
-        List<String> uids = new ArrayList<>();
-        uids.add(null);
+    public void testUsernameNull() {
+        String username = null;
         Map<String, List<String>> map = new HashMap<>();
-        map.put("uid", uids);
+        UhAttributes attributes = new UhCasAttributes(username, map);
 
         try {
-            userBuilder.make(map);
+            userBuilder.make(attributes);
             fail("Should not reach here.");
         } catch (Exception e) {
             assertEquals(e.getClass(), UsernameNotFoundException.class);
-            assertThat(e.getMessage(), containsString("uid is blank"));
+            assertThat(e.getMessage(), containsString("username is blank"));
         }
     }
 
     @Test
-    public void testUidBlank() {
+    public void testUsernameBlank() {
         Map<String, String> map = new HashMap<>();
         map.put("uid", "  ");
+        UhAttributes attributes = new UhCasAttributes("", map);
 
         try {
-            userBuilder.make(map);
+            userBuilder.make(attributes);
             fail("Should not reach here.");
         } catch (Exception e) {
             assertEquals(e.getClass(), UsernameNotFoundException.class);
-            assertThat(e.getMessage(), containsString("uid is blank"));
+            assertThat(e.getMessage(), containsString("username is blank"));
         }
     }
 
     @Test
-    public void testUidEmpty() {
+    public void testUsernameEmpty() {
         Map<String, String> map = new HashMap<>();
         map.put("uid", "");
+        UhAttributes attributes = new UhCasAttributes("", map);
 
         try {
-            userBuilder.make(map);
+            userBuilder.make(attributes);
             fail("Should not reach here.");
         } catch (Exception e) {
             assertEquals(e.getClass(), UsernameNotFoundException.class);
-            assertThat(e.getMessage(), containsString("uid is blank"));
+            assertThat(e.getMessage(), containsString("username is blank"));
         }
     }
 
     @Test(expected = UsernameNotFoundException.class)
     public void make() {
-        userBuilder.make(new HashMap<>());
+        UhAttributes attributes = new UhCasAttributes();
+        userBuilder.make(attributes);
     }
 }

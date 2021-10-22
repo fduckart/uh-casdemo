@@ -13,6 +13,8 @@ public interface UhAttributes {
 
     String getName();
 
+    String getUsername();
+
     List<String> getMail();
 
     List<String> getAffiliation();
