@@ -1,8 +1,6 @@
 {
-    "env": {
-        "angular": true
-    },
     "globals": {
+        "angular": true,
         "casdemoApp": true
     }
 }
