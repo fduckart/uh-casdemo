@@ -1,4 +1,3 @@
-/*global casdemoApp*/
 /*eslint no-undef: "error"*/
 
 (function() {
