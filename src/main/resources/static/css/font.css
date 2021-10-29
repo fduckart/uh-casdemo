@@ -3,62 +3,77 @@
   font-family: cinzel-regular;
   src: url(../fonts/Cinzel-Regular.ttf);
 }
+
 @font-face {
   font-family: cormorant-upright-regular;
   src: url(../fonts/CormorantUpright-Regular.ttf);
 }
+
 @font-face {
   font-family: lato-regular;
   src: url(../fonts/Lato-Regular.ttf);
 }
+
 @font-face {
   font-family: librefranklin-regular;
   src: url(../fonts/LibreFranklin-Regular.ttf);
 }
+
 @font-face {
   font-family: opensans-regular;
   src: url(../fonts/OpenSans-Regular.ttf);
 }
+
 @font-face {
   font-family: roboto-regular;
   src: url(../fonts/Roboto-Regular.ttf);
 }
+
 @font-face {
   font-family: alegreyasans-regular;
   src: url(../fonts/AlegreyaSans-Regular.ttf);
 }
+
 @font-face {
   font-family: josefinsans-regular;
   src: url(../fonts/JosefinSans-Regular.ttf);
 }
+
 @font-face {
   font-family: raleway-regular;
   src: url(../fonts/Raleway-Regular.ttf);
 }
+
 @font-face {
   font-family: alice-regular;
   src: url(../fonts/Alice-Regular.ttf);
 }
+
 @font-face {
   font-family: marcellus-regular;
   src: url(../fonts/Marcellus-Regular.ttf);
 }
+
 @font-face {
   font-family: ovo-regular;
   src: url(../fonts/Ovo-Regular.ttf);
 }
+
 @font-face {
   font-family: vidaloka-regular;
   src: url(../fonts/Vidaloka-Regular.ttf);
 }
+
 @font-face {
   font-family: playfairdisplaysc-regular;
   src: url(../fonts/PlayfairDisplaySC-Regular.ttf);
 }
+
 @font-face {
   font-family: SourceSerifPro-Regular;
   src: url(../fonts/SourceSerifPro-Regular.ttf);
 }
+
 @font-face {
   font-family: playfairdisplay-regular;
   src: url(../fonts/PlayfairDisplay-Regular.ttf);
