@@ -28,7 +28,7 @@
           message="Too many static imports may lead to messy code!" >
         <priority>3</priority>
         <properties>
-            <property name="maximumStaticImports" value="8"/>
+            <property name="maximumStaticImports" value="16"/>
         </properties>
     </rule>
     <rule ref="category/java/codestyle.xml/UnnecessaryFullyQualifiedName" />
