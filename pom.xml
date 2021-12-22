@@ -28,8 +28,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.6.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>2.6.1</version>
+        <relativePath/>
     </parent>
 
     <properties>
@@ -234,8 +234,6 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
                     <warName>${project.name}</warName>
-                    <source>${java-version}</source>
-                    <target>${java-version}</target>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
@@ -291,17 +289,17 @@
                         </goals>
                         <configuration>
                             <target>
-                                <echo>Now that you have a clean project,</echo>
-                                <echo>here are some common goals for this project:</echo>
-                                <echo>$ mvn clean test</echo>
-                                <echo>$ mvn clean test -Dtest=*Test</echo>
-                                <echo>$ mvn clean test jacoco:report -Djs-tests.skip=true -Dtest=*Test</echo>                                
-                                <echo>$ mvn jasmine:test</echo>
-                                <echo>$ mvn clean test jacoco:report</echo>
-                                <echo>$ mvn clean package</echo>
-                                <echo>$ mvn -Dmaven.test.skip=true clean package</echo>                                
-                                <echo>$ mvn clean spring-boot:run</echo>
-                                <echo>$ mvn spring-boot:run -Dspring-boot.run.jvmArguments="..."</echo>
+                                <echo level="info">Now that you have a clean project,</echo>
+                                <echo level="info">here are some common goals for this project:</echo>
+                                <echo level="info">$ mvn clean test</echo>
+                                <echo level="info">$ mvn clean test -Dtest=*Test</echo>
+                                <echo level="info">$ mvn clean test jacoco:report -Djs-tests.skip=true -Dtest=*Test</echo>                                
+                                <echo level="info">$ mvn jasmine:test</echo>
+                                <echo level="info">$ mvn clean test jacoco:report</echo>
+                                <echo level="info">$ mvn clean package</echo>
+                                <echo level="info">$ mvn -Dmaven.test.skip=true clean package</echo>                                
+                                <echo level="info">$ mvn clean spring-boot:run</echo>
+                                <echo level="info">$ mvn spring-boot:run -Dspring-boot.run.jvmArguments="..."</echo>
                             </target>
                         </configuration>
                     </execution>

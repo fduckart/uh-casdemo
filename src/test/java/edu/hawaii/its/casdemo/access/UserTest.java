@@ -1,20 +1,20 @@
 package edu.hawaii.its.casdemo.access;
 
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -102,4 +102,18 @@ public class UserTest {
         assertTrue(ud.equals(u0));
         ud = null;
     }
+
+    @Test
+    public void testHashCode() {
+        Set<GrantedAuthority> authorities = new LinkedHashSet<>();
+
+        User u1 = new User("a", "b", authorities);
+        User c2 = new User("a", "b", authorities);
+        assertThat(u1.hashCode(), equalTo(c2.hashCode()));
+
+        u1.setUhuuid("u");
+        c2.setUhuuid("u");
+        assertThat(u1.hashCode(), equalTo(c2.hashCode()));
+    }
+
 }

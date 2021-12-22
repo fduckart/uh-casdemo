@@ -1,10 +1,10 @@
 package edu.hawaii.its.casdemo.type;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -13,8 +13,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import edu.hawaii.its.casdemo.util.Dates;
 
@@ -22,7 +22,7 @@ public class YearHolidayHolderTest {
 
     private YearHolidayHolder holder;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         holder = new YearHolidayHolder();
     }
