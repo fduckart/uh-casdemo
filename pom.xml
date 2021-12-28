@@ -40,12 +40,11 @@
 
         <bootstrap-version>4.4.1</bootstrap-version>
         <jquery-version>3.4.1</jquery-version>
-        <popper.js-version>1.16.0</popper.js-version>
         <angularjs-version>1.5.8</angularjs-version>
         <angular-mocks-version>1.5.8</angular-mocks-version>
         <pmd.plugin.version>3.11.0</pmd.plugin.version>
         <pmdVersion>6.12.0</pmdVersion>
-        <js-tests.skip>false</js-tests.skip>        
+        <js-tests.skip>false</js-tests.skip>
     </properties>
 
     <dependencies>
@@ -107,17 +106,15 @@
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.1-api</artifactId>
-            <version>1.0.0.Final</version>
+            <version>1.0.2.Final</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>
         </dependency>
 
         <!-- CAS related. -->
@@ -164,11 +161,6 @@
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
             <version>${jquery-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars.bower</groupId>
-            <artifactId>popper.js</artifactId>
-            <version>${popper.js-version}</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
@@ -293,11 +285,10 @@
                                 <echo level="info">here are some common goals for this project:</echo>
                                 <echo level="info">$ mvn clean test</echo>
                                 <echo level="info">$ mvn clean test -Dtest=*Test</echo>
-                                <echo level="info">$ mvn clean test jacoco:report -Djs-tests.skip=true -Dtest=*Test</echo>                                
+                                <echo level="info">$ mvn clean test jacoco:report -Djs-tests.skip=true -Dtest=*Test</echo>
                                 <echo level="info">$ mvn jasmine:test</echo>
                                 <echo level="info">$ mvn clean test jacoco:report</echo>
-                                <echo level="info">$ mvn clean package</echo>
-                                <echo level="info">$ mvn -Dmaven.test.skip=true clean package</echo>                                
+                                <echo level="info">$ mvn -Dmaven.test.skip=true clean package</echo>
                                 <echo level="info">$ mvn clean spring-boot:run</echo>
                                 <echo level="info">$ mvn spring-boot:run -Dspring-boot.run.jvmArguments="..."</echo>
                             </target>

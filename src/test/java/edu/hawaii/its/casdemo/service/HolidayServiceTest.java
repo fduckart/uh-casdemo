@@ -54,16 +54,17 @@ public class HolidayServiceTest {
         assertEquals(h2, h3);
         assertSame(h2, h3);
 
-        assertThat(h2.getId(), equalTo(15));
+        assertThat(h2.getId(), equalTo(1001));
         assertThat(h2.getDescription(), equalTo("New Year's Day"));
     }
 
     @Test
     public void findTypeById() {
-        Type t0 = holidayService.findType(1);
-        Type t1 = holidayService.findType(1);
-        assertThat(t0.getId(), equalTo(1));
-        assertThat(t1.getId(), equalTo(1));
+        final Integer id = 2;
+        Type t0 = holidayService.findType(id);
+        Type t1 = holidayService.findType(id);
+        assertThat(t0.getId(), equalTo(id));
+        assertThat(t1.getId(), equalTo(id));
         assertEquals(t0, t1);
         assertSame(t0, t1); // Check if caching is working.
 
@@ -77,20 +78,16 @@ public class HolidayServiceTest {
         List<Type> types = holidayService.findTypes();
 
         Type ht = types.get(0);
-        assertThat(ht.getId(), equalTo(1));
-        assertThat(ht.getDescription(), equalTo("Bank"));
-
-        ht = types.get(1);
         assertThat(ht.getId(), equalTo(2));
         assertThat(ht.getDescription(), equalTo("Federal"));
 
-        ht = types.get(2);
+        ht = types.get(1);
         assertThat(ht.getId(), equalTo(3));
-        assertThat(ht.getDescription(), equalTo("State"));
-
-        ht = types.get(3);
-        assertThat(ht.getId(), equalTo(4));
         assertThat(ht.getDescription(), equalTo("UH"));
+
+        ht = types.get(2);
+        assertThat(ht.getId(), equalTo(4));
+        assertThat(ht.getDescription(), equalTo("State"));
     }
 
     @Test
@@ -124,30 +121,31 @@ public class HolidayServiceTest {
         assertEquals("New Year's Day", h1.getDescription());
 
         Holiday h2 = holidayService.findHoliday(2);
-        assertEquals("Martin Luther King Jr. Day", h2.getDescription());
+        assertEquals("Dr. Martin Luther King, Jr. Day", h2.getDescription());
 
         Holiday h4 = holidayService.findHoliday(4);
-        assertEquals("Prince Kuhio Day", h4.getDescription());
+        assertEquals("Prince Jonah Kuhio Kalanianaole Day", h4.getDescription());
 
         // Invalid ID value.
         Holiday h9 = holidayService.findHoliday(666);
         assertThat(h9, equalTo(null));
 
-        assertEquals(3, h1.getHolidayTypes().size());
-        assertEquals(3, h2.getHolidayTypes().size());
+        assertEquals(2, h1.getHolidayTypes().size());
+        assertEquals(2, h2.getHolidayTypes().size());
         assertEquals(2, h4.getHolidayTypes().size());
 
         List<Type> types = h1.getHolidayTypes();
-        assertThat(types.get(0).getId(), equalTo(1));
-        assertThat(types.get(1).getId(), equalTo(2));
-        assertThat(types.get(2).getId(), equalTo(3));
+        assertThat(types.size(), equalTo(2));
+        assertThat(types.get(0).getId(), equalTo(2));
+        assertThat(types.get(1).getId(), equalTo(3));
 
         types = h2.getHolidayTypes();
-        assertThat(types.get(0).getId(), equalTo(1));
-        assertThat(types.get(1).getId(), equalTo(2));
-        assertThat(types.get(2).getId(), equalTo(3));
+        assertThat(types.size(), equalTo(2));
+        assertThat(types.get(0).getId(), equalTo(2));
+        assertThat(types.get(1).getId(), equalTo(3));
 
         types = h4.getHolidayTypes();
+        assertThat(types.size(), equalTo(2));
         assertThat(types.get(0).getId(), equalTo(3));
         assertThat(types.get(1).getId(), equalTo(4));
     }

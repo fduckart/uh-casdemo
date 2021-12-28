@@ -319,4 +319,21 @@ public class HomeControllerTest {
                 .andExpect(status().is3xxRedirection());
     }
 
+    @Test
+    public void jsImportJquery() throws Exception {
+        mockMvc.perform(get("/webjars/jquery/jquery.min.js"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void jsImportBootstrap() throws Exception {
+        mockMvc.perform(get("/webjars/bootstrap/js/bootstrap.min.js"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void cssImportFontAwesome() throws Exception {
+        mockMvc.perform(get("/webjars/font-awesome/css/font-awesome.min.css"))
+                .andExpect(status().isOk());
+    }
 }

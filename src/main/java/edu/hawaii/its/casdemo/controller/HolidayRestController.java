@@ -30,7 +30,7 @@ public class HolidayRestController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<JsonData<List<Holiday>>> holidays() {
-        logger.info("Entered REST holidays...");
+        logger.debug("Entered REST holidays...");
         JsonData<List<Holiday>> data = new JsonData<>(holidayService.findHolidays());
         return ResponseEntity
                 .ok()
@@ -55,7 +55,7 @@ public class HolidayRestController {
     public Page<Holiday> findPaginated(
             @RequestParam(value = "page") int page,
             @RequestParam(value = "size") int size) {
-        logger.info("Entered REST holidays grid...");
+        logger.debug("Entered REST holidays grid...");
         return holidayService.findPaginatedHdays(page, size);
     }
 
@@ -63,7 +63,7 @@ public class HolidayRestController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<JsonData<List<Type>>> types() {
-        logger.info("Entered REST types...");
+        logger.debug("Entered REST types...");
         List<Type> types = holidayService.findTypes();
         JsonData<List<Type>> data = new JsonData<>(types);
         return ResponseEntity

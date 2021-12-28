@@ -34,12 +34,11 @@ public class HolidayRepositoryTest {
     public void findById() {
         Holiday h = holidayRepository.findById(115).get();
         assertThat(h.getDescription(), equalTo("Christmas"));
-        assertThat(h.getHolidayTypes().size(), equalTo(3));
+        assertThat(h.getHolidayTypes().size(), equalTo(2));
         LocalDate localDate = Dates.newLocalDate(2018, Month.DECEMBER, 25);
         Date date = Dates.toDate(localDate);
         assertThat(h.getObservedDate(), equalTo(date));
         assertThat(h.getOfficialDate(), equalTo(date));
-        assertThat(h.getHolidayTypes().size(), equalTo(3));
     }
 
     @Test

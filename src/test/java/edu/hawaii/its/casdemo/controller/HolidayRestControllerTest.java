@@ -54,7 +54,7 @@ public class HolidayRestControllerTest {
     public void httpGetHolidays() throws Exception {
         mockMvc.perform(get("/api/holidays"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("data", hasSize(140)));
+                .andExpect(jsonPath("data", hasSize(248)));
     }
 
     @Test
@@ -67,10 +67,9 @@ public class HolidayRestControllerTest {
                 .andExpect(jsonPath("data.observedDate").value("January 01, 2013, Tuesday"))
                 .andExpect(jsonPath("data.officialDate").value("January 01, 2013, Tuesday"))
                 .andExpect(jsonPath("data.year").value("2013"))
-                .andExpect(jsonPath("data.holidayTypes", hasSize(3)))
-                .andExpect(jsonPath("data.holidayTypes[0].description").value("Bank"))
-                .andExpect(jsonPath("data.holidayTypes[1].description").value("Federal"))
-                .andExpect(jsonPath("data.holidayTypes[2].description").value("State"));
+                .andExpect(jsonPath("data.holidayTypes", hasSize(2)))
+                .andExpect(jsonPath("data.holidayTypes[0].description").value("Federal"))
+                .andExpect(jsonPath("data.holidayTypes[1].description").value("UH"));
     }
 
     @Test
@@ -88,8 +87,8 @@ public class HolidayRestControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("content", hasSize(10)))
                 .andExpect(jsonPath("last").value("false"))
-                .andExpect(jsonPath("totalPages").value("14"))
-                .andExpect(jsonPath("totalElements").value("140"))
+                .andExpect(jsonPath("totalPages").value(25))
+                .andExpect(jsonPath("totalElements").value(248))
                 .andExpect(jsonPath("size").value("10"))
                 .andExpect(jsonPath("number").value("1"))
                 .andExpect(jsonPath("first").value("false"))
@@ -102,11 +101,10 @@ public class HolidayRestControllerTest {
     public void httpGetTypes() throws Exception {
         mockMvc.perform(get("/api/types"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("data", hasSize(4)))
-                .andExpect(jsonPath("data[0].description").value("Bank"))
-                .andExpect(jsonPath("data[1].description").value("Federal"))
-                .andExpect(jsonPath("data[2].description").value("State"))
-                .andExpect(jsonPath("data[3].description").value("UH"));
+                .andExpect(jsonPath("data", hasSize(3)))
+                .andExpect(jsonPath("data[0].description").value("Federal"))
+                .andExpect(jsonPath("data[1].description").value("UH"))
+                .andExpect(jsonPath("data[2].description").value("State"));
     }
 
     @Test
