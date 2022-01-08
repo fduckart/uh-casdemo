@@ -10,14 +10,14 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@Profile(value = { "default", "dev" })
+@Profile(value = "default")
 @Configuration
 @ComponentScan(basePackages = "edu.hawaii.its.casdemo")
 @EnableJpaRepositories(basePackages = { "edu.hawaii.its.casdemo.repository" })
 @PropertySource("classpath:custom.properties")
-public class AppConfig {
+public class AppConfigDefault {
 
-    private static final Log logger = LogFactory.getLog(AppConfig.class);
+    private static final Log logger = LogFactory.getLog(AppConfigDefault.class);
 
     @PostConstruct
     public void init() {

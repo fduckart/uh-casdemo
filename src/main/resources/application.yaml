@@ -1,0 +1,70 @@
+spring:
+    profiles:
+        active: default
+    jmx:
+        enabled: false
+    mail:
+        host: smtp-server.hawaii.edu
+    h2:
+        console:
+            enabled: false
+
+server:
+    servlet:
+        context-path: /casdemo
+    session:
+        timeout: 18000
+
+management:
+    security:
+        enabled: false
+
+app:
+    url:
+        home: /
+        base: http://localhost:8080/casdemo
+
+cas:
+    mainUrl: https://cas-test.its.hawaii.edu/cas
+    login:
+        url: "${cas.mainUrl}/login"
+    service: "${app.url.base}/login/cas"
+    authenticateAllArtifacts: true
+    sendRenew: true
+    saml:
+        tolerance: 180000
+
+logging:
+    pattern:
+        console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(%-8level) --- %clr(%-80.80logger{80}){cyan} : %m%n"
+    level:
+        edu.hawaii.its.casdemo: INFO
+        org.springframework: INFO
+        org.springframework.cache: INFO
+        org.springframework.boot.test.mock.web: WARN
+        org.hibernate: WARN
+        org.jasig.cas: WARN
+
+
+---
+environment: localhost
+spring:
+    config:
+        activate:
+            on-profile: localhost
+
+
+---
+environment: test
+spring:
+    config:
+        activate:
+            on-profile: test
+app:
+    url:
+        base: https://www.test.hawaii.edu/casdemo
+
+cas:
+    mainUrl: https://cas-test.its.hawaii.edu/cas
+
+...
