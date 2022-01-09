@@ -128,9 +128,14 @@ public final class Dates {
     }
 
     public static LocalDate toLocalDate(Date date) {
+        if (date == null) {
+            return null;
+        }
+
         if (date instanceof java.sql.Date) {
             date = new Date(date.getTime());
         }
+
         Instant instant = date.toInstant();
         ZoneId zoneId = zoneId();
         ZonedDateTime zoneDateTime = instant.atZone(zoneId);

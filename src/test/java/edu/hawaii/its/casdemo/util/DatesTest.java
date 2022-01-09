@@ -506,6 +506,10 @@ public class DatesTest {
             assertEquals(year, Dates.yearOfDate(Dates.lastDateOfYear(year)));
             assertEquals(year, Dates.yearOfDate(Dates.lastDateOfMonth(Month.FEBRUARY, year)));
         }
+
+        Date d0 = Dates.toDate(newYearsDay2000LocalDate);
+        int year = newYearsDay2000LocalDate.getYear();
+        assertThat(Dates.yearOfDate(d0), equalTo(year));
     }
 
     @Test
@@ -617,6 +621,28 @@ public class DatesTest {
         assertEquals(31, d.getDayOfMonth());
         assertEquals(2016, d.getYear());
         assertEquals(Month.OCTOBER, d.getMonth());
+    }
+
+    @Test
+    public void sqlDateToLocalDate() {
+        java.sql.Date sqlDate = null;
+        LocalDate d = Dates.toLocalDate(sqlDate);
+        assertThat(d, equalTo(null));
+
+        long t = Dates.toDate(newYearsDay2000LocalDate).getTime();
+        sqlDate = new java.sql.Date(t);
+        LocalDate d0 = sqlDate.toLocalDate();
+
+        assertThat(d0.getDayOfMonth(), equalTo(1));
+        assertThat(d0.getYear(), equalTo(2000));
+        assertThat(d0.getMonth(), equalTo(Month.JANUARY));
+
+        LocalDate d1 = Dates.toLocalDate(sqlDate);
+        assertThat(d1.getDayOfMonth(), equalTo(1));
+        assertThat(d1.getYear(), equalTo(2000));
+        assertThat(d1.getMonth(), equalTo(Month.JANUARY));
+
+        assertEquals(d1, d0);
     }
 
     @Test
