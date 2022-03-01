@@ -11,10 +11,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
-import java.util.Map;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
@@ -25,17 +21,12 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import edu.hawaii.its.casdemo.configuration.SpringBootWebApplication;
 import edu.hawaii.its.casdemo.service.HolidayService;
 
 @SpringBootTest(classes = { SpringBootWebApplication.class })
 @TestMethodOrder(MethodOrderer.Random.class)
 public class HolidayRestControllerTest {
-
-    private static final Log logger = LogFactory.getLog(HolidayRestControllerTest.class);
 
     final MediaType APPLICATION_JSON_UTF8 =
             new MediaType(MediaType.APPLICATION_JSON.getType(),
@@ -129,14 +120,6 @@ public class HolidayRestControllerTest {
 
         restController.setHolidayService(holidayService);
         assertNotNull(restController.getHolidayService());
-    }
-
-    private Map<String, Object> toMap(final String json) throws Exception {
-        Map<String, Object> map = new ObjectMapper()
-                .readValue(json,
-                        new TypeReference<Map<String, Object>>() {
-                        });
-        return map;
     }
 
 }

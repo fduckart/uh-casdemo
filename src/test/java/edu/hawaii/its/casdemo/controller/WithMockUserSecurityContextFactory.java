@@ -27,13 +27,15 @@ public class WithMockUserSecurityContextFactory
             authorities.add(new SimpleGrantedAuthority(role));
         }
 
-        User user = new User(uhUser.username(), authorities);
-        user.setUhuuid(uhUser.uhuuid());
-
         Map<String, String> attrsMap = new HashMap<>();
-        attrsMap.put("cn", uhUser.name());
+        attrsMap.put("displayName", uhUser.name());
         UhAttributes attributes = new UhCasAttributes(attrsMap);
-        user.setAttributes(attributes);
+        User user = new User.Builder()
+                .username(uhUser.username())
+                .uhuuid(uhUser.uhuuid())
+                .authorities(authorities)
+                .attributes(attributes)
+                .create();
 
         final Authentication auth =
                 new UsernamePasswordAuthenticationToken(user, "pw", user.getAuthorities());

@@ -95,7 +95,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private SingleSignOutFilter singleSignOutFilter() {
         SingleSignOutFilter filter = new SingleSignOutFilter();
-        filter.setCasServerUrlPrefix(casMainUrl);
         return filter;
     }
 

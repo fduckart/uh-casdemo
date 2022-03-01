@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthorizationServiceImpl implements AuthorizationService {
 
+    // You need to replace this with real look ups.
+
     @Override
     public RoleHolder fetchRoles(String uhUuid) {
         return fetchRoles(uhUuid, true);

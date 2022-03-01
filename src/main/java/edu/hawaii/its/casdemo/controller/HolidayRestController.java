@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.hawaii.its.casdemo.service.HolidayService;
 import edu.hawaii.its.casdemo.type.Holiday;
 import edu.hawaii.its.casdemo.type.Type;
-import edu.hawaii.its.casdemo.util.Strings;
 
 @RestController
 public class HolidayRestController {
@@ -32,16 +31,6 @@ public class HolidayRestController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<JsonData<List<Holiday>>> holidays() {
         logger.debug("Entered REST holidays...");
-
-        System.out.println(Strings.fill('v', 99));
-        List<Holiday> list = holidayService.findHolidays();
-        int i = 0;
-        for (Holiday h : list) {
-            String x = Strings.padLeft(String.valueOf(i++), 4);
-            System.out.println(x + " ***-*** " + h);
-        }
-        System.out.println(Strings.fill('^', 99));
-
         JsonData<List<Holiday>> data = new JsonData<>(holidayService.findHolidays());
         return ResponseEntity
                 .ok()

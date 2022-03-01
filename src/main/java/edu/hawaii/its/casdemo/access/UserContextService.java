@@ -1,6 +1,12 @@
 package edu.hawaii.its.casdemo.access;
 
+import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +24,7 @@ public class UserContextService {
                 return (User) principal;
             }
         }
-        return new AnonymousUser();
+        return anonymousUser;
     }
 
     public String getCurrentUsername() {
@@ -29,14 +35,20 @@ public class UserContextService {
         return getCurrentUser().getUhuuid();
     }
 
-    public void setCurrentUhuuid(String uhuuid) {
-        User user = getCurrentUser();
-        if (user.hasRole(Role.ADMIN)) {
-            user.setUhuuid(uhuuid);
-        }
-    }
-
+    @Override
     public String toString() {
         return "UserContextServiceImpl [context=" + SecurityContextHolder.getContext() + "]";
+    }
+
+    // ------------------------------------------------------------------------
+    static final User anonymousUser;
+    static final Set<GrantedAuthority> authorities = new LinkedHashSet<>();
+    static {
+        authorities.add(new SimpleGrantedAuthority(Role.ANONYMOUS.longName()));
+        anonymousUser = new User.Builder()
+                .username("anonymous")
+                .authorities(Collections.unmodifiableCollection(authorities))
+                .attributes(new UhCasAttributes())
+                .create();
     }
 }

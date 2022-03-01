@@ -28,13 +28,13 @@ public final class UserBuilder {
         RoleHolder roleHolder = authorizationService.fetchRoles(uhuuid);
 
         logger.info("Adding roles. username: " + username + "; roles: " + roleHolder.getAuthorites());
-        User user = new User(username, uhuuid, roleHolder.getAuthorites());
+        User user = new User.Builder()
+                .username(username)
+                .uhuuid(uhuuid)
+                .authorities(roleHolder.getAuthorites())
+                .attributes(attributes)
+                .create();
         logger.debug("Done adding roles; username: " + username);
-
-        // Put all the attributes into the user
-        // object just for the demonstration.
-        // Above is what might commonly occur.
-        user.setAttributes(attributes);
 
         return user;
     }

@@ -77,7 +77,6 @@ public class HolidayTest {
         h2.setDescription("Xmas 2016");
 
         assertThat(h1.hashCode(), not(equalTo(h2.hashCode())));
-
     }
 
     @Test

@@ -1,6 +1,8 @@
 package edu.hawaii.its.casdemo.access;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -8,18 +10,14 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 public class User extends org.springframework.security.core.userdetails.User {
 
     private static final long serialVersionUID = 5L;
-    private String uhuuid;
-    private UhAttributes attributes;
+    private final String uhuuid;
+    private final UhAttributes attributes;
 
     // Constructor.
-    public User(String username, String uhuuid, Collection<GrantedAuthority> authorities) {
+    private User(String username, String uhuuid, Collection<GrantedAuthority> authorities, UhAttributes attributes) {
         super(username, "", authorities);
-        setUhuuid(uhuuid);
-    }
-
-    // Constructor.
-    public User(String username, Collection<GrantedAuthority> authorities) {
-        this(username, null, authorities);
+        this.uhuuid = uhuuid != null ? uhuuid : "";
+        this.attributes = attributes != null ? attributes : new UhEmptyAttributes();
     }
 
     public String getUid() {
@@ -30,24 +28,24 @@ public class User extends org.springframework.security.core.userdetails.User {
         return uhuuid;
     }
 
-    public void setUhuuid(String uhuuid) {
-        this.uhuuid = uhuuid != null ? uhuuid : "";
-    }
-
+    // Get any single-value loaded attribute.
     public String getAttribute(String name) {
         return attributes.getValue(name);
     }
 
+    // Get any multivalue-value loaded attribute.    
+    public List<String> getAttributes(String name) {
+        return attributes.getValues(name);
+    }
+
+    // All the attributes.
     public UhAttributes getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(UhAttributes attributes) {
-        this.attributes = attributes;
-    }
-
+    // Convience attribute method.
     public String getName() {
-        return attributes.getValue("cn");
+        return attributes.getValue("displayName");
     }
 
     public boolean hasRole(Role role) {
@@ -81,5 +79,39 @@ public class User extends org.springframework.security.core.userdetails.User {
         return "User [uid=" + getUid()
                 + ", uhuuid=" + getUhuuid()
                 + ", super-class: " + super.toString() + "]";
+    }
+
+    public static class Builder {
+        private String username;
+        private String uhuuid;
+        private Collection<GrantedAuthority> authorities;
+        private UhAttributes attributes;
+
+        public Builder username(String username) {
+            this.username = username;
+            return this;
+        }
+
+        public Builder uhuuid(String uhuuid) {
+            this.uhuuid = uhuuid;
+            return this;
+        }
+
+        public Builder authorities(Collection<GrantedAuthority> authorities) {
+            this.authorities = authorities;
+            return this;
+        }
+
+        public Builder attributes(UhAttributes attributes) {
+            this.attributes = attributes;
+            return this;
+        }
+
+        public User create() {
+            Objects.requireNonNull(username, "username cannot be null.");
+            Objects.requireNonNull(authorities, "authorities cannot be null.");
+
+            return new User(username, uhuuid, authorities, attributes);
+        }
     }
 }

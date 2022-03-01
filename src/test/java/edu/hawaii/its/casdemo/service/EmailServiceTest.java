@@ -56,8 +56,11 @@ public class EmailServiceTest {
         map.put("mail", "frank@example.com");
         map.put("eduPersonAffiliation", "aff");
         Set<GrantedAuthority> authorities = new LinkedHashSet<>();
-        User user = new User("eno", authorities);
-        user.setAttributes(new UhCasAttributes(map));
+        User user = new User.Builder()
+                .username("eno")
+                .authorities(authorities)
+                .attributes(new UhCasAttributes(map))
+                .create();
 
         // Test send.
         emailService.sendCasData(user);
@@ -105,8 +108,11 @@ public class EmailServiceTest {
         map.put("mail", "frank@example.com");
         map.put("eduPersonAffiliation", "aff");
         Set<GrantedAuthority> authorities = new LinkedHashSet<>();
-        User user = new User("eno", authorities);
-        user.setAttributes(new UhCasAttributes(map));
+        User user = new User.Builder()
+                .username("eno")
+                .authorities(authorities)
+                .attributes(new UhCasAttributes(map))
+                .create();
 
         // Test send.
         emailService.sendFeedbackData(user, null);

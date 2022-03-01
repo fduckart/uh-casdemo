@@ -13,7 +13,6 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.test.context.support.WithSecurityContextFactory;
 
-import edu.hawaii.its.casdemo.access.UhAttributes;
 import edu.hawaii.its.casdemo.access.UhCasAttributes;
 import edu.hawaii.its.casdemo.access.User;
 
@@ -27,14 +26,15 @@ public class WithMockAdminSecurityContextFactory
             authorities.add(new SimpleGrantedAuthority(role));
         }
 
-        User user = new User(uhUser.username(), authorities);
-        user.setUhuuid(uhUser.uhuuid());
-
         Map<String, String> attrsMap = new HashMap<>();
-        attrsMap.put("cn", uhUser.name());
-        UhAttributes attributes = new UhCasAttributes(attrsMap);
-        user.setAttributes(attributes);
+        attrsMap.put("displayName", uhUser.name());
 
+        User user = new User.Builder()
+                .username(uhUser.username())
+                .uhuuid(uhUser.uhuuid())
+                .authorities(authorities)
+                .attributes(new UhCasAttributes(attrsMap))
+                .create();
         final Authentication auth =
                 new UsernamePasswordAuthenticationToken(user, "pw", user.getAuthorities());
 

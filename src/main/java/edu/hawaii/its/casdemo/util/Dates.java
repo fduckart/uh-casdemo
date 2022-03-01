@@ -19,6 +19,10 @@ public final class Dates {
         // Emtpy.
     }
 
+    public static LocalDate newLocalDate() {
+        return LocalDate.now();
+    }
+
     public static LocalDate newLocalDate(int year, Month month, int day) {
         return LocalDate.of(year, month, day);
     }

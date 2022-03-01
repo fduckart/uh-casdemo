@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 
 import edu.hawaii.its.casdemo.configuration.SpringBootWebApplication;
+import edu.hawaii.its.casdemo.controller.WithMockUhAdmin;
 import edu.hawaii.its.casdemo.controller.WithMockUhUser;
 
 @SpringBootTest(classes = { SpringBootWebApplication.class })
@@ -22,20 +23,53 @@ public class UserContextServiceTest {
     private UserContextService userContextService;
 
     @Test
-    @WithMockUhUser(username = "admin", roles = { "ROLE_ADMIN" })
-    public void basics() {
+    @WithMockUhUser
+    public void uhUserBasics() {
         assertThat(userContextService.getCurrentUhuuid(), equalTo("12345678"));
-        assertThat(userContextService.getCurrentUsername(), equalTo("admin"));
+        assertThat(userContextService.getCurrentUsername(), equalTo("user"));
         assertThat(userContextService.toString(), startsWith("UserContextServiceImpl"));
 
         User user = userContextService.getCurrentUser();
         assertNotNull(user);
         assertThat(user.getUhuuid(), equalTo("12345678"));
-        assertThat(user.getUsername(), equalTo("admin"));
-        assertTrue(user.hasRole(Role.ADMIN));
+        assertThat(user.getUsername(), equalTo("user"));
+        assertThat(user.getName(), equalTo("User"));
+        assertTrue(user.hasRole(Role.USER));
+    }
 
-        userContextService.setCurrentUhuuid("87654321");
-        assertThat(userContextService.getCurrentUhuuid(), equalTo("87654321"));
+    @Test
+    @WithMockUhAdmin
+    public void adminUserBasics() {
+        assertThat(userContextService.getCurrentUhuuid(), equalTo("12345679"));
+        assertThat(userContextService.getCurrentUsername(), equalTo("admin"));
+        assertThat(userContextService.toString(), startsWith("UserContextServiceImpl"));
+
+        User user = userContextService.getCurrentUser();
+        assertNotNull(user);
+        assertThat(user.getUhuuid(), equalTo("12345679"));
+        assertThat(user.getUsername(), equalTo("admin"));
+        assertThat(user.getName(), equalTo("Admin"));
+        assertThat(user.getAttribute("displayName"), equalTo("Admin"));
+        assertTrue(user.hasRole(Role.USER));
+        assertTrue(user.hasRole(Role.ADMIN));
+    }
+
+    @Test
+    @WithMockUhUser(uhuuid = "333", username = "sya", name = "Stu", roles = { "ROLE_STAFF" })
+    public void customUserBasics() {
+        assertThat(userContextService.getCurrentUhuuid(), equalTo("333"));
+        assertThat(userContextService.getCurrentUsername(), equalTo("sya"));
+        assertThat(userContextService.toString(), startsWith("UserContextServiceImpl"));
+
+        User user = userContextService.getCurrentUser();
+        assertNotNull(user);
+        assertThat(user.getUhuuid(), equalTo("333"));
+        assertThat(user.getUsername(), equalTo("sya"));
+        assertThat(user.getName(), equalTo("Stu"));
+        assertThat(user.getAttribute("displayName"), equalTo("Stu"));
+        assertFalse(user.hasRole(Role.ADMIN));
+        assertFalse(user.hasRole(Role.USER));
+        assertTrue(user.hasRole(Role.STAFF));
     }
 
     @Test
@@ -49,10 +83,6 @@ public class UserContextServiceTest {
         assertThat(user.getUhuuid(), equalTo("12345678"));
         assertThat(user.getUsername(), equalTo("user"));
         assertFalse(user.hasRole(Role.ADMIN));
-
-        // UhUuid should not change.
-        userContextService.setCurrentUhuuid("87654321");
-        assertThat(userContextService.getCurrentUhuuid(), equalTo("12345678"));
     }
 
     @Test

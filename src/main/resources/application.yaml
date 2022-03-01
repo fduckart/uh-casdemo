@@ -68,6 +68,6 @@ app:
         base: https://www.test.hawaii.edu/casdemo
 
 cas:
-    mainUrl: https://cas-test.its.hawaii.edu/cas
+    mainUrl: https://authn.hawaii.edu/cas
 
 ...

@@ -108,7 +108,6 @@ public class HomeControllerTest {
         mockMvc.perform(get("/campuses"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("campus"));
-
     }
 
     @Test
