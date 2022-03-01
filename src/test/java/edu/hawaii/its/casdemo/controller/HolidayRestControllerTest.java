@@ -2,7 +2,6 @@ package edu.hawaii.its.casdemo.controller;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -71,6 +70,12 @@ public class HolidayRestControllerTest {
     @Test
     @WithMockUhUser
     public void httpGetHolidays() throws Exception {
+        mockMvc.perform(get("/api/holidays"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("data", hasSize(248)));
+
+        // --
+
         MvcResult result = mockMvc.perform(get("/api/holidays"))
                 .andExpect(status().isOk())
                 .andReturn();
@@ -125,7 +130,7 @@ public class HolidayRestControllerTest {
                 .andExpect(jsonPath("content", hasSize(10)))
                 .andExpect(jsonPath("last").value("false"))
                 .andExpect(jsonPath("totalPages").value(25))
-                .andExpect(jsonPath("totalElements", greaterThanOrEqualTo(248)))
+                .andExpect(jsonPath("totalElements").value(248))
                 .andExpect(jsonPath("size").value("10"))
                 .andExpect(jsonPath("number").value("1"))
                 .andExpect(jsonPath("first").value("false"))

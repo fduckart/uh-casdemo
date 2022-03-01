@@ -58,8 +58,6 @@ public class HolidayRepositoryTest {
         assertNotNull(h.getId());
         Holiday h0 = holidayRepository.findById(h.getId()).get();
         assertEquals(h0, h);
-        h = null;
-        h0 = null;
 
         localDate = Dates.firstOfNextMonth(localDate);
         date = Dates.toDate(localDate);
@@ -76,5 +74,9 @@ public class HolidayRepositoryTest {
         Holiday h2 = holidayRepository.findById(h1.getId()).get();
         assertEquals(h1, h2);
         assertThat(h2.getDescription(), equalTo("New Year's Day, Woot!"));
+
+        // Clean up the stuff added above.
+        holidayRepository.delete(h);
+        holidayRepository.delete(h1);
     }
 }
