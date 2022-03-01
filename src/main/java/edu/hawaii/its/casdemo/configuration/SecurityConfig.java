@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.cas.ServiceProperties;
 import org.springframework.security.cas.authentication.CasAssertionAuthenticationToken;
 import org.springframework.security.cas.authentication.CasAuthenticationProvider;
@@ -34,7 +33,6 @@ import edu.hawaii.its.casdemo.access.CasUserDetailsService;
 import edu.hawaii.its.casdemo.access.UserBuilder;
 
 @EnableWebSecurity
-@ComponentScan(basePackages = "edu.hawaii.its.casdemo")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final Log logger = LogFactory.getLog(SecurityConfig.class);
