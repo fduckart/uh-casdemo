@@ -8,6 +8,8 @@ spring:
     h2:
         console:
             enabled: false
+    jpa:
+        open-in-view: false
 
 server:
     servlet:
@@ -53,7 +55,8 @@ spring:
         activate:
             on-profile: localhost
 
-
+    devtools:
+        add-properties: false
 ---
 environment: test
 spring:
