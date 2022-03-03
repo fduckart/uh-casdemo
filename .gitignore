@@ -6,7 +6,9 @@ edu.hawaii.its.iml
 output.txt
 /.settings
 /bin
+/build
 /target
 *-overrides.properties
-/.mvn/
-/.gitignore
+.mvn/
+.gradle/
+.gitignore
