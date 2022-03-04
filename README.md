@@ -61,7 +61,7 @@ To build a deployable war file for deployment:
 |    <!-- -->  | <!-- -->                 |
 |--------------|--------------------------|
 | maven        | `$ ./mvnw clean package` |
-| gradle       | (Not yet implemented)    |
+| gradle       | `$ ./gradlew war       ` |
 
 You should have a deployable war file in the target directory. Deploy as usual in a servlet container, e.g. tomcat.
 

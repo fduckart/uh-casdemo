@@ -120,6 +120,9 @@ fun printHints() {
     // To run an app the test profile:
     println("  $ ./gradlew bootRun --args='--spring.profiles.active=test'")
 
+    // Build the war.
+    println("  $ ./gradlew war")
+
     // To run Jacoco test coverage reports:
     println("  $ ./gradlew jacocoTestReport")
 }
