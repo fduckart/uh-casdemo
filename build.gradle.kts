@@ -107,7 +107,9 @@ tasks.help {
     }
 }
 
-// Print some common commands.
+/**
+ * Print some commonly used commands as hints.
+ */
 fun printHints() {
     println("\nHere are some common app tasks for this project:")
 
