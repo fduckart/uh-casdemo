@@ -2,6 +2,8 @@ A web application to demonstrate how to use the UH CAS service.
 
 [![Build and Test](https://github.com/fduckart/uh-casdemo/actions/workflows/build-test.yml/badge.svg)](https://github.com/fduckart/uh-casdemo/actions/workflows/build-test.yml)
 [![Coverage](https://github.com/fduckart/uh-casdemo/blob/badges/jacoco.svg)](https://github.com/fduckart/uh-casdemo/actions/workflows/coverage.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f5fdc71206a64aa4a7dc9ffe9c988cd1?branch=master)](https://www.codacy.com/gh/codacy/codacy-coverage-reporter/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=codacy/codacy-coverage-reporter&amp;utm_campaign=Badge_Grade)
+
 
 ##### Java
 
