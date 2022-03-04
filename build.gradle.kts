@@ -107,8 +107,8 @@ tasks.help {
     }
 }
 
+// Print some common commands.
 fun printHints() {
-    // Print some common commands.
     println("\nHere are some common app tasks for this project:")
 
     // First, build the shared libraries:
