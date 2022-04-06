@@ -66,13 +66,13 @@ tasks.withType<JavaCompile>() {
 
 tasks.jar {
     enabled = true
-    // Remove 'plain' postfix from jar file name.
+    // Remove 'plain' postfix from file name.
     archiveClassifier.set("")
 }
 
 tasks.war {
     enabled = true
-    // Remove 'plain' postfix from jar file name.
+    // Remove 'plain' postfix from file name.
     archiveClassifier.set("")
 }
 
