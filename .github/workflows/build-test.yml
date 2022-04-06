@@ -8,7 +8,7 @@ jobs:
       fail-fast: true
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        java: ['8', '11', '17']
+        java: ['8', '11', '18']
     runs-on: ${{ matrix.os }}
     name: Running Java ${{ matrix.java }} compile on ${{ matrix.os }}
     steps:
@@ -18,4 +18,4 @@ jobs:
       with:
         java-version: ${{ matrix.java }}
     - name: Test code
-      run: mvn -B -q test -D'logging.level.edu.hawaii.its.casdemo=OFF' -D'logging.level.org.springframework=ERROR' -D'spring.main.banner-mode=off'
+      run: mvn -q test -D'logging.level.edu.hawaii.its.casdemo=OFF' -D'logging.level.org.springframework=ERROR' -D'spring.main.banner-mode=off'
