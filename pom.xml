@@ -35,7 +35,6 @@
     <properties>
         <maven.version>3.3.0</maven.version>
 
-        <java.version>1.8</java.version>
         <cas.client-version>3.6.4</cas.client-version>
 
         <bootstrap-version>4.4.1</bootstrap-version>
@@ -200,6 +199,18 @@
         </dependency>
     </dependencies>
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M6</version>
+                    <configuration>
+                        <forkCount>0</forkCount>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
