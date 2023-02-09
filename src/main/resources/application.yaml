@@ -42,11 +42,12 @@ logging:
     level:
         edu.hawaii.its.casdemo: INFO
         org.springframework: INFO
-        org.springframework.cache: INFO
         org.springframework.boot.test.mock.web: WARN
+        org.springframework.cache: INFO
+        org.springframework.security.web.authentication: INFO
+        org.springframework.security.web: INFO
         org.hibernate: WARN
         org.jasig.cas: WARN
-
 
 ---
 environment: localhost

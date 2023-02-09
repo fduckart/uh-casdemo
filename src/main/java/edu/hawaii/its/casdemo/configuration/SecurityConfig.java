@@ -18,13 +18,12 @@ import org.springframework.security.cas.authentication.CasAuthenticationProvider
 import org.springframework.security.cas.web.CasAuthenticationEntryPoint;
 import org.springframework.security.cas.web.CasAuthenticationFilter;
 import org.springframework.security.cas.web.authentication.ServiceAuthenticationDetailsSource;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.util.Assert;
@@ -70,7 +69,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         logger.info("SecurityConfig started.");
     }
 
-    private ProxyGrantingTicketStorage proxyGrantingTicketStorage() {
+    @Bean
+    public ProxyGrantingTicketStorage proxyGrantingTicketStorage() {
         return new ProxyGrantingTicketStorageImpl();
     }
 
@@ -86,19 +86,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new Saml11TicketValidator(casMainUrl);
     }
 
-    private CasAuthenticationEntryPoint casAuthenticationEntryPoint() {
+    @Bean
+    public CasAuthenticationEntryPoint casAuthenticationEntryPoint() {
         CasAuthenticationEntryPoint entryPoint = new CasAuthenticationEntryPoint();
         entryPoint.setLoginUrl(casLoginUrl);
         entryPoint.setServiceProperties(serviceProperties());
         return entryPoint;
     }
 
-    private SingleSignOutFilter singleSignOutFilter() {
-        SingleSignOutFilter filter = new SingleSignOutFilter();
-        return filter;
+    @Bean
+    public SingleSignOutFilter singleSignOutFilter() {
+        return new SingleSignOutFilter();
     }
 
-    private CasAuthenticationProvider casAuthenticationProvider() {
+    @Bean
+    public CasAuthenticationProvider casAuthenticationProvider() {
         CasAuthenticationProvider provider = new CasAuthenticationProvider();
         provider.setKey("an_id_for_this_auth_provider_only");
         provider.setAuthenticationUserDetailsService(authenticationUserDetailsService());
@@ -107,18 +109,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return provider;
     }
 
+    @Bean
     public AuthenticationUserDetailsService<CasAssertionAuthenticationToken> authenticationUserDetailsService() {
         return new CasUserDetailsService(userBuilder);
     }
 
-    private CasAuthenticationFilter casAuthenticationFilter() throws Exception {
+    @Bean
+    public CasAuthenticationFilter casAuthenticationFilter() throws Exception {
         CasAuthenticationFilter filter = new CasAuthenticationFilter();
         filter.setAuthenticationManager(authenticationManager());
 
-        SimpleUrlAuthenticationFailureHandler authenticationFailureHandler =
-                new SimpleUrlAuthenticationFailureHandler();
-        authenticationFailureHandler.setDefaultFailureUrl(appUrlHome);
-        filter.setAuthenticationFailureHandler(authenticationFailureHandler);
+        filter.setProxyAuthenticationFailureHandler(authenticationFailureHandler());
+        filter.setAuthenticationFailureHandler(authenticationFailureHandler());
 
         SavedRequestAwareAuthenticationSuccessHandler authenticationSuccessHandler =
                 new SavedRequestAwareAuthenticationSuccessHandler();
@@ -137,22 +139,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return filter;
     }
 
+    @Bean
+    public AuthenticationFailureHandler authenticationFailureHandler() {
+        return new edu.hawaii.its.casdemo.access.AuthenticationFailureHandler(appUrlBase);
+    }
+
+    @Bean
     public SecurityContextLogoutHandler securityContextLogoutHandler() {
         return new SecurityContextLogoutHandler();
     }
 
+    @Bean
     public LogoutFilter logoutFilter() {
         return new LogoutFilter(appUrlHome, securityContextLogoutHandler());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-        http.exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint());
-
-        http.csrf().disable();
-
-        http.authorizeRequests()
+        http
+                .csrf().disable()
+                .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/api/**").authenticated()
                 .antMatchers("/css/**").permitAll()
@@ -162,6 +168,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/webjars/**").permitAll()
                 .antMatchers("/campus", "/campuses").authenticated()
                 .antMatchers("/contact").permitAll()
+                .antMatchers("/error").permitAll()
+                .antMatchers("/error-login").permitAll()
                 .antMatchers("/home").permitAll()
                 .antMatchers("/help/**").permitAll()
                 .antMatchers("/404").permitAll()
@@ -177,16 +185,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(casAuthenticationFilter())
                 .addFilterBefore(logoutFilter(), LogoutFilter.class)
                 .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class)
+                .exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint())
+                .and()
                 .logout()
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
                 .logoutUrl("/logout").permitAll()
                 .logoutSuccessUrl(appUrlHome);
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(casAuthenticationProvider());
     }
 
 }

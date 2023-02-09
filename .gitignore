@@ -3,7 +3,7 @@
 /.idea
 edu.hawaii.its.iml
 .DS_Store
-output.txt
+output*.txt
 /.settings
 /bin
 /build
@@ -12,3 +12,5 @@ output.txt
 .mvn/
 .gradle/
 .gitignore
+run.sh
+

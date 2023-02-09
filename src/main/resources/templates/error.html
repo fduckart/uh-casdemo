@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="header :: copy"></head>
 <body>
     <nav th:replace="menubar :: copy"></nav>
@@ -24,8 +23,8 @@
                 </p>
 
                 <p th:if="${status}">
-                    <b>Response Status:</b> <span th:text="${status}">status-code</span> <span
-                        th:if="${error}" th:text="'('+${error}+')'">error ...</span>
+                    <b>Response Status:</b> <span th:text="${status}">status-code</span>
+                    <span th:if="${error}" th:text="'('+${error}+')'">error ...</span>
                 </p>
             </div>
         </div>

@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: copy"></head>
+<body>
+    <nav th:replace="menubar :: copy"></nav>
+
+    <!--   Content container -->
+    <div class='container'>
+        <div class='row'>
+            <div class='col-xs-12'>
+                <h4>Error</h4>
+                <p>
+                    We are sorry, but an error occured during your login. <br/>
+                    Please contact us if you continue to experience this error.
+                </p>
+                <p>
+                    <span th:utext="${loginErrorMessage}"></span>
+                </p>
+                <p>
+                    <span th:utext="${loginErrorExceptionMessage}"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- / Contact container -->
+
+    <div th:replace="footer :: copy"></div>
+</body>
+</html>

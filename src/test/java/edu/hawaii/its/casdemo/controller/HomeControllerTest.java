@@ -1,6 +1,7 @@
 package edu.hawaii.its.casdemo.controller;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -10,6 +11,7 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrlPattern;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -21,6 +23,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -277,8 +280,8 @@ public class HomeControllerTest {
         feedback.setMessage("spy");
 
         mockMvc.perform(post("/feedback")
-                .flashAttr("feedback", feedback)
-                .with(csrf()))
+                        .flashAttr("feedback", feedback)
+                        .with(csrf()))
                 .andExpect(status().isOk())
                 .andExpect(view().name("feedback/result"))
                 .andExpect(model().attributeExists("feedback"))
@@ -316,6 +319,21 @@ public class HomeControllerTest {
         // Anonymous users not allowed into admin area.
         mockMvc.perform(get("/user"))
                 .andExpect(status().is3xxRedirection());
+    }
+
+    @Test
+    public void errorLogin() throws Exception {
+        MockHttpSession session = new MockHttpSession();
+        session.putValue("login.error.message", "A login error occurred.");
+        session.putValue("login.error.exception.message", new RuntimeException("What?"));
+        MvcResult result = mockMvc.perform(get("/error-login")
+                        .session(session))
+                .andExpect(status().isOk())
+                .andExpect(view().name("error-login"))
+                .andExpect(content().string(containsString("A login error occurred.")))
+                .andExpect(content().string(containsString("What?")))
+                .andReturn();
+
     }
 
     @Test

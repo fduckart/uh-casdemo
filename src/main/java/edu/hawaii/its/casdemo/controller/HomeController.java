@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.hawaii.its.casdemo.access.User;
@@ -101,6 +102,15 @@ public class HomeController {
     @GetMapping(value = "/404")
     public String invalid() {
         return "redirect:/";
+    }
+
+    @GetMapping(value = "/error-login")
+    public String errorLogin(Model model,
+                             @SessionAttribute("login.error.message") String errormsg,
+                             @SessionAttribute("login.error.exception.message") String exceptionmsg) {
+        model.addAttribute("loginErrorMessage", errormsg);
+        model.addAttribute("loginErrorExceptionMessage", exceptionmsg);
+        return "error-login";
     }
 
     @PreAuthorize("isAuthenticated()")
