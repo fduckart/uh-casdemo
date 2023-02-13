@@ -326,14 +326,13 @@ public class HomeControllerTest {
         MockHttpSession session = new MockHttpSession();
         session.putValue("login.error.message", "A login error occurred.");
         session.putValue("login.error.exception.message", new RuntimeException("What?"));
-        MvcResult result = mockMvc.perform(get("/error-login")
+        mockMvc.perform(get("/error-login")
                         .session(session))
                 .andExpect(status().isOk())
                 .andExpect(view().name("error-login"))
                 .andExpect(content().string(containsString("A login error occurred.")))
                 .andExpect(content().string(containsString("What?")))
                 .andReturn();
-
     }
 
     @Test

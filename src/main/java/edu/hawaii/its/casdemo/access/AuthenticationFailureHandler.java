@@ -14,11 +14,9 @@ public class AuthenticationFailureHandler
 
     private static final Log logger = LogFactory.getLog(AuthenticationFailureHandler.class);
 
-    private final String appUrlBase;
     private final String redirectUrl;
 
     public AuthenticationFailureHandler(String appUrlBase) {
-        this.appUrlBase = appUrlBase.trim();
         this.redirectUrl = appUrlBase + "/error-login";
     }
 
