@@ -29,7 +29,7 @@ jobs:
                     java-version: 11
 
             -   name: Build with Maven
-                run: mvn -q test jacoco:report -D'logging.level.edu.hawaii.its.casdemo=OFF' -D'logging.level.org.springframework=ERROR' -D'spring.main.banner-mode=off'
+                run: mvn -q test jacoco:report -D'js-tests.skip=true' -D'logging.level.edu.hawaii.its.casdemo=OFF' -D'logging.level.org.springframework=ERROR' -D'spring.main.banner-mode=off'
 
             -   name: Generate Jacoco Badge
                 id: jacoco
