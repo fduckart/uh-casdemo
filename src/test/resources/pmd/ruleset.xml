@@ -65,6 +65,11 @@
     <rule ref="category/java/errorprone.xml/EmptySynchronizedBlock" />
     <rule ref="category/java/errorprone.xml/EmptyTryBlock" />
     <rule ref="category/java/errorprone.xml/EmptyWhileStmt" />
+    <rule ref="category/java/design.xml/ExcessiveImports">
+        <properties>
+            <property name="minimum" value="30.0" />
+        </properties>
+    </rule>
     <rule ref="category/java/errorprone.xml/ImportFromSamePackage" />
     <rule ref="category/java/errorprone.xml/JumbledIncrementer" />
     <rule ref="category/java/errorprone.xml/MisplacedNullCheck" />
