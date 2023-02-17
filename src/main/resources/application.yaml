@@ -25,6 +25,7 @@ app:
     url:
         home: /
         base: http://localhost:8080/casdemo
+        error-login: ${app.url.base}/error-login
 
 cas:
     mainUrl: https://cas-test.its.hawaii.edu/cas

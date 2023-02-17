@@ -23,12 +23,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.util.Assert;
 
 import edu.hawaii.its.casdemo.access.CasUserDetailsService;
+import edu.hawaii.its.casdemo.access.DelegatingAuthenticationFailureHandler;
 import edu.hawaii.its.casdemo.access.UserBuilder;
 
 @EnableWebSecurity
@@ -41,6 +43,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Value("${app.url.home}")
     private String appUrlHome;
+
+    @Value("${app.url.error-login}")
+    private String appUrlError;
 
     @Value("${cas.login.url}")
     private String casLoginUrl;
@@ -55,14 +60,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void init() {
         logger.info("SecurityConfig starting...");
 
-        logger.info("  appUrlHome: " + appUrlHome);
-        logger.info("  appUrlBase: " + appUrlBase);
-        logger.info("  casMainUrl: " + casMainUrl);
-        logger.info(" casLoginUrl: " + casLoginUrl);
-        logger.info(" userBuilder: " + userBuilder);
+        logger.info("   appUrlHome: " + appUrlHome);
+        logger.info("   appUrlBase: " + appUrlBase);
+        logger.info("  appUrlError: " + appUrlError);
+        logger.info("   casMainUrl: " + casMainUrl);
+        logger.info("  casLoginUrl: " + casLoginUrl);
+        logger.info("  userBuilder: " + userBuilder);
 
         Assert.hasLength(appUrlHome, "property 'appUrlHome' is required");
         Assert.hasLength(appUrlBase, "property 'appUrlBase' is required");
+        Assert.hasLength(appUrlError, "property 'appUrlError' is required");
         Assert.hasLength(casMainUrl, "property 'casMainUrl' is required");
         Assert.hasLength(casLoginUrl, "property 'casLoginUrl' is required");
 
@@ -122,11 +129,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         filter.setProxyAuthenticationFailureHandler(authenticationFailureHandler());
         filter.setAuthenticationFailureHandler(authenticationFailureHandler());
 
-        SavedRequestAwareAuthenticationSuccessHandler authenticationSuccessHandler =
-                new SavedRequestAwareAuthenticationSuccessHandler();
-        authenticationSuccessHandler.setAlwaysUseDefaultTargetUrl(false);
-        authenticationSuccessHandler.setDefaultTargetUrl(appUrlHome);
-        filter.setAuthenticationSuccessHandler(authenticationSuccessHandler);
+        filter.setAuthenticationSuccessHandler(authenticationSuccessHandler());
 
         ServiceAuthenticationDetailsSource authenticationDetailsSource =
                 new ServiceAuthenticationDetailsSource(serviceProperties());
@@ -140,8 +143,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
+    public AuthenticationSuccessHandler authenticationSuccessHandler() {
+        SavedRequestAwareAuthenticationSuccessHandler authenticationSuccessHandler =
+                new SavedRequestAwareAuthenticationSuccessHandler();
+        authenticationSuccessHandler.setAlwaysUseDefaultTargetUrl(false);
+        authenticationSuccessHandler.setDefaultTargetUrl(appUrlHome);
+        return authenticationSuccessHandler;
+    }
+
+    @Bean
     public AuthenticationFailureHandler authenticationFailureHandler() {
-        return new edu.hawaii.its.casdemo.access.AuthenticationFailureHandler(appUrlBase);
+        return new DelegatingAuthenticationFailureHandler(appUrlError);
     }
 
     @Bean

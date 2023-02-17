@@ -16,8 +16,8 @@ public class AuthenticationFailureHandler
 
     private final String redirectUrl;
 
-    public AuthenticationFailureHandler(String appUrlBase) {
-        this.redirectUrl = appUrlBase + "/error-login";
+    public AuthenticationFailureHandler(String appUrlError) {
+        this.redirectUrl = appUrlError;
     }
 
     @Override

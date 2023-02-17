@@ -20,7 +20,7 @@ public class AuthenticationFailureHandlerTest {
     public void misc() throws IOException {
         String baseUrl = "http://test.hawaii.edu/casdemo";
         String errorUrl = baseUrl + "/error-login";
-        AuthenticationFailureHandler handler = new AuthenticationFailureHandler(baseUrl);
+        AuthenticationFailureHandler handler = new AuthenticationFailureHandler(errorUrl);
         assertThat(handler.getRedirectUrl(), equalTo(errorUrl));
 
         MockHttpServletRequest request = new MockHttpServletRequest();

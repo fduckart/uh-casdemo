@@ -1,5 +1,7 @@
 package edu.hawaii.its.casdemo.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,11 +107,13 @@ public class HomeController {
     }
 
     @GetMapping(value = "/error-login")
-    public String errorLogin(Model model,
-                             @SessionAttribute("login.error.message") String errormsg,
-                             @SessionAttribute("login.error.exception.message") String exceptionmsg) {
+    public String errorLogin(Model model, HttpServletRequest request,
+                             @SessionAttribute(value = "login.error.message", required = false) String errormsg,
+                             @SessionAttribute(value = "login.error.exception.message", required = false) String exceptionmsg) {
         model.addAttribute("loginErrorMessage", errormsg);
         model.addAttribute("loginErrorExceptionMessage", exceptionmsg);
+        request.getSession().setAttribute("login.error.message", null);
+        request.getSession().setAttribute("login.error.exception.message", null);
         return "error-login";
     }
 
