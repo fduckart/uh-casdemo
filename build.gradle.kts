@@ -1,5 +1,5 @@
 plugins {
-    id("org.springframework.boot") version "2.6.6"
+    id("org.springframework.boot") version "2.6.15"
     java
     jacoco
     `maven-publish`
@@ -84,9 +84,9 @@ tasks.test {
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
     classDirectories.setFrom(
-        sourceSets.main.get().output.asFileTree.matching {
-            exclude("**/configuration/SpringBootWebApplication.class")
-        }
+            sourceSets.main.get().output.asFileTree.matching {
+                exclude("**/configuration/SpringBootWebApplication.class")
+            }
     )
 }
 
