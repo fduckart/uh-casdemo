@@ -9,15 +9,13 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.Assert;
 
 @Configuration
-@EnableTransactionManagement
+// @EnableTransactionManagement
 public class DatabaseConfig {
 
     private static final Log logger = LogFactory.getLog(DatabaseConfig.class);
@@ -61,7 +59,7 @@ public class DatabaseConfig {
         logger.info("DatabaseConfig started.");
     }
 
-    @Bean(name = "dataSource")
+    // @Bean(name = "dataSource")
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(driverClassName);
@@ -72,7 +70,7 @@ public class DatabaseConfig {
         return dataSource;
     }
 
-    @Bean
+    // @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 
