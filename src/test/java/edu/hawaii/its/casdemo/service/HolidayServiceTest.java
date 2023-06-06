@@ -1,12 +1,15 @@
 package edu.hawaii.its.casdemo.service;
 
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.hawaii.its.casdemo.configuration.SpringBootWebApplication;
+import edu.hawaii.its.casdemo.type.Holiday;
+import edu.hawaii.its.casdemo.type.Type;
+import edu.hawaii.its.casdemo.util.Dates;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -15,20 +18,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.annotation.DirtiesContext.ClassMode;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.*;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import edu.hawaii.its.casdemo.configuration.SpringBootWebApplication;
-import edu.hawaii.its.casdemo.type.Holiday;
-import edu.hawaii.its.casdemo.type.Type;
-import edu.hawaii.its.casdemo.util.Dates;
-
-@SpringBootTest(classes = { SpringBootWebApplication.class })
+@SpringBootTest(classes = {SpringBootWebApplication.class})
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 public class HolidayServiceTest {
 
@@ -116,33 +111,37 @@ public class HolidayServiceTest {
 
     @Test
     public void findHolidayById() {
-        Holiday h1 = holidayService.findHoliday(1);
+        Holiday h1 = holidayService.findHoliday(1001);
+        System.out.println(">>>>> h1: " + h1);
+        assertThat(h1.getDescription(), equalTo("New Year's Day"));
 
-        assertEquals("New Year's Day", h1.getDescription());
+        Holiday h2 = holidayService.findHoliday(1002);
+        System.out.println(">>>>> h2: " + h2);
+        assertThat(h2.getDescription(), equalTo("Dr. Martin Luther King, Jr. Day"));
 
-        Holiday h2 = holidayService.findHoliday(2);
-        assertEquals("Dr. Martin Luther King, Jr. Day", h2.getDescription());
-
-        Holiday h4 = holidayService.findHoliday(4);
-        assertEquals("Prince Jonah Kuhio Kalanianaole Day", h4.getDescription());
+        Holiday h4 = holidayService.findHoliday(1004);
+        System.out.println(">>>>> h4: " + h4);
+        assertThat(h4.getDescription(), equalTo("Prince Jonah Kuhio Kalanianaole Day"));
 
         // Invalid ID value.
         Holiday h9 = holidayService.findHoliday(666);
         assertThat(h9, equalTo(null));
 
-        assertEquals(2, h1.getHolidayTypes().size());
-        assertEquals(2, h2.getHolidayTypes().size());
+        assertEquals(3, h1.getHolidayTypes().size());
+        assertEquals(3, h2.getHolidayTypes().size());
         assertEquals(2, h4.getHolidayTypes().size());
 
         List<Type> types = h1.getHolidayTypes();
-        assertThat(types.size(), equalTo(2));
+        assertThat(types.size(), equalTo(3));
         assertThat(types.get(0).getId(), equalTo(2));
         assertThat(types.get(1).getId(), equalTo(3));
+        assertThat(types.get(2).getId(), equalTo(4));
 
         types = h2.getHolidayTypes();
-        assertThat(types.size(), equalTo(2));
+        assertThat(types.size(), equalTo(3));
         assertThat(types.get(0).getId(), equalTo(2));
         assertThat(types.get(1).getId(), equalTo(3));
+        assertThat(types.get(2).getId(), equalTo(4));
 
         types = h4.getHolidayTypes();
         assertThat(types.size(), equalTo(2));

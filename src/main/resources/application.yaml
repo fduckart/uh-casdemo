@@ -24,14 +24,11 @@ spring:
         defer-datasource-initialization: false
         open-in-view: false
         database-platform: org.hibernate.dialect.H2Dialect
-        hibernate.ddl-auto: create
-        properties.hibernate.show_sql: true
+        hibernate.ddl-auto: validate
+        properties.hibernate.show_sql: false
         properties.hibernate.use_sql_comments: false
         properties.hibernate.format_sql: false
         properties.hibernate.cache.provider_class: org.hibernate.cache.HashtableCacheProvider
-
-
-
 
 server:
     servlet:
@@ -67,7 +64,7 @@ logging:
         org.springframework: INFO
         org.springframework.boot.test.mock.web: WARN
         org.springframework.cache: INFO
-        org.springframework.jdbc.datasource.init.ScriptUtils: DEBUG
+        org.springframework.jdbc.datasource.init.ScriptUtils: INFO
         org.springframework.security.web.authentication: INFO
         org.springframework.security.web: INFO
         org.jasig.cas: WARN
