@@ -1,16 +1,7 @@
 package edu.hawaii.its.casdemo.controller;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
-
+import edu.hawaii.its.casdemo.configuration.SpringBootWebApplication;
+import edu.hawaii.its.casdemo.service.HolidayService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
@@ -21,10 +12,15 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
-import edu.hawaii.its.casdemo.configuration.SpringBootWebApplication;
-import edu.hawaii.its.casdemo.service.HolidayService;
+import static org.hamcrest.Matchers.hasSize;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
-@SpringBootTest(classes = { SpringBootWebApplication.class })
+@SpringBootTest(classes = {SpringBootWebApplication.class})
 @TestMethodOrder(MethodOrderer.Random.class)
 public class HolidayRestControllerTest {
 
@@ -57,13 +53,13 @@ public class HolidayRestControllerTest {
     public void httpGetHolidays() throws Exception {
         mockMvc.perform(get("/api/holidays"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("data", hasSize(248)));
+                .andExpect(jsonPath("data", hasSize(311)));
     }
 
     @Test
     @WithMockUhUser
     public void httpGetHolidaysById() throws Exception {
-        mockMvc.perform(get("/api/holidays/1"))
+        mockMvc.perform(get("/api/holidays/1096"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8))
                 .andExpect(jsonPath("data.description").value("New Year's Day"))
@@ -90,8 +86,8 @@ public class HolidayRestControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("content", hasSize(10)))
                 .andExpect(jsonPath("last").value("false"))
-                .andExpect(jsonPath("totalPages").value(25))
-                .andExpect(jsonPath("totalElements").value(248))
+                .andExpect(jsonPath("totalPages").value(32))
+                .andExpect(jsonPath("totalElements").value(311))
                 .andExpect(jsonPath("size").value("10"))
                 .andExpect(jsonPath("number").value("1"))
                 .andExpect(jsonPath("first").value("false"))
