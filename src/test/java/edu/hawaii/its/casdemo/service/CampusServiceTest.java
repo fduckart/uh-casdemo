@@ -88,12 +88,13 @@ public class CampusServiceTest {
         assertNull(campus);
 
         campus = new Campus();
+        campus.setId(id);
         campus.setCode("SS");
         campus.setDescription("Sky Saw");
         campus.setActual("N");
 
         // What we are testing.
-        campusService.addCampus(campus);
+        campus = campusService.addCampus(campus);
 
         // Check that we have a new record.
         long count1 = campusService.count();

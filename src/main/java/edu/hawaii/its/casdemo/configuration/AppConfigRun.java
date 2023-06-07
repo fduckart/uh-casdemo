@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -15,10 +16,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Configuration
 @ComponentScan(basePackages = "edu.hawaii.its.casdemo")
 @EnableJpaRepositories(basePackages = { "edu.hawaii.its.casdemo.repository" })
+@EntityScan(basePackages = { "edu.hawaii.its.casdemo" })
 @PropertySources({
         @PropertySource("classpath:custom.properties"),
         @PropertySource(value = "file:${user.home}/.${user.name}-conf/casdemo-overrides.properties",
-                        ignoreResourceNotFound = true)
+                ignoreResourceNotFound = true)
 })
 public class AppConfigRun {
 

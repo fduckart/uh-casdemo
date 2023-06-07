@@ -10,6 +10,7 @@ insert into message (MSG_ID, MSG_ENABLED, MSG_TYPE_ID, MSG_TEXT) values (8, 'Y',
 insert into message (MSG_ID, MSG_ENABLED, MSG_TYPE_ID, MSG_TEXT) values (9, 'Y', 1, 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.');
 
 -- Campus codes and names.
+-- Important note: see the starting id value for the autoincrement in the schema.
 insert into campus (id, code, actual, description) values (1,  'HA', 'Y', 'Hawaii Community College');
 insert into campus (id, code, actual, description) values (2,  'HI', 'Y', 'UH Hilo');
 insert into campus (id, code, actual, description) values (3,  'HO', 'Y', 'Honolulu Community College');

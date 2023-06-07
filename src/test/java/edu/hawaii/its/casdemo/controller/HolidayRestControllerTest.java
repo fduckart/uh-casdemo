@@ -1,7 +1,16 @@
 package edu.hawaii.its.casdemo.controller;
 
-import edu.hawaii.its.casdemo.configuration.SpringBootWebApplication;
-import edu.hawaii.its.casdemo.service.HolidayService;
+import static org.hamcrest.Matchers.hasSize;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
@@ -12,15 +21,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
+import edu.hawaii.its.casdemo.configuration.SpringBootWebApplication;
+import edu.hawaii.its.casdemo.service.HolidayService;
 
-@SpringBootTest(classes = {SpringBootWebApplication.class})
+@SpringBootTest(classes = { SpringBootWebApplication.class })
 @TestMethodOrder(MethodOrderer.Random.class)
 public class HolidayRestControllerTest {
 
@@ -66,7 +70,7 @@ public class HolidayRestControllerTest {
                 .andExpect(jsonPath("data.observedDate").value("January 01, 2013, Tuesday"))
                 .andExpect(jsonPath("data.officialDate").value("January 01, 2013, Tuesday"))
                 .andExpect(jsonPath("data.year").value("2013"))
-                .andExpect(jsonPath("data.holidayTypes", hasSize(2)))
+                .andExpect(jsonPath("data.holidayTypes", hasSize(3)))
                 .andExpect(jsonPath("data.holidayTypes[0].description").value("Federal"))
                 .andExpect(jsonPath("data.holidayTypes[1].description").value("UH"));
     }

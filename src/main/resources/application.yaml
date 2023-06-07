@@ -45,6 +45,9 @@ app:
         home: /
         base: http://localhost:8080/casdemo
         error-login: ${app.url.base}/error-login
+    mail:
+        enabled: false
+        from: no-reply@its.hawaii.edu
 
 cas:
     mainUrl: https://cas-test.its.hawaii.edu/cas
@@ -75,7 +78,7 @@ spring:
     config:
         activate:
             on-profile: localhost
-
+        import: optional:file://${user.home}/.${user.name}-conf/casdemo-overrides.properties
     devtools:
         add-properties: false
 ---
@@ -84,6 +87,7 @@ spring:
     config:
         activate:
             on-profile: test
+        import: optional:file://${user.home}/.${user.name}-conf/casdemo-overrides.propertiesY
 app:
     url:
         base: https://www.test.hawaii.edu/casdemo

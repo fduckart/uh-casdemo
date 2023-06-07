@@ -14,11 +14,8 @@ CREATE TABLE message (
   CONSTRAINT PK_PSMESSAGE PRIMARY KEY (MSG_ID)
 );
 
--- insert into campus (id, code, actual, description)
--- values (1,  'HA', 'Y', 'Hawaii Community College');
-
 CREATE TABLE campus (
-  id INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT (12, 1),
   code varchar(3) NOT NULL,
   actual varchar(1) NOT NULL DEFAULT 'Y',
   description varchar(64) NOT NULL,
@@ -26,7 +23,6 @@ CREATE TABLE campus (
   CONSTRAINT uc_campus_code UNIQUE (code)
 );
 
--- insert into role (id, role, short_description, description) values (1,  'USER',    'User',          'User');
 CREATE TABLE role (
     id INT NOT NULL auto_increment,
     role VARCHAR(50) NOT NULL,

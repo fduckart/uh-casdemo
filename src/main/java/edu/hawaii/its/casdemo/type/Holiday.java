@@ -52,6 +52,9 @@ public class Holiday implements Serializable {
     @JsonSerialize(using = HolidayDateSerializer.class)
     private Date officialDate;
 
+    @Column(name = "official_year", nullable = false)
+    private Integer officialYear;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "holiday_type",
             joinColumns = @JoinColumn(name = "holiday_id", unique = false),
@@ -109,6 +112,10 @@ public class Holiday implements Serializable {
 
     public void setHolidayTypes(List<Type> holidayTypes) {
         this.holidayTypes = holidayTypes;
+    }
+
+    public void setOfficialYear(Integer officialYear) {
+        this.officialYear = officialYear;
     }
 
     @Transient
