@@ -1,5 +1,5 @@
 plugins {
-    id("org.springframework.boot") version "2.6.15"
+    id("org.springframework.boot") version "2.7.18"
     java
     jacoco
     `maven-publish`
@@ -31,12 +31,12 @@ dependencies {
     implementation("org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final")
     implementation("org.hibernate:hibernate-core")
     implementation("org.hibernate:hibernate-entitymanager")
-    implementation("org.springframework.security:spring-security-cas:5.6.2")
+    implementation("org.springframework.security:spring-security-cas:5.7.11")
     implementation("org.jasig.cas.client:cas-client-core:3.6.4")
     implementation("org.jasig.cas.client:cas-client-support-saml:3.6.4")
-    implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE")
+    implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.5.RELEASE")
     implementation("org.springframework:spring-test")
-    implementation("org.springframework.security:spring-security-test:5.6.2")
+    implementation("org.springframework.security:spring-security-test:5.7.11")
     implementation("org.webjars:webjars-locator-core")
     implementation("org.webjars:bootstrap:4.4.1")
     implementation("org.webjars:jquery:3.4.1")
@@ -84,9 +84,9 @@ tasks.test {
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
     classDirectories.setFrom(
-            sourceSets.main.get().output.asFileTree.matching {
-                exclude("**/configuration/SpringBootWebApplication.class")
-            }
+        sourceSets.main.get().output.asFileTree.matching {
+            exclude("**/configuration/SpringBootWebApplication.class")
+        }
     )
 }
 

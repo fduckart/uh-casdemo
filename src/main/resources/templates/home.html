@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:replace="header :: copy"></head>
 <body>
     <nav th:replace="menubar :: copy"></nav>
@@ -11,7 +11,7 @@
             <h1 class="display-4 dropshadow">Identity <span class="amp">&amp;</span> Access Management<br/>CAS Demonstration</h1>
             <p class="lead" th:text="${jumbotron}"></p>
             <div sec:authorize="isAnonymous()">
-                <p><a class="btn btn-lg btn-success" th:href="@{/login}"  role="button">UH Login Here</a></p>
+                <p><a class="btn btn-lg btn-success" th:href="@{/login}" role="button">UH Login Here</a></p>
             </div>
             <div sec:authorize="isAuthenticated()">
                 <form th:action="@{/logout}" method="post" id="logout_form">

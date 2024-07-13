@@ -22,6 +22,8 @@ insert into campus (id, code, actual, description) values (9,  'WI', 'Y', 'Windw
 insert into campus (id, code, actual, description) values (10, 'WO', 'Y', 'UH West Oahu');
 insert into campus (id, code, actual, description) values (11, 'SW', 'N', 'UH System');
 
+ALTER TABLE campus ALTER COLUMN id RESTART WITH (SELECT MAX(id) FROM campus) + 1;
+
 insert into type (id, description) values(2, 'Federal');
 insert into type (id, description) values(3, 'UH');
 insert into type (id, description) values(4, 'State');
@@ -118,7 +120,7 @@ insert into holiday (id, official_date, observed_date, description) values (  35
 insert into holiday (id, official_date, observed_date, description) values (  36, '2012-07-04', '2012-07-04', 'Independence Day');
 insert into holiday (id, official_date, observed_date, description) values (  37, '2012-08-17', '2012-08-17', 'Statehood Day');
 insert into holiday (id, official_date, observed_date, description) values (  38, '2012-09-03', '2012-09-03', 'Labor Day');
-insert into holiday (id, description, observed_date, official_date) values (  39, 'Discoverers'' Day',            '2012-10-08','2012-10-08');
+insert into holiday (id, observed_date, official_date, description) values (  39, '2012-10-08', '2012-10-08', 'Discoverers'' Day');
 insert into holiday (id, official_date, observed_date, description) values (  40, '2012-11-06', '2012-11-06', 'General Election Day');
 insert into holiday (id, official_date, observed_date, description) values (  41, '2012-11-11', '2012-11-12', 'Veterans'' Day');
 insert into holiday (id, official_date, observed_date, description) values (  42, '2012-11-22', '2012-11-22', 'Thanksgiving');
@@ -147,7 +149,7 @@ insert into holiday (id, official_date, observed_date, description) values (  50
 insert into holiday (id, official_date, observed_date, description) values (  51, '2014-07-04', '2014-07-04', 'Independence Day');
 insert into holiday (id, official_date, observed_date, description) values (  52, '2014-08-15', '2014-08-15', 'Statehood Day');
 insert into holiday (id, official_date, observed_date, description) values (  53, '2014-09-01', '2014-09-01', 'Labor Day');
-insert into holiday (id, description, observed_date, official_date) values (  54, 'Discoverers'' Day',            '2014-10-13','2014-10-13');
+insert into holiday (id, observed_date, official_date, description) values (  54, '2014-10-13','2014-10-13', 'Discoverers'' Day');
 insert into holiday (id, official_date, observed_date, description) values (  55, '2014-11-04', '2014-11-04', 'General Election Day');
 insert into holiday (id, official_date, observed_date, description) values (  56, '2014-11-11', '2014-11-11', 'Veterans'' Day');
 insert into holiday (id, official_date, observed_date, description) values (  57, '2014-11-27', '2014-11-27', 'Thanksgiving');
@@ -274,6 +276,8 @@ insert into holiday (id, official_date, observed_date, description) values (1240
 insert into holiday (id, official_date, observed_date, description) values (1241, '2023-11-11', '2023-11-10', 'Veterans'' Day');
 insert into holiday (id, official_date, observed_date, description) values (1242, '2023-11-23', '2023-11-23', 'Thanksgiving');
 insert into holiday (id, official_date, observed_date, description) values (1243, '2023-12-25', '2023-12-25', 'Christmas');
+
+ALTER TABLE holiday ALTER COLUMN id RESTART WITH (SELECT MAX(id) FROM holiday) + 1;
 
 insert into holiday_type(type_id, holiday_id) values(2,1);
 insert into holiday_type(type_id, holiday_id) values(3,1);

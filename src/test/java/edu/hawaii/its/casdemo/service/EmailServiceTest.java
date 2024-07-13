@@ -71,7 +71,7 @@ public class EmailServiceTest {
             @Override
             public void send(SimpleMailMessage arg0) throws MailException {
                 sendRan = true;
-                throw new MailSendException("Some Exception");
+                throw new MailSendException("Thrown Exception on purpose");
             }
         };
         emailService = new EmailService(sender);
@@ -143,7 +143,7 @@ public class EmailServiceTest {
             @Override
             public void send(SimpleMailMessage arg0) throws MailException {
                 sendRan = true;
-                throw new MailSendException("Some Exception");
+                throw new MailSendException("Thrown Exception on purpose");
             }
         };
         emailService = new EmailService(sender);

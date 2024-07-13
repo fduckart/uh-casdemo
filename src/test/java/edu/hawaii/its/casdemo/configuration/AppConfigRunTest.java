@@ -10,7 +10,7 @@ public class AppConfigRunTest {
 
     @Test
     public void construction() {
-        AppConfigRun appConfig = new AppConfigRun();
+        AppConfig appConfig = new AppConfig();
         assertNotNull(appConfig);
         appConfig.init();
     }

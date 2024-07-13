@@ -22,10 +22,32 @@ management:
         enabled: false
 
 app:
+    mail:
+        enabled: false
+        mail:
+            from: no-reply@its.hawaii.edu
     url:
         home: /
         base: http://localhost:8080/casdemo
         error-login: ${app.url.base}/error-login
+    datasource:
+        url: jdbc:h2:mem:casdemodb;INIT=create schema IF NOT EXISTS uhapp_db;DB_CLOSE_ON_EXIT=FALSE
+        driver-class-name: org.h2.Driver
+        driverClassName: org.h2.Driver
+        username: sa
+        password:
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        show-sql: false
+        hibernate:
+            ddl-auto: create-drop
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.H2Dialect
+                cache:
+                    provider_class: org.hibernate.cache.HashtableCacheProvider
+                connection:
+                    shutdown: true
 
 cas:
     mainUrl: https://cas-test.its.hawaii.edu/cas
