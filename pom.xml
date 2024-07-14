@@ -35,7 +35,8 @@
     <properties>
         <maven.version>3.5.2</maven.version>
         <surefireForkCount>1</surefireForkCount>
-        <cas.client-version>3.6.4</cas.client-version>
+        <cas.client.version>3.6.4</cas.client.version>
+        <java.cas.client.version>4.0.4</java.cas.client.version>
 
         <bootstrap-version>4.4.1</bootstrap-version>
         <jquery-version>3.4.1</jquery-version>
@@ -117,6 +118,10 @@
         </dependency>
 
         <!-- CAS related. -->
+        <!-- Note:
+            org.springframework.security has a dependency on the jasig cas client,
+            so it cannot be upgraded to the apero cas client at the moment.
+        -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-cas</artifactId>
@@ -124,12 +129,12 @@
         <dependency>
             <groupId>org.jasig.cas.client</groupId>
             <artifactId>cas-client-core</artifactId>
-            <version>${cas.client-version}</version>
+            <version>${cas.client.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jasig.cas.client</groupId>
             <artifactId>cas-client-support-saml</artifactId>
-            <version>${cas.client-version}</version>
+            <version>${cas.client.version}</version>
         </dependency>
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
