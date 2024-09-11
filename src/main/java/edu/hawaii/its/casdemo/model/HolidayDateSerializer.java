@@ -1,4 +1,4 @@
-package edu.hawaii.its.casdemo.type;
+package edu.hawaii.its.casdemo.model;
 
 import java.io.IOException;
 import java.time.LocalDate;

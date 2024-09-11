@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import edu.hawaii.its.casdemo.configuration.SpringBootWebApplication;
-import edu.hawaii.its.casdemo.type.Role;
+import edu.hawaii.its.casdemo.model.Role;
 
 @SpringBootTest(classes = { SpringBootWebApplication.class })
 public class RoleServiceTest {

@@ -1,4 +1,4 @@
-package edu.hawaii.its.casdemo.type;
+package edu.hawaii.its.casdemo.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -82,8 +82,17 @@ public class Holiday implements Serializable {
         this.observedDate = observedDate;
     }
 
+    @Transient
     public Integer getYear() {
-        return getOfficialYear();
+        if (officialDate != null) {
+            return officialDate.getYear();
+        }
+
+        if (observedDate != null) {
+            return observedDate.getYear();
+        }
+
+        return null;
     }
 
     public Integer getOfficialYear() {

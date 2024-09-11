@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import edu.hawaii.its.casdemo.repository.HolidayRepository;
 import edu.hawaii.its.casdemo.repository.HolidayTypeRepository;
-import edu.hawaii.its.casdemo.type.Holiday;
-import edu.hawaii.its.casdemo.type.Type;
+import edu.hawaii.its.casdemo.model.Holiday;
+import edu.hawaii.its.casdemo.model.Type;
 
 @Service
 public class HolidayService {

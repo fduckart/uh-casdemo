@@ -1,4 +1,4 @@
-package edu.hawaii.its.casdemo.type;
+package edu.hawaii.its.casdemo.model;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

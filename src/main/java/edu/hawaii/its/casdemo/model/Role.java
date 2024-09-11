@@ -1,4 +1,4 @@
-package edu.hawaii.its.casdemo.type;
+package edu.hawaii.its.casdemo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -8,7 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import edu.hawaii.its.casdemo.type.Holiday;
+import edu.hawaii.its.casdemo.model.Holiday;
 
 @Repository
 public interface HolidayRepository extends JpaRepository<Holiday, Integer> {

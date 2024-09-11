@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.hawaii.its.casdemo.access.UserContextService;
-import edu.hawaii.its.casdemo.type.Feedback;
+import edu.hawaii.its.casdemo.model.Feedback;
 
 @ControllerAdvice
 public class ErrorControllerAdvice {

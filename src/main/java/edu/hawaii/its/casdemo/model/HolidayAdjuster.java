@@ -1,4 +1,4 @@
-package edu.hawaii.its.casdemo.type;
+package edu.hawaii.its.casdemo.model;
 
 import java.time.DayOfWeek;
 import java.time.temporal.ChronoField;

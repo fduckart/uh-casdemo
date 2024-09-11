@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.hawaii.its.casdemo.service.HolidayService;
-import edu.hawaii.its.casdemo.type.Holiday;
-import edu.hawaii.its.casdemo.type.Type;
+import edu.hawaii.its.casdemo.model.Holiday;
+import edu.hawaii.its.casdemo.model.Type;
 
 @RestController
 public class HolidayRestController {

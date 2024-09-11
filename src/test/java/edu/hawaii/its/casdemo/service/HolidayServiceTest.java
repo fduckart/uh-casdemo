@@ -24,8 +24,8 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import edu.hawaii.its.casdemo.configuration.SpringBootWebApplication;
-import edu.hawaii.its.casdemo.type.Holiday;
-import edu.hawaii.its.casdemo.type.Type;
+import edu.hawaii.its.casdemo.model.Holiday;
+import edu.hawaii.its.casdemo.model.Type;
 import edu.hawaii.its.casdemo.util.Dates;
 
 @SpringBootTest(classes = { SpringBootWebApplication.class })

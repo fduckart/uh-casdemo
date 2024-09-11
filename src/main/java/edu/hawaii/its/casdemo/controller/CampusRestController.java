@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.hawaii.its.casdemo.service.CampusService;
-import edu.hawaii.its.casdemo.type.Campus;
+import edu.hawaii.its.casdemo.model.Campus;
 
 @RestController
 public class CampusRestController {

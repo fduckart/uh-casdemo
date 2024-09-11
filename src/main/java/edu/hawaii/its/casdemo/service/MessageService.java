@@ -11,7 +11,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.hawaii.its.casdemo.type.Message;
+import edu.hawaii.its.casdemo.model.Message;
 
 @Service
 public class MessageService {
@@ -19,13 +19,13 @@ public class MessageService {
     private static final Log logger = LogFactory.getLog(MessageService.class);
     private EntityManager em;
 
+    public EntityManager getEntityManager() {
+        return em;
+    }
+
     @PersistenceContext
     public void setEntityManager(EntityManager em) {
         this.em = em;
-    }
-
-    public EntityManager getEntityManager() {
-        return em;
     }
 
     @CacheEvict(value = "messages", allEntries = true)

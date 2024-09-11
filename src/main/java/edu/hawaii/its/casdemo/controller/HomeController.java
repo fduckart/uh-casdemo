@@ -19,8 +19,8 @@ import edu.hawaii.its.casdemo.access.User;
 import edu.hawaii.its.casdemo.access.UserContextService;
 import edu.hawaii.its.casdemo.service.EmailService;
 import edu.hawaii.its.casdemo.service.MessageService;
-import edu.hawaii.its.casdemo.type.Feedback;
-import edu.hawaii.its.casdemo.type.Message;
+import edu.hawaii.its.casdemo.model.Feedback;
+import edu.hawaii.its.casdemo.model.Message;
 
 @Controller
 public class HomeController {

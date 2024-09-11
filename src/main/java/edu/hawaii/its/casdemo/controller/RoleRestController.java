@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.hawaii.its.casdemo.service.RoleService;
-import edu.hawaii.its.casdemo.type.Role;
+import edu.hawaii.its.casdemo.model.Role;
 
 @RestController
 public class RoleRestController {

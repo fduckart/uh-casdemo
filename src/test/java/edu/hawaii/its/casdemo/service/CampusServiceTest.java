@@ -17,7 +17,7 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
 import edu.hawaii.its.casdemo.configuration.SpringBootWebApplication;
 import edu.hawaii.its.casdemo.repository.CampusRepository;
-import edu.hawaii.its.casdemo.type.Campus;
+import edu.hawaii.its.casdemo.model.Campus;
 
 @SpringBootTest(classes = { SpringBootWebApplication.class })
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
