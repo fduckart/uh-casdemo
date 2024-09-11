@@ -275,11 +275,12 @@
                         <source>classpath/META-INF/resources/webjars/angular-ui-grid/4.0.6/ui-grid.min.js</source>
                         <source>classpath/META-INF/resources/webjars/angular-mocks/${angular-mocks-version}/angular-mocks.js</source>
                         <source>${basedir}/src/main/resources/static/javascript/app.js</source>
+                        <source>${basedir}/src/main/resources/static/javascript/app.constant.js</source>
                         <source>${basedir}/src/main/resources/static/javascript/app.service.js</source>
-                        <source>${basedir}/src/main/resources/static/javascript/casdemo.controller.campus.js</source>
-                        <source>${basedir}/src/main/resources/static/javascript/casdemo.controller.role.js</source>
-                        <source>${basedir}/src/main/resources/static/javascript/error.controller.js</source>
-                        <source>${basedir}/src/main/resources/static/javascript/holiday.controller.js</source>
+                        <source>${basedir}/src/main/resources/static/javascript/app.campus.controller.js</source>
+                        <source>${basedir}/src/main/resources/static/javascript/app.role.controller.js</source>
+                        <source>${basedir}/src/main/resources/static/javascript/app.error.controller.js</source>
+                        <source>${basedir}/src/main/resources/static/javascript/app.holiday.controller.js</source>
                     </preloadSources>
                     <specIncludes>
                         <include>**/*.test.js</include>
