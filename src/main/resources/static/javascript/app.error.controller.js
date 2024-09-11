@@ -5,10 +5,9 @@
 
     function ErrorJsController($scope, $window, $log, App, dataProvider) {
         $scope.submit = function() {
-            var data = "What is the What?";
             dataProvider.saveData(function(data) {
-                $log.info("FeedyJsController.ok; data: ", data);
-                var error = encodeURI(data);
+                $log.info("ErrorJsController.ok; data: ", data);
+                const error = encodeURI(data);
                 $window.location.href = App.Url.FEEDBACK + error;
             }, App.Url.Api.ERROR + "666");
         };

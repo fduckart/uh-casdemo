@@ -1,6 +1,7 @@
 /*eslint no-undef: "error"*/
 
 (function() {
+    "use strict";
 
     function RoleJsController($scope, App, dataProvider) {
         $scope.roles = [];

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.hawaii.its.casdemo.repository.CampusRepository;
-import edu.hawaii.its.casdemo.type.Campus;
+import edu.hawaii.its.casdemo.model.Campus;
 
 @Service
 public class CampusService {

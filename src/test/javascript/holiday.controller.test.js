@@ -1,4 +1,5 @@
 describe("HolidayJsController", function() {
+    "use strict";
 
     beforeEach(module("casdemoApp"));
 
@@ -28,8 +29,6 @@ describe("HolidayJsController", function() {
         expect(scope.years).toBeDefined();
         expect(scope.years.length).toEqual(0);
         expect(app.Url.Api.HOLIDAY).toBeDefined();
-        expect(scope.url).toBeDefined();
-        expect(scope.url).toEqual(app.Url.Api.HOLIDAY);
 
         // What we are testing:
         scope.init();

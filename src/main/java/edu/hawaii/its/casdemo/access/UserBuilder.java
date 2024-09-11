@@ -30,7 +30,7 @@ public final class UserBuilder {
         logger.info("Adding roles. username: " + username + "; roles: " + roleHolder.getAuthorites());
         User user = new User.Builder()
                 .username(username)
-                .uhuuid(uhuuid)
+                .uhUuid(uhuuid)
                 .authorities(roleHolder.getAuthorites())
                 .attributes(attributes)
                 .create();

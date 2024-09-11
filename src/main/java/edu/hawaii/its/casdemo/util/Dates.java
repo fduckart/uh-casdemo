@@ -3,20 +3,28 @@ package edu.hawaii.its.casdemo.util;
 import java.time.DayOfWeek;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Date;
 
 public final class Dates {
 
-    public static final String DATE_FORMAT = "MMMM dd, yyyy, EEEE";
+    public static final String DATE_FORMAT_FULL = "MMMM dd, yyyy, EEEE";
+    public static final String DATE_FORMAT_SHORT = "yyyy-MM-dd";
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");
 
     // Private constructor; prevent instantiation.
     private Dates() {
-        // Emtpy.
+        // Empty.
+    }
+
+    public static long daysBetween(LocalDate date1, LocalDate date2) {
+        return ChronoUnit.DAYS.between(date1, date2);
     }
 
     public static LocalDate newLocalDate() {
@@ -90,11 +98,25 @@ public final class Dates {
         return date.getDayOfMonth();
     }
 
+    public static String formatDate(LocalDateTime dateTime, String formatStr) {
+        if (dateTime == null) {
+            return "";
+        }
+        String result = dateTime.toString();
+
+        try {
+            result = dateTime.format(DateTimeFormatter.ofPattern(formatStr));
+        } catch (Exception e) {
+            // Ignored.
+        }
+
+        return result;
+    }
+
     public static String formatDate(LocalDate date, String formatStr) {
         if (date == null) {
             return "";
         }
-
         String result = date.toString();
 
         try {
@@ -111,12 +133,13 @@ public final class Dates {
         return formatDate(date, "MM/dd/yyyy");
     }
 
-    public static int currentYear() {
-        return LocalDate.now().getYear();
+    // Not sure we really need this method.
+    public static String formatDate(Date date) {
+        return formatDate(toLocalDate(date), "MM/dd/yyyy");
     }
 
-    public static int yearOfDate(Date date) {
-        return toLocalDate(date).getYear();
+    public static int currentYear() {
+        return LocalDate.now().getYear();
     }
 
     public static int yearOfDate(LocalDate date) {
@@ -136,17 +159,43 @@ public final class Dates {
             return null;
         }
 
-        if (date instanceof java.sql.Date) {
-            date = new Date(date.getTime());
-        }
-
-        Instant instant = date.toInstant();
-        ZoneId zoneId = zoneId();
-        ZonedDateTime zoneDateTime = instant.atZone(zoneId);
+        Instant instant = new Date(date.getTime()).toInstant();
+        ZonedDateTime zoneDateTime = instant.atZone(zoneId());
         return zoneDateTime.toLocalDate();
     }
 
+    public static LocalDate toLocalDate(String s) {
+        LocalDate localDate = null;
+        try {
+            localDate = LocalDate.parse(s, formatter);
+        } catch (Exception e) {
+            // Ignored.
+        }
+        return localDate;
+    }
+
     public static Date toDate(LocalDate localDate) {
+        if (localDate == null) {
+            return null;
+        }
         return Date.from(localDate.atStartOfDay(zoneId()).toInstant());
+    }
+
+    public static LocalDate toLocalDate(String s, String format) {
+        LocalDate localDate = null;
+        try {
+            localDate = LocalDate.parse(s, DateTimeFormatter.ofPattern(format));
+        } catch (Exception e) {
+            // Ignored.
+        }
+        return localDate;
+    }
+
+    public static boolean isOnOrAfter(LocalDate base, LocalDate date) {
+        return base.equals(date) || base.isAfter(date);
+    }
+
+    public static boolean isOnOrBefore(LocalDate base, LocalDate date) {
+        return base.equals(date) || base.isBefore(date);
     }
 }

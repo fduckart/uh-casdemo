@@ -10,7 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import edu.hawaii.its.casdemo.access.User;
-import edu.hawaii.its.casdemo.type.Feedback;
+import edu.hawaii.its.casdemo.model.Feedback;
 
 @Service
 public class EmailService {

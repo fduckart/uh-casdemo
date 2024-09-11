@@ -32,7 +32,7 @@ public class UserContextService {
     }
 
     public String getCurrentUhuuid() {
-        return getCurrentUser().getUhuuid();
+        return getCurrentUser().getUhUuid();
     }
 
     @Override
@@ -43,6 +43,7 @@ public class UserContextService {
     // ------------------------------------------------------------------------
     static final User anonymousUser;
     static final Set<GrantedAuthority> authorities = new LinkedHashSet<>();
+
     static {
         authorities.add(new SimpleGrantedAuthority(Role.ANONYMOUS.longName()));
         anonymousUser = new User.Builder()

@@ -57,22 +57,26 @@ public class HolidayRestControllerTest {
     public void httpGetHolidays() throws Exception {
         mockMvc.perform(get("/api/holidays"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("data", hasSize(248)));
+                .andExpect(jsonPath("data", hasSize(311)));
     }
 
     @Test
     @WithMockUhUser
     public void httpGetHolidaysById() throws Exception {
-        mockMvc.perform(get("/api/holidays/1"))
+        mockMvc.perform(get("/api/holidays/1096"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(APPLICATION_JSON_UTF8))
                 .andExpect(jsonPath("data.description").value("New Year's Day"))
-                .andExpect(jsonPath("data.observedDate").value("January 01, 2013, Tuesday"))
-                .andExpect(jsonPath("data.officialDate").value("January 01, 2013, Tuesday"))
+                .andExpect(jsonPath("data.observedDateFull").value("January 01, 2013, Tuesday"))
+                .andExpect(jsonPath("data.observedDate").value("2013-01-01"))
+                .andExpect(jsonPath("data.officialDateFull").value("January 01, 2013, Tuesday"))
+                .andExpect(jsonPath("data.officialDate").value("2013-01-01"))
+                .andExpect(jsonPath("data.officialYear").value("2013"))
                 .andExpect(jsonPath("data.year").value("2013"))
-                .andExpect(jsonPath("data.holidayTypes", hasSize(2)))
-                .andExpect(jsonPath("data.holidayTypes[0].description").value("Federal"))
-                .andExpect(jsonPath("data.holidayTypes[1].description").value("UH"));
+                .andExpect(jsonPath("data.types", hasSize(3)))
+                .andExpect(jsonPath("data.types[0].description").value("Federal"))
+                .andExpect(jsonPath("data.types[1].description").value("State"))
+                .andExpect(jsonPath("data.types[2].description").value("UH"));
     }
 
     @Test
@@ -90,8 +94,8 @@ public class HolidayRestControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("content", hasSize(10)))
                 .andExpect(jsonPath("last").value("false"))
-                .andExpect(jsonPath("totalPages").value(25))
-                .andExpect(jsonPath("totalElements").value(248))
+                .andExpect(jsonPath("totalPages").value(32))
+                .andExpect(jsonPath("totalElements").value(311))
                 .andExpect(jsonPath("size").value("10"))
                 .andExpect(jsonPath("number").value("1"))
                 .andExpect(jsonPath("first").value("false"))

@@ -19,7 +19,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 import edu.hawaii.its.casdemo.access.UhCasAttributes;
 import edu.hawaii.its.casdemo.access.User;
-import edu.hawaii.its.casdemo.type.Feedback;
+import edu.hawaii.its.casdemo.model.Feedback;
 
 public class EmailServiceTest {
 

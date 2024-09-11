@@ -78,7 +78,7 @@ public class DatabaseConfig {
 
         em.setPersistenceUnitName("casdemoPersistenceUnit");
         em.setDataSource(dataSource());
-        em.setPackagesToScan("edu.hawaii.its.casdemo.type");
+        em.setPackagesToScan("edu.hawaii.its.casdemo.model");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setJpaProperties(jpaProperties());
         em.setDataSource(dataSource());

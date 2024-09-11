@@ -31,7 +31,7 @@ public class WithMockAdminSecurityContextFactory
 
         User user = new User.Builder()
                 .username(uhUser.username())
-                .uhuuid(uhUser.uhuuid())
+                .uhUuid(uhUser.uhuuid())
                 .authorities(authorities)
                 .attributes(new UhCasAttributes(attrsMap))
                 .create();

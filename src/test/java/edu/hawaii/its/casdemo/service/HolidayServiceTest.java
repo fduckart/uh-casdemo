@@ -24,8 +24,8 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import edu.hawaii.its.casdemo.configuration.SpringBootWebApplication;
-import edu.hawaii.its.casdemo.type.Holiday;
-import edu.hawaii.its.casdemo.type.Type;
+import edu.hawaii.its.casdemo.model.Holiday;
+import edu.hawaii.its.casdemo.model.Type;
 import edu.hawaii.its.casdemo.util.Dates;
 
 @SpringBootTest(classes = { SpringBootWebApplication.class })
@@ -92,22 +92,21 @@ public class HolidayServiceTest {
 
     @Test
     public void dateFormatting() throws Exception {
-        final String DATE_FORMAT = Dates.DATE_FORMAT;
+        final String DATE_FORMAT = Dates.DATE_FORMAT_FULL;
 
         SimpleDateFormat df = new SimpleDateFormat(DATE_FORMAT);
         df.setTimeZone(TimeZone.getTimeZone("HST"));
 
-        String toParse = "December 20, 2014, Saturday";
-        Date obsDate = df.parse(toParse);
-        assertNotNull(obsDate);
-
-        LocalDate localDate = Dates.newLocalDate(2014, Month.DECEMBER, 20);
-        obsDate = Dates.toDate(localDate);
-        Date offDate = Dates.toDate(localDate.plusDays(200));
+        LocalDate obsDate = Dates.newLocalDate(2014, Month.DECEMBER, 20);
+        LocalDate offDate = obsDate.plusDays(200);
 
         Holiday holiday = new Holiday();
         holiday.setObservedDate(obsDate);
         holiday.setOfficialDate(offDate);
+
+        String toParse = "December 20, 2014, Saturday";
+        Date parseDate = df.parse(toParse);
+        assertNotNull(obsDate);
 
         ObjectMapper mapper = new ObjectMapper();
         String result = mapper.writeValueAsString(holiday);
@@ -116,37 +115,37 @@ public class HolidayServiceTest {
 
     @Test
     public void findHolidayById() {
-        Holiday h1 = holidayService.findHoliday(1);
+        Holiday h1 = holidayService.findHoliday(1001);
 
         assertEquals("New Year's Day", h1.getDescription());
 
-        Holiday h2 = holidayService.findHoliday(2);
+        Holiday h2 = holidayService.findHoliday(1002);
         assertEquals("Dr. Martin Luther King, Jr. Day", h2.getDescription());
 
-        Holiday h4 = holidayService.findHoliday(4);
+        Holiday h4 = holidayService.findHoliday(1004);
         assertEquals("Prince Jonah Kuhio Kalanianaole Day", h4.getDescription());
 
         // Invalid ID value.
         Holiday h9 = holidayService.findHoliday(666);
         assertThat(h9, equalTo(null));
 
-        assertEquals(2, h1.getHolidayTypes().size());
-        assertEquals(2, h2.getHolidayTypes().size());
+        assertEquals(3, h1.getHolidayTypes().size());
+        assertEquals(3, h2.getHolidayTypes().size());
         assertEquals(2, h4.getHolidayTypes().size());
 
         List<Type> types = h1.getHolidayTypes();
-        assertThat(types.size(), equalTo(2));
+        assertThat(types.size(), equalTo(3));
         assertThat(types.get(0).getId(), equalTo(2));
-        assertThat(types.get(1).getId(), equalTo(3));
+        assertThat(types.get(1).getId(), equalTo(4));
 
         types = h2.getHolidayTypes();
-        assertThat(types.size(), equalTo(2));
+        assertThat(types.size(), equalTo(3));
         assertThat(types.get(0).getId(), equalTo(2));
-        assertThat(types.get(1).getId(), equalTo(3));
+        assertThat(types.get(1).getId(), equalTo(4));
 
         types = h4.getHolidayTypes();
         assertThat(types.size(), equalTo(2));
-        assertThat(types.get(0).getId(), equalTo(3));
-        assertThat(types.get(1).getId(), equalTo(4));
+        assertThat(types.get(0).getId(), equalTo(4));
+        assertThat(types.get(1).getId(), equalTo(3));
     }
 }

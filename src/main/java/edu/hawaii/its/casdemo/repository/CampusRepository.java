@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import edu.hawaii.its.casdemo.type.Campus;
+import edu.hawaii.its.casdemo.model.Campus;
 
 public interface CampusRepository extends JpaRepository<Campus, Integer> {
 
