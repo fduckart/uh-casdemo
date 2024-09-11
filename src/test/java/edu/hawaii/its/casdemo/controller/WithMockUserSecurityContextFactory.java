@@ -32,7 +32,7 @@ public class WithMockUserSecurityContextFactory
         UhAttributes attributes = new UhCasAttributes(attrsMap);
         User user = new User.Builder()
                 .username(uhUser.username())
-                .uhuuid(uhUser.uhuuid())
+                .uhUuid(uhUser.uhuuid())
                 .authorities(authorities)
                 .attributes(attributes)
                 .create();

@@ -2,6 +2,8 @@ package edu.hawaii.its.casdemo.util;
 
 public final class Strings {
 
+    public static final String EMPTY = "";
+
     // Private contructor to prevent instantiation.
     private Strings() {
         // Empty.
@@ -56,4 +58,10 @@ public final class Strings {
         return value;
     }
 
+    public static String trim(String s) {
+        if (s == null) {
+            return EMPTY;
+        }
+        return s.trim();
+    }
 }

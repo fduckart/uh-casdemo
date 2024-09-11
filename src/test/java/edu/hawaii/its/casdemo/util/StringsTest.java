@@ -197,6 +197,26 @@ public class StringsTest {
     }
 
     @Test
+    public void trim() {
+        assertThat(Strings.trim(null), equalTo(""));
+
+        assertThat(Strings.trim(""), equalTo(""));
+        assertThat(Strings.trim(" "), equalTo(""));
+        assertThat(Strings.trim("   "), equalTo(""));
+        assertThat(Strings.trim("\t"), equalTo(""));
+        assertThat(Strings.trim("\n"), equalTo(""));
+
+        assertThat(Strings.trim("happy"), equalTo("happy"));
+        assertThat(Strings.trim(" happy"), equalTo("happy"));
+        assertThat(Strings.trim("happy "), equalTo("happy"));
+        assertThat(Strings.trim(" happy "), equalTo("happy"));
+        assertThat(Strings.trim("\thappy"), equalTo("happy"));
+        assertThat(Strings.trim("\thappy\t"), equalTo("happy"));
+        assertThat(Strings.trim("\thappy\t"), equalTo("happy"));
+        assertThat(Strings.trim("\nhappy\n"), equalTo("happy"));
+    }
+
+    @Test
     public void constructorIsPrivate() throws Exception {
         Constructor<Strings> constructor = Strings.class.getDeclaredConstructor();
         assertTrue(Modifier.isPrivate(constructor.getModifiers()));

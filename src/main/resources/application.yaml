@@ -78,6 +78,7 @@ spring:
     config:
         activate:
             on-profile: localhost
+        import: optional:file:${user.home}/.${user.name}-conf/casdemo-overrides.properties
 
     devtools:
         add-properties: false

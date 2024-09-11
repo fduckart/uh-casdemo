@@ -10,13 +10,13 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 public class User extends org.springframework.security.core.userdetails.User {
 
     private static final long serialVersionUID = 5L;
-    private final String uhuuid;
+    private final String uhUuid;
     private final UhAttributes attributes;
 
     // Constructor.
-    private User(String username, String uhuuid, Collection<GrantedAuthority> authorities, UhAttributes attributes) {
+    private User(String username, String uhUuid, Collection<GrantedAuthority> authorities, UhAttributes attributes) {
         super(username, "", authorities);
-        this.uhuuid = uhuuid != null ? uhuuid : "";
+        this.uhUuid = uhUuid != null ? uhUuid : "";
         this.attributes = attributes != null ? attributes : new UhEmptyAttributes();
     }
 
@@ -24,8 +24,8 @@ public class User extends org.springframework.security.core.userdetails.User {
         return getUsername();
     }
 
-    public String getUhuuid() {
-        return uhuuid;
+    public String getUhUuid() {
+        return uhUuid;
     }
 
     // Get any single-value loaded attribute.
@@ -56,7 +56,7 @@ public class User extends org.springframework.security.core.userdetails.User {
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();
-        result = prime * result + uhuuid.hashCode();
+        result = prime * result + uhUuid.hashCode();
         return result;
     }
 
@@ -69,21 +69,20 @@ public class User extends org.springframework.security.core.userdetails.User {
         if (getClass() != obj.getClass())
             return false;
         User other = (User) obj;
-        if (!uhuuid.equals(other.uhuuid))
-            return false;
-        return true;
+        return uhUuid.equals(other.uhUuid);
     }
 
     @Override
     public String toString() {
         return "User [uid=" + getUid()
-                + ", uhuuid=" + getUhuuid()
+                + ", uhUuid=" + getUhUuid()
                 + ", super-class: " + super.toString() + "]";
     }
 
     public static class Builder {
+
         private String username;
-        private String uhuuid;
+        private String uhUuid;
         private Collection<GrantedAuthority> authorities;
         private UhAttributes attributes;
 
@@ -92,8 +91,8 @@ public class User extends org.springframework.security.core.userdetails.User {
             return this;
         }
 
-        public Builder uhuuid(String uhuuid) {
-            this.uhuuid = uhuuid;
+        public Builder uhUuid(String uhUuid) {
+            this.uhUuid = uhUuid;
             return this;
         }
 
@@ -111,7 +110,7 @@ public class User extends org.springframework.security.core.userdetails.User {
             Objects.requireNonNull(username, "username cannot be null.");
             Objects.requireNonNull(authorities, "authorities cannot be null.");
 
-            return new User(username, uhuuid, authorities, attributes);
+            return new User(username, uhUuid, authorities, attributes);
         }
     }
 }

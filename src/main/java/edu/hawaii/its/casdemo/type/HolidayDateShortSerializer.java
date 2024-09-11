@@ -10,16 +10,16 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 import edu.hawaii.its.casdemo.util.Dates;
 
-public class HolidayDateSerializer extends StdSerializer<LocalDate> {
+public class HolidayDateShortSerializer extends StdSerializer<LocalDate> {
 
     private static final long serialVersionUID = 159L;
-    private DateTimeFormatter format = DateTimeFormatter.ofPattern(Dates.DATE_FORMAT_FULL);
+    private DateTimeFormatter format = DateTimeFormatter.ofPattern(Dates.DATE_FORMAT_SHORT);
 
-    public HolidayDateSerializer() {
+    public HolidayDateShortSerializer() {
         this(null);
     }
 
-    public HolidayDateSerializer(Class<LocalDate> t) {
+    public HolidayDateShortSerializer(Class<LocalDate> t) {
         super(t);
     }
 

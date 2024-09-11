@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -46,7 +45,7 @@ public class YearHolidayHolderTest {
     public void isEmpty() {
         assertTrue(holder.isEmpty());
 
-        Date date = Dates.toDate(Dates.firstDateOfYear(2017));
+        LocalDate date = Dates.firstDateOfYear(2017);
         Holiday h = new Holiday(date, date);
         List<Holiday> holidays = new ArrayList<>();
         holidays.add(h);
@@ -69,7 +68,7 @@ public class YearHolidayHolderTest {
 
         List<Holiday> holidays = new ArrayList<>();
         for (int year = 2000; year <= 2015; year++) {
-            Date date = Dates.toDate(Dates.firstDateOfYear(year));
+            LocalDate date = Dates.firstDateOfYear(year);
             holidays.add(new Holiday(date, date));
         }
 
@@ -100,7 +99,7 @@ public class YearHolidayHolderTest {
 
         List<Holiday> holidays = new ArrayList<>();
         for (int year = 2000; year <= 2017; year++) {
-            Date date = Dates.toDate(Dates.firstDateOfYear(year));
+            LocalDate date = Dates.firstDateOfYear(year);
             holidays.add(new Holiday(date, date));
         }
 
@@ -123,7 +122,7 @@ public class YearHolidayHolderTest {
 
         holidays = new ArrayList<>();
         for (int year = 2000; year <= 2014; year++) {
-            Date date = Dates.toDate(Dates.firstDateOfYear(year));
+            LocalDate date = Dates.firstDateOfYear(year);
             holidays.add(new Holiday(date, date));
         }
 
@@ -147,8 +146,7 @@ public class YearHolidayHolderTest {
         holidays = new ArrayList<>();
         for (int year = 2014; year <= 2015; year++) {
             for (Month month : Month.values()) {
-                LocalDate localDate = Dates.newLocalDate(year, month, 1);
-                Date date = Dates.toDate(localDate);
+                LocalDate date = Dates.newLocalDate(year, month, 1);
                 holidays.add(new Holiday(date, date));
             }
         }
@@ -170,8 +168,7 @@ public class YearHolidayHolderTest {
         assertThat(holidays.size(), equalTo(0));
 
         for (int day = 1; day <= 31; day++) {
-            LocalDate localDate = Dates.newLocalDate(2016, Month.JANUARY, day);
-            Date date = Dates.toDate(localDate);
+            LocalDate date = Dates.newLocalDate(2016, Month.JANUARY, day);
             holidays.add(new Holiday(date, date));
         }
         holder = new YearHolidayHolder(holidays);
@@ -180,8 +177,7 @@ public class YearHolidayHolderTest {
 
         holidays = new ArrayList<>();
         for (Month month : Month.values()) {
-            LocalDate localDate = Dates.firstDateOfMonth(month, 2016);
-            Date date = Dates.toDate(localDate);
+            LocalDate date = Dates.firstDateOfMonth(month, 2016);
             holidays.add(new Holiday(date, date));
         }
         holder = new YearHolidayHolder(holidays);

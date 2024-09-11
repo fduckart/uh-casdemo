@@ -1,8 +1,9 @@
 package edu.hawaii.its.casdemo.util;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -11,6 +12,8 @@ import java.lang.reflect.Modifier;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.Month;
 import java.util.Calendar;
 import java.util.Date;
@@ -58,8 +61,28 @@ public class DatesTest {
     }
 
     @Test
+    public void daysBetween() {
+        LocalDate date1 = Dates.newLocalDate(2019, Month.JUNE, 21);
+        LocalDate date2 = Dates.newLocalDate(2019, Month.JUNE, 23);
+        assertThat(Dates.daysBetween(date1, date2), equalTo(2L));
+        assertThat(Dates.daysBetween(date2, date1), equalTo(-2L));
+
+        date1 = Dates.newLocalDate(1962, Month.DECEMBER, 21);
+        date2 = Dates.newLocalDate(2028, Month.APRIL, 29);
+        Dates.daysBetween(date1, date2);
+        assertThat(Dates.daysBetween(date1, date2), equalTo(23871L));
+    }
+
+    @Test
     public void newLocalDate() {
         assertNotNull(Dates.newLocalDate());
+    }
+
+    @Test
+    public void newDate() {
+        LocalDate localDate = null;
+        Date date = Dates.toDate(localDate);
+        assertThat(date, equalTo(null));
     }
 
     @Test
@@ -77,7 +100,7 @@ public class DatesTest {
             calSunday.setTime(Dates.toDate(sunday));
 
             assertEquals(Calendar.SUNDAY, calSunday.get(Calendar.DAY_OF_WEEK));
-            assertTrue(sunday.compareTo(date2) <= 0);
+            assertTrue(!sunday.isAfter(date2));
         }
 
         LocalDate date4 = Dates.previousSunday(christmasLocalDate);
@@ -128,8 +151,6 @@ public class DatesTest {
         assertEquals(4, cal3.get(Calendar.HOUR_OF_DAY));
         LocalDate date3 = Dates.firstOfYear(Dates.toLocalDate(cal3.getTime()));
         assertEquals(Dates.newLocalDate(2012, Month.JANUARY, 1), date3);
-        cal = null;
-        cal3 = null;
 
         LocalDate dt = Dates.newLocalDate(2012, Month.FEBRUARY, 29);
         LocalDate date4 = Dates.firstOfYear(dt);
@@ -144,14 +165,12 @@ public class DatesTest {
         cal4.set(Calendar.YEAR, 2012);
         Calendar cal5 = Calendar.getInstance();
         cal5.setTime(Dates.toDate(Dates.firstOfYear(Dates.toLocalDate(cal4.getTime()))));
-        cal4 = null;
         assertEquals(1, cal5.get(Calendar.DAY_OF_MONTH));
         assertEquals(Calendar.JANUARY, cal5.get(Calendar.MONTH));
         assertEquals(2012, cal5.get(Calendar.YEAR));
         assertEquals(0, cal5.get(Calendar.SECOND));
         assertEquals(0, cal5.get(Calendar.MINUTE));
         assertEquals(0, cal5.get(Calendar.HOUR_OF_DAY));
-        cal5 = null;
     }
 
     @Test
@@ -173,8 +192,6 @@ public class DatesTest {
         assertEquals(4, cal3.get(Calendar.HOUR_OF_DAY));
         LocalDate date3 = Dates.firstOfPreviousYear(Dates.toLocalDate(cal3.getTime()));
         assertEquals(Dates.newLocalDate(2011, Month.JANUARY, 1), date3);
-        cal3 = null;
-        cal = null;
 
         LocalDate dt = Dates.newLocalDate(2012, Month.FEBRUARY, 29);
         LocalDate date4 = Dates.firstOfPreviousYear(dt);
@@ -189,14 +206,12 @@ public class DatesTest {
         cal4.set(Calendar.YEAR, 2012);
         Calendar cal5 = Calendar.getInstance();
         cal5.setTime(Dates.toDate(Dates.firstOfPreviousYear(Dates.toLocalDate(cal4.getTime()))));
-        cal4 = null;
         assertEquals(1, cal5.get(Calendar.DAY_OF_MONTH));
         assertEquals(Calendar.JANUARY, cal5.get(Calendar.MONTH));
         assertEquals(2011, cal5.get(Calendar.YEAR));
         assertEquals(0, cal5.get(Calendar.SECOND));
         assertEquals(0, cal5.get(Calendar.MINUTE));
         assertEquals(0, cal5.get(Calendar.HOUR_OF_DAY));
-        cal5 = null;
     }
 
     @Test
@@ -417,7 +432,7 @@ public class DatesTest {
     }
 
     @Test
-    public void firstDateOfYear_Two() {
+    public void firstDateOfYearTwo() {
         for (int year = 2000; year < 2025; year++) {
             LocalDate date = Dates.newLocalDate(year, Month.JANUARY, 1);
             assertEquals(date, Dates.firstDateOfYear(year));
@@ -445,7 +460,7 @@ public class DatesTest {
     }
 
     @Test
-    public void lastDateOfYear_Two() {
+    public void lastDateOfYearTwo() {
         LocalDate date = Dates.newLocalDate(2000, Month.JANUARY, 1);
         assertEquals(Dates.newLocalDate(2000, Month.DECEMBER, 31), Dates.lastDateOfYear(date));
         date = Dates.newLocalDate(2009, Month.JANUARY, 1);
@@ -460,7 +475,6 @@ public class DatesTest {
 
     @Test
     public void testMisc() {
-
         for (int year = 1962; year < 2050; year++) {
             final LocalDate endOfYear = Dates.newLocalDate(year, Month.DECEMBER, 31);
 
@@ -512,10 +526,6 @@ public class DatesTest {
             assertEquals(year, Dates.yearOfDate(Dates.lastDateOfYear(year)));
             assertEquals(year, Dates.yearOfDate(Dates.lastDateOfMonth(Month.FEBRUARY, year)));
         }
-
-        Date d0 = Dates.toDate(newYearsDay2000LocalDate);
-        int year = newYearsDay2000LocalDate.getYear();
-        assertThat(Dates.yearOfDate(d0), equalTo(year));
     }
 
     @Test
@@ -560,9 +570,22 @@ public class DatesTest {
 
     @Test
     public void formatDate() {
-        LocalDate date = Dates.newLocalDate(2012, Month.FEBRUARY, 29);
+        LocalDate date = null;
+        String dateStr0 = Dates.formatDate(date, "MM/yyyy");
+        assertEquals("", dateStr0);
+
+        LocalDateTime dateTime = null;
+        String dateStrE = Dates.formatDate(dateTime, "MM/yyyy");
+        assertEquals("", dateStrE);
+
+        date = Dates.newLocalDate(2012, Month.FEBRUARY, 29);
         String dateStr1 = Dates.formatDate(date, "MM/yyyy");
         assertEquals("02/2012", dateStr1);
+        String dateStrA = Dates.formatDate(Dates.toDate(date));
+        assertEquals("02/29/2012", dateStrA);
+
+        String dateStrD = Dates.formatDate(date, null);
+        assertEquals("2012-02-29", dateStrD);
 
         date = Dates.newLocalDate(2012, Month.FEBRUARY, 29);
         String dateStr2 = Dates.formatDate(date, "M/yyyy");
@@ -583,6 +606,17 @@ public class DatesTest {
         date = Dates.newLocalDate(2013, Month.DECEMBER, 30);
         String dateStr6 = Dates.formatDate(date, "M/yyyy");
         assertEquals("12/2013", dateStr6);
+        String dateStrB = Dates.formatDate(Dates.toDate(date));
+        assertEquals("12/30/2013", dateStrB);
+
+        LocalTime localTime = LocalTime.of(12, 34, 56);
+        LocalDateTime localDateTime = LocalDateTime.of(date, localTime);
+        String dateStrC = Dates.formatDate(localDateTime, "uuuu-MM-dd-HH-mm-ss");
+        assertEquals("2013-12-30-12-34-56", dateStrC);
+
+        // Default pattern if internal error.
+        dateStrC = Dates.formatDate(localDateTime, null);
+        assertEquals("2013-12-30T12:34:56", dateStrC);
 
         // Invalid pattern; defaults to yyyy-MM-dd.
         String dateStr7 = Dates.formatDate(date, "what?");
@@ -619,6 +653,12 @@ public class DatesTest {
         date = Dates.newLocalDate(2013, Month.DECEMBER, 30);
         String dateStr7 = Dates.formatDate(date);
         assertEquals("12/30/2013", dateStr7);
+
+        java.sql.Date sqlDate =
+                new java.sql.Date(Dates.toDate(date).getTime());
+        String dateStr8 = Dates.formatDate(sqlDate);
+        assertEquals("12/30/2013", dateStr8);
+        assertEquals(date, Dates.toLocalDate(dateStr8, "M/d/yyyy"));
     }
 
     @Test
@@ -630,25 +670,16 @@ public class DatesTest {
     }
 
     @Test
-    public void sqlDateToLocalDate() {
-        java.sql.Date sqlDate = null;
-        LocalDate d = Dates.toLocalDate(sqlDate);
-        assertThat(d, equalTo(null));
+    public void localDateTimeToDate() {
+        LocalDate date = Dates.newLocalDate(2013, Month.DECEMBER, 30);
+        LocalTime time = LocalTime.of(12, 34, 56);
+        LocalDateTime dateTime = LocalDateTime.of(date, time);
 
-        long t = Dates.toDate(newYearsDay2000LocalDate).getTime();
-        sqlDate = new java.sql.Date(t);
-        LocalDate d0 = sqlDate.toLocalDate();
+        String dateStr = Dates.formatDate(dateTime, "uuuu-MM-dd-HH-mm-ss");
+        assertEquals("2013-12-30-12-34-56", dateStr);
 
-        assertThat(d0.getDayOfMonth(), equalTo(1));
-        assertThat(d0.getYear(), equalTo(2000));
-        assertThat(d0.getMonth(), equalTo(Month.JANUARY));
-
-        LocalDate d1 = Dates.toLocalDate(sqlDate);
-        assertThat(d1.getDayOfMonth(), equalTo(1));
-        assertThat(d1.getYear(), equalTo(2000));
-        assertThat(d1.getMonth(), equalTo(Month.JANUARY));
-
-        assertEquals(d1, d0);
+        dateStr = Dates.formatDate(dateTime, null);
+        assertEquals("2013-12-30T12:34:56", dateStr);
     }
 
     @Test
@@ -657,5 +688,78 @@ public class DatesTest {
         assertTrue(Modifier.isPrivate(constructor.getModifiers()));
         constructor.setAccessible(true);
         constructor.newInstance();
+    }
+
+    @Test
+    public void toLocalDate() {
+        final LocalDate TAX_DATE = Dates.newLocalDate(2017, Month.APRIL, 15);
+        final LocalDate MAY_DATE = Dates.newLocalDate(2016, Month.MAY, 1);
+
+        LocalDate d0 = Dates.toLocalDate("2017-04-15");
+        assertThat(TAX_DATE, equalTo(d0));
+
+        LocalDate d1 = Dates.toLocalDate("2017-4-15");
+        assertThat(TAX_DATE, equalTo(d1));
+
+        LocalDate d2 = Dates.toLocalDate("2016-05-01");
+        assertThat(MAY_DATE, equalTo(d2));
+
+        LocalDate d3 = Dates.toLocalDate("2016-5-01");
+        assertThat(MAY_DATE, equalTo(d3));
+
+        LocalDate d4 = Dates.toLocalDate("2016-05-1");
+        assertThat(MAY_DATE, equalTo(d4));
+
+        LocalDate d5 = Dates.toLocalDate("2016-5-1");
+        assertThat(MAY_DATE, equalTo(d5));
+
+        // Bad format.
+        LocalDate d6 = Dates.toLocalDate("what?");
+        assertThat(d6, equalTo(null));
+
+        // Null argument.
+        LocalDate d7 = Dates.toLocalDate((Date) null);
+        assertThat(d7, equalTo(null));
+    }
+
+    @Test
+    public void toLocalDateWithFormat() {
+        String s = "19860701";
+        String format = "yyyyMMdd";
+        LocalDate dA = Dates.toLocalDate(s, format);
+        assertThat(dA, equalTo(Dates.newLocalDate(1986, Month.JULY, 1)));
+
+        s = "20110701";
+        LocalDate dB = Dates.toLocalDate(s, format);
+        assertThat(dB, equalTo(Dates.newLocalDate(2011, Month.JULY, 1)));
+
+        s = null;
+        LocalDate dC = Dates.toLocalDate(s, format);
+        assertThat(dC, equalTo(null));
+
+        s = "20110701";
+        format = null;
+        LocalDate dD = Dates.toLocalDate(s, format);
+        assertThat(dD, equalTo(null));
+    }
+
+    @Test
+    public void isOnOrAfter() {
+        LocalDate christmas1962 = LocalDate.of(1962, Month.DECEMBER, 25);
+        LocalDate christmas1963 = LocalDate.of(1963, Month.DECEMBER, 25);
+
+        assertTrue(Dates.isOnOrAfter(christmas1963, christmas1962));
+        assertTrue(Dates.isOnOrAfter(christmas1962, christmas1962));
+        assertFalse(Dates.isOnOrAfter(christmas1962, christmas1963));
+    }
+
+    @Test
+    public void isOnOrBefore() {
+        LocalDate christmas1962 = LocalDate.of(1962, Month.DECEMBER, 25);
+        LocalDate christmas1963 = LocalDate.of(1963, Month.DECEMBER, 25);
+
+        assertFalse(Dates.isOnOrBefore(christmas1963, christmas1962));
+        assertTrue(Dates.isOnOrBefore(christmas1962, christmas1962));
+        assertTrue(Dates.isOnOrBefore(christmas1962, christmas1963));
     }
 }

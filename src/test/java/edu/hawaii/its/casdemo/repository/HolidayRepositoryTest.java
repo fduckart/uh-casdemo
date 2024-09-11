@@ -2,6 +2,7 @@ package edu.hawaii.its.casdemo.repository;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -21,7 +22,7 @@ import edu.hawaii.its.casdemo.type.Holiday;
 import edu.hawaii.its.casdemo.type.Type;
 import edu.hawaii.its.casdemo.util.Dates;
 
-@SpringBootTest(classes = { SpringBootWebApplication.class })
+@SpringBootTest(classes = SpringBootWebApplication.class)
 public class HolidayRepositoryTest {
 
     @Autowired
@@ -32,13 +33,13 @@ public class HolidayRepositoryTest {
 
     @Test
     public void findById() {
-        Holiday h = holidayRepository.findById(115).get();
+        Holiday h = holidayRepository.findById(1176).get();
         assertThat(h.getDescription(), equalTo("Christmas"));
-        assertThat(h.getHolidayTypes().size(), equalTo(2));
+        assertThat(h.getHolidayTypes().size(), equalTo(3));
         LocalDate localDate = Dates.newLocalDate(2018, Month.DECEMBER, 25);
         Date date = Dates.toDate(localDate);
-        assertThat(h.getObservedDate(), equalTo(date));
-        assertThat(h.getOfficialDate(), equalTo(date));
+        assertThat(h.getObservedDate(), equalTo(localDate));
+        assertThat(h.getOfficialDate(), equalTo(localDate));
     }
 
     @Test
@@ -46,10 +47,8 @@ public class HolidayRepositoryTest {
         Holiday h = new Holiday();
 
         LocalDate localDate = Dates.newLocalDate(2030, Month.DECEMBER, 25);
-        Date date = Dates.toDate(localDate);
-
-        h.setOfficialDate(date);
-        h.setObservedDate(date);
+        h.setOfficialDate(localDate);
+        h.setObservedDate(localDate);
         h.setDescription("Christmas");
         assertNull(h.getId());
 
@@ -60,14 +59,14 @@ public class HolidayRepositoryTest {
         assertEquals(h0, h);
 
         localDate = Dates.firstOfNextMonth(localDate);
-        date = Dates.toDate(localDate);
         List<Type> holidayTypes = holidayService.findTypes();
+        assertThat(holidayTypes, notNullValue());
 
         Holiday h1 = new Holiday();
         h1.setDescription("New Year's Day, Woot!");
-        h1.setObservedDate(date);
-        h1.setOfficialDate(date);
-        h1.setHolidayTypes(holidayTypes);
+        h1.setObservedDate(localDate);
+        h1.setOfficialDate(localDate);
+        // h1.setHolidayTypes(holidayTypes);
 
         h1 = holidayRepository.save(h1);
 

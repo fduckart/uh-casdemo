@@ -1,47 +1,47 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="header :: copy"></head>
 <body ng-app="casdemoApp">
     <nav th:replace="menubar :: copy"></nav>
 
     <!--  Content container -->
-    <div class="container text-responsive px-0 py-0" ng-controller="HolidayJsController" data-ng-init="init()">
+    <div class="container" ng-controller="HolidayJsController" data-ng-init="init()">
         <div class="card border-1">
             <div class="card-header border-1">
                  <form>
                     <div class="row">
-                        <div class="col-xs-3 ml-2">
-                            <select class="form-control form-control-sm" id="yearCode" name="yearCode" ng-model="yearCode" ng-change="yearChange()">
-                                <option ng-repeat="y in years">{{y}}</option>
-                                <option value="">(all years) </option>
-                            </select>
+                        <div class="col">
+                            <span class="ml-2 ml-sm-0 my-0">
+                                <select class="form-control float-sm-left" id="yearCode" name="yearCode" ng-model="yearCode">
+                                    <option ng-repeat="y in years">{{y}}</option>
+                                    <option value="">(all years)</option>
+                                </select>
+                            </span>
                         </div>
-                        <div class="col-xs-9 ml-auto mr-2">
-                            <input class="form-control form-control-sm" placeholder="Type to filter text..." type="text" ng-model="searchFor"/>
+                        <div class="col">
+                            <input class="form-control float-sm-right" placeholder="Type to filter text..." type="text" ng-model="searchFor" size="30"/>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="card-body text-left">
                 <div class="table-responsive">
-                  <table class="table table-bordered table-hover table-sm">
-                      <thead>
-                          <tr>
-                              <th>Holiday</th>
-                              <th>Observed</th>
-                              <th>Official</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr data-ng-repeat="h in holidays | filter:yearCode | filter:searchFor">
-                              <td>{{h.description}}</td>
-                              <td>{{h.observedDate}}</td>
-                              <td>{{h.officialDate}}</td>
-                          </tr>
-                      </tbody>
-                  </table>
-
+                    <table class="table table-hover table-sm">
+                        <thead>
+                            <tr ng-show="filtered.length > 0">
+                                <th>Holiday</th>
+                                <th>Observed</th>
+                                <th>Official</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="h in holidays | orderBy:orderByField:reverseSort | filter:yearCode | filter:searchFilter() as filtered">
+                                <td>{{h.description}}</td>
+                                <td>{{h.observedDateFull}}</td>
+                                <td>{{h.officialDateFull}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
