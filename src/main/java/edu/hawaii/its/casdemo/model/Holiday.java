@@ -69,17 +69,20 @@ public class Holiday implements Serializable {
 
     // Constructor.
     public Holiday() {
-        // Empty.
+        // Empty, currently.
     }
 
     // Constructor.
     public Holiday(LocalDate officialDate, LocalDate observedDate) {
         this();
-        if (officialDate != null) {
-            setOfficialYear(officialDate.getYear());
-        }
         this.officialDate = officialDate;
         this.observedDate = observedDate;
+    }
+
+    // Constructor.
+    public Holiday(LocalDate officialDate, LocalDate observedDate, int year) {
+        this(officialDate, observedDate);
+        this.officialYear = year;
     }
 
     @Transient
@@ -153,9 +156,6 @@ public class Holiday implements Serializable {
 
     public void setOfficialDate(LocalDate officialDate) {
         this.officialDate = officialDate;
-        if (this.officialYear == null && officialDate != null) {
-            this.officialYear = officialDate.getYear();
-        }
     }
 
     @Transient
@@ -187,14 +187,6 @@ public class Holiday implements Serializable {
     @JsonGetter("types")
     public List<Type> getHolidayTypes() {
         return Collections.unmodifiableList(types);
-    }
-
-    @Transient
-    public Integer getOfficialDateYear() {
-        if (officialDate != null) {
-            return Dates.yearOfDate(officialDate);
-        }
-        return null;
     }
 
     @Override
@@ -244,6 +236,7 @@ public class Holiday implements Serializable {
                 + ", description=" + description
                 + ", observedDate=" + observedDate
                 + ", officialDate=" + officialDate
+                + ", officialYear=" + officialYear
                 + ", types=" + types
                 + "]";
     }

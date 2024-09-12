@@ -17,10 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import edu.hawaii.its.casdemo.configuration.SpringBootWebApplication;
-import edu.hawaii.its.casdemo.service.HolidayService;
 import edu.hawaii.its.casdemo.model.Holiday;
 import edu.hawaii.its.casdemo.model.Type;
+import edu.hawaii.its.casdemo.service.HolidayService;
 import edu.hawaii.its.casdemo.util.Dates;
+import edu.hawaii.its.casdemo.util.Strings;
 
 @SpringBootTest(classes = SpringBootWebApplication.class)
 public class HolidayRepositoryTest {
@@ -50,6 +51,7 @@ public class HolidayRepositoryTest {
         h.setOfficialDate(localDate);
         h.setObservedDate(localDate);
         h.setDescription("Christmas");
+        h.setOfficialYear(localDate.getYear());
         assertNull(h.getId());
 
         h = holidayRepository.save(h);
@@ -66,7 +68,13 @@ public class HolidayRepositoryTest {
         h1.setDescription("New Year's Day, Woot!");
         h1.setObservedDate(localDate);
         h1.setOfficialDate(localDate);
-        // h1.setHolidayTypes(holidayTypes);
+        h1.setOfficialYear(localDate.getYear());
+
+        System.out.println(Strings.fill('v', 99));
+        System.out.println("    <><><> d: " + localDate);
+        System.out.println("    <><><> y: " + localDate.getYear());
+        System.out.println("    <><><> h: " + h1);
+        System.out.println(Strings.fill('^', 99));
 
         h1 = holidayRepository.save(h1);
 

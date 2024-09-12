@@ -5,9 +5,11 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Date;
 
@@ -63,8 +65,11 @@ public class DesignationTest {
         Designation h1 = new Designation();
         assertEquals(h1, h1); // To self.
         assertEquals(h1, h1); // To self.
+        assertTrue(h1.equals(h1));
         assertNotEquals(null, h1);
+        assertFalse(h1.equals(null));
         assertNotEquals(h1, new Date()); // Wrong type.
+        assertFalse(h1.equals(new Date())); // Wrong type.
 
         Designation h2 = new Designation();
         assertThat(h1, equalTo(h2));

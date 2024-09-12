@@ -31,8 +31,10 @@ public class TypeTest {
 
         type.setId(666);
         type.setDescription("The Beast");
+        type.setSortId(1);
         assertThat(type.getId(), equalTo(666));
         assertThat(type.getDescription(), equalTo("The Beast"));
+        assertThat(type.getSortId(), equalTo(1));
     }
 
     @Test
