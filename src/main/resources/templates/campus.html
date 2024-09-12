@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+>
 <head th:replace="header :: copy"></head>
 <body ng-app="casdemoApp">
     <nav th:replace="menubar :: copy"></nav>
 
     <!--  Content container -->
-    <div class="container" ng-controller="CampusJsController" data-ng-init="init()">
+    <div class="container-fluid" ng-controller="CampusJsController" data-ng-init="init()">
         <div class="card border-1">
             <div class="card-header border-1">
                  <form>
