@@ -1,4 +1,5 @@
 describe("ErrorJsController", function() {
+    "use strict";
 
     beforeEach(module("casdemoApp"));
 

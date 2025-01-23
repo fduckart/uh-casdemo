@@ -1,5 +1,3 @@
-/*eslint no-undef: "error"*/
-
 (function() {
     'use strict';
 

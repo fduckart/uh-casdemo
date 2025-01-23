@@ -53,7 +53,7 @@
     casdemoApp.controller("HolidayJsController", HolidayJsController);
 
     function HolidayGridJsController($scope, holidayJsService) {
-        var options = {
+        const options = {
             pageNumber: 1,
             pageSize: 10,
             sort: null
@@ -64,6 +64,7 @@
             $scope.gridOptions.totalItems = data.totalElements;
         });
 
+        // noinspection JSUnusedGlobalSymbols
         $scope.gridOptions = {
             paginationPageSizes: [10, 15, 20, 250],
             paginationPageSize: options.pageSize,

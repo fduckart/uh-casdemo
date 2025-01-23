@@ -1,6 +1,7 @@
 /*eslint no-undef: "error"*/
 
 (function() {
+    "use strict";
 
     function CampusJsController($scope, App, dataProvider) {
         $scope.campuses = [];

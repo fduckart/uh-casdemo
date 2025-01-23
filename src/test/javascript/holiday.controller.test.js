@@ -1,4 +1,5 @@
 describe("HolidayJsController", function() {
+    "use strict";
 
     beforeEach(module("casdemoApp"));
 

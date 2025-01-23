@@ -1,4 +1,5 @@
 $(function() {
+    "use strict";
     // Make menus drop down automatically.
     $("ul.nav li.dropdown").hover(function() {
         $(".dropdown-menu", this).fadeIn();

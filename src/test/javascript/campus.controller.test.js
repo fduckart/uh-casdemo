@@ -1,11 +1,11 @@
 describe("CampusJsController", function() {
+    "use strict";
 
     beforeEach(module("casdemoApp"));
 
-    var app;
-    var scope;
-    var controller;
-    var dataProvider;
+    let app;
+    let scope;
+    let controller;
 
     beforeEach(inject(function($rootScope, $controller, App, dataProvider) {
         scope = $rootScope.$new();
